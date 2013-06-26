@@ -1,0 +1,14 @@
+As a 
+In order
+I want
+
+Features List
+- View Most Popular Ideas on Homepage
+- View Recently Updated Ideas on Homepage
+- See Portfolio of Ideas Grouped by User-Defined Categories
+- Manage User Profile
+- Manage Ideas
+ - Group Ideas into Categories
+- Vote on Ideas
+- Comment on Ideas
+
