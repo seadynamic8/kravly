@@ -7,10 +7,10 @@ feature "Idea Management" do
 	#I want to be able to manage my ideas
 
 	scenario "create a new idea" do
-		visit root_path
-		expect {
-			click_link
-		}
+		# visit root_path
+		# expect {
+		# 	click_link
+		# }
 
 	end
 
