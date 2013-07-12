@@ -11,7 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130626144709) do
+ActiveRecord::Schema.define(version: 20130627193932) do
+
+  create_table "books", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "books", ["user_id"], name: "index_books_on_user_id", using: :btree
+
+  create_table "books_ideas", id: false, force: true do |t|
+    t.integer "book_id", null: false
+    t.integer "idea_id", null: false
+  end
+
+  add_index "books_ideas", ["book_id", "idea_id"], name: "index_books_ideas_on_book_id_and_idea_id", using: :btree
+  add_index "books_ideas", ["idea_id", "book_id"], name: "index_books_ideas_on_idea_id_and_book_id", using: :btree
+
+  create_table "ideas", force: true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "votes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "username"
