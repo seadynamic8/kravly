@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe UsersController do
+describe IdeasController do
 
   describe "GET 'index'" do
     it "returns http success" do
@@ -10,23 +10,17 @@ describe UsersController do
   end
 
   describe "GET 'show'" do
-    it "assigns the requested user to @user" do
-      user = create(:user)
-      get :show, id: user
-      assigns(:user).should eq user
+    it "assigns requested idea to @idea" do
+      idea = create(:idea)
+      get :show, id: idea
+      assigns(:idea).should eq idea
     end
-
-    it "renders the :show template" do
-      user = create(:user)
-      get :show, id: user
+    
+    it "renders the show template" do
+      idea = create(:idea)
+      get :show, id: idea
       expect(response).to render_template :show
     end
-
-    it "populates an array of ideas"
-      # idea = create(:idea)
-      # get :show, id: idea
-
-
   end
 
   describe "GET 'new'" do
@@ -36,11 +30,11 @@ describe UsersController do
     end
   end
 
-
   # describe "GET 'edit'" do
   #   it "returns http success" do
   #     get 'edit'
   #     response.should be_success
   #   end
   # end
+
 end
