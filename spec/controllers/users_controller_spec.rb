@@ -22,11 +22,11 @@ describe UsersController do
       expect(response).to render_template :show
     end
 
-    it "populates an array of ideas"
-      # idea = create(:idea)
-      # get :show, id: idea
-
-
+    it "the @user has books" do
+      user = create(:user_with_books)
+      get :show, id: user
+      assigns(:user).books.count.should > 0
+    end
   end
 
   describe "GET 'new'" do

@@ -10,6 +10,6 @@ THIS started off as a student project at the School of Visual Arts in NYC, but q
 We're currently a small team working on revisiting the design of the original carrying case, coming up with new ideas for the line, and seeking out like-minded manufacturers and suppliers.
 
 Looking forward to your feedback, and feel free to sign up for updates about the project here.</p>"
-    votes 1
+    sequence(:votes) { |n| n }
   end
 end

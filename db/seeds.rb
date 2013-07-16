@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+require 'faker'
+
 #Idea.delete_all
 ideas = [
 	{ title: "Happy Yoga Feet", content: "<p>THIS is a line of products surrounding the Miswak, an ancient tooth-cleaning twig still used in several countries around the world. The collection starts with a carrying case designed to help Miswak-users cut and peel the bark around the stick on-the-go. We are also working on creating interchangeable caps that serve different purposes, like cleaning, cutting and softening the bristles.
@@ -22,6 +24,15 @@ Looking forward to your feedback, and feel free to sign up for updates about the
 ].each do |idea|
 	Idea.where(title: idea[:title]).first_or_create!(idea)
 end
+
+# Book.delete_all
+# books = []
+# 28.times do
+# 	books << { name: Faker::Company.name, user_id: rand(1..4) }
+# end
+# books.each do |book|
+# 	Book.where(name: book[:name]).first_or_create!(book)
+# end
 
 #Users.delete_all
 users = [

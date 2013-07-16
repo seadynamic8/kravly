@@ -29,7 +29,7 @@ describe User do
 
 		it 'returns the full name as a string' do
 			user = create(:user)
-			expect(user.fullname).to eq 'Joe Smith'
+			expect(user.fullname).to eq "#{user.firstname} #{user.lastname}"
 		end
 
 		it "is invalid with duplicate email addresses" do
