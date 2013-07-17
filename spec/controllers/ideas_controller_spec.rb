@@ -21,6 +21,12 @@ describe IdeasController do
       get :show, id: idea
       expect(response).to render_template :show
     end
+
+    it "should belong to books inside @idea" do
+      idea = create(:idea_with_books)
+      get :show, id: idea
+      assigns(:idea).books.count.should >= 0
+    end
   end
 
   describe "GET 'new'" do

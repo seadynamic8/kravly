@@ -27,7 +27,7 @@ require 'faker'
 
 ideas = []
 336.times do
-	ideas << { title: Faker::Company.name, content: Faker::Lorem.paragraphs(3).join(","), votes: rand(1..100) }
+	ideas << { title: Faker::Company.name, content: Faker::Lorem.paragraphs(3).join("<br/>"), votes: rand(1..100) }
 end
 ideas.each do |idea|
 	i = Idea.where(title: idea[:title]).first_or_create!(idea)
