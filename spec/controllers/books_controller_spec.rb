@@ -31,7 +31,7 @@ describe BooksController do
     it "should have ideas inside the @book" do
       book = create(:book_with_ideas)
       get :show, id: book
-      book.ideas.count.should > 0
+      assigns(:book).ideas.count.should >= 0
     end
   end
 

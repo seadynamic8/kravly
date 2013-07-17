@@ -25,7 +25,7 @@ describe UsersController do
     it "should have books inside the @user" do
       user = create(:user_with_books)
       get :show, id: user
-      assigns(:user).books.count.should > 0
+      assigns(:user).books.count.should >= 0
     end
   end
 
