@@ -1,18 +1,18 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :book do
+  factory :board do
     sequence(:name) { |n| "Photography Ideas#{n}" }
 
-    factory :book_with_ideas do
+    factory :board_with_ideas do
     	ignore do
     		ideas_count 12
     	end
 
-    	after(:create) do |book, evaluator|
+    	after(:create) do |board, evaluator|
     		ideas = FactoryGirl.create_list(:idea, evaluator.ideas_count)
     		ideas.each do |idea|
-    			book.ideas << idea
+    			board.ideas << idea
     		end
     	end
     end

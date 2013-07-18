@@ -22,10 +22,10 @@ describe IdeasController do
       expect(response).to render_template :show
     end
 
-    it "should belong to books inside @idea" do
-      idea = create(:idea_with_books)
+    it "should belong to boards inside @idea" do
+      idea = create(:idea_with_boards)
       get :show, id: idea
-      assigns(:idea).books.count.should >= 0
+      assigns(:idea).boards.count.should >= 0
     end
   end
 

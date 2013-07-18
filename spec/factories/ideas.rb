@@ -6,15 +6,15 @@ FactoryGirl.define do
     content { Faker::Lorem.paragraphs(3).join(" ") }
     sequence(:votes) { |n| n }
 
-    factory :idea_with_books do
+    factory :idea_with_boards do
     	ignore do
-    		books_count 2
+    		boards_count 2
     	end
 
     	after(:create) do |idea, evaluator|
-    		books = FactoryGirl.create_list(:book, evaluator.books_count)
-    		books.each do |book|
-    			idea.books << book
+    		boards = FactoryGirl.create_list(:board, evaluator.boards_count)
+    		boards.each do |board|
+    			idea.boards << board
     		end
     	end
     end

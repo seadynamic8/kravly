@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-	has_many :books, dependent: :destroy
+	has_many :boards, dependent: :destroy
 
 	EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

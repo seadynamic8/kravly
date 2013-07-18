@@ -1,6 +1,6 @@
 class Idea < ActiveRecord::Base
 
-	has_and_belongs_to_many :books
+	has_and_belongs_to_many :boards
 
 	validates :title, presence: true, uniqueness: true, length: { maximum: 255 }
 	validates :content, presence: true

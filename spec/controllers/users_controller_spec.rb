@@ -22,10 +22,10 @@ describe UsersController do
       expect(response).to render_template :show
     end
 
-    it "should have books inside the @user" do
-      user = create(:user_with_books)
+    it "should have boards inside the @user" do
+      user = create(:user_with_boards)
       get :show, id: user
-      assigns(:user).books.count.should >= 0
+      assigns(:user).boards.count.should >= 0
     end
   end
 

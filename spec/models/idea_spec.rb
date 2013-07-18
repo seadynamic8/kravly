@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Idea do
   
   describe "relationships" do
-		it { should have_and_belong_to_many(:books) }
+		it { should have_and_belong_to_many(:boards) }
 	end
 
 	describe "validations" do

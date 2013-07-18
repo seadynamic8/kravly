@@ -25,31 +25,31 @@ require 'faker'
 # 	Idea.where(title: idea[:title]).first_or_create!(idea)
 # end
 
-ideas = []
-336.times do
-	ideas << { title: Faker::Company.name, content: Faker::Lorem.paragraphs(3).join("<br/>"), votes: rand(1..100) }
-end
-ideas.each do |idea|
-	i = Idea.where(title: idea[:title]).first_or_create!(idea)
-	b = Book.offset(rand(Book.count)).first
-	i.books << b
-end
-
-# Book.delete_all
-# books = []
-# 28.times do
-# 	books << { name: Faker::Company.name, user_id: rand(1..4) }
+# ideas = []
+# 336.times do
+# 	ideas << { title: Faker::Company.name, content: Faker::Lorem.paragraphs(3).join("<br/>"), votes: rand(1..100) }
 # end
-# books.each do |book|
-# 	Book.where(name: book[:name]).first_or_create!(book)
+# ideas.each do |idea|
+# 	i = Idea.where(title: idea[:title]).first_or_create!(idea)
+# 	b = Board.offset(rand(Board.count)).first
+# 	i.boards << b
+# end
+
+# Board.delete_all
+# boards = []
+# 28.times do
+# 	boards << { name: Faker::Company.name, user_id: rand(1..4) }
+# end
+# boards.each do |board|
+# 	Board.where(name: board[:name]).first_or_create!(board)
 # end
 
 #Users.delete_all
-users = [
-	{ firstname: "Jarvis", lastname: "Kwan", username: "jkwan", email: "jkwan@example.com" },
-	{ firstname: "Jovita", lastname: "Lai", username: "jlai", email: "jlai@example.com" },
-	{ firstname: "Charles", lastname: "Lai", username: "clai", email: "clai@example.com" },
-	{ firstname: "Jenny", lastname: "Yu", username: "jyyu", email: "jyyu@example.com" },
-].each do |user|
-	User.where(username: user[:username]).first_or_create!(user)
-end
+# users = [
+# 	{ firstname: "Jarvis", lastname: "Kwan", username: "jkwan", email: "jkwan@example.com" },
+# 	{ firstname: "Jovita", lastname: "Lai", username: "jlai", email: "jlai@example.com" },
+# 	{ firstname: "Charles", lastname: "Lai", username: "clai", email: "clai@example.com" },
+# 	{ firstname: "Jenny", lastname: "Yu", username: "jyyu", email: "jyyu@example.com" },
+# ].each do |user|
+# 	User.where(username: user[:username]).first_or_create!(user)
+# end

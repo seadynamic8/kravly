@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
 
 	describe "relationships" do
-		it { should have_many(:books) }
+		it { should have_many(:boards) }
 	end
 
 	describe "validations" do
