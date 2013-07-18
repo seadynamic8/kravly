@@ -1,10 +1,15 @@
 class IdeasController < ApplicationController
-	before_action :set_idea, only: [:show, :edit, :update, :destroy]
+	before_action :set_idea, only: [:show, :edit, :update, :destroy, :vote]
 
   def index
   end
 
   def show
+    board = @idea.boards.first
+    @rand_ideas = []
+    3.times do
+      @rand_ideas << board.ideas.sample
+    end
   end
 
   def new
@@ -20,6 +25,12 @@ class IdeasController < ApplicationController
   end
 
   def destroy
+  end
+
+  def vote
+    @idea.votes += 1
+    @idea.save
+    redirect_to @idea
   end
 
   private
