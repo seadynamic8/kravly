@@ -6,4 +6,9 @@ class Idea < ActiveRecord::Base
 	validates :content, presence: true
 	validates :votes, numericality: { only_integer: true,
 																		greater_than_or_equal_to: 0 }
+
+
+	def user
+		boards.first.user
+	end																		
 end

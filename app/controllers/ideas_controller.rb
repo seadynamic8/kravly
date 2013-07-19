@@ -6,6 +6,7 @@ class IdeasController < ApplicationController
 
   def show
     board = @idea.boards.first
+    @user = @idea.user
     @rand_ideas = []
     3.times do
       @rand_ideas << board.ideas.sample

@@ -21,4 +21,14 @@ describe Idea do
 			expect(build(:idea, votes: -1)).to have(1).errors_on(:votes)
 		end
 	end
+
+	describe "functions" do
+
+		it "should return idea's boards first user as a user method under idea" do
+			idea = create(:idea_with_boards)
+			expect(idea.user).to eq idea.boards.first.user
+		end
+	end
+
+
 end

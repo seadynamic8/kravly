@@ -27,12 +27,6 @@ describe BoardsController do
       get :show, id: board
       expect(response).to render_template :show
     end
-
-    it "should have ideas inside the @board" do
-      board = create(:board_with_ideas)
-      get :show, id: board
-      assigns(:board).ideas.count.should >= 0
-    end
   end
 
   describe "GET 'new'" do
