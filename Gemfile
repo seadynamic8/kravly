@@ -65,5 +65,5 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-	gem 'compass-rails', github: "milgner/compass-rails", ref: "1749c06f15dc4b058427e7969810457213647fb8"
+	gem 'compass-rails', "~> 2.0.alpha.0"
 	gem 'zurb-foundation', '~> 4.0.9'

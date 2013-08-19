@@ -5,6 +5,7 @@ Wishproto::Application.routes.draw do
   resources :ideas
 
   get "/ideas/:id/vote(.:format)", to: 'ideas#vote', as: :vote_idea
+  get "/ideas/:id/:board(.:format)", to: 'ideas#show', as: :idea_from_board
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

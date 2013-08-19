@@ -5,7 +5,13 @@ class IdeasController < ApplicationController
   end
 
   def show
-    board = @idea.boards.first
+    board_id = params[:board]
+    # this is done just in case it comes in from a vote (without a board) instead of a board.
+    if board_id.nil?
+      board = @idea.boards.first
+    else
+      board = Board.find(board_id)
+    end
     @user = @idea.user
     @rand_ideas = []
     3.times do

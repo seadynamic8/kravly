@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130718142502) do
+ActiveRecord::Schema.define(version: 20130719210115) do
 
   create_table "boards", force: true do |t|
     t.string   "name"
@@ -30,13 +30,25 @@ ActiveRecord::Schema.define(version: 20130718142502) do
   add_index "boards_ideas", ["board_id", "idea_id"], name: "index_boards_ideas_on_board_id_and_idea_id", using: :btree
   add_index "boards_ideas", ["idea_id", "board_id"], name: "index_boards_ideas_on_idea_id_and_board_id", using: :btree
 
+  create_table "comments", force: true do |t|
+    t.text     "content"
+    t.integer  "idea_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["idea_id"], name: "index_comments_on_idea_id", using: :btree
+
   create_table "ideas", force: true do |t|
     t.string   "title"
     t.text     "content"
     t.integer  "votes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "ideas", ["user_id"], name: "index_ideas_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username"
