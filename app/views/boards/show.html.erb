@@ -25,7 +25,7 @@
 <div class="row group-item">
 	<% @board.ideas.each do |idea| %>
 		<div class="large-4 columns">
-			<h5><%= link_to idea.title, idea_path(idea) %></h5>
+			<h5><%= link_to idea.title, idea_from_board_path(idea, @board) %></h5>
 			<%= link_to (image_tag "http://s3.amazonaws.com/skillshare/uploads/project/6d40c3195a94b7b583083d92efb52cc3/cover_image.png", class:"item-large"), idea_path(idea) %>
 			
 		</div>

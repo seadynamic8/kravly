@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Idea do
   
   describe "relationships" do
+  	it { should belong_to(:user) }
 		it { should have_and_belong_to_many(:boards) }
 	end
 
