@@ -1,0 +1,27 @@
+<!-- <div class="row links">
+	<div class="large-4 large-centered columns">
+		<%= link_to " Most Popular ", "#" %>|<%= link_to " Recently Updated ", "#" %>
+	</div>
+	<div class="large-12 columns">
+		<hr>
+	</div>
+</div> -->
+
+
+<div class="row idea-row">
+
+	<% @most_popular_ideas.each do |idea| %>
+		<div class="large-4 columns">
+			<div class="idea-block">
+				<h5><%= link_to idea.title, idea_path(idea) %></h5>
+				<%= link_to (image_tag "http://placehold.it/270x152"), idea_path(idea) %>
+				<div class="idea-bottom">
+					<div class="vote"><%= idea.votes %></div>
+					<%= image_tag "http://placehold.it/50x50" %>
+					<div class="name">Shane Reilly</div>
+				</div>
+			</div>
+		</div>
+	<% end %>
+
+</div>

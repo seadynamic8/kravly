@@ -7,6 +7,8 @@ class Idea < ActiveRecord::Base
 	validates :votes, numericality: { only_integer: true,
 																		greater_than_or_equal_to: 0 }
 
+	scope :popular, -> { order("votes desc") }
+	#scope :recent, -> { order("updated_at desc") }
 
 	def user
 		boards.first.user
