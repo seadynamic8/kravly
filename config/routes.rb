@@ -1,6 +1,5 @@
 Wishproto::Application.routes.draw do
   
-  get "public/index"
   resources :users
   resources :boards
   resources :ideas
