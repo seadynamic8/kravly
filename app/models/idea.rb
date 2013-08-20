@@ -10,8 +10,5 @@ class Idea < ActiveRecord::Base
 
 	scope :popular, -> { order("votes desc") }
 	#scope :recent, -> { order("updated_at desc") }
-
-	def user
-		boards.first.user
-	end																		
+																	
 end

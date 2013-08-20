@@ -53,3 +53,9 @@ require 'faker'
 # ].each do |user|
 # 	User.where(username: user[:username]).first_or_create!(user)
 # end
+
+# ideas = Idea.all
+# ideas.each do |idea|
+# 	idea.user_id = idea.boards.first.user_id
+# 	idea.save
+# end
