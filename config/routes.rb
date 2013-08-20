@@ -5,12 +5,10 @@ Wishproto::Application.routes.draw do
   resources :ideas
 
   get "/ideas/:id/vote(.:format)", to: 'ideas#vote', as: :vote_idea
+  # This is need vs regular show path because if it comes from a board, 
+  # it needs to pass in the board somehow.
   get "/ideas/:id/:board(.:format)", to: 'ideas#show', as: :idea_from_board
   
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
   root 'users#index' #temp
 
   # Example of regular route:
