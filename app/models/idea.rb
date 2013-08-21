@@ -1,7 +1,6 @@
 class Idea < ActiveRecord::Base
 
 	belongs_to :board
-	belongs_to :user
 
 	validates :title, presence: true, uniqueness: true, length: { maximum: 255 }
 	validates :content, presence: true
@@ -10,5 +9,9 @@ class Idea < ActiveRecord::Base
 
 	scope :popular, -> { order("votes desc") }
 	#scope :recent, -> { order("updated_at desc") }
+
+	def user
+		board.user
+	end
 																	
 end

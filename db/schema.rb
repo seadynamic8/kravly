@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130821002000) do
+ActiveRecord::Schema.define(version: 20130821183141) do
 
   create_table "boards", force: true do |t|
     t.string   "name"
@@ -37,12 +37,10 @@ ActiveRecord::Schema.define(version: 20130821002000) do
     t.integer  "votes"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
     t.integer  "board_id"
   end
 
   add_index "ideas", ["board_id"], name: "index_ideas_on_board_id", using: :btree
-  add_index "ideas", ["user_id"], name: "index_ideas_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username"

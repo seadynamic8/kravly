@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Idea do
   
   describe "relationships" do
-  	it { should belong_to(:user) }
 		it { should belong_to(:board) }
 	end
 
@@ -25,7 +24,7 @@ describe Idea do
 
 	describe "functions" do
 
-		it "should return idea's boards first user as a user method under idea" do
+		it "should return idea's boards user as a user method under idea" do
 			idea = create(:idea)
 			expect(idea.user).to eq idea.board.user
 		end
