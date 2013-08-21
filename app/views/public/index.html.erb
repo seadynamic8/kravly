@@ -18,7 +18,7 @@
 				<div class="idea-bottom">
 					<div class="vote"><%= idea.votes %></div>
 					<%= image_tag "http://placehold.it/50x50" %>
-					<div class="name"><%= link_to idea.user.fullname, board_path(idea.boards.first) %></div>
+					<div class="name"><%= link_to idea.user.fullname, board_path(idea.board) %></div>
 				</div>
 			</div>
 		</div>

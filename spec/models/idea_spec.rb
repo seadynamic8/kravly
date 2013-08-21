@@ -4,7 +4,7 @@ describe Idea do
   
   describe "relationships" do
   	it { should belong_to(:user) }
-		it { should have_and_belong_to_many(:boards) }
+		it { should belong_to(:board) }
 	end
 
 	describe "validations" do
@@ -26,8 +26,8 @@ describe Idea do
 	describe "functions" do
 
 		it "should return idea's boards first user as a user method under idea" do
-			idea = create(:idea_with_boards)
-			expect(idea.user).to eq idea.boards.first.user
+			idea = create(:idea)
+			expect(idea.user).to eq idea.board.user
 		end
 	end
 

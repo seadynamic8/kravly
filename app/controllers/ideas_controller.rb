@@ -8,18 +8,9 @@ class IdeasController < ApplicationController
     @user = @idea.user
 
     # The sidebar needs a board to pull up other ideas from (3 random ones).
-    # So it chooses either the board it came from
-    # Or chooses the first board (this is the path from home or from a vote or etc)
-    board_id = params[:board]
-    if board_id.nil?
-      board = @idea.boards.first
-    else
-      board = Board.find(board_id)
-    end
-    
     @rand_ideas = []
     3.times do
-      @rand_ideas << board.ideas.sample
+      @rand_ideas << @idea.board.ideas.sample
     end
   end
 

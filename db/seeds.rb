@@ -59,3 +59,14 @@ require 'faker'
 # 	idea.user_id = idea.boards.first.user_id
 # 	idea.save
 # end
+
+# ideas = Idea.all
+# ideas.each do |idea|
+# 	idea.board_id = 
+# 	idea.save
+# end
+
+# users = User.all
+# users.each do |user|
+# 	user.ideas.each do |idea|
+# 		
