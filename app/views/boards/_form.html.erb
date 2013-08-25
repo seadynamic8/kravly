@@ -1,0 +1,54 @@
+<div class="row">
+	<div class="large-2 columns">
+		<%= f.label :name, class: "left" %>
+	</div>
+	<div class="large-9 columns">
+		<%= f.text_field :name, placeholder: "Name" %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-2 columns">
+		<%= f.label :description, class: "left" %>
+	</div>
+	<div class="large-9 columns">
+		<textarea placeholder="Description"></textarea>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-2 columns">
+		<%= f.label :category, class: "left" %>
+	</div>
+	<div class="large-9 columns">
+		<%= #f.select :category_id, 
+				#@categories.map { |category| [category.name, category.id] },
+				#id: "customDropdown"
+				%>
+		<%= select_tag "customDropdown", "<option>Camping</option><option>Fashion</option><option>Household Items</option><option>Surfing</option>".html_safe  %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-2 columns">
+		<%= f.label :private, class: "left" %>
+	</div>
+
+	<div class="large-3 columns">
+		<div class="switch">
+			<input type="radio" id="x" name="switch-x" checked>
+			<%= label_tag 'x', 'Off' %>
+
+			<input type="radio" id="x1" name="switch-x">
+			<%= label_tag 'x1', 'On' %>
+
+			<span></span>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-3 large-centered columns">
+		<%= f.submit class: "button" %>
+	</div>
+</div>
