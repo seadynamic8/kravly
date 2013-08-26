@@ -1,0 +1,37 @@
+<div class="row">
+	<div class="large-6 large-centered columns">
+		<%= form_tag html: { class: "custom" } do |f| %>
+			<fieldset>
+				<legend>Login</legend>
+
+				<div class="row">
+					<div class="large-12 columns">
+						<%= label_tag "Username or Email" %>
+						<%= text_field_tag :username, params[:username] %>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="large-12 columns">
+						<%= label_tag :password %>
+						<%= text_field_tag :password, params[:password] %>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="large-12 columns">
+						<%= button_tag "Log In", class: "button" %>
+					</div>
+				</div>
+			</fieldset>
+		<% end %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-2 large-centered columns">
+		<%= link_to "New User?", new_user_path %><br>
+		<br>
+		<%= link_to "Forgot Password?", "#" %>
+	</div>
+</div>

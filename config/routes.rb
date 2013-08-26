@@ -1,5 +1,9 @@
 Wishproto::Application.routes.draw do
   
+  get "login" => "sessions#new", as: :login
+  get "logout" => "sessions#destroy", as: :logout
+  get "signup" => "sessions#signup", as: :signup
+
   resources :users
   get "users/:id/settings(.:format)", to: 'users#settings', as: :users_settings
 
