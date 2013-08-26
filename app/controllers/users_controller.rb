@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :set_user, only: [:show, :edit, :update, :destroy]
+	before_action :set_user, only: [:show, :edit, :update, :destroy, :settings]
 
   def index
   end
@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
   end
 
   def create
@@ -20,6 +21,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
+  end
+
+  def settings
   end
 
   private

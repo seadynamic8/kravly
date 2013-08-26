@@ -22,13 +22,52 @@
 
   <body>
 
-  	<div id="topnav">
+  	<!-- <div id="topnav">
       <div class="row">
         <div id="logo" class="large-4 large-centered columns">
           <h3><%= link_to "What I Wish Existed", root_url %></h3>
         </div>
       </div>
-    </div>
+    </div> -->
+
+    <nav class="top-bar">
+      <ul class="title-area">
+        <!-- Title Area -->
+        <li class="name">
+          <h1><%= link_to "What I Wish Existed", root_url %></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <li class="divider"></li>
+          <li class="has-dropdown"><%= link_to "Categories", "#" %>
+            <ul class="dropdown">
+              <li><%= link_to "Camping" %></li>
+              <li><%= link_to "Fashion" %></li>
+            </ul>
+          </li>
+          <li class="divider"></li>
+          <li class="has-form">
+            <form action="">
+              <div class="row collaspse">
+                <div class="small-8 columns">
+                  <input type="text">
+                </div>
+              </div>
+            </form>
+          </li>
+        </ul>
+
+        <ul class="right">
+          <li class="divider"></li>
+          <li class="active"><%= link_to "Login", "#" %></li>
+          <li><%= link_to "New User?", new_user_path %></li>
+        </ul>
+      </section>
+    </nav>
 
     <%= yield %>
 

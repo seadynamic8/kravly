@@ -1,2 +1,11 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="row">
+	<div class="large-6 large-centered columns">
+		<%= form_for @user, html: { class: "custom" } do |f| %>
+			<fieldset>
+				<legend>Edit User</legend>
+
+				<%= render partial: 'form', locals: { f: f } %>
+			</fieldset>
+		<% end %>
+	</div>
+</div>
