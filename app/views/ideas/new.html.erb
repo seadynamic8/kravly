@@ -1,2 +1,11 @@
-<h1>Ideas#new</h1>
-<p>Find me in app/views/ideas/new.html.erb</p>
+<div class="row">
+	<div class="large-10 large-centered columns">
+		<%= form_for @idea, html: { class: "custom" } do |f| %>
+			<fieldset>
+				<legend>Add An New Idea</legend>
+
+				<%= render partial: 'form', locals: { f: f } %>
+			</fieldset>
+		<% end %>
+	</div>
+</div>

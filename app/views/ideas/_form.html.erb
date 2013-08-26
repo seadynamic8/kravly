@@ -1,0 +1,62 @@
+<div class="row">
+	<div class="large-2 columns">
+		<%= f.label :title, class: "left" %>
+	</div>
+	<div class="large-9 columns">
+		<%= f.text_field :title, placeholder: "Title" %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-2 columns">
+		<%= f.label "Cover Photo", class: "left" %>
+	</div>
+	<div class="large-9 columns">
+		<%= link_to "Choose Photo", "#", class: "small button" %>
+		<p>Choose a photo that represents your Idea. Max image size: 2MB (.jpg, .jpeg, .png, .gif)</p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-2 columns">
+		<%= f.label :workspace, class: "left" %>
+	</div>
+	<div class="large-9 columns">
+		<textarea style="min-height: 500px;" placeholder="Content"></textarea>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-2 columns">
+		<%= f.label :board, class: "left" %>
+	</div>
+	<div class="large-9 columns">
+		<%= f.select :board_id, 
+				@boards.map { |board| [board.name, board.id] },
+				id: "customDropdown" %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-2 columns">
+		<%= f.label :private, class: "left" %>
+	</div>
+
+	<div class="large-2 columns">
+		<div class="switch">
+			<input type="radio" id="x" name="switch-x" checked>
+			<%= label_tag 'x', 'Off' %>
+
+			<input type="radio" id="x1" name="switch-x">
+			<%= label_tag 'x1', 'On' %>
+
+			<span></span>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-3 large-centered columns">
+		<%= f.submit class: "button" %>
+	</div>
+</div>

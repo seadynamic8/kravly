@@ -15,12 +15,15 @@ class IdeasController < ApplicationController
   end
 
   def new
+    @idea = Idea.new
+    @boards = Board.all  #need to update this to @current_user.boards
   end
 
   def create
   end
 
   def edit
+    @boards = @idea.board.user.boards #need to update this to @current_user.boards
   end
 
   def update
