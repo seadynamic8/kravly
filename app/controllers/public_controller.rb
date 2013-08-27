@@ -1,6 +1,6 @@
 class PublicController < ApplicationController
 
-	#layout 'user'
+	layout 'user'
 
   def index
   	@most_popular_ideas = Idea.popular.limit(30)

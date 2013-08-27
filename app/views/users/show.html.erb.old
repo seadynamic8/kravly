@@ -28,26 +28,24 @@
 
 <% @user.boards.each_with_index do |board, index| %>
 	<% if index % 3 == 0 %>
-
-		<div class="row">
-			<ul class="large-block-grid-3">
-
+			<div class="row user-item">
 	<% end %>
-			
-				<li>
+				<div class="large-4 columns">
 					<h5><%= link_to board.name, board_path(board) %></h5>
-					<%= link_to (image_tag "http://placehold.it/315x175"), board_path(board) %>
-					<ul class="large-block-grid-3">
-						<li><%= link_to (image_tag "http://thestudioseaside.squarespace.com/storage/products_header.jpg"), "#" %></li>
-						<li><%= link_to (image_tag "http://placehold.it/92x60"), "#" %></li>
-						<li><%= link_to (image_tag "http://placehold.it/92x60"), "#" %></li>
-					</ul>
-				</li>
-	
+					<%= link_to (image_tag "http://s3.amazonaws.com/skillshare/uploads/project/6d40c3195a94b7b583083d92efb52cc3/cover_image.png", class:"item-large"), board_path(board) %>
+					<div class="row item-small">
+						<div class="large-4 columns">
+							<%= image_tag "http://thestudioseaside.squarespace.com/storage/products_header.jpg" %>
+						</div>
+						<div class="large-4 columns">
+							<%= image_tag "http://placehold.it/107x60" %>
+						</div>
+						<div class="large-4 columns">
+							<%= image_tag "http://placehold.it/107x60" %>
+						</div>
+					</div>
+				</div>
 	<% if (index+1) % 3 == 0 %>
-
-			</ul>
 		</div>
-
 	<% end %>
 <% end %>

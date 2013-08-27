@@ -5,7 +5,7 @@ Wishproto::Application.routes.draw do
   get "signup" => "sessions#signup", as: :signup
 
   resources :users
-  get "users/:id/settings(.:format)", to: 'users#settings', as: :users_settings
+  get "users/:id/settings(.:format)", to: 'users#settings', as: :user_settings
 
   resources :boards
   resources :ideas
