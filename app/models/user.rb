@@ -38,4 +38,12 @@ class User < ActiveRecord::Base
 		return name
 	end
 
+	def votes
+		total_votes = 0
+		boards.each do |board|
+			total_votes += board.votes
+		end
+		return total_votes
+	end
+
 end

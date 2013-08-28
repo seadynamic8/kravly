@@ -91,14 +91,34 @@
 	}
 }
 
-.user-header-stats, .group-header-stats {
+.user-header-stats, .group-header {
 	line-height: 28px;
 	margin-bottom:-10px;
 
-	.board-name {
+	.board-name, .board-desc {
 		text-align: center;
 	}
 
+	.right-section a {
+		float: right;
+	}
+
+}
+
+.group-header-stats {
+
+	img {
+		vertical-align: middle;
+		margin-right: 5px;
+	}
+	h6 {
+		display: inline;
+		vertical-align: middle;
+		line-height: 1;
+	}
+	h5 {
+		float: right;
+	}
 }
 
 .user-item {

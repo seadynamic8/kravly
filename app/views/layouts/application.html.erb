@@ -16,7 +16,7 @@
   	<title><%= content_for?(:title) ? yield(:title) : "What I Wish Existed" %></title>
 
   	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  	<%= javascript_include_tag "vendor/custom.modernizr" %>
+    <%= javascript_include_tag "vendor/custom.modernizr" %>
     <%= csrf_meta_tags %>
   </head>
 
@@ -70,6 +70,7 @@
                 <li><%= link_to "Idea", new_idea_path %></li>
               </ul>
             </li>
+            <li class="divider"></li>
             <li class="has-dropdown"><%= link_to current_user.fullname, user_path(current_user) %>
               <ul class="dropdown">
                 <li><%= link_to "Your Boards", user_path(current_user) %></li>
@@ -110,7 +111,6 @@
 
     <%= yield %>
 
-    
-  	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   </body>
 </html>

@@ -6,6 +6,8 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     firstname { Faker::Name.first_name }
     lastname { Faker::Name.last_name }
+    password "test1234"
+    password_confirmation "test1234"
 
     factory :user_with_boards do
 

@@ -1,17 +1,16 @@
 Wishproto::Application.routes.draw do
   
+  resources :sessions, only: :create
   get "login" => "sessions#new", as: :login
   get "logout" => "sessions#destroy", as: :logout
   get "signup" => "sessions#signup", as: :signup
-
-  resources :sessions, only: :create
 
   resources :users
   get "users/:id/settings(.:format)", to: 'users#settings', as: :user_settings
 
   resources :boards
+  
   resources :ideas
-
   get "/ideas/:id/vote(.:format)", to: 'ideas#vote', as: :vote_idea
   
   root 'public#index'

@@ -4,7 +4,7 @@
 				<legend>Settings</legend>
 				<ul>
 					<li><%= link_to "Delete Account", user_path(@user),
-									confirm: 'Are you sure?', method: :delete %></li>
+									data: { confirm: "Are you sure?" }, method: :delete %></li>
 				</ul>
 		</fieldset>
 	</div>

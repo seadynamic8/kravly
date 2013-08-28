@@ -19,5 +19,9 @@ FactoryGirl.define do
     # 		end
     # 	end
     # end
+
+    factory :invalid_idea do
+        title nil
+    end
   end
 end

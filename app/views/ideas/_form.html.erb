@@ -22,7 +22,7 @@
 		<%= f.label :workspace, class: "left" %>
 	</div>
 	<div class="large-9 columns">
-		<textarea style="min-height: 500px;" placeholder="Content"></textarea>
+		<%= f.text_area :content, placeholder: "Content", style: "min-height: 500px" %>
 	</div>
 </div>
 
@@ -32,28 +32,15 @@
 	</div>
 	<div class="large-9 columns">
 		<%= f.select :board_id, 
-				@boards.map { |board| [board.name, board.id] },
-				id: "customDropdown" %>
+				@boards.map { |board| [board.name, board.id] } %>
 	</div>
 </div>
 
-<div class="row">
-	<div class="large-2 columns">
-		<%= f.label :private, class: "left" %>
-	</div>
-
-	<div class="large-2 columns">
-		<div class="switch">
-			<input type="radio" id="x" name="switch-x" checked>
-			<%= label_tag 'x', 'Off' %>
-
-			<input type="radio" id="x1" name="switch-x">
-			<%= label_tag 'x1', 'On' %>
-
-			<span></span>
-		</div>
-	</div>
-</div>
+<% if params[:action] == 'new' %>
+	<%= hidden_field_tag "idea[votes]", 0 %>
+<% else %>
+	<%= hidden_field_tag "idea[votes]", @idea.votes %>
+<% end %>
 
 <div class="row">
 	<div class="large-3 large-centered columns">

@@ -12,11 +12,11 @@
 		<%= f.label :description, class: "left" %>
 	</div>
 	<div class="large-9 columns">
-		<textarea placeholder="Description"></textarea>
+		<%= f.text_area :description, placeholder: "Description" %>
 	</div>
 </div>
 
-<div class="row">
+<!-- <div class="row">
 	<div class="large-2 columns">
 		<%= f.label :category, class: "left" %>
 	</div>
@@ -45,7 +45,9 @@
 			<span></span>
 		</div>
 	</div>
-</div>
+</div> -->
+
+<%= f.hidden_field :user_id %>
 
 <div class="row">
 	<div class="large-3 large-centered columns">
