@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="large-6 large-centered columns">
-		<%= form_tag html: { class: "custom" } do |f| %>
+		<%= form_tag sessions_path do |f| %>
 			<fieldset>
 				<legend>Login</legend>
 
@@ -14,7 +14,7 @@
 				<div class="row">
 					<div class="large-12 columns">
 						<%= label_tag :password %>
-						<%= text_field_tag :password, params[:password] %>
+						<%= password_field_tag :password, params[:password] %>
 					</div>
 				</div>
 

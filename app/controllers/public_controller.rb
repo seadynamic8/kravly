@@ -1,6 +1,6 @@
 class PublicController < ApplicationController
 
-	layout 'user'
+	skip_before_action :authorize
 
   def index
   	@most_popular_ideas = Idea.popular.limit(30)

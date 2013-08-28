@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  username        :string(255)
+#  email           :string(255)
+#  firstname       :string(255)
+#  lastname        :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
+#  password_digest :string(255)
+#
+
 require 'spec_helper'
 
 describe User do
@@ -11,20 +25,8 @@ describe User do
 			expect(create(:user)).to be_valid
 		end
 
-		it "is invalid without a username" do
-			expect(build(:user, username: nil)).to have(1).errors_on(:username)
-		end
-
 		it "is invalid without an email" do
 			expect(build(:user, email: nil)).to be_invalid
-		end
-
-		it "is invalid without a firstname" do
-			expect(build(:user, firstname: nil)).to have(1).errors_on(:firstname)
-		end
-
-		it "is invalid without a lastname" do
-			expect(build(:user, lastname: nil)).to have(1).errors_on(:lastname)
 		end
 
 		it 'returns the full name as a string' do

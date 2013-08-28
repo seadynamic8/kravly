@@ -60,14 +60,53 @@
             </form>
           </li>
         </ul>
-
-        <ul class="right">
-          <li class="divider"></li>
-          <li class="active"><%= link_to "Login", login_path %></li>
-          <li><%= link_to "New User?", new_user_path %></li>
-        </ul>
+        
+        <% if current_user %>
+          <ul class="right">
+            <li class="divider"></li>
+            <li class="has-dropdown"><%= link_to "Add", new_idea_path %>
+              <ul class="dropdown">
+                <li><%= link_to "Board", new_board_path %></li>
+                <li><%= link_to "Idea", new_idea_path %></li>
+              </ul>
+            </li>
+            <li class="has-dropdown"><%= link_to current_user.fullname, user_path(current_user) %>
+              <ul class="dropdown">
+                <li><%= link_to "Your Boards", user_path(current_user) %></li>
+                <li><%= link_to "Settings", user_settings_path(current_user) %></li>
+                <li><%= link_to "Log Out", logout_path %></li>
+              </ul>
+            </li>
+          </ul>
+        <% else %>
+          <ul class="right">
+            <li class="divider"></li>
+            <li class="active"><%= link_to "Login", login_path %></li>
+            <li class="divider"></li>
+            <li><%= link_to "New User?", new_user_path %></li>
+          </ul>
+        <% end %>
       </section>
     </nav>
+
+    <% if flash[:notice] %>
+      <div class="row">
+        <div data-alert class="alert-box success">
+          <%= flash[:notice] %>
+          <%= link_to "x", "#", class: "close" %>
+        </div>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="row">
+        <div class="large-12 large-centered columns">
+          <div data-alert class="alert-box alert">
+            <%= flash[:alert] %>
+            <%= link_to "x", "#", class: "close" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
 
     <%= yield %>
 

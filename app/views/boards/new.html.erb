@@ -1,6 +1,8 @@
 <div class="row">
 	<div class="large-7 large-centered columns">
 		<%= form_for @board, html: { class: "custom" } do |f| %>
+			<%= error_messages_for(@board) %>
+			
 			<fieldset>
 				<legend>Add A Board</legend>
 

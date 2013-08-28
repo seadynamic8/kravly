@@ -12,7 +12,25 @@
 		<%= f.label "Email*", class: "left" %>
 	</div>
 	<div class="large-8 columns">
-		<%= f.text_field :email, placeholder: "Email" %>
+		<%= f.email_field :email, placeholder: "Email" %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-2 columns">
+		<%= f.label "Password*", class: "left" %>
+	</div>
+	<div class="large-8 columns">
+		<%= f.password_field :password, placeholder: "Password" %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-2 columns">
+		<%= f.label "Password Confirmation*", class: "left" %>
+	</div>
+	<div class="large-8 columns">
+		<%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
 	</div>
 </div>
 

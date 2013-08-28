@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: ideas
+#
+#  id         :integer          not null, primary key
+#  title      :string(255)
+#  content    :text
+#  votes      :integer
+#  created_at :datetime
+#  updated_at :datetime
+#  board_id   :integer
+#
+
 class Idea < ActiveRecord::Base
 
 	belongs_to :board

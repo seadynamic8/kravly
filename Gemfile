@@ -43,6 +43,7 @@ group :development, :test do
 	gem 'rb-inotify', require: false
   gem 'rb-fsevent', require: false
   gem 'rb-fchange', require: false
+  gem 'annotate', ">=2.5.0"
 end
 
 group :test do
@@ -54,7 +55,7 @@ group :test do
 end
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'

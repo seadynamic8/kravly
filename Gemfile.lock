@@ -26,8 +26,11 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     addressable (2.3.5)
+    annotate (2.5.0)
+      rake
     arel (4.0.0)
     atomic (1.1.13)
+    bcrypt-ruby (3.0.1)
     builder (3.1.4)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -189,6 +192,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate (>= 2.5.0)
+  bcrypt-ruby (~> 3.0.0)
   capybara
   coffee-rails (~> 4.0.0)
   compass-rails (~> 2.0.alpha.0)
