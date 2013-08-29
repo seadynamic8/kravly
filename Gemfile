@@ -68,3 +68,5 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 	gem 'compass-rails', "~> 2.0.alpha.0"
 	gem 'zurb-foundation', '~> 4.0.9'
+
+	gem 'attribute_normalizer'

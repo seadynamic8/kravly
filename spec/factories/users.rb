@@ -19,5 +19,9 @@ FactoryGirl.define do
     		FactoryGirl.create_list(:board, evaluator.boards_count, user: user)
     	end
     end
+
+    factory :invalid_user do
+        email nil
+    end
   end
 end

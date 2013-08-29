@@ -3,6 +3,7 @@
 		<fieldset>
 				<legend>Settings</legend>
 				<ul>
+					<li><%= link_to "Edit Account", edit_user_path(@user) %></li>
 					<li><%= link_to "Delete Account", user_path(@user),
 									data: { confirm: "Are you sure?" }, method: :delete %></li>
 				</ul>

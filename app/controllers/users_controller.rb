@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :set_user, only: [:show, :edit, :update, :destroy, :settings]
-  skip_before_action :authorize, only: [:show, :new, :create, :destroy]
+  skip_before_action :authorize, only: [:show, :new, :create]
 
   def index
   end
@@ -26,9 +26,17 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @user.update_attributes(user_params)
+      redirect_to @user
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @user.destroy
+    session[:user_id] = nil
+    redirect_to root_url, notice: "User was deleted."
   end
 
   def settings

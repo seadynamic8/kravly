@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
 
 	has_many :boards, dependent: :destroy
 
+	normalize_attributes :username, :email, :firstname, :lastname
+
 	EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
 	validates :username, uniqueness: true, length: { maximum: 255 }

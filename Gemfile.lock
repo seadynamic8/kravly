@@ -30,6 +30,7 @@ GEM
       rake
     arel (4.0.0)
     atomic (1.1.13)
+    attribute_normalizer (1.1.0)
     bcrypt-ruby (3.0.1)
     builder (3.1.4)
     capybara (2.1.0)
@@ -193,6 +194,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate (>= 2.5.0)
+  attribute_normalizer
   bcrypt-ruby (~> 3.0.0)
   capybara
   coffee-rails (~> 4.0.0)

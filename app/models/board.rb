@@ -15,6 +15,8 @@ class Board < ActiveRecord::Base
 	belongs_to :user
 	has_many :ideas, dependent: :destroy
 
+	normalize_attributes :name, :description
+
 	validates :name, presence:true, uniqueness: true, length: { maximum: 255 }
 
 	def votes

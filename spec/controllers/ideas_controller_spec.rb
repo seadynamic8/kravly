@@ -62,7 +62,7 @@ describe IdeasController do
 
       it "redirects to ideas#show" do
         post :create, idea: attributes_for(:idea)
-        expect(response).to redirect_to idea_path(assigns[:idea])
+        expect(response).to redirect_to idea_path(assigns(:idea))
       end
     end
 
@@ -166,7 +166,7 @@ describe IdeasController do
       }.to change(Idea, :count).by(-1)
     end
 
-    it "redirects to users#show, idea listing" do
+    it "redirects to boards#show, board listing" do
       delete :destroy, id: @idea
       expect(response).to redirect_to board_path(@idea.board)
     end

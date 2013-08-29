@@ -15,6 +15,8 @@ class Idea < ActiveRecord::Base
 
 	belongs_to :board
 
+	normalize_attributes :title, :content
+
 	validates :title, presence: true, uniqueness: true, length: { maximum: 255 }
 	validates :content, presence: true
 	validates :votes, numericality: { only_integer: true,
