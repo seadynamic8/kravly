@@ -21,10 +21,25 @@ describe Board do
 
 	describe "validations" do
 
+		it { should normalize_attribute(:name) }
+		it { should normalize_attribute(:description) }
+
 		it { should validate_presence_of(:name) }
 		it { should validate_uniqueness_of(:name) }
 		it "is invalid with a name greater than 255 length" do
 			expect(build(:board, name: "a" * 256)).to have(1).errors_on(:name)
+		end
+	end
+
+	describe "functions" do
+
+		it "should return votes as a total of the ideas' votes" do
+			board = create(:board_with_ideas)
+			total_votes = 0
+			board.ideas.each do |idea|
+				total_votes += idea.votes
+			end
+			expect(board.votes).to eq total_votes
 		end
 	end
 end

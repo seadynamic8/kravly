@@ -45,4 +45,7 @@ RSpec.configure do |config|
 
   # Include helper methods for controller tests
   config.include SpecTestHelper, type: :controller
+
+  # Include Attribute Normalizer syntax
+  config.include AttributeNormalizer::RSpecMatcher, type: :model
 end

@@ -21,6 +21,9 @@ describe Idea do
 
 	describe "validations" do
 
+		it { should normalize_attribute(:title) }
+		it { should normalize_attribute(:content) }
+
 		it { should validate_presence_of(:title) }
 		it { should validate_uniqueness_of(:title) }
 		it "is invalid with a name greater than 255 length" do
