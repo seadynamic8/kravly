@@ -25,8 +25,10 @@ class User < ActiveRecord::Base
 	validates :email, presence: true, uniqueness: true, format: EMAIL_REGEX
 	validates :firstname, length: { maximum: 255 }
 	validates :lastname, length: { maximum: 255 }
-	validates :password, presence: true, on: :create
-	validates :password, length: { in: 8..30 }, on: :create
+	validates :password, presence: true, 
+											 length: { in: 8..30 },
+											 confirmation: true
+	validates :password_confirmation, presence: true
 
 	def fullname
 		name = "#{firstname} #{lastname}"
@@ -46,6 +48,19 @@ class User < ActiveRecord::Base
 			total_votes += board.votes
 		end
 		return total_votes
+	end
+
+	def generate_token(column)
+		begin
+			self[column] = SecureRandom.urlsafe_base64
+		end while User.exists?(column => self[column])
+	end
+
+	def send_password_reset
+		generate_token(:password_reset_token)
+		self.password_reset_sent_at = Time.zone.now
+		save!(validate: false)
+		UserMailer.password_reset(self).deliver
 	end
 
 end

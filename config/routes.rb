@@ -1,5 +1,7 @@
 Wishproto::Application.routes.draw do
   
+  resources :password_resets, only: [:new, :create, :edit, :update]
+
   resources :sessions, only: :create
   get "login" => "sessions#new", as: :login
   get "logout" => "sessions#destroy", as: :logout

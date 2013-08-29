@@ -1,0 +1,35 @@
+<div class="row">
+	<div class="large-6 large-centered columns">
+		<%= form_for @user, url: password_reset_path(params[:id]) do |f| %>
+			<%= error_messages_for(@user) %>
+
+			<fieldset>
+				<legend>Reset Password</legend>
+
+				<div class="row">
+					<div class="large-2 columns">
+						<%= f.label :password, class: "left" %>
+					</div>
+					<div class="large-8 columns">
+						<%= f.password_field :password, placeholder: "Password" %>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="large-2 columns">
+						<%= f.label :password_confirmation, class: "left" %>
+					</div>
+					<div class="large-8 columns">
+						<%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="large-5 large-centered columns">
+						<%= f.submit "Update Password", class: "button" %>
+					</div>
+				</div>
+			</fieldset>
+		<% end %>
+	</div>
+</div>
