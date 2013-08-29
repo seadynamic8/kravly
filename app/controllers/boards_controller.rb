@@ -2,9 +2,6 @@ class BoardsController < ApplicationController
 	before_action :set_board, only: [:show, :update, :edit, :destroy]
   skip_before_action :authorize, only: :show
 
-  def index
-  end
-
   def show
   end
 
