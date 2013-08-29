@@ -2,15 +2,6 @@ require 'spec_helper'
 
 describe UsersController do
 
-  describe "GET 'index'" do
-    it "returns http success" do
-      @user = create(:user)
-      login @user
-      get 'index'
-      expect(response).to be_success
-    end
-  end
-
   describe "GET 'show'" do
     before :each do
       @user = create(:user)
