@@ -30,5 +30,7 @@ module Wishproto
             request_specs: false
         g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
+
+    config.compass.images_dir = 'app/assets/images'
   end
 end
