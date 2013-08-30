@@ -9,13 +9,16 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  board_id   :integer
+#  image      :string(255)
 #
 
 class Idea < ActiveRecord::Base
 
 	belongs_to :board
 
-	normalize_attributes :title, :content
+	mount_uploader :image, ImageUploader
+
+	normalize_attributes :title, :content, :image
 
 	validates :title, presence: true, uniqueness: true, length: { maximum: 255 }
 	validates :content, presence: true

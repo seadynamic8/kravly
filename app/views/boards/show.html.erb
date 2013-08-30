@@ -18,8 +18,8 @@
 
 <div class="row group-header-stats">
 	<div class="large-4 columns">
-		<%= image_tag "http://placehold.it/25x25" %>
-		<h6><%= @board.user.fullname %></h6>
+		<%= link_to (image_tag "http://placehold.it/25x25"), user_path(@board.user) %>
+		<h6><%= link_to @board.user.fullname, user_path(@board.user) %></h6>
 	</div>
 	<% if current_user && current_user == @board.user %>
 		<div class="large-4 columns">
@@ -35,16 +35,28 @@
 
 <hr>
 
-<div class="row group-item">
-	<% @board.ideas.each do |idea| %>
-		<div class="large-4 columns">
-			<h5><%= link_to idea.title, idea_path(idea) %></h5>
-			<%= link_to (image_tag "http://placehold.it/315x175"), idea_path(idea) %>
-			<% if current_user && current_user == @board.user %>
-				<%= link_to "Edit", edit_idea_path(idea), class: "tiny button" %>
-				<%= link_to "Delete", idea_path(idea), method: :delete, 
-						data: { confirm: "Are you sure?" }, class: "tiny button" %>
-			<% end %>
-		</div>
+<% @board.ideas.each_with_index do |idea, index| %>
+	<% if index % 3 == 0 %>
+		<div class="row">
+			<ul class="large-block-grid-3">
 	<% end %>
-</div>
+
+				<li>
+					<h5><%= link_to idea.title, idea_path(idea) %></h5>
+					<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %><br>
+
+					<% if current_user && current_user == @board.user %>
+						<%= link_to "Edit", edit_idea_path(idea), class: "tiny button" %>
+						<%= link_to "Delete", idea_path(idea), method: :delete, 
+								data: { confirm: "Are you sure?" }, class: "tiny button" %>
+					<% end %>
+
+				</li>
+
+	<% if (index+1) % 3 == 0 %>
+
+			</ul>
+		</div>
+
+	<% end %>
+<% end %>

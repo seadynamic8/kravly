@@ -39,6 +39,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (0.9.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
     chunky_png (1.2.8)
     coderay (1.0.9)
     coffee-rails (4.0.0)
@@ -99,6 +103,8 @@ GEM
       treetop (~> 1.4.8)
     method_source (0.8.2)
     mime-types (1.24)
+    mini_magick (3.6.0)
+      subexec (~> 0.2.1)
     mini_portile (0.5.1)
     minitest (4.7.5)
     multi_json (1.7.9)
@@ -171,6 +177,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    subexec (0.2.3)
     thor (0.18.1)
     thread_safe (0.1.2)
       atomic
@@ -197,6 +204,7 @@ DEPENDENCIES
   attribute_normalizer
   bcrypt-ruby (~> 3.0.0)
   capybara
+  carrierwave
   coffee-rails (~> 4.0.0)
   compass-rails (~> 2.0.alpha.0)
   database_cleaner
@@ -206,6 +214,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   launchy
+  mini_magick
   pg
   rails (= 4.0.0)
   rb-fchange

@@ -37,17 +37,47 @@
 			
 				<li>
 					<h5><%= link_to board.name, board_path(board) %></h5>
-					<%= link_to (image_tag "http://placehold.it/315x175"), board_path(board) %>
-					<ul class="large-block-grid-3">
-						<li><%= link_to (image_tag "http://thestudioseaside.squarespace.com/storage/products_header.jpg"), "#" %></li>
-						<li><%= link_to (image_tag "http://placehold.it/92x60"), "#" %></li>
-						<li><%= link_to (image_tag "http://placehold.it/92x60"), "#" %></li>
-					</ul>
+
+					<% if board.ideas.count > 0 %>
+
+						<%= link_to (image_tag board.ideas.first.image.thumb.url), board_path(board) %>
+
+						<ul class="large-block-grid-3">
+							<li>
+								<%= if board.ideas.second
+											link_to (image_tag board.ideas.second.image.small_thumb.url), "#"
+										else
+											image_tag "http://placehold.it/90x60"
+										end %>
+							</li>
+							<li>
+								<%= if board.ideas.third
+											link_to (image_tag board.ideas.third.image.small_thumb.url), "#"
+										else
+											image_tag "http://placehold.it/90x60"
+										end %>
+							</li>
+							<li>
+								<%= if board.ideas.fourth
+											link_to (image_tag board.ideas.fourth.image.small_thumb.url), "#"
+										else
+											image_tag "http://placehold.it/90x60"
+										end %>
+							</li>
+						</ul>
+
+					<% else %>
+
+						<%= image_tag "http://placehold.it/315x245" %>
+
+					<% end %>
+
 					<% if current_user && current_user == @user %>
 						<%= link_to "Edit", edit_board_path(board), class: "tiny button" %>
 						<%= link_to "Delete", board_path(board), method: :delete, 
 								data: { confirm: "Are you sure?" },	class: "tiny button" %>
 					<% end %>
+
 				</li>
 	
 	<% if (index+1) % 3 == 0 %>

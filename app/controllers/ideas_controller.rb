@@ -58,6 +58,6 @@ class IdeasController < ApplicationController
   	end
 
     def idea_params
-      params.require(:idea).permit(:title, :content, :votes, :board_id)
+      params.require(:idea).permit(:title, :content, :votes, :image, :board_id)
     end
 end
