@@ -73,3 +73,5 @@ gem 'attribute_normalizer'
 
 gem 'carrierwave'
 gem 'mini_magick'
+
+gem 'will_paginate'

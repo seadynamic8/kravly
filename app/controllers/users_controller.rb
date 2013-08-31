@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   skip_before_action :authorize, only: [:show, :new, :create]
 
   def show
+    @boards = @user.boards.page(params[:page]).per_page(9)
   end
 
   def new

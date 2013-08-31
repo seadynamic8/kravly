@@ -7,7 +7,7 @@
 	</div>
 </div> -->
 
-<% @most_popular_ideas.each_with_index do |idea, index| %>
+<% @ideas.each_with_index do |idea, index| %>
 	<% if index % 3 == 0 %>
 		<div class="row">
 			<ul class="large-block-grid-3">
@@ -30,3 +30,10 @@
 
 	<% end %>
 <% end %>
+
+<div style="clear:both;"></div>
+
+<div class="pagination-centered">
+	<%= will_paginate @ideas, inner_window: 4, outer_window: 2,
+	previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe %>
+</div>

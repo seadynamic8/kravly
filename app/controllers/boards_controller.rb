@@ -3,6 +3,7 @@ class BoardsController < ApplicationController
   skip_before_action :authorize, only: :show
 
   def show
+    @ideas = @board.ideas.page(params[:page]).per_page(9)
   end
 
   def new
