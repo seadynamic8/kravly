@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Wishproto::Application.config.secret_key_base = 'a792347582488fa49a6139a27b21833f091ecaefcdd94c9a2df8f9ec3254a6054d082240c1a94c5a89d9dab96f257691ae3dc222994782b7a57586d6e782516d'
+Wishproto::Application.config.secret_key_base = ENV['SECRET_TOKEN']

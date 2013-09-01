@@ -75,3 +75,5 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'will_paginate'
+
+gem 'figaro'
