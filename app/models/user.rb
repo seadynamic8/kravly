@@ -12,6 +12,8 @@
 #  password_digest        :string(255)
 #  password_reset_token   :string(255)
 #  password_reset_sent_at :datetime
+#  image                  :string(255)
+#  avatar                 :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -19,7 +21,9 @@ class User < ActiveRecord::Base
 
 	has_many :boards, dependent: :destroy
 
-	normalize_attributes :username, :email, :firstname, :lastname
+	mount_uploader :avatar, AvatarUploader
+
+	normalize_attributes :username, :email, :firstname, :lastname, :avatar
 
 	EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

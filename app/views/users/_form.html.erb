@@ -52,6 +52,18 @@
 	</div>
 </div>
 
+<div class="row">
+	<div class="large-3 columns">
+		<%= f.label "Profile Photo", class: "left" %>
+	</div>
+	<div class="large-8 columns">
+		<%= f.file_field :avatar %>
+		<%= f.text_field :remote_avatar_url, placeholder: "Or Image URL" %>
+		<h6 class="subheader">Choose a photo. Max image size: 2MB (.jpg, .jpeg, .png, .gif)</h6>
+	</div>
+</div>
+
+<%= f.hidden_field :avatar_cache %>
 
 <div class="row">
 	<div class="large-5 large-centered columns">

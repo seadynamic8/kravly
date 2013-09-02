@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130830150154) do
+ActiveRecord::Schema.define(version: 20130902203622) do
 
   create_table "boards", force: true do |t|
     t.string   "name"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 20130830150154) do
     t.string   "password_digest"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.string   "image"
+    t.string   "avatar"
   end
 
 end

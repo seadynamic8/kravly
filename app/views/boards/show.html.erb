@@ -2,7 +2,7 @@
 		<div class="large-4 large-offset-4 columns">
 			<div class="board-name"><h4><%= @board.name %></h4></div>
 		</div>
-		<% if current_user && current_user == @board.user %>
+		<% if current_user && current_user == @user %>
 			<div class="large-4 columns right-section">
 				<%= link_to "Add Idea", new_idea_path, class: "small button" %>
 			</div>
@@ -18,10 +18,10 @@
 
 <div class="row group-header-stats">
 	<div class="large-4 columns">
-		<%= link_to (image_tag "http://placehold.it/25x25"), user_path(@board.user) %>
-		<h6><%= link_to @board.user.fullname, user_path(@board.user) %></h6>
+		<%= link_to (image_tag @user.avatar.small_profile.url), user_path(@user) %>
+		<h6><%= link_to @user.fullname, user_path(@user) %></h6>
 	</div>
-	<% if current_user && current_user == @board.user %>
+	<% if current_user && current_user == @user %>
 		<div class="large-4 columns">
 			<div style="text-align: center;">
 				<%= link_to "Edit Board", edit_board_path(@board), class: "small button" %>
@@ -45,7 +45,7 @@
 					<h5><%= link_to idea.title, idea_path(idea) %></h5>
 					<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %><br>
 
-					<% if current_user && current_user == @board.user %>
+					<% if current_user && current_user == @user %>
 						<%= link_to "Edit", edit_idea_path(idea), class: "tiny button" %>
 						<%= link_to "Delete", idea_path(idea), method: :delete, 
 								data: { confirm: "Are you sure?" }, class: "tiny button" %>

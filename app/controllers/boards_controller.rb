@@ -4,6 +4,7 @@ class BoardsController < ApplicationController
 
   def show
     @ideas = @board.ideas.page(params[:page]).per_page(9)
+    @user = @board.user
   end
 
   def new

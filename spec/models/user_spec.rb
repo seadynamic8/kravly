@@ -12,6 +12,8 @@
 #  password_digest        :string(255)
 #  password_reset_token   :string(255)
 #  password_reset_sent_at :datetime
+#  image                  :string(255)
+#  avatar                 :string(255)
 #
 
 require 'spec_helper'
