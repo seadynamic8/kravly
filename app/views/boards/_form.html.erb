@@ -50,7 +50,12 @@
 <%= f.hidden_field :user_id %>
 
 <div class="row">
-	<div class="large-3 large-centered columns">
+	<div class="large-7 large-centered columns">
 		<%= f.submit class: "button" %>
+		<% if params[:action] == 'new' %>
+			<%= link_to "Cancel", @return_to || user_path(current_user), class: "button" %>
+		<% else %>
+			<%= link_to "Cancel", @return_to || board_path(@board), class: "button" %>
+		<% end %>
 	</div>
 </div>

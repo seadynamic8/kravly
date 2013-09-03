@@ -9,6 +9,7 @@ class BoardsController < ApplicationController
 
   def new
     @board = Board.new(user_id: current_user.id)
+    store_location
   end
 
   def create
@@ -21,6 +22,7 @@ class BoardsController < ApplicationController
   end
 
   def edit
+    store_location
   end
 
   def update

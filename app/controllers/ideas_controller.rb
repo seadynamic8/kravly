@@ -15,6 +15,7 @@ class IdeasController < ApplicationController
   def new
     @idea = Idea.new
     @boards = current_user.boards
+    store_location
   end
 
   def create
@@ -29,6 +30,7 @@ class IdeasController < ApplicationController
 
   def edit
     @boards = current_user.boards
+    store_location
   end
 
   def update

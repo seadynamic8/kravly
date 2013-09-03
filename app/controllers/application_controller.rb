@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
   		redirect_to login_url, alert: "Please login." if current_user.nil?
   	end
 
+    def store_location
+      @return_to = request.referer if request.get?
+    end
+
   private
 
   	def current_user
