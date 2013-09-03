@@ -64,10 +64,10 @@
         <% if current_user %>
           <ul class="right">
             <li class="divider"></li>
-            <li class="has-dropdown"><%= link_to "Add", new_idea_path %>
+            <li class="has-dropdown" data-no-turbolink><%= link_to "Add", new_idea_path %>
               <ul class="dropdown">
                 <li><%= link_to "Board", new_board_path %></li>
-                <li><%= link_to "Idea", new_idea_path %></li>
+                <li data-no-turbolink><%= link_to "Idea", new_idea_path %></li>
               </ul>
             </li>
             <li class="divider"></li>

@@ -71,10 +71,12 @@ gem 'zurb-foundation', '~> 4.0.9'
 
 gem 'attribute_normalizer'
 
-gem 'carrierwave'
-gem 'mini_magick'
-gem 'fog'
+gem 'ckeditor'
+
+gem 'carrierwave' # Photo uploads
+gem 'mini_magick' # Imagemagick command line wrapper
+gem 'fog' # Allow connect to Amazon S3 Cloud service
 
 gem 'will_paginate'
 
-gem 'figaro'
+gem 'figaro' # Stores Environment Variables Outside

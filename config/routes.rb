@@ -1,5 +1,7 @@
 Wishproto::Application.routes.draw do
   
+  mount Ckeditor::Engine => '/ckeditor'
+  
   resources :password_resets, only: [:new, :create, :edit, :update]
 
   resources :sessions, only: :create

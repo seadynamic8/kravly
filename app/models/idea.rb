@@ -12,6 +12,8 @@
 #  image      :string(255)
 #
 
+require 'file_size_validator'
+
 class Idea < ActiveRecord::Base
 
 	belongs_to :board
@@ -24,6 +26,7 @@ class Idea < ActiveRecord::Base
 	validates :content, presence: true
 	validates :votes, numericality: { only_integer: true,
 																		greater_than_or_equal_to: 0 }
+	validates :image, file_size: { maximum: 2.megabytes.to_i }
 
 	scope :popular, -> { order("votes desc") }
 	#scope :recent, -> { order("updated_at desc") }

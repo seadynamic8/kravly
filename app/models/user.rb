@@ -16,6 +16,8 @@
 #  avatar                 :string(255)
 #
 
+require 'file_size_validator'
+
 class User < ActiveRecord::Base
 	has_secure_password
 
@@ -35,6 +37,7 @@ class User < ActiveRecord::Base
 											 length: { in: 8..30 },
 											 confirmation: true
 	validates :password_confirmation, presence: true
+	validates :avatar, file_size: { maximum: 2.megabytes.to_i }
 
 	def fullname
 		name = "#{firstname} #{lastname}"
