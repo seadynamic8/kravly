@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-	before_action :set_user, only: [:show, :edit, :update, :destroy, :settings]
-  skip_before_action :authorize, only: [:show, :new, :create]
+	before_action :set_user, only: [:show, :edit, :update, :destroy, :settings, :ideas]
+  skip_before_action :authorize, only: [:show, :new, :create, :ideas]
 
   def show
     @boards = @user.boards.page(params[:page]).per_page(9)
@@ -38,6 +38,10 @@ class UsersController < ApplicationController
   end
 
   def settings
+  end
+
+  def ideas
+    @ideas = @user.ideas.page(params[:page]).per_page(9)
   end
 
   private

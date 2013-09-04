@@ -11,6 +11,7 @@ Wishproto::Application.routes.draw do
 
   resources :users
   get "users/:id/settings(.:format)", to: 'users#settings', as: :user_settings
+  get "users/:id/ideas(.:format)", to: 'users#ideas', as: :user_ideas
 
   resources :boards
   

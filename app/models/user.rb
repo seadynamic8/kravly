@@ -47,16 +47,16 @@ class User < ActiveRecord::Base
 		if name.blank?
 			name = "#{email}"
 		end
-
-		return name
+		name
 	end
 
 	def votes
-		total_votes = 0
-		boards.each do |board|
-			total_votes += board.votes
-		end
-		return total_votes
+		boards.inject(0) { |total, board| total + board.votes }
+	end
+
+	def ideas
+		board_ids = boards.map { |b| b.id }
+		Idea.where(board_id: board_ids)
 	end
 
 	def generate_token(column)

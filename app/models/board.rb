@@ -20,11 +20,7 @@ class Board < ActiveRecord::Base
 	validates :name, presence:true, uniqueness: true, length: { maximum: 255 }
 
 	def votes
-		total_votes = 0
-		ideas.each do |idea|
-			total_votes += idea.votes
-		end
-		return total_votes
+		ideas.inject(0) { |total, idea| total + idea.votes }
 	end
 
 end
