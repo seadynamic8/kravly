@@ -12,6 +12,12 @@ describe UsersController do
       expect(assigns(:user)).to eq @user
     end
 
+    # it "assigns the requested boards to @boards" do
+    #   user = create(:user_with_boards)
+    #   get :show, id: user
+    #   expect(assigns(:boards)).to eq user.boards
+    # end
+
     it "renders the :show template" do
       get :show, id: @user
       expect(response).to render_template :show
@@ -170,6 +176,30 @@ describe UsersController do
     it "renders the :settings template" do
       get :settings, id: @user
       expect(response).to render_template :settings
+    end
+  end
+
+  describe "GET 'ideas'" do
+    before :each do
+      @user = create(:user)
+    end
+
+    it "returns http success" do
+      get :ideas, id: @user
+      expect(response).to be_success
+    end
+
+    it "assigns the requested user to @user" do
+      get :ideas, id: @user
+      expect(assigns(:user)).to eq @user
+    end
+
+    # it "assigns the requested ideas to @ideas" do
+    # end
+
+    it "renders the :ideas template" do
+      get :ideas, id: @user
+      expect(response).to render_template :ideas
     end
   end
 end

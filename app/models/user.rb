@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 
 	mount_uploader :avatar, AvatarUploader
 
-	normalize_attributes :username, :email, :firstname, :lastname, :avatar
+	normalize_attributes :username, :email, :firstname, :lastname
 
 	EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

@@ -8,21 +8,34 @@ describe BoardsController do
   end
 
   describe "GET 'show'" do
+
+    before :each do
+      @board = create(:board)
+    end
+
     it "returns http success" do
-      board = create(:board)
-      get :show, id: board
+      get :show, id: @board
       expect(response).to be_success
     end
 
     it "assigns the requested board to @board" do
-      board = create(:board)
-      get :show, id: board
-      expect(assigns(:board)).to eq board
+      get :show, id: @board
+      expect(assigns(:board)).to eq @board
+    end
+
+    # it "assigns the requested ideas to @ideas" do
+    #   board = create(:board_with_ideas)
+    #   get :show, id: board
+    #   expect(assigns(:boards)).to eq board.ideas
+    # end
+
+    it "assigns the board's user to @user" do
+      get :show, id: @board
+      expect(assigns(:user)).to eq @board.user
     end
 
     it "renders the show template" do
-      board = create(:board)
-      get :show, id: board
+      get :show, id: @board
       expect(response).to render_template :show
     end
   end

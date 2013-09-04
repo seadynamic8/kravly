@@ -35,11 +35,9 @@ describe Board do
 
 		it "should return votes as a total of the ideas' votes" do
 			board = create(:board_with_ideas)
-			total_votes = 0
-			board.ideas.each do |idea|
-				total_votes += idea.votes
-			end
-			expect(board.votes).to eq total_votes
+			total = 0
+			board.ideas.map { |idea| total += idea.votes }
+			expect(board.votes).to eq total
 		end
 	end
 end

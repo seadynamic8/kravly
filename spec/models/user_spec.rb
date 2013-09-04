@@ -64,6 +64,8 @@ describe User do
 									is_at_most(30) }
 		# it { should validate_confirmation_of(:password) }
 		it { should validate_presence_of(:password_confirmation) }
+
+		# it "in invalid with avatar being greater than 2MB in size"
 	end
 
 	describe "functions" do
@@ -90,11 +92,16 @@ describe User do
 
 		it "should return votes as a total of the boards' votes" do
 			user = create(:user_with_boards)
-			total_votes = 0
-			user.boards.each do |board|
-				total_votes += board.votes
-			end
-			expect(user.votes).to eq total_votes
+			total = 0
+			user.boards.map { |board| total += board.votes }
+			expect(user.votes).to eq total
+		end
+
+		it "should return all the ideas belonging to the user" do
+			user = create(:user_with_boards)
+			board_ids = user.boards.map { |b| b.id }
+			ideas = Idea.where(board_id: board_ids)
+			expect(user.ideas).to eq ideas
 		end
 
 	end
