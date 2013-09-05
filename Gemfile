@@ -80,3 +80,5 @@ gem 'fog' # Allow connect to Amazon S3 Cloud service
 gem 'will_paginate'
 
 gem 'figaro' # Stores Environment Variables Outside
+
+gem 'pg_search'

@@ -28,11 +28,24 @@ class Idea < ActiveRecord::Base
 																		greater_than_or_equal_to: 0 }
 	validates :image, file_size: { maximum: 2.megabytes.to_i }
 
+	include PgSearch
+	pg_search_scope :search, 
+									against: :title,
+  								using: { tsearch: { dictionary: 'english' } }
+
 	scope :popular, -> { order("votes desc") }
 	#scope :recent, -> { order("updated_at desc") }
 
 	def user
 		board.user
+	end
+
+	def self.text_search(query)
+		if query.present?
+			search(query)
+		else
+			scoped
+		end
 	end
 																	
 end

@@ -51,13 +51,16 @@
           </li> -->
           <li class="divider"></li>
           <li class="has-form">
-            <form action="">
+            <%= form_tag ideas_path, method: :get do %>
               <div class="row collaspse">
-                <div class="small-8 columns">
-                  <input type="text">
+                <div class="large-8 columns">
+                  <%= search_field_tag :query, params[:query], placeholder: "Search" %>
+                </div>
+                <div class="large-4 columns">
+                  <%= submit_tag "Search", class: "button postfix" %>
                 </div>
               </div>
-            </form>
+            <% end %>
           </li>
         </ul>
         

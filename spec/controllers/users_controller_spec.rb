@@ -51,9 +51,9 @@ describe UsersController do
       #   expect(assigns(session[:user_id])).to eq user.id
       # end
 
-      it "redirects to root_url" do
+      it "redirects to user show page" do 
         post :create, user: attributes_for(:user)
-        expect(response).to redirect_to root_url
+        expect(response).to redirect_to user_path(assigns[:user])
       end
     end
 

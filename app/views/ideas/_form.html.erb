@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="large-2 columns">
-		<%= f.label :title, class: "left" %>
+		<%= f.label :title, class: "left inline" %>
 	</div>
 	<div class="large-9 columns">
 		<%= f.text_field :title, placeholder: "Title" %>
@@ -9,12 +9,19 @@
 
 <div class="row">
 	<div class="large-2 columns">
-		<%= f.label "Cover Photo", class: "left" %>
+		<%= f.label "Cover Photo", class: "left inline" %>
 	</div>
 	<div class="large-9 columns">
-		<%= f.file_field :image %><br><br>
-		<%= f.text_field :remote_image_url, placeholder: "Or Image URL" %>
-		<h6 class="subheader">Choose a photo that represents your Idea. Max image size: 2MB (.jpg, .jpeg, .png, .gif)</h6>
+		<div class="row collapse">
+			<%= f.file_field :image %><br><br>
+			<div class="large-2 columns">
+				<span class="prefix">http://</span>
+			</div>
+			<div class="large-10 columns">
+				<%= f.url_field :remote_image_url, placeholder: "Or Image URL" %>
+			</div>
+			<h6 class="subheader">Choose a photo that represents your Idea. Max image size: 2MB (.jpg, .jpeg, .png, .gif)</h6>
+		</div>
 	</div>
 </div>
 
@@ -22,7 +29,7 @@
 
 <div class="row">
 	<div class="large-2 columns">
-		<%= f.label :workspace, class: "left" %>
+		<%= f.label :workspace, class: "left inline" %>
 	</div>
 	<div class="large-9 columns">
 		<%= f.text_area :content, class: 'ckeditor', placeholder: "Content", style: "min-height: 500px" %>
@@ -33,7 +40,7 @@
 
 <div class="row">
 	<div class="large-2 columns">
-		<%= f.label :board, class: "left" %>
+		<%= f.label :board, class: "left inline" %>
 	</div>
 	<div class="large-9 columns">
 		<%= f.select :board_id, 

@@ -2,6 +2,10 @@ class IdeasController < ApplicationController
 	before_action :set_idea, only: [:show, :edit, :update, :destroy, :vote]
   skip_before_action :authorize, only: :show
 
+  def index
+    @ideas = Idea.text_search(params[:query]).page(params[:page]).per_page(9)
+  end
+
   def show
     # The sidebar needs a board to pull up other ideas from (3 random ones).
     if @idea.board.ideas && @idea.board.ideas.count >= 3
