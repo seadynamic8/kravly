@@ -1,0 +1,4 @@
+$('#comment-<%= @comment.id %>').remove();
+<% if Comment.count == 0 %>
+	$('.empty-comments').show('slow');
+<% end %>

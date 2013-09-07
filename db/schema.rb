@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130904162607) do
+ActiveRecord::Schema.define(version: 20130905234223) do
 
   create_table "boards", force: true do |t|
     t.string   "name"
@@ -40,13 +40,21 @@ ActiveRecord::Schema.define(version: 20130904162607) do
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
   create_table "comments", force: true do |t|
-    t.text     "content"
-    t.integer  "idea_id"
+    t.integer  "commentable_id",   default: 0
+    t.string   "commentable_type", default: ""
+    t.string   "title",            default: ""
+    t.text     "body",             default: ""
+    t.string   "subject",          default: ""
+    t.integer  "user_id",          default: 0,  null: false
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["idea_id"], name: "index_comments_on_idea_id", using: :btree
+  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "ideas", force: true do |t|
     t.string   "title"

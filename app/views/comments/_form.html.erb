@@ -1,0 +1,36 @@
+<fieldset>
+	<legend>Comments</legend>
+
+	<div class="comment-form" data-no-turbolink>
+		<%= form_for comment, remote: true do |f| %>
+
+			<%= f.hidden_field :commentable_id, value: comment.commentable_id %>
+			<%= f.hidden_field :commentable_type, value: comment.commentable_type %>
+
+			<% if current_user.nil? %>
+
+				<h6 class="subheader">Please login or signup to comment.</h6>
+				<%= link_to "Login", login_path, class: "small button" %>
+				<%= link_to "Signup", new_user_path, class: "small button" %>
+
+			<% else %>
+				
+				<div class="row collapse">
+					<div class="large-1 columns">
+						<%= image_tag current_user.avatar.small_profile.url, class: "comment-avatar"%>
+					</div>
+					<div class="large-9 columns">
+						<%= f.text_area :body, rows: 2, label: false, 
+								placeholder: "Leave your thoughts...", class: "comment-body" %>
+					</div>
+					<div class="large-2 columns">
+						<%= f.submit "Comment", class: "button postfix", 
+													disable_with: "Submitting..." %>
+					</div>
+				</div>
+
+			<% end %>
+
+		<% end %>
+	</div>
+</fieldset>

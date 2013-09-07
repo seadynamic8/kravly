@@ -17,6 +17,8 @@ Wishproto::Application.routes.draw do
   
   resources :ideas
   get "/ideas/:id/vote(.:format)", to: 'ideas#vote', as: :vote_idea
+
+  resources :comments, only: [:create, :edit, :update, :destroy]
   
   root 'public#index'
 

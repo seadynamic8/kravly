@@ -14,6 +14,9 @@ class IdeasController < ApplicationController
         @rand_ideas << @idea.board.ideas.sample
       end
     end
+
+    @comments = @idea.comment_threads.order('created_at desc')
+    @new_comment = Comment.build_from(@idea, nil, "")
   end
 
   def new

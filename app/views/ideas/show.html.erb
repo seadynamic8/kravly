@@ -67,7 +67,7 @@
 				<hr>
 				<% @rand_ideas.each do |idea| %>
 					<div class="large-4 columns">
-						<%= link_to (image_tag "http://placehold.it/80x50"), idea_path(idea) %>
+						<%= link_to (image_tag @idea.image.small_thumb.url), idea_path(idea) %>
 					</div>
 				<% end %>
 			</div>
@@ -88,9 +88,31 @@
 </div>
 
 <a name="comments"></a>
-<div class="row">
+<!-- <div class="row">
 	<div class="large-8 columns idea-comment">
 		<%= render partial: "shared/disqus", locals: { title: @idea.title, identifier: @idea.id } %>
 	</div>
+</div> -->
+
+<div class="row">
+	<div class="large-8 columns comment-section">
+		
+		<div class="comments">
+			<%= render partial: 'comments/form', locals: { comment: @new_comment } %>
+			<% if @comments.empty? %>
+				<div class="row empty-comments">
+					<div class="large-6 large-centered columns">
+						<br>
+						<br>
+						<h6 class="subheader">There are no comments yet.</h6>
+					</div>
+				</div>
+			<% else %>
+				<%= render partial: 'comments/comment', collection: @comments %>
+			<% end %>
+		</div>
+		
+	</div>
 </div>
+
 

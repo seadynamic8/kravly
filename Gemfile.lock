@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/epiclist/acts_as_commentable_with_threading.git
+  revision: dafd2495c3c56fad3cac53d82cb7db0665baab95
+  ref: dafd24
+  specs:
+    acts_as_commentable_with_threading (1.1.2)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      awesome_nested_set (>= 2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -31,6 +41,8 @@ GEM
     arel (4.0.0)
     atomic (1.1.13)
     attribute_normalizer (1.1.0)
+    awesome_nested_set (2.1.6)
+      activerecord (>= 3.0.0)
     bcrypt-ruby (3.0.1)
     builder (3.1.4)
     capybara (2.1.0)
@@ -226,6 +238,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_commentable_with_threading!
   annotate (>= 2.5.0)
   attribute_normalizer
   bcrypt-ruby (~> 3.0.0)

@@ -82,3 +82,7 @@ gem 'will_paginate'
 gem 'figaro' # Stores Environment Variables Outside
 
 gem 'pg_search'
+
+gem 'acts_as_commentable_with_threading', 
+		git: "git://github.com/epiclist/acts_as_commentable_with_threading.git", 
+		ref: 'dafd24'

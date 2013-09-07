@@ -1,0 +1,4 @@
+$('.edit-comment-form').remove()
+$('#comment-<%= @comment.id %> .comment-body')
+	.replaceWith('<p class="comment-body"><%= @comment.body %></p>')
+	.show('slow')

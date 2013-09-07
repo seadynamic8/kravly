@@ -15,6 +15,7 @@
 require 'file_size_validator'
 
 class Idea < ActiveRecord::Base
+	acts_as_commentable
 
 	belongs_to :board
 
