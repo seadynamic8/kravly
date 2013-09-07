@@ -11,9 +11,11 @@ class UsersController < ApplicationController
   end
 
   def create
+    logger.debug "User: #{user_params}"
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
+      UserMailer.signup_confirmation(@user).deliver
       redirect_to user_path(@user), notice: "Thank you for signing up!"
     else
       render :new
@@ -32,6 +34,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    UserMailer.goodbye_message(@user).deliver
     @user.destroy
     session[:user_id] = nil
     redirect_to root_url, notice: "User was deleted."
@@ -52,6 +55,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:username, :email, :firstname, :lastname, 
-                                   :password, :password_confirmation, :avatar, :avatar_cache)
+                                   :password, :password_confirmation, 
+                                   :avatar, :avatar_cache, :remote_avatar_url)
     end
 end
