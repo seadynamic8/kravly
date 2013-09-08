@@ -9,7 +9,7 @@
 
 <div class="row">
 	<div class="large-2 columns">
-		<%= f.label "Cover Photo", class: "left inline" %>
+		<%= f.label :cover_photo, "Cover Photo", class: "left inline" %>
 	</div>
 	<div class="large-9 columns">
 		<div class="row collapse">
@@ -26,6 +26,22 @@
 </div>
 
 <%= f.hidden_field :image_cache %>
+
+<div class="row">
+	<div class="large-2 columns">
+		<%= f.label :video_url, "Video URL" %>
+	</div>
+	<div class="large-9 columns">
+		<div class="row collapse">
+			<div class="large-2 columns">
+				<span class="prefix">http://</span>
+			</div>
+			<div class="large-10 columns">
+				<%= f.url_field :video_url, placeholder: "Video URL (Youtube or Vimeo)" %>
+			</div>
+		</div>
+	</div>
+</div>
 
 <div class="row">
 	<div class="large-2 columns">

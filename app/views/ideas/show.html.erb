@@ -15,8 +15,29 @@
 <div class="row">
 
 	<div class="large-8 columns idea-main">
-		<div class="panel">
-			<%= raw @idea.content %>
+		<div class="section-container tabs" data-section="tabs">
+			<section>
+				<p class="title" datat-section-title>
+					<%= link_to "Description", "#" %>
+				</p>
+				<div class="content" data-section-content>
+					<p><%= raw @idea.content %></p>
+				</div>
+			</section>
+			<% if @idea.video_url.present? %>
+				<section>
+					<p class="title" data-section-title>
+						<%= link_to "Video", "#" %>
+					</p>
+					<div class="content" data-section-content>
+						<p>
+							<div class="flex-video <%= @idea.video_type %>">
+								<iframe src="<%= @idea.video_url %>" frameborder="0" width="604" height="431" allowfullscreen></iframe>
+							</div>
+						</p>
+					</div>
+				</section>
+			<% end %>
 		</div>
 
 		<div class="panel">

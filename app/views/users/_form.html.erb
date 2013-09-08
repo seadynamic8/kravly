@@ -9,7 +9,7 @@
 
 <div class="row">
 	<div class="large-2 columns">
-		<%= f.label "Email*", class: "left inline" %>
+		<%= f.label :email, "Email*", class: "left inline" %>
 	</div>
 	<div class="large-8 columns">
 		<%= f.email_field :email, placeholder: "Email" %>
@@ -18,7 +18,7 @@
 
 <div class="row">
 	<div class="large-2 columns">
-		<%= f.label "Password*", class: "left inline" %>
+		<%= f.label :password, "Password*", class: "left inline" %>
 	</div>
 	<div class="large-8 columns">
 		<%= f.password_field :password, placeholder: "Password" %>
@@ -27,7 +27,7 @@
 
 <div class="row">
 	<div class="large-2 columns">
-		<%= f.label "Password Confirmation*", class: "left inline" %>
+		<%= f.label :password_confirmation, "Password Confirmation*", class: "left inline" %>
 	</div>
 	<div class="large-8 columns">
 		<%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
@@ -36,7 +36,7 @@
 
 <div class="row">
 	<div class="large-3 columns">
-		<%= f.label "First Name", class: "left inline" %>
+		<%= f.label :firstname, "First Name", class: "left inline" %>
 	</div>
 	<div class="large-8 columns">
 		<%= f.text_field :firstname, placeholder: "First Name" %>
@@ -45,7 +45,7 @@
 
 <div class="row">
 	<div class="large-3 columns">
-		<%= f.label "Last Name", class: "left inline" %>
+		<%= f.label :lastname, "Last Name", class: "left inline" %>
 	</div>
 	<div class="large-8 columns">
 		<%= f.text_field :lastname, placeholder: "Last Name" %>
@@ -54,7 +54,7 @@
 
 <div class="row">
 	<div class="large-3 columns">
-		<%= f.label "Profile Photo", class: "left inline" %>
+		<%= f.label :profile_photo, "Profile Photo (Avatar)", class: "left inline" %>
 	</div>
 	<div class="large-8 columns">
 		<div class="row collapse">

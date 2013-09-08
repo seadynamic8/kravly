@@ -26,6 +26,7 @@ class IdeasController < ApplicationController
   end
 
   def create
+    process_video
     @idea = Idea.new(idea_params)
     if @idea.save
       redirect_to idea_path(@idea), notice: "Idea was created."
@@ -41,6 +42,7 @@ class IdeasController < ApplicationController
   end
 
   def update
+    process_video
     if @idea.update_attributes(idea_params)
       redirect_to @idea, notice: "Idea was updated."
     else
@@ -67,6 +69,16 @@ class IdeasController < ApplicationController
   	end
 
     def idea_params
-      params.require(:idea).permit(:title, :content, :votes, :image, :image_cache, :board_id)
+      params.require(:idea).permit(:title, :content, :votes, 
+        :image, :image_cache, :video_url, :board_id)
+    end
+
+    def process_video
+      video_url = params[:video_url]
+      if video_url.present?
+        if /vimeo/.match(video_url)
+          params[:video_type] = "vimeo"
+        end
+      end
     end
 end

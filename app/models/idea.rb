@@ -10,14 +10,19 @@
 #  updated_at :datetime
 #  board_id   :integer
 #  image      :string(255)
+#  video_url  :string(255)
+#  video_type :string(255)
 #
 
 require 'file_size_validator'
+require 'uri'
 
 class Idea < ActiveRecord::Base
 	acts_as_commentable
 
 	belongs_to :board
+
+	before_save :sanitize_video_url, if: :video_url?
 
 	mount_uploader :image, ImageUploader
 
@@ -48,5 +53,12 @@ class Idea < ActiveRecord::Base
 			scoped
 		end
 	end
+
+	private
+
+		def sanitize_video_url
+			uri = URI(self.video_url)
+			self.video_url = ["http://", uri.host, uri.path].join
+		end
 																	
 end

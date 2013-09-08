@@ -10,6 +10,8 @@
 #  updated_at :datetime
 #  board_id   :integer
 #  image      :string(255)
+#  video_url  :string(255)
+#  video_type :string(255)
 #
 
 require 'spec_helper'
