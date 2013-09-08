@@ -1,8 +1,8 @@
 <% if object && object.errors.any? %>
-	<div class="alert-box alert">
+	<div data-alert class="alert-box alert">
 			<% object.errors.full_messages.each do |message| %>
 				<%= message %><br /><br />
 			<% end %>
-		<%= link_to "x", "#", class: "close" %>
+		<%= link_to (raw "&times;"), "#", class: "close" %>
 	</div>
 <% end %>

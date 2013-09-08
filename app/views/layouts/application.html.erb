@@ -97,17 +97,16 @@
       <div class="row">
         <div data-alert class="alert-box success">
           <%= flash[:notice] %>
-          <%= link_to "x", "#", class: "close" %>
+          <%= link_to (raw "&times;"), "#", class: "close" %>
         </div>
       </div>
     <% end %>
     <% if flash[:alert] %>
       <div class="row">
-        <div class="large-12 large-centered columns">
-          <div data-alert class="alert-box alert">
-            <%= flash[:alert] %>
-            <%= link_to "x", "#", class: "close" %>
-          </div>
+        <div data-alert class="alert-box alert">
+          <%= flash[:alert] %>
+          <%= debug flash[:alert] %>
+          <%= link_to (raw "&times;"), "#", class: "close" %>
         </div>
       </div>
     <% end %>
