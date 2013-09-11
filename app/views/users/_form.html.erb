@@ -1,19 +1,8 @@
-<% if params[:action] == 'edit' %>
-	<div class="row">
-		<div class="large-2 columns">
-			<%= f.label :username, class: "left inline" %>
-		</div>
-		<div class="large-8 columns">
-			<%= f.text_field :username, placeholder: "Username" %>
-		</div>
-	</div>
-<% end %>
-
 <div class="row">
 	<div class="large-2 columns">
 		<%= f.label :email, "Email*", class: "left inline" %>
 	</div>
-	<div class="large-8 columns">
+	<div class="large-9 columns">
 		<%= f.email_field :email, placeholder: "Email" %>
 	</div>
 </div>
@@ -22,7 +11,7 @@
 	<div class="large-2 columns">
 		<%= f.label :password, "Password*", class: "left inline" %>
 	</div>
-	<div class="large-8 columns">
+	<div class="large-9 columns">
 		<%= f.password_field :password, placeholder: "Password" %>
 	</div>
 </div>
@@ -31,16 +20,34 @@
 	<div class="large-2 columns">
 		<%= f.label :password_confirmation, "Password Confirmation*", class: "left inline" %>
 	</div>
-	<div class="large-8 columns">
+	<div class="large-9 columns">
 		<%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
 	</div>
 </div>
+
+<% if params[:action] == 'edit' %>
+	<div class="row">
+		<div class="large-2 columns">
+			<%= f.label :username, class: "left inline" %>
+		</div>
+		<div class="large-9 columns">
+			<div class="row collapse">
+				<div class="large-5 columns">
+					<span class="prefix"><%= "http://wishture.com/" %></span>
+				</div>
+				<div class="large-7 columns">
+					<%= f.text_field :username, placeholder: "Username" %>
+				</div>
+			</div>
+		</div>
+	</div>
+<% end %>
 
 <div class="row">
 	<div class="large-3 columns">
 		<%= f.label :firstname, "First Name", class: "left inline" %>
 	</div>
-	<div class="large-8 columns">
+	<div class="large-9 columns">
 		<%= f.text_field :firstname, placeholder: "First Name" %>
 	</div>
 </div>
@@ -49,7 +56,7 @@
 	<div class="large-3 columns">
 		<%= f.label :lastname, "Last Name", class: "left inline" %>
 	</div>
-	<div class="large-8 columns">
+	<div class="large-9 columns">
 		<%= f.text_field :lastname, placeholder: "Last Name" %>
 	</div>
 </div>
@@ -58,7 +65,7 @@
 	<div class="large-3 columns">
 		<%= f.label :profile_photo, "Profile Photo (Avatar)", class: "left inline" %>
 	</div>
-	<div class="large-8 columns">
+	<div class="large-9 columns">
 		<div class="row collapse">
 			<%= f.file_field :avatar %><br><br>
 			<div class="large-3 columns">

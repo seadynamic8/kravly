@@ -43,8 +43,8 @@ class User < ActiveRecord::Base
 	validates :avatar, file_size: { maximum: 2.megabytes.to_i }
 	validates :slug, uniqueness: true, allow_nil: true
 
+	before_validation :ensure_username_uniqueness, on: :create
 	after_validation :move_friendly_id_error_to_username
-	before_create :copy_email_to_username, on: :create
 	after_create :generate_slug, on: :create
 	
 	def fullname
@@ -83,12 +83,20 @@ class User < ActiveRecord::Base
 
 	private
 
-		def move_friendly_id_error_to_username
-			errors.add :username, *errors.delete(:friendly_id) if errors[:friendly_id].present?
+		def ensure_username_uniqueness
+			if self.username.blank? || User.find_by_username(self.username)
+				username_part = self.email.split("@").first
+				new_username = username_part.dup 
+				num = 1
+				while(User.find_by_username(new_username))
+					new_username = "#{username_part}-#{num+=1}"
+				end
+				self.username = new_username
+			end
 		end
 
-		def copy_email_to_username
-			self.username = self.email.split('@').first
+		def move_friendly_id_error_to_username
+			errors.add :username, *errors.delete(:friendly_id) if errors[:friendly_id].present?
 		end
 
 		def generate_slug
