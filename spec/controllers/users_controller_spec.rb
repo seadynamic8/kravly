@@ -51,9 +51,9 @@ describe UsersController do
       #   expect(assigns(session[:user_id])).to eq user.id
       # end
 
-      it "redirects to user show page" do 
+      it "redirects to user boards page" do 
         post :create, user: attributes_for(:user)
-        expect(response).to redirect_to user_path(assigns[:user])
+        expect(response).to redirect_to boards_user_path(assigns[:user])
       end
     end
 
@@ -112,9 +112,9 @@ describe UsersController do
         expect(@user.email).to eq("different@example.com")
       end
 
-      it "redirects to the updated user" do
+      it "redirects to the updated user's boards page" do
         patch :update, id: @user, user: attributes_for(:user)
-        expect(response).to redirect_to @user
+        expect(response).to redirect_to boards_user_path(@user)
       end
     end
 

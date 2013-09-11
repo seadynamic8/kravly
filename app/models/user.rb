@@ -84,7 +84,7 @@ class User < ActiveRecord::Base
 	private
 
 		def ensure_username_uniqueness
-			if self.username.blank? || User.find_by_username(self.username)
+			if email && ( self.username.blank? || User.find_by_username(self.username) )
 				username_part = self.email.split("@").first
 				new_username = username_part.dup 
 				num = 1

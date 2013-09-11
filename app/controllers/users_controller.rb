@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       UserMailer.signup_confirmation(@user).deliver
-      redirect_to @user, notice: "Thank you for signing up!"
+      redirect_to boards_user_path(@user), notice: "Thank you for signing up!"
     else
       render :new
     end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      redirect_to @user
+      redirect_to boards_user_path(@user)
     else
       render :edit
     end

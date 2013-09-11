@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :board do
+    user
     sequence(:name) { |n| "Photography Ideas#{n}" }
 
     factory :board_with_ideas do

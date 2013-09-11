@@ -7,7 +7,7 @@ class BoardsController < ApplicationController
     @user = @board.user
 
     if request.path != user_board_path(@user, @board)
-      redirect_to [@user, @board], status: :moved_permanently
+      redirect_to user_board_path(@user, @board), status: :moved_permanently
     end
   end
 
@@ -19,7 +19,7 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
     if @board.save
-      redirect_to [@board.user, @board], notice: "Board was created."
+      redirect_to user_board_path(@board.user, @board), notice: "Board was created."
     else
       render :new
     end    
@@ -31,7 +31,7 @@ class BoardsController < ApplicationController
 
   def update
     if @board.update_attributes(board_params)
-      redirect_to [@board.user, @board], notice: "Board was updated."
+      redirect_to user_board_path(@board.user, @board), notice: "Board was updated."
     else
       render :edit
     end

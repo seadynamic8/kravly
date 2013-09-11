@@ -61,8 +61,8 @@ require 'faker'
 # end
 
 ideas = Idea.all
-ideas.each do |idea|
-	idea.title = Faker::Lorem.words(3, false).join(' ')
+ideas.each_with_index do |idea, index|
+	idea.title = "Idea-#{index}"
 	idea.save!
 end
 

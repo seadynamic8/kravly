@@ -2,12 +2,12 @@ require 'faker'
 
 FactoryGirl.define do
   factory :idea do
+    board
     title { Faker::Company.name }
     content { Faker::Lorem.paragraphs(3).join(" ") }
     sequence(:votes) { |n| n }
     #video_url { Faker::Internet.url }
-    board
-
+    
     # factory :idea_with_boards do
     # 	ignore do
     # 		boards_count 2
