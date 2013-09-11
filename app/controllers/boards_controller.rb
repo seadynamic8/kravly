@@ -5,6 +5,10 @@ class BoardsController < ApplicationController
   def show
     @ideas = @board.ideas.page(params[:page]).per_page(9)
     @user = @board.user
+
+    if request.path != user_board_path(@user, @board)
+      redirect_to [@user, @board], status: :moved_permanently
+    end
   end
 
   def new
@@ -15,7 +19,7 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
     if @board.save
-      redirect_to board_path(@board), notice: "Board was created."
+      redirect_to [@board.user, @board], notice: "Board was created."
     else
       render :new
     end    
@@ -27,7 +31,7 @@ class BoardsController < ApplicationController
 
   def update
     if @board.update_attributes(board_params)
-      redirect_to @board, notice: "Board was updated."
+      redirect_to [@board.user, @board], notice: "Board was updated."
     else
       render :edit
     end
@@ -35,13 +39,13 @@ class BoardsController < ApplicationController
 
   def destroy
     @board.destroy
-    redirect_to user_path(@board.user), notice: "Board was deleted."
+    redirect_to @board.user, notice: "Board was deleted."
   end
 
   private
 
   	def set_board
-  		@board = Board.find(params[:id])
+  		@board = Board.friendly.find(params[:id])
   	end
 
     def board_params

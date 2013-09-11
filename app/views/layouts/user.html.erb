@@ -61,10 +61,10 @@
               <li><%= link_to "Idea", new_idea_path %></li>
             </ul>
           </li>
-          <li class="has-dropdown"><%= link_to "seadynamic8", boards_path %>
+          <li class="has-dropdown"><%= link_to "seadynamic8", user_boards_path() %>
             <ul class="dropdown">
-              <li><%= link_to "Your Boards", boards_path %></li>
-              <li><%= link_to "Settings", user_settings_path(1) %></li>
+              <li><%= link_to "Your Boards", user_boards_path() %></li>
+              <li><%= link_to "Settings", settings_user_path(1) %></li>
               <li><%= link_to "Log Out", "#" %></li>
             </ul>
           </li>

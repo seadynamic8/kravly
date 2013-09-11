@@ -161,7 +161,7 @@ describe IdeasController do
 
     it "redirects to boards#show, board listing" do
       delete :destroy, id: @idea
-      expect(response).to redirect_to board_path(@idea.board)
+      expect(response).to redirect_to user_board_path(user, @idea.board)
     end
   end
 

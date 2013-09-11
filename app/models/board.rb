@@ -8,6 +8,7 @@
 #  updated_at  :datetime
 #  user_id     :integer
 #  description :string(255)
+#  slug        :string(255)
 #
 
 class Board < ActiveRecord::Base
@@ -15,12 +16,27 @@ class Board < ActiveRecord::Base
 	belongs_to :user
 	has_many :ideas, dependent: :destroy
 
+	include FriendlyId
+	friendly_id :name, use: [:slugged, :history]
+
 	normalize_attributes :name, :description
 
 	validates :name, presence:true, uniqueness: true, length: { maximum: 255 }
 
+	after_validation :move_friendly_id_error_to_name
+
 	def votes
 		ideas.inject(0) { |total, idea| total + idea.votes }
 	end
+
+	def should_generate_new_friendly_id?
+		new_record? || name.blank? || name_changed?
+	end
+
+	private
+
+		def move_friendly_id_error_to_name
+			errors.add :name, *errors.delete(:friendly_id) if errors[:friendly_id].present?
+		end
 
 end

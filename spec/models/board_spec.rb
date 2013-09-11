@@ -8,6 +8,7 @@
 #  updated_at  :datetime
 #  user_id     :integer
 #  description :string(255)
+#  slug        :string(255)
 #
 
 require 'spec_helper'

@@ -69,15 +69,16 @@
             <li class="divider"></li>
             <li class="has-dropdown" data-no-turbolink><%= link_to "Add", new_idea_path %>
               <ul class="dropdown">
-                <li><%= link_to "Board", new_board_path %></li>
+                <li><%= link_to "Board", new_user_board_path(current_user) %></li>
                 <li data-no-turbolink><%= link_to "Idea", new_idea_path %></li>
               </ul>
             </li>
             <li class="divider"></li>
-            <li class="has-dropdown"><%= link_to current_user.fullname, user_path(current_user) %>
+            <li class="has-dropdown"><%= link_to current_user.fullname, 
+                                            boards_user_path(current_user) %>
               <ul class="dropdown">
-                <li><%= link_to "Your Boards", user_path(current_user) %></li>
-                <li><%= link_to "Settings", user_settings_path(current_user) %></li>
+                <li><%= link_to "Your Boards", boards_user_path(current_user) %></li>
+                <li><%= link_to "Settings", settings_user_path(current_user) %></li>
                 <li><%= link_to "Log Out", logout_path %></li>
               </ul>
             </li>

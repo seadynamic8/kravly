@@ -55,7 +55,8 @@
 		<% if params[:action] == 'new' %>
 			<%= link_to "Cancel", @return_to || user_path(current_user), class: "button" %>
 		<% else %>
-			<%= link_to "Cancel", @return_to || board_path(@board), class: "button" %>
+			<%= link_to "Cancel", @return_to || user_board_path(current_user, @board), 
+					class: "button" %>
 		<% end %>
 	</div>
 </div>

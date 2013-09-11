@@ -60,13 +60,16 @@ require 'faker'
 # 	idea.save
 # end
 
-# ideas = Idea.all
-# ideas.each do |idea|
-# 	idea.board_id = 
-# 	idea.save
-# end
+ideas = Idea.all
+ideas.each do |idea|
+	idea.title = Faker::Lorem.words(3, false).join(' ')
+	idea.save!
+end
 
 # users = User.all
 # users.each do |user|
-# 	user.ideas.each do |idea|
-# 		
+# 	user.password = 'test1234'
+# 	user.password_confirmation = 'test1234'
+# 	user.save!
+# end
+		

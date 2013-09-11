@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-	before_action :set_user, only: [:show, :edit, :update, :destroy, :settings, :ideas]
-  skip_before_action :authorize, only: [:show, :new, :create, :ideas]
+	before_action :set_user, only: [:show, :edit, :update, :destroy, :settings, :boards, :ideas]
+  skip_before_action :authorize, only: [:show, :new, :create, :boards, :ideas]
 
   def show
-    @boards = @user.boards.page(params[:page]).per_page(9)
   end
 
   def new
@@ -15,7 +14,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       UserMailer.signup_confirmation(@user).deliver
-      redirect_to user_path(@user), notice: "Thank you for signing up!"
+      redirect_to @user, notice: "Thank you for signing up!"
     else
       render :new
     end
@@ -26,7 +25,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      redirect_to user_path(@user)
+      redirect_to @user
     else
       render :edit
     end
@@ -42,14 +41,26 @@ class UsersController < ApplicationController
   def settings
   end
 
+  def boards
+    @boards = @user.boards.page(params[:page]).per_page(9)
+
+    if request.path != boards_user_path(@user)
+      redirect_to boards_user_path(@user), status: :moved_permanently
+    end
+  end
+
   def ideas
     @ideas = @user.ideas.page(params[:page]).per_page(9)
+
+    if request.path != ideas_user_path(@user)
+      redirect_to ideas_user_path(@user), status: :moved_permanently
+    end
   end
 
   private
 
   	def set_user
-  		@user = User.find(params[:id])
+  		@user = User.friendly.find(params[:id])
   	end
 
     def user_params

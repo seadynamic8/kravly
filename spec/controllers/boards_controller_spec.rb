@@ -63,7 +63,7 @@ describe BoardsController do
 
       it "redirects to boards#show" do
         post :create, board: attributes_for(:board)
-        expect(response).to redirect_to board_path(assigns[:board])
+        expect(response).to redirect_to user_board_path(assigns([user, :board]))
       end
     end
 

@@ -13,6 +13,7 @@
 #  password_reset_token   :string(255)
 #  password_reset_sent_at :datetime
 #  avatar                 :string(255)
+#  slug                   :string(255)
 #
 
 require 'file_size_validator'
@@ -21,6 +22,9 @@ class User < ActiveRecord::Base
 	has_secure_password
 
 	has_many :boards, dependent: :destroy
+
+	include FriendlyId
+	friendly_id :username, use: [:slugged, :history]
 
 	mount_uploader :avatar, AvatarUploader
 
@@ -37,14 +41,16 @@ class User < ActiveRecord::Base
 											 confirmation: true
 	validates :password_confirmation, presence: true
 	validates :avatar, file_size: { maximum: 2.megabytes.to_i }
+	validates :slug, uniqueness: true, allow_nil: true
 
+	after_validation :move_friendly_id_error_to_username
+	before_create :copy_email_to_username, on: :create
+	after_create :generate_slug, on: :create
+	
 	def fullname
 		name = "#{firstname} #{lastname}"
 		if name.blank?
 			name = "#{username}"
-		end
-		if name.blank?
-			name = "#{email}"
 		end
 		name
 	end
@@ -70,5 +76,23 @@ class User < ActiveRecord::Base
 		save!(validate: false)
 		UserMailer.password_reset(self).deliver
 	end
+
+	def should_generate_new_friendly_id?
+		slug.blank? || username_changed?
+	end
+
+	private
+
+		def move_friendly_id_error_to_username
+			errors.add :username, *errors.delete(:friendly_id) if errors[:friendly_id].present?
+		end
+
+		def copy_email_to_username
+			self.username = self.email.split('@').first
+		end
+
+		def generate_slug
+			save
+		end
 
 end

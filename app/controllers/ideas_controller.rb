@@ -1,3 +1,4 @@
+
 class IdeasController < ApplicationController
 	before_action :set_idea, only: [:show, :edit, :update, :destroy, :vote]
   skip_before_action :authorize, only: :show
@@ -7,6 +8,10 @@ class IdeasController < ApplicationController
   end
 
   def show
+    if request.path != idea_path(@idea)
+      redirect_to @idea, status: :moved_permanently
+    end
+
     # The sidebar needs a board to pull up other ideas from (3 random ones).
     if @idea.board.ideas && @idea.board.ideas.count >= 3
       @rand_ideas = []
@@ -29,7 +34,7 @@ class IdeasController < ApplicationController
     process_video
     @idea = Idea.new(idea_params)
     if @idea.save
-      redirect_to idea_path(@idea), notice: "Idea was created."
+      redirect_to @idea, notice: "Idea was created."
     else
       @boards = current_user.boards
       render :new
@@ -53,7 +58,7 @@ class IdeasController < ApplicationController
 
   def destroy
     @idea.destroy
-    redirect_to board_path(@idea.board), notice: "Idea was deleted."
+    redirect_to [@idea.user, @idea.board], notice: "Idea was deleted."
   end
 
   def vote
@@ -65,7 +70,7 @@ class IdeasController < ApplicationController
   private
 
   	def set_idea
-  		@idea = Idea.find(params[:id])
+  		@idea = Idea.friendly.find(params[:id])
   	end
 
     def idea_params

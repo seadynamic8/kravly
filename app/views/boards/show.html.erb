@@ -19,13 +19,13 @@
 <div class="row group-header-stats">
 	<div class="large-4 columns">
 		<%= link_to (image_tag @user.avatar.small_profile.url, 
-				style: "width: 25px; height: 25px;" ), user_path(@user) %>
-		<h6><%= link_to @user.fullname, user_path(@user) %></h6>
+				style: "width: 25px; height: 25px;" ), boards_user_path(@user) %>
+		<h6><%= link_to @user.fullname, boards_user_path(@user) %></h6>
 	</div>
 	<% if current_user && current_user == @user %>
 		<div class="large-4 columns">
 			<div style="text-align: center;">
-				<%= link_to "Edit Board", edit_board_path(@board), class: "small button" %>
+				<%= link_to "Edit Board", edit_user_board_path(@user, @board), class: "small button" %>
 			</div>
 		</div>
 	<% end %>

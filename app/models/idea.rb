@@ -12,6 +12,7 @@
 #  image      :string(255)
 #  video_url  :string(255)
 #  video_type :string(255)
+#  slug       :string(255)
 #
 
 require 'file_size_validator'
@@ -21,6 +22,9 @@ class Idea < ActiveRecord::Base
 	acts_as_commentable
 
 	belongs_to :board
+
+	include FriendlyId
+	friendly_id :title, use: [:slugged, :history]
 
 	before_save :sanitize_video_url, if: :video_url?
 
@@ -33,6 +37,8 @@ class Idea < ActiveRecord::Base
 	validates :votes, numericality: { only_integer: true,
 																		greater_than_or_equal_to: 0 }
 	validates :image, file_size: { maximum: 2.megabytes.to_i }
+
+	after_validation :move_friendly_id_error_to_name
 
 	include PgSearch
 	pg_search_scope :search, 
@@ -54,11 +60,20 @@ class Idea < ActiveRecord::Base
 		end
 	end
 
+	def should_generate_new_friendly_id?
+		# new_record? || name.blank? || name_changed?
+		true
+	end
+
 	private
 
 		def sanitize_video_url
 			uri = URI(self.video_url)
 			self.video_url = ["http://", uri.host, uri.path].join
+		end
+
+		def move_friendly_id_error_to_name
+			errors.add :name, *errors.delete(:friendly_id) if errors[:friendly_id].present?
 		end
 																	
 end

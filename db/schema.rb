@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130908092543) do
+ActiveRecord::Schema.define(version: 20130910010557) do
 
   create_table "boards", force: true do |t|
     t.string   "name"
@@ -19,8 +19,10 @@ ActiveRecord::Schema.define(version: 20130908092543) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "description"
+    t.string   "slug"
   end
 
+  add_index "boards", ["slug"], name: "index_boards_on_slug", using: :btree
   add_index "boards", ["user_id"], name: "index_boards_on_user_id", using: :btree
 
   create_table "ckeditor_assets", force: true do |t|
@@ -56,6 +58,19 @@ ActiveRecord::Schema.define(version: 20130908092543) do
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
+  create_table "friendly_id_slugs", force: true do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
   create_table "ideas", force: true do |t|
     t.string   "title"
     t.text     "content"
@@ -66,9 +81,11 @@ ActiveRecord::Schema.define(version: 20130908092543) do
     t.string   "image"
     t.string   "video_url"
     t.string   "video_type"
+    t.string   "slug"
   end
 
   add_index "ideas", ["board_id"], name: "index_ideas_on_board_id", using: :btree
+  add_index "ideas", ["slug"], name: "index_ideas_on_slug", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username"
@@ -81,6 +98,9 @@ ActiveRecord::Schema.define(version: 20130908092543) do
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.string   "avatar"
+    t.string   "slug"
   end
+
+  add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
 
 end

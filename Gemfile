@@ -86,3 +86,5 @@ gem 'pg_search'
 gem 'acts_as_commentable_with_threading', 
 		git: "git://github.com/epiclist/acts_as_commentable_with_threading.git", 
 		ref: 'dafd24'
+
+gem 'friendly_id', git: 'git://github.com/norman/friendly_id.git', ref: 'master'

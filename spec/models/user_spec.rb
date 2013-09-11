@@ -13,6 +13,7 @@
 #  password_reset_token   :string(255)
 #  password_reset_sent_at :datetime
 #  avatar                 :string(255)
+#  slug                   :string(255)
 #
 
 require 'spec_helper'

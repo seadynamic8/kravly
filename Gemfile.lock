@@ -8,6 +8,14 @@ GIT
       activesupport (>= 3.0)
       awesome_nested_set (>= 2.0)
 
+GIT
+  remote: git://github.com/norman/friendly_id.git
+  revision: 5c2a202a07a71faa484022b6302cbba93da6a80f
+  ref: master
+  specs:
+    friendly_id (5.0.0.rc2)
+      activerecord (~> 4.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -254,6 +262,7 @@ DEPENDENCIES
   faker
   figaro
   fog
+  friendly_id!
   guard-rspec
   jbuilder (~> 1.2)
   jquery-rails
