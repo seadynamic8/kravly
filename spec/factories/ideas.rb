@@ -3,7 +3,7 @@ require 'faker'
 FactoryGirl.define do
   factory :idea do
     board
-    title { Faker::Company.name }
+    sequence(:title) { |n| "Idea-#{n}" }
     content { Faker::Lorem.paragraphs(3).join(" ") }
     sequence(:votes) { |n| n }
     #video_url { Faker::Internet.url }

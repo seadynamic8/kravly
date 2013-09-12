@@ -44,8 +44,10 @@
 
 					<% end %>
 
-					<% if current_user && current_user == @user %>
+					<% if permit? "boards", "edit", board %>
 						<%= link_to "Edit", edit_user_board_path(@user, board), class: "tiny button" %>
+					<% end %>
+					<% if permit? "boards", "destroy", board %>
 						<%= link_to "Delete", user_board_path(@user, board), method: :delete, 
 								data: { confirm: "Are you sure?" },	class: "tiny button" %>
 					<% end %>

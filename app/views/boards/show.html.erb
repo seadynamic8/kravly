@@ -22,7 +22,7 @@
 				style: "width: 25px; height: 25px;" ), boards_user_path(@user) %>
 		<h6><%= link_to @user.fullname, boards_user_path(@user) %></h6>
 	</div>
-	<% if current_user && current_user == @user %>
+	<% if permit? "boards", "edit", @board %>
 		<div class="large-4 columns">
 			<div style="text-align: center;">
 				<%= link_to "Edit Board", edit_user_board_path(@user, @board), class: "small button" %>
@@ -46,10 +46,12 @@
 					<h5><%= link_to idea.title, idea_path(idea) %></h5>
 					<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %><br>
 
-					<% if current_user && current_user == @user %>
+					<% if permit? "ideas", "edit", idea %>
 						<span data-no-turbolink>
 							<%= link_to "Edit", edit_idea_path(idea), class: "tiny button" %>
 						</span>
+					<% end %>
+					<% if permit? "ideas", "destroy", idea %>
 						<%= link_to "Delete", idea_path(idea), method: :delete, 
 								data: { confirm: "Are you sure?" }, class: "tiny button" %>
 					<% end %>

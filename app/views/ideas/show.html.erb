@@ -41,10 +41,12 @@
 		</div>
 
 		<div class="panel">
-			<% if current_user && current_user == @idea.user %>
+			<% if permit? "ideas", "edit", @idea %>
 				<span data-no-turbolink>
 					<%= link_to "Edit Idea", edit_idea_path(@idea), class: "small button"  %>
 				</span>
+			<% end %>
+			<% if permit? "ideas", "destroy", @idea %>
 				<%= link_to "Delete", idea_path(@idea), method: :delete, 
 						data: { confirm: "Are you sure?" }, class: "small button" %>
 			<% else %>

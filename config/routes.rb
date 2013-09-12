@@ -9,7 +9,7 @@ Wishproto::Application.routes.draw do
   resources :sessions, only: :create
   get "login", to: "sessions#new", as: :login
   get "logout", to: "sessions#destroy", as: :logout
-  get "signup", to: "sessions#signup", as: :signup
+  # get "signup", to: "sessions#signup", as: :signup
 
   resources :comments, only: [:create, :edit, :update, :destroy]
 

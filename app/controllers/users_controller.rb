@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
-	before_action :set_user, only: [:show, :edit, :update, :destroy, :settings, :boards, :ideas]
-  skip_before_action :authorize, only: [:show, :new, :create, :boards, :ideas]
-
-  def show
-  end
+	before_action :current_resource, only: [:edit, :update, :destroy, :settings, :boards, :ideas]
 
   def new
     @user = User.new
@@ -59,8 +55,8 @@ class UsersController < ApplicationController
 
   private
 
-  	def set_user
-  		@user = User.friendly.find(params[:id])
+  	def current_resource
+  		@user = User.friendly.find(params[:id]) if params[:id]
   	end
 
     def user_params

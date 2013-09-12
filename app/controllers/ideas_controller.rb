@@ -1,7 +1,5 @@
-
 class IdeasController < ApplicationController
-	before_action :set_idea, only: [:show, :edit, :update, :destroy, :vote]
-  skip_before_action :authorize, only: :show
+	before_action :current_resource, only: [:show, :edit, :update, :destroy, :vote]
 
   def index
     @ideas = Idea.text_search(params[:query]).page(params[:page]).per_page(9)
@@ -69,8 +67,8 @@ class IdeasController < ApplicationController
 
   private
 
-  	def set_idea
-  		@idea = Idea.friendly.find(params[:id])
+  	def current_resource
+  		@idea = Idea.friendly.find(params[:id]) if params[:id]
   	end
 
     def idea_params

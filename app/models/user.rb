@@ -14,6 +14,7 @@
 #  password_reset_sent_at :datetime
 #  avatar                 :string(255)
 #  slug                   :string(255)
+#  admin                  :boolean          default(FALSE)
 #
 
 require 'file_size_validator'
@@ -32,7 +33,7 @@ class User < ActiveRecord::Base
 
 	EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-	validates :username, uniqueness: true, length: { maximum: 255 }, allow_nil: true
+	validates :username, uniqueness: true, length: { maximum: 255 }
 	validates :email, presence: true, uniqueness: true, format: EMAIL_REGEX
 	validates :firstname, length: { maximum: 255 }
 	validates :lastname, length: { maximum: 255 }

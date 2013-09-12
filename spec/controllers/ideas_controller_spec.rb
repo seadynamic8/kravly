@@ -3,20 +3,22 @@ require 'spec_helper'
 describe IdeasController do
 
   before :each do
-    user = create(:user)
-    login user
+    @user = create(:user)
+    login @user
   end
 
   describe "GET 'show'" do
+    before :each do
+      @idea = create(:idea)
+    end
+
     it "assigns requested idea to @idea" do
-      idea = create(:idea)
-      get :show, id: idea
-      expect(assigns(:idea)).to eq idea
+      get :show, id: @idea
+      expect(assigns(:idea)).to eq @idea
     end
     
     it "renders the show template" do
-      idea = create(:idea)
-      get :show, id: idea
+      get :show, id: @idea
       expect(response).to render_template :show
     end
 
@@ -29,17 +31,17 @@ describe IdeasController do
 
   describe "GET 'new'" do
     it "returns http success" do
-      get 'new'
+      get :new
       expect(response).to be_success
     end
 
     it "assigns a new Idea to @idea" do
-      get 'new'
+      get :new
       expect(assigns(:idea)).to be_a_new(Idea)
     end
 
     it "assigns current user's boards to @boards" do
-      get 'new'
+      get :new
       expect(assigns(:boards)).to eq current_user.boards
     end
   end
@@ -124,7 +126,7 @@ describe IdeasController do
 
       it "redirects to the updated idea" do
         patch :update, id: @idea, idea: attributes_for(:idea)
-        expect(response).to redirect_to @idea
+        expect(response).to redirect_to assigns(:idea)
       end
     end
 
@@ -150,7 +152,8 @@ describe IdeasController do
 
   describe "DELETE 'destroy'" do
     before :each do
-      @idea = create(:idea)
+      board = create(:board, user: @user)
+      @idea = create(:idea, board: board)
     end
 
     it "deletes the contact" do
@@ -161,29 +164,30 @@ describe IdeasController do
 
     it "redirects to boards#show, board listing" do
       delete :destroy, id: @idea
-      expect(response).to redirect_to user_board_path(user, @idea.board)
+      expect(response).to redirect_to user_board_path(@user, @idea.board)
     end
   end
 
   describe "GET 'vote'" do
+    before :each do
+      @idea = create(:idea)
+    end
+
     it "assigns requested idea to @idea" do
-      idea = create(:idea)
-      get :vote, id: idea
-      expect(assigns(:idea)).to eq idea
+      get :vote, id: @idea
+      expect(assigns(:idea)).to eq @idea
     end
 
     # it "increments the votes by 1" do
-    #   idea = create(:idea)
     #   orig_votes = idea.votes
-    #   get :vote, id: idea
-    #   idea.votes.should eq (orig_votes + 1)
-    #   #expect { get :vote, id: idea }.to change(idea, :votes).by(1) 
+    #   get :vote, id: @idea
+    #   @idea.votes.should eq (orig_votes + 1)
+    #   #expect { get :vote, id: @idea }.to change(@idea, :votes).by(1) 
     # end
 
     it "redirect to show page" do
-      idea = create(:idea)
-      get :vote, id: idea
-      expect(response).to redirect_to idea
+      get :vote, id: @idea
+      expect(response).to redirect_to assigns(:idea)
     end
   end
 end

@@ -14,6 +14,7 @@
 #  password_reset_sent_at :datetime
 #  avatar                 :string(255)
 #  slug                   :string(255)
+#  admin                  :boolean          default(FALSE)
 #
 
 require 'spec_helper'
@@ -36,10 +37,6 @@ describe User do
 		end
 
 		#it { should validate_uniqueness_of(:username) } #Bug in shoulda for Rails 4
-		it "is invalid with duplicate usernames" do
-			create(:user, username: 'jsmith')
-			expect(build(:user, username: 'jsmith')).to have(1).errors_on(:username)
-		end
 		it { should ensure_length_of(:username).is_at_most(255) }
 
 
@@ -83,14 +80,6 @@ describe User do
 			expect(user.fullname).to eq "#{user.username}"
 		end
 
-		it "return the email if both username and first and last name aren't set" do
-			user = create(:user)
-			user.firstname = nil
-			user.lastname = nil
-			user.username = nil
-			expect(user.fullname).to eq "#{user.email}"
-		end
-
 		it "should return votes as a total of the boards' votes" do
 			user = create(:user_with_boards)
 			total = 0
@@ -103,6 +92,27 @@ describe User do
 			board_ids = user.boards.map { |b| b.id }
 			ideas = Idea.where(board_id: board_ids)
 			expect(user.ideas).to eq ideas
+		end
+
+		context "send_password_reset" do
+			let(:user) { create(:user) }
+
+			it "generates a unique password_reset_token each time" do
+				user.send_password_reset
+				last_token = user.password_reset_token
+				user.send_password_reset
+				expect(user.password_reset_token).to_not eq(last_token)
+			end
+
+			it "saves the time the password reset was sent" do
+				user.send_password_reset
+				expect(user.reload.password_reset_sent_at).to be_present
+			end
+
+			it "delivers email to user" do
+				user.send_password_reset
+				expect(last_email.to).to include(user.email)
+			end
 		end
 
 	end

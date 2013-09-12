@@ -1,6 +1,5 @@
 class BoardsController < ApplicationController
-	before_action :set_board, only: [:show, :update, :edit, :destroy]
-  skip_before_action :authorize, only: :show
+	before_action :current_resource, only: [:show, :update, :edit, :destroy]
 
   def show
     @ideas = @board.ideas.page(params[:page]).per_page(9)
@@ -44,8 +43,8 @@ class BoardsController < ApplicationController
 
   private
 
-  	def set_board
-  		@board = Board.friendly.find(params[:id])
+  	def current_resource
+  		@board = Board.friendly.find(params[:id]) if params[:id]
   	end
 
     def board_params

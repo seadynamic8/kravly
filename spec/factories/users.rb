@@ -8,6 +8,7 @@ FactoryGirl.define do
     lastname { Faker::Name.last_name }
     password "test1234"
     password_confirmation "test1234"
+    admin false
 
     factory :user_with_boards do
 

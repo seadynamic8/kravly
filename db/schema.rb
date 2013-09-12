@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130910010557) do
+ActiveRecord::Schema.define(version: 20130911223850) do
 
   create_table "boards", force: true do |t|
     t.string   "name"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 20130910010557) do
     t.datetime "password_reset_sent_at"
     t.string   "avatar"
     t.string   "slug"
+    t.boolean  "admin",                  default: false
   end
 
   add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree

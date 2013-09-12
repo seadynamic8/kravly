@@ -153,7 +153,7 @@ describe BoardsController do
 
     it "redirects to users#show, board listing" do
       delete :destroy, user_id: @user, id: @board
-      expect(response).to redirect_to user_path(@board.user)
+      expect(response).to redirect_to user_path((assigns(:board)).user)
     end
   end
 end

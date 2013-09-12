@@ -26,12 +26,12 @@ describe UsersController do
 
   describe "GET 'new'" do
     it "returns http success" do
-      get 'new'
+      get :new
       expect(response).to be_success
     end
 
     it "assigns a new user to @user" do
-      get 'new'
+      get :new
       expect(assigns(:user)).to be_a_new(User)
     end
   end
@@ -114,7 +114,7 @@ describe UsersController do
 
       it "redirects to the updated user's boards page" do
         patch :update, id: @user, user: attributes_for(:user)
-        expect(response).to redirect_to boards_user_path(@user)
+        expect(response).to redirect_to boards_user_path(assigns[:user])
       end
     end
 
