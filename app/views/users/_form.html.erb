@@ -28,7 +28,7 @@
 <% if params[:action] == 'edit' %>
 	<div class="row">
 		<div class="large-2 columns">
-			<%= f.label :username, class: "left inline" %>
+			<%= f.label :username, "Username*", class: "left inline" %>
 		</div>
 		<div class="large-9 columns">
 			<div class="row collapse">
@@ -45,18 +45,12 @@
 
 <div class="row">
 	<div class="large-3 columns">
-		<%= f.label :firstname, "First Name", class: "left inline" %>
+		<%= f.label :name, "Name", class: "left inline" %>
 	</div>
-	<div class="large-9 columns">
+	<div class="large-4 columns">
 		<%= f.text_field :firstname, placeholder: "First Name" %>
 	</div>
-</div>
-
-<div class="row">
-	<div class="large-3 columns">
-		<%= f.label :lastname, "Last Name", class: "left inline" %>
-	</div>
-	<div class="large-9 columns">
+	<div class="large-4 columns">
 		<%= f.text_field :lastname, placeholder: "Last Name" %>
 	</div>
 </div>
@@ -80,6 +74,33 @@
 </div>
 
 <%= f.hidden_field :avatar_cache %>
+
+<div class="row">
+	<div class="large-3 columns">
+		<%= f.label :about, "About You", class: "left inline" %>
+	</div>
+	<div class="large-9 columns">
+		<%= f.text_area :about, placeholder: "Tell us about yourself...", style: "min-height: 100px" %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-3 columns">
+		<%= f.label :location, class: "left inline" %>
+	</div>
+	<div class="large-9 columns">
+		<%= f.text_field :location, placeholder: "Location" %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-2 columns">
+		<%= f.label :website, class: "left inline" %>
+	</div>
+	<div class="large-9 columns">
+		<%= f.text_field :website, placeholder: "Website" %>
+	</div>
+</div>
 
 <div class="row">
 	<div class="large-8 large-centered columns">

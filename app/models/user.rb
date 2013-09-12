@@ -15,6 +15,9 @@
 #  avatar                 :string(255)
 #  slug                   :string(255)
 #  admin                  :boolean          default(FALSE)
+#  about                  :text
+#  location               :string(255)
+#  website                :string(255)
 #
 
 require 'file_size_validator'
@@ -43,6 +46,8 @@ class User < ActiveRecord::Base
 	validates :password_confirmation, presence: true
 	validates :avatar, file_size: { maximum: 2.megabytes.to_i }
 	validates :slug, uniqueness: true, allow_nil: true
+	validates :location, length: { maximum: 255 }
+	validates :website, length: { maximum: 255 }
 
 	before_validation :ensure_username_uniqueness, on: :create
 	after_validation :move_friendly_id_error_to_username

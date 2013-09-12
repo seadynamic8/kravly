@@ -15,6 +15,9 @@
 #  avatar                 :string(255)
 #  slug                   :string(255)
 #  admin                  :boolean          default(FALSE)
+#  about                  :text
+#  location               :string(255)
+#  website                :string(255)
 #
 
 require 'spec_helper'

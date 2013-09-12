@@ -57,11 +57,13 @@ class UsersController < ApplicationController
 
   	def current_resource
   		@user = User.friendly.find(params[:id]) if params[:id]
+
   	end
 
     def user_params
       params.require(:user).permit(:username, :email, :firstname, :lastname, 
                                    :password, :password_confirmation, 
-                                   :avatar, :avatar_cache, :remote_avatar_url)
+                                   :avatar, :avatar_cache, :remote_avatar_url,
+                                   :about, :location, :website)
     end
 end
