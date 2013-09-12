@@ -15,9 +15,6 @@
 					</strong>
 				</p>
 			</div>
-<!-- 			<div class="large-3 large-offset-2 columns">
-				<%= link_to "See Profile", "#", class:"button" %>
-			</div> -->
 			<% if permit? "users", "edit", @user %>
 			<div class="large-1 columns">
 				<%= link_to "Edit", edit_user_path(@user), class: "tiny button" %>
@@ -32,11 +29,11 @@
 	<div class="large-5 columns">
 		<ul class="button-group">
 			<li><%= link_to "#{@user.boards.count} Boards", boards_user_path(@user), 
-							class: "button secondary active" %></li>
+							class: "small button secondary active" %></li>
 			<li><%= link_to "#{@user.ideas.count} Ideas", ideas_user_path(@user), 
-							class: "button secondary" %></li>
+							class: "small button secondary" %></li>
 			<li><%= link_to "#{@user.votes} Votes", "#votes_path", 
-							class: "button secondary disabled" %></li>
+							class: "small button secondary disabled" %></li>
 		</ul>
 	</div>
 	<div class="large-3 columns">
