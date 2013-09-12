@@ -82,7 +82,8 @@ describe IdeasController do
 
   describe "GET 'edit'" do
     before :each do
-      @idea = create(:idea)
+      board = create(:board, user: @user)
+      @idea = create(:idea, board: board)
     end
 
     it "returns http success" do
@@ -108,7 +109,8 @@ describe IdeasController do
 
   describe "PATCH 'update'" do
     before :each do
-      @idea = create(:idea, title: "Test Idea")
+      board = create(:board, user: @user)
+      @idea = create(:idea, board: board, title: "Test Idea")
     end
 
     context "valid attributes" do

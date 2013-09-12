@@ -48,12 +48,14 @@ describe Permission do
 		end
 
 		it "allows ideas" do
+			should permit("ideas", "index")
 			should permit("ideas", "show")
 			should_not permit("ideas", "new")
 			should_not permit("ideas", "create")
 			should_not permit("ideas", "edit")
 			should_not permit("ideas", "update")
 			should_not permit("ideas", "destroy")
+			should_not permit("ideas", "vote")
 		end
 
 		it "allows comments" do
@@ -121,6 +123,7 @@ describe Permission do
 		end
 
 		it "allows ideas" do
+			should permit("ideas", "index")
 			should permit("ideas", "show")
 			should permit("ideas", "new")
 			should permit("ideas", "create")
@@ -130,6 +133,8 @@ describe Permission do
 			should_not permit("ideas", "update", other_idea)
 			should permit("ideas", "destroy", user_idea )
 			should_not permit("ideas", "destroy", other_idea)
+			should_not permit("ideas", "vote", user_idea)
+			should permit("ideas", "vote", other_idea)
 		end
 
 		it "allows comments" do
