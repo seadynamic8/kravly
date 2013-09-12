@@ -2,28 +2,6 @@ require 'spec_helper'
 
 describe UsersController do
 
-  describe "GET 'show'" do
-    before :each do
-      @user = create(:user)
-    end
-
-    it "assigns the requested user to @user" do
-      get :show, id: @user
-      expect(assigns(:user)).to eq @user
-    end
-
-    # it "assigns the requested boards to @boards" do
-    #   user = create(:user_with_boards)
-    #   get :show, id: user
-    #   expect(assigns(:boards)).to eq user.boards
-    # end
-
-    it "renders the :show template" do
-      get :show, id: @user
-      expect(response).to render_template :show
-    end
-  end
-
   describe "GET 'new'" do
     it "returns http success" do
       get :new
@@ -176,6 +154,28 @@ describe UsersController do
     it "renders the :settings template" do
       get :settings, id: @user
       expect(response).to render_template :settings
+    end
+  end
+
+  describe "GET 'boards'" do
+    before :each do
+      @user = create(:user)
+    end
+
+    it "assigns the requested user to @user" do
+      get :boards, id: @user
+      expect(assigns(:user)).to eq @user
+    end
+
+    # it "assigns the requested boards to @boards" do
+    #   user = create(:user_with_boards)
+    #   get :show, id: user
+    #   expect(assigns(:boards)).to eq user.boards
+    # end
+
+    it "renders the :boards template" do
+      get :boards, id: @user
+      expect(response).to render_template :boards
     end
   end
 

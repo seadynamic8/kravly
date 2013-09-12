@@ -82,28 +82,29 @@ describe BoardsController do
   end
 
   describe "GET 'edit'" do
+    before :each do
+      @board = create(:board, user: @user)
+    end
+
     it "returns http success" do
-      board = create(:board)
-      get :edit, user_id: @user, id: board
+      get :edit, user_id: @user, id: @board
       expect(response).to be_success
     end
 
     it "assigns the requested board to @board" do
-      board = create(:board)
-      get :edit, user_id: @user, id: board
-      expect(assigns(:board)).to eq board
+      get :edit, user_id: @user, id: @board
+      expect(assigns(:board)).to eq @board
     end
 
     it "renders the :edit template" do
-      board = create(:board)
-      get :edit, user_id: @user, id: board
+      get :edit, user_id: @user, id: @board
       expect(response).to render_template :edit
     end
   end
 
   describe "PATCH 'update'" do
     before :each do
-      @board = create(:board, name: "Test Board")
+      @board = create(:board, user: @user, name: "Test Board")
     end
 
     context "valid attributes" do
@@ -142,7 +143,7 @@ describe BoardsController do
 
   describe "DELETE 'destroy'" do
     before :each do
-      @board = create(:board)
+      @board = create(:board, user: @user)
     end
 
     it "deletes the contact" do

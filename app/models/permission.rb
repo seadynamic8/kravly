@@ -6,7 +6,7 @@ class Permission
 		permit :password_resets, [:new, :create, :edit, :update]
 		permit :users, [:new, :create, :boards, :ideas]
 		permit :boards, [:show]
-		permit :ideas, [:show]
+		permit :ideas, [:index, :show]
 		if user
 			permit :users, [:edit, :update, :destroy, :settings] do |u|
 				u == user
@@ -18,6 +18,9 @@ class Permission
 			permit :ideas, [:new, :create]
 			permit :ideas, [:edit, :update, :destroy] do |idea|
 				idea.user == user
+			end
+			permit :ideas, [:vote] do |idea|
+				idea.user != user
 			end
 			permit :comments, [:create]
 			permit :comments, [:edit, :update] do |comment|
