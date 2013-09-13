@@ -50,3 +50,11 @@ test:
   pool: 5
   username: wishproto
   password: happy123
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: wishproto_production
+  pool: 5
+  username: wishproto
+  password:
