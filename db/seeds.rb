@@ -62,7 +62,8 @@ require 'faker'
 
 ideas = Idea.all
 ideas.each_with_index do |idea, index|
-	idea.title = "Idea-#{index}"
+	idea.slug = nil
+	# idea.title = "Idea-#{index}"
 	idea.save!
 end
 

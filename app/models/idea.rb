@@ -24,7 +24,7 @@ class Idea < ActiveRecord::Base
 	belongs_to :board
 
 	include FriendlyId
-	friendly_id :title, use: [:slugged, :history]
+	friendly_id :slug_candidates, use: [:slugged, :history]
 
 	before_save :sanitize_video_url, if: :video_url?
 
@@ -50,6 +50,12 @@ class Idea < ActiveRecord::Base
 
 	def user
 		board.user
+	end
+
+	def slug_candidates
+		[ :title,
+			[:id, :title]
+		]
 	end
 
 	def self.text_search(query)
