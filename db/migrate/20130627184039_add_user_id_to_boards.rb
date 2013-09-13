@@ -1,5 +1,5 @@
 class AddUserIdToBook < ActiveRecord::Migration
   def change
-  	add_reference :books, :user, index: true
+  	add_reference :boards, :user, index: true
   end
 end
