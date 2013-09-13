@@ -67,8 +67,7 @@ class Idea < ActiveRecord::Base
 	end
 
 	def should_generate_new_friendly_id?
-		# new_record? || name.blank? || name_changed?
-		true
+		new_record? || name.blank? || name_changed?
 	end
 
 	private
