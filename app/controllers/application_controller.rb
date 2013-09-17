@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :authorize
+  # before_action :settings_setup
 
   protected
 
@@ -33,5 +34,11 @@ class ApplicationController < ActionController::Base
 
     delegate :permit?, to: :current_permission
     helper_method :permit?
+
+    # def settings_setup
+    #   @settings[:title] = ENV['SITE_TITLE']
+    #   @settings[:tagline] = ENV['SITE_TAGLINE']
+    #   @settings[:email] = ENV['SITE_EMAIL']
+    # end
 
 end

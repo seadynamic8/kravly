@@ -1,6 +1,7 @@
 class IdeasController < ApplicationController
 	before_action :current_resource, only: [:show, :edit, :update, :destroy, :vote]
 
+  # Search is using this right now
   def index
     @ideas = Idea.text_search(params[:query]).page(params[:page]).per_page(9)
   end

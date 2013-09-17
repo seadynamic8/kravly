@@ -1,10 +1,12 @@
+<% title "Reset Password" %>
+
 <div class="row">
 	<div class="large-6 large-centered columns">
 		<%= form_for @user, url: password_reset_path(params[:id]) do |f| %>
 			<%= error_messages_for(@user) %>
 
 			<fieldset>
-				<legend>Reset Password</legend>
+				<legend><%= yield(:title) %></legend>
 
 				<div class="row">
 					<div class="large-2 columns">

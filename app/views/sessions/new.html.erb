@@ -1,8 +1,10 @@
+<% title "Login" %>
+
 <div class="row">
 	<div class="large-6 large-centered columns">
 		<%= form_tag sessions_path do |f| %>
 			<fieldset>
-				<legend>Login</legend>
+				<legend><%= yield(:title) %></legend>
 
 				<div class="row">
 					<div class="large-12 columns">

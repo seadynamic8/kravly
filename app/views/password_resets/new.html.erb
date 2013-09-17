@@ -1,8 +1,10 @@
+<% title "Reset Password" %>
+
 <div class="row">
 	<div class="large-6 large-centered columns">
 		<%= form_tag password_resets_path, method: :post do |f| %>
 			<fieldset>
-				<legend>Reset Password</legend>
+				<legend><%= yield(:title) %></legend>
 
 				<div class="row">
 					<div class="large-12 columns">
