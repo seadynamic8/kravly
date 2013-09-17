@@ -14,8 +14,11 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+pubic/uploads
+
 .zeus.sock
 
 # Ignore application configuration
 /config/application.yml
+
 .env

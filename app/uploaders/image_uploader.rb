@@ -27,7 +27,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
   def default_url
-    "http://www.placehold.it/315x175"
+    "https://s3.amazonaws.com/wishproto/default-background.png"
   end
 
   # Process files as they are uploaded:
