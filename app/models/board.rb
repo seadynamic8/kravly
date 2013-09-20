@@ -21,7 +21,7 @@ class Board < ActiveRecord::Base
 
 	normalize_attributes :name, :description
 
-	validates :name, presence:true, uniqueness: true, length: { maximum: 255 }
+	validates :name, presence:true, uniqueness: { scope: :user }, length: { maximum: 255 }
 
 	after_validation :move_friendly_id_error_to_name
 

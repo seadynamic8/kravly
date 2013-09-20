@@ -2,62 +2,169 @@ require 'spec_helper'
 
 feature "Idea Management" do
 
-	#In order to see ideas
-	#As a user
-	#I want to be able to manage my ideas
+	context "as a guest" do
 
-	scenario "create a new idea as a member" do
-		user = create(:user_with_boards, admin: false)
-		log_in user
-		visit root_url
-		within('.top-bar-section') do
-			click_on "Idea" #Add New Idea
+		scenario "cannot edit idea" do
+			idea = create(:idea, title: "Old Title")
+			visit edit_idea_path(idea)
+			expect(page).to have_content('Please login.')
 		end
-		fill_in "Title", with: "FakeTitle"
-		fill_in "idea_content", with: "FakeContent"
-		click_on "Create Idea"
-		expect(page).to have_content("Idea was created.")
-		expect(page).to have_content("FakeTitle")
 	end
 
-	scenario "cannot edit idea as a guest" do
-		idea = create(:idea, title: "Old Title")
-		visit edit_idea_path(idea)
-		expect(page).to have_content('Please login.')
+	context "as a member" do
+
+		let(:user) { create(:user) }
+		let(:board) { create(:board, user: user) }
+		let(:idea) { create(:idea, board: board) }
+		before(:each) { log_in user }
+
+		scenario "ads a new idea with no initial boards will redirect to board#new" do
+			within('.top-bar-section') { click_on "Idea" }
+			expect(current_path).to eq new_user_board_path(user)
+			expect(page).to have_content("Please create a board first.")
+		end
+
+		scenario "add a new idea" do
+			board
+			expect {
+				within('.top-bar-section') { click_on "Idea" }
+				fill_in "Title", with: "FakeTitle"
+				fill_in "idea_content", with: "FakeContent"
+				click_on "Create Idea"
+			}.to change(Idea, :count).by(1)
+			idea = Idea.last
+			expect(current_path).to eq idea_path(idea)
+			expect(page).to have_content("Idea was created.")
+			expect(page).to have_content("FakeTitle")
+		end
+
+		scenario "doesn't add a new idea without invalid attributes" do
+			board
+			within('.top-bar-section') { click_on "Idea" }
+			click_on "Create Idea"
+			expect(current_path).to eq ideas_path
+			expect(page).to have_css('div.alert')
+		end
+
+		scenario "cancel add goes back to previous page" do
+			within('.top-bar-section') { click_on "Idea" }
+			click_link "Cancel"
+			expect(current_url).to eq root_url
+
+			visit boards_user_path(user)
+			within('.top-bar-section') { click_on "Idea" }
+			click_link "Cancel"
+			expect(current_path).to eq boards_user_path(user)
+		end
+
+		scenario "edit idea from users#ideas page" do
+			idea = create(:idea, board: board, title: "Old Title")
+			click_link "Your Ideas"
+			within("#idea-#{idea.id}") { click_link "Edit" }
+			fill_in "Title", with: "New Title"
+			click_button "Update Idea"
+			idea.reload
+			expect(idea.title).to eq "New Title"
+		end
+
+		scenario "edit idea from ideas#show page" do
+			idea = create(:idea, board: board, title: "Old Title")
+			click_link "Your Ideas"
+			click_link "#{idea.title}"
+			click_link "Edit Idea"
+			fill_in "Title", with: "New Title"
+			click_button "Update Idea"
+			idea.reload
+			expect(idea.title).to eq "New Title"
+		end
+
+		scenario "edit idea from boards#show page" do
+			idea = create(:idea, board: board, title: "Old Title")
+			click_link "Your Boards"
+			click_link "#{board.name}"
+			within("#idea-#{idea.id}") { click_link "Edit" }
+			fill_in "Title", with: "New Title"
+			click_button "Update Idea"
+			idea.reload
+			expect(idea.title).to eq "New Title"
+		end
+
+		scenario "cancel edit goes back to previous page" do
+			visit idea_path(idea)
+			click_link "Edit Idea"
+			click_link "Cancel"
+			expect(current_path).to eq idea_path(idea)
+
+			visit user_board_path(user, board)
+			within("#idea-#{idea.id}") { click_link "Edit" }
+			click_link "Cancel"
+			expect(current_path).to eq user_board_path(user, board)
+		end
+
+		scenario "edit user's own idea to be authorized" do
+			visit edit_idea_path(idea)
+			expect(page).to_not have_content("Please login.")
+		end
+
+		scenario "deletes idea from ideas#show page" do
+			idea
+			expect {
+				click_link "Your Ideas"
+				click_link "#{idea.title}"
+				click_link "Delete"
+			}.to change(Idea, :count).by(-1)
+			expect(current_path).to eq user_board_path(user, board)
+			expect(page).to have_content "Idea was deleted."
+		end
+
+		scenario "deletes idea from users#ideas page" do
+			idea
+			expect {
+				click_link "Your Ideas"
+				within("#idea-#{idea.id}") { click_link "Delete" }
+			}.to change(Idea, :count).by(-1)
+			expect(current_path).to eq user_board_path(user, board)
+			expect(page).to have_content "Idea was deleted."
+		end
+
+		scenario "deletes idea from boards#show page" do
+			idea
+			expect {
+				visit user_board_path(user, board)
+				within("#idea-#{idea.id}") { click_link "Delete" }
+			}.to change(Idea, :count).by(-1)
+			expect(current_path).to eq user_board_path(user, board)
+			expect(page).to have_content "Idea was deleted."
+		end
+			
 	end
 
-	scenario "updates the idea as admin" do
-		user = create(:user, admin: true)
-		idea = create(:idea, title: "Old Title")
-		log_in user
-		visit idea_path(idea)
-		expect(page).to have_content("Old Title")
-		click_on "Edit Idea"
-		fill_in "Title", with: "New Title"
-		click_on "Update Idea"
-		expect(page).to have_content("Idea was updated.")
-		expect(page).to have_content("New Title")
-		expect(page).to_not have_content("Old Title")
-	end
+	context "as a admin" do
 
-	scenario "destroys idea as admin" do
-		user = create(:user, admin: true)
-		idea = create(:idea, title: "Oops")
-		log_in user
-		visit idea_path(idea)
-		expect(page).to have_content("Oops")
-		click_on "Delete"
-		expect(page).to have_content("Idea was deleted.")
-		expect(page).to_not have_content("Oops")
-	end
+		let(:user) { create(:user, admin: true) }
 
-	scenario "edit owned idea as member" do
-		user = create(:user)
-		board = create(:board, user: user)
-		idea = create(:idea, board: board)
-		log_in user
-		visit edit_idea_path(idea)
-		expect(page).to_not have_content("Please login.")
+		scenario "updates the idea" do
+			idea = create(:idea, title: "Old Title")
+			log_in user
+			visit idea_path(idea)
+			expect(page).to have_content("Old Title")
+			click_on "Edit Idea"
+			fill_in "Title", with: "New Title"
+			click_on "Update Idea"
+			expect(page).to have_content("Idea was updated.")
+			expect(page).to have_content("New Title")
+			expect(page).to_not have_content("Old Title")
+		end
+
+		scenario "destroys idea" do
+			idea = create(:idea, title: "Oops")
+			log_in user
+			visit idea_path(idea)
+			expect(page).to have_content("Oops")
+			click_on "Delete"
+			expect(page).to have_content("Idea was deleted.")
+			expect(page).to_not have_content("Oops")
+		end
 	end
 
 end

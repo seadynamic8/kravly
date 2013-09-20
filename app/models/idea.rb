@@ -37,6 +37,7 @@ class Idea < ActiveRecord::Base
 	validates :votes, numericality: { only_integer: true,
 																		greater_than_or_equal_to: 0 }
 	validates :image, file_size: { maximum: 2.megabytes.to_i }
+	validates :board, presence: true
 
 	after_validation :move_friendly_id_error_to_name
 

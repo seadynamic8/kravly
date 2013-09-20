@@ -152,9 +152,9 @@ describe BoardsController do
       }.to change(Board, :count).by(-1)
     end
 
-    it "redirects to users#show, board listing" do
+    it "redirects to users#boards listing" do
       delete :destroy, user_id: @user, id: @board
-      expect(response).to redirect_to user_path((assigns(:board)).user)
+      expect(response).to redirect_to boards_user_path((assigns(:board)).user)
     end
   end
 end

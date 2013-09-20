@@ -59,8 +59,12 @@
 		<%= f.label :board, class: "left inline" %>
 	</div>
 	<div class="large-9 columns">
-		<%= f.select :board_id, 
-				@boards.map { |board| [board.name, board.id] } %>
+		<% if @boards.blank? %>
+			<%= text_field_tag :board_name, nil, placeholder: "Board Name" %>
+		<% else %>
+			<%= f.select :board_id, 
+					@boards.map { |board| [board.name, board.id] } %>
+		<% end %>
 	</div>
 </div>
 
@@ -74,7 +78,7 @@
 	<div class="large-5 large-centered columns">
 		<%= f.submit class: "button" %>
 		<% if params[:action] == 'new' %>
-			<%= link_to "Cancel", @return_to || user_path(current_user), class: "button" %>
+			<%= link_to "Cancel", @return_to || boards_user_path(current_user), class: "button" %>
 		<% else %>
 			<%= link_to "Cancel", @return_to || idea_path(@idea), class: "button" %>
 		<% end %>

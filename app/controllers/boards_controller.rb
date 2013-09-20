@@ -38,7 +38,7 @@ class BoardsController < ApplicationController
 
   def destroy
     @board.destroy
-    redirect_to @board.user, notice: "Board was deleted."
+    redirect_to boards_user_path(@board.user), notice: "Board was deleted."
   end
 
   private

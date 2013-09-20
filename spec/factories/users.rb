@@ -22,7 +22,11 @@ FactoryGirl.define do
     end
 
     factory :invalid_user do
-        email nil
+      email nil
+    end
+
+    factory :admin do
+      admin true
     end
   end
 end

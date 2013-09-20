@@ -24,13 +24,18 @@ class IdeasController < ApplicationController
   end
 
   def new
-    @idea = Idea.new
-    @boards = current_user.boards
-    store_location
+    if Board.where(user_id: current_user).count == 0
+      redirect_to new_user_board_path(current_user), notice: "Please create a board first."
+    else
+      @idea = Idea.new
+      @boards = current_user.boards
+      store_location
+    end
   end
 
   def create
     process_video
+
     @idea = Idea.new(idea_params)
     if @idea.save
       redirect_to @idea, notice: "Idea was created."
@@ -74,7 +79,7 @@ class IdeasController < ApplicationController
 
     def idea_params
       params.require(:idea).permit(:title, :content, :votes, 
-        :image, :image_cache, :video_url, :board_id)
+        :image, :image_cache, :video_url, :remote_image_url, :board_id)
     end
 
     def process_video

@@ -8,7 +8,7 @@
 			<ul class="large-block-grid-3">
 	<% end %>
 			
-				<li>
+				<li id="board-<%= "#{board.id}" %>">
 					<h5><%= link_to board.name, [@user, board] %></h5>
 
 					<% if board.ideas.count > 0 %>
@@ -19,21 +19,24 @@
 						<ul class="large-block-grid-3">
 							<li>
 								<%= if board.ideas.second
-											link_to (image_tag board.ideas.second.image.small_thumb.url), "#"
+											link_to (image_tag board.ideas.second.image.small_thumb.url), 
+											user_board_path(@user, board)
 										else
 											image_tag "http://placehold.it/90x60"
 										end %>
 							</li>
 							<li>
 								<%= if board.ideas.third
-											link_to (image_tag board.ideas.third.image.small_thumb.url), "#"
+											link_to (image_tag board.ideas.third.image.small_thumb.url), 
+											user_board_path(@user, board)
 										else
 											image_tag "http://placehold.it/90x60"
 										end %>
 							</li>
 							<li>
 								<%= if board.ideas.fourth
-											link_to (image_tag board.ideas.fourth.image.small_thumb.url), "#"
+											link_to (image_tag board.ideas.fourth.image.small_thumb.url), 
+											user_board_path(@user, board)
 										else
 											image_tag "http://placehold.it/90x60"
 										end %>

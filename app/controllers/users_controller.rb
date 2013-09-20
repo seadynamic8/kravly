@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    store_location
   end
 
   def create
@@ -17,11 +18,12 @@ class UsersController < ApplicationController
   end
 
   def edit
+    store_location
   end
 
   def update
     if @user.update_attributes(user_params)
-      redirect_to boards_user_path(@user)
+      redirect_to boards_user_path(@user), notice: "User was updated."
     else
       render :edit
     end

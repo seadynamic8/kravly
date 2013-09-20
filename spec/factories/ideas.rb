@@ -22,7 +22,7 @@ FactoryGirl.define do
     # end
 
     factory :invalid_idea do
-        title nil
+  		title nil
     end
   end
 end

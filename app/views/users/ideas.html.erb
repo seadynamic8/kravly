@@ -8,7 +8,7 @@
 			<ul class="large-block-grid-3">
 	<% end %>
 
-				<li>
+				<li id="idea-<%= "#{idea.id}" %>">
 					<h5><%= link_to idea.title, idea_path(idea) %></h5>
 					<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %><br>
 
