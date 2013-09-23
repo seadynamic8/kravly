@@ -20,7 +20,6 @@ class CommentsController < ApplicationController
 
 	def update
 		@comment = Comment.find(params[:id])
-		logger.debug "Comment: #{params[:comment]}"
 		if @comment.update_attributes(comment_params)
 			respond_to do |format|
 				format.html { redirect_to @comment.commentable }

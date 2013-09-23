@@ -33,18 +33,14 @@
 	text-align: center;
 }
 
-.idea-block {
+.block {
 	border: 1px solid #ddd;
 	color: #444;
 
 	h5 {
-		#color: inherit;
 		text-align: center;
+		margin: 0;
 	}
-
-	// img {
-	// 	width: 302px;
-	// }
 
 	.idea-bottom {
 		padding: 5px 10px 5px 10px;
@@ -222,7 +218,7 @@
 		float: left;
 	}
 
-	.comment-body {
+	.comment-text {
 		clear: both;
 	}
 

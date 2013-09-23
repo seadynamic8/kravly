@@ -9,53 +9,56 @@
 	<% end %>
 			
 				<li id="board-<%= "#{board.id}" %>">
-					<h5><%= link_to board.name, [@user, board] %></h5>
+					<div class="block">
+						<h5><%= link_to board.name, [@user, board] %></h5>
 
-					<% if board.ideas.count > 0 %>
+						<% if board.ideas.count > 0 %>
 
-						<%= link_to (image_tag board.ideas.first.image.thumb.url), 
-								user_board_path(@user, board) %>
+							<%= link_to (image_tag board.ideas.first.image.thumb.url), 
+									user_board_path(@user, board) %>
+							
+							<ul class="large-block-grid-3">
+								<li>
+									<%= if board.ideas.second
+												link_to (image_tag board.ideas.second.image.small_thumb.url), 
+												user_board_path(@user, board)
+											else
+												image_tag "https://s3.amazonaws.com/wishproto/board-mini-background.png"
+											end %>
+								</li>
+								<li>
+									<%= if board.ideas.third
+												link_to (image_tag board.ideas.third.image.small_thumb.url), 
+												user_board_path(@user, board)
+											else
+												image_tag "https://s3.amazonaws.com/wishproto/board-mini-background.png"
+											end %>
+								</li>
+								<li>
+									<%= if board.ideas.fourth
+												link_to (image_tag board.ideas.fourth.image.small_thumb.url), 
+												user_board_path(@user, board)
+											else
+												image_tag "https://s3.amazonaws.com/wishproto/board-mini-background.png"
+											end %>
+								</li>
+							</ul>
 
-						<ul class="large-block-grid-3">
-							<li>
-								<%= if board.ideas.second
-											link_to (image_tag board.ideas.second.image.small_thumb.url), 
-											user_board_path(@user, board)
-										else
-											image_tag "http://placehold.it/90x60"
-										end %>
-							</li>
-							<li>
-								<%= if board.ideas.third
-											link_to (image_tag board.ideas.third.image.small_thumb.url), 
-											user_board_path(@user, board)
-										else
-											image_tag "http://placehold.it/90x60"
-										end %>
-							</li>
-							<li>
-								<%= if board.ideas.fourth
-											link_to (image_tag board.ideas.fourth.image.small_thumb.url), 
-											user_board_path(@user, board)
-										else
-											image_tag "http://placehold.it/90x60"
-										end %>
-							</li>
-						</ul>
+						<% else %>
 
-					<% else %>
+							<%= image_tag "https://s3.amazonaws.com/wishproto/board-background.png" %>
 
-						<%= image_tag "http://placehold.it/315x245" %>
+						<% end %>
 
-					<% end %>
-
-					<% if permit? "boards", "edit", board %>
-						<%= link_to "Edit", edit_user_board_path(@user, board), class: "tiny button" %>
-					<% end %>
-					<% if permit? "boards", "destroy", board %>
-						<%= link_to "Delete", user_board_path(@user, board), method: :delete, 
-								data: { confirm: "Are you sure?" },	class: "tiny button" %>
-					<% end %>
+						<% if permit? "boards", "edit", board %>
+							<%= link_to "Edit", edit_user_board_path(@user, board), class: "tiny button" %>
+						<% end %>
+						<% if permit? "boards", "destroy", board %>
+							<%= link_to "Delete", user_board_path(@user, board), method: :delete, 
+									data: { confirm: "Are you sure?" },	class: "tiny button" %>
+						<% end %>
+					</div>
+					
 
 				</li>
 	

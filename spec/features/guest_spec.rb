@@ -93,6 +93,15 @@ feature "Guest Actions" do
 			expect(page).to have_content user.fullname
 		end
 
+		scenario "search for idea returns matched result" do
+			create(:idea, board: board, title: "Cool Idea")
+			visit root_url
+			fill_in "query", with: "Cool Idea"
+			click_button "Search"
+			expect(current_path).to eq ideas_path
+			expect(page).to have_content "Cool Idea"
+		end
+
 	end
 
 end

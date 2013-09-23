@@ -1,19 +1,19 @@
 <fieldset>
 	<legend>Comments</legend>
 
-	<div class="comment-form" data-no-turbolink>
-		<%= form_for comment, remote: true do |f| %>
+	<% if current_user.nil? %>
 
-			<%= f.hidden_field :commentable_id, value: comment.commentable_id %>
-			<%= f.hidden_field :commentable_type, value: comment.commentable_type %>
+		<h6 class="subheader">Please login or signup to comment.</h6>
+		<%= link_to "Login", login_path, class: "small button" %>
+		<%= link_to "Signup", new_user_path, class: "small button" %>
 
-			<% if current_user.nil? %>
+	<% else %>
 
-				<h6 class="subheader">Please login or signup to comment.</h6>
-				<%= link_to "Login", login_path, class: "small button" %>
-				<%= link_to "Signup", new_user_path, class: "small button" %>
+		<div class="comment-form" data-no-turbolink>
+			<%= form_for comment, remote: true do |f| %>
 
-			<% else %>
+				<%= f.hidden_field :commentable_id, value: comment.commentable_id %>
+				<%= f.hidden_field :commentable_type, value: comment.commentable_type %>
 				
 				<div class="row collapse">
 					<div class="large-1 columns">
@@ -30,7 +30,6 @@
 				</div>
 
 			<% end %>
-
-		<% end %>
-	</div>
+		</div>
+	<% end %>
 </fieldset>
