@@ -32,7 +32,5 @@ module Wishproto
     end
 
     config.compass.images_dir = 'app/assets/images'
-
-    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
   end
 end

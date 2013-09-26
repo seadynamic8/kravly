@@ -59,7 +59,9 @@ Wishproto::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  # config.assets.precompile += %w( search.js )
+  # config.assets.precompile += %w( search.js
+  config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+  config.assets.enabled = true
   config.assets.precompile += Ckeditor.assets
   config.assets.precompile += %w(ckeditor/*)
 

@@ -14,7 +14,7 @@ task "assets:precompile" => :environment do
     # Create a filename relative to public/assets
     # (example) public/assets/ckeditor/config.js => ckeditor/config.js
     filename = nondigest.sub 'public/assets/', ''
-    filename = filename.sub /.gz$/, ''          # Remove .gz for correct asset checking
+    filename = filename.sub(/.gz$/, '')          # Remove .gz for correct asset checking
 
     # Fetch the latest digest for this file from assets
     latest_digest = Rails.application.assets.find_asset(filename).try(:digest)
