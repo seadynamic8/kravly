@@ -17,9 +17,11 @@ Wishproto::Application.routes.draw do
     get 'vote', on: :member
   end
 
+  get ':id(.:format)', to: "users#boards", as: :user
+
   #Keep on bottom, these will catch all
   resources :users, only: [:index, :new, :create]
-  resources :users, path: '/', except: [:index, :new, :create]
+  resources :users, path: '/', except: [:index, :new, :create, :show]
   resources :users, path: '/', only: [] do
     member do
       get 'settings'
@@ -29,4 +31,5 @@ Wishproto::Application.routes.draw do
     resources :boards, only: [:index, :new, :create]
     resources :boards, path: '/', except: [:index, :new, :create]
   end
+
 end

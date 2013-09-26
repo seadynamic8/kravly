@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      redirect_to boards_user_path(@user), notice: "User was updated."
+      redirect_to boards_user_path(@user), notice: "Your account was updated."
     else
       render :edit
     end
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     UserMailer.goodbye_message(@user).deliver
     @user.destroy
     session[:user_id] = nil
-    redirect_to root_url, notice: "User was deleted."
+    redirect_to root_url, notice: "Your account was deleted. Sorry to see you go :("
   end
 
   def settings

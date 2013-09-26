@@ -52,7 +52,7 @@ feature 'User Management' do
 		user.reload
 		expect(user.email).to eq "updated@example.com"
 		expect(current_path).to eq boards_user_path(user)
-		expect(page).to have_content "User was updated."
+		expect(page).to have_content "Your account was updated."
 		expect(page).to have_content user.fullname
 	end
 
@@ -90,6 +90,6 @@ feature 'User Management' do
 			click_link "Delete Account"
 		}.to change(User, :count).by(-1)
 		expect(current_url).to eq root_url
-		expect(page).to have_content "User was deleted."
+		expect(page).to have_content "Your account was deleted."
 	end
 end

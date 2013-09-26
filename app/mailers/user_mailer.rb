@@ -8,16 +8,16 @@ class UserMailer < ActionMailer::Base
   #
   def signup_confirmation(user)
     @user = user
-    mail to: user.email, subject: "Signup Confirmation"
+    mail to: user.email, subject: "kravly - Welcome!"
   end
 
   def goodbye_message(user)
     @user = user
-    mail to: user.email, subject: "Goodbye :("
+    mail to: user.email, subject: "kravly - Goodbye :("
   end
 
   def password_reset(user)
     @user = user
-    mail to: user.email, subject: "Password Reset"
+    mail to: user.email, subject: "kravly - Password Reset"
   end
 end
