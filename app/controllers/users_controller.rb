@@ -42,17 +42,13 @@ class UsersController < ApplicationController
   def boards
     @boards = @user.boards.page(params[:page]).per_page(9)
 
-    if request.path != boards_user_path(@user)
-      redirect_to boards_user_path(@user), status: :moved_permanently
-    end
+    # if request.path != boards_user_path(@user)
+    #   redirect_to boards_user_path(@user), status: :moved_permanently
+    # end
   end
 
   def ideas
     @ideas = @user.ideas.page(params[:page]).per_page(9)
-
-    if request.path != ideas_user_path(@user)
-      redirect_to ideas_user_path(@user), status: :moved_permanently
-    end
   end
 
   private

@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
 	has_many :boards, dependent: :destroy
 
 	include FriendlyId
-	friendly_id :username, use: [:slugged, :history]
+	friendly_id :username, use: :slugged
 
 	mount_uploader :avatar, AvatarUploader
 

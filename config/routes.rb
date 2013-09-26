@@ -17,7 +17,7 @@ Wishproto::Application.routes.draw do
     get 'vote', on: :member
   end
 
-  get ':id(.:format)', to: "users#boards", as: :user
+  get ':id(.:format)', to: "users#boards"
 
   #Keep on bottom, these will catch all
   resources :users, only: [:index, :new, :create]
