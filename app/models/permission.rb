@@ -1,7 +1,7 @@
 class Permission
 
 	def initialize(user)
-		permit :public, [:index]
+		permit :public, [:index, :about]
 		permit :sessions, [:new, :create, :destroy]
 		permit :password_resets, [:new, :create, :edit, :update]
 		permit :users, [:new, :create, :boards, :ideas]
