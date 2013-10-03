@@ -67,6 +67,14 @@ feature "Board Management" do
 			expect(board.name).to eq "New Board Name"
 		end
 
+		scenario "edits a board without a blank board name" do
+			board = create(:board, user: user)
+			visit edit_user_board_path(user, board)
+			fill_in "Name", with: ""
+			click_button "Update Board"
+			expect(page).to have_css 'div.alert'
+		end
+
 		scenario "goes back to previous page if cancel editing a board" do
 			board = create(:board, user: user)
 			click_link "Your Boards"

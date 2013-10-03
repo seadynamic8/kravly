@@ -7,23 +7,25 @@
 	</div>
 </div>
 
-<div class="row">
-	<div class="large-2 columns">
-		<%= f.label :password, "Password*", class: "left inline" %>
+<% if params[:action] == 'new' || params[:action] == 'create' %>
+	<div class="row">
+		<div class="large-2 columns">
+			<%= f.label :password, "Password*", class: "left inline" %>
+		</div>
+		<div class="large-9 columns">
+			<%= f.password_field :password, placeholder: "Password" %>
+		</div>
 	</div>
-	<div class="large-9 columns">
-		<%= f.password_field :password, placeholder: "Password" %>
-	</div>
-</div>
 
-<div class="row">
-	<div class="large-2 columns">
-		<%= f.label :password_confirmation, "Password Confirmation*", class: "left inline" %>
+	<div class="row">
+		<div class="large-2 columns">
+			<%= f.label :password_confirmation, "Password Confirmation*", class: "left inline" %>
+		</div>
+		<div class="large-9 columns">
+			<%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
+		</div>
 	</div>
-	<div class="large-9 columns">
-		<%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
-	</div>
-</div>
+<% end %>
 
 <% if params[:action] == 'edit' || params[:action] == 'update' %>
 	<div class="row">

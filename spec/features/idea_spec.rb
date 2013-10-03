@@ -109,6 +109,14 @@ feature "Idea Management" do
 			expect(idea.title).to eq "New Title"
 		end
 
+		scenario "edit idea without title" do
+			visit edit_idea_path(idea)
+			fill_in "Title", with: ""
+			click_button "Update Idea"
+			expect(page).to have_css 'div.alert'
+			expect(page).to have_css "input[value='#{idea.votes}']#idea_votes"
+		end
+
 		scenario "cancel edit goes back to previous page" do
 			visit idea_path(idea)
 			click_link "Edit Idea"

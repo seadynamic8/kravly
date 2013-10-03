@@ -41,6 +41,8 @@ feature 'User Management' do
 		}.to_not change(User, :count).by(1)
 		expect(current_path).to eq users_path
 		expect(page).to have_css 'div.alert'
+		expect(page).to have_css '#user_password'
+		expect(page).to have_css '#user_password_confirmation'
 		expect(page).to have_css 'input[type="hidden"]#user_display'
 	end
 
@@ -70,8 +72,6 @@ feature 'User Management' do
 		log_in user
 		click_link "Settings"
 		click_link "Edit Account"
-		fill_in "Password", with: user.password
-		fill_in "Password Confirmation", with: user.password
 		fill_in "Email", with: "updated@example.com"
 		click_button "Update User"
 		user.reload
@@ -81,11 +81,12 @@ feature 'User Management' do
 		expect(page).to have_content user.display_name
 	end
 
-	scenario "edit a member account without password & password confirmation" do
+	scenario "edit a member account without email" do
 		user = create(:user, email: "original@example.com")
 		log_in user
 		click_link "Settings"
 		click_link "Edit Account"
+		fill_in "Email", with: ""
 		click_button "Update User"
 		user.reload
 		expect(user.email).to eq "original@example.com"
@@ -124,8 +125,6 @@ feature 'User Management' do
 		user = create(:user)
 		log_in user
 		visit edit_user_path(user)
-		fill_in "Password", with: user.password
-		fill_in "Password Confirmation", with: user.password
 		select "Email", from: "user_display"
 		click_button "Update User"
 		within('.user-header-user') { expect(page).to have_content user.email }

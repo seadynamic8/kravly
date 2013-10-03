@@ -27,9 +27,9 @@ describe Board do
 
 		it { should validate_presence_of(:name) }
 		it { should validate_uniqueness_of(:name) }
-		it "is invalid with a name greater than 255 length" do
-			expect(build(:board, name: "a" * 256)).to have(1).errors_on(:name)
-		end
+		it { should ensure_length_of(:name).is_at_most(30) }
+
+		it { should ensure_length_of(:description).is_at_most(255) }
 	end
 
 	describe "functions" do

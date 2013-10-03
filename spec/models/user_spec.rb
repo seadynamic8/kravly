@@ -41,7 +41,7 @@ describe User do
 		end
 
 		#it { should validate_uniqueness_of(:username) } #Bug in shoulda for Rails 4
-		it { should ensure_length_of(:username).is_at_most(255) }
+		it { should ensure_length_of(:username).is_at_most(30) }
 
 
 		it { should validate_presence_of(:email) }
@@ -57,8 +57,8 @@ describe User do
 		# 	end
 		# end
 
-		it { should ensure_length_of(:firstname).is_at_most(255) }
-		it { should ensure_length_of(:lastname).is_at_most(255) }
+		it { should ensure_length_of(:firstname).is_at_most(35) }
+		it { should ensure_length_of(:lastname).is_at_most(35) }
 
 		it { should validate_presence_of(:password) }
 		it { should ensure_length_of(:password).
@@ -68,6 +68,9 @@ describe User do
 		it { should validate_presence_of(:password_confirmation) }
 
 		# it "in invalid with avatar being greater than 2MB in size"
+
+		it { should ensure_length_of(:location).is_at_most(30) }
+		it { should ensure_length_of(:website).is_at_most(30) }
 
 		it { should validate_presence_of(:display) }
 	end

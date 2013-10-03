@@ -32,9 +32,7 @@ describe Idea do
 
 		it { should validate_presence_of(:title) }
 		it { should validate_uniqueness_of(:title) }
-		it "is invalid with a name greater than 255 length" do
-			expect(build(:idea, title: "a" * 256)).to have(1).errors_on(:title)
-		end
+		it { should ensure_length_of(:title).is_at_most(30) }
 
 		it { should validate_presence_of(:content) }
 
@@ -44,6 +42,8 @@ describe Idea do
 		end
 
 		it { should validate_presence_of(:board) }
+
+		it { should ensure_length_of(:contribution_level).is_at_most(30) }
 	end
 
 	describe "functions" do
