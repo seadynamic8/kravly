@@ -51,6 +51,7 @@ class IdeasController < ApplicationController
   end
 
   def update
+    logger.debug "idea_params = #{idea_params}"
     process_video
     if @idea.update_attributes(idea_params)
       redirect_to @idea, notice: "Idea was updated."
@@ -79,7 +80,8 @@ class IdeasController < ApplicationController
 
     def idea_params
       params.require(:idea).permit(:title, :content, :votes, 
-        :image, :image_cache, :video_url, :remote_image_url, :board_id)
+        :image, :image_cache, :video_url, :remote_image_url, :board_id,
+        :contribution_level)
     end
 
     def process_video

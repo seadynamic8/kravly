@@ -24,6 +24,10 @@
 				</p>
 				<div class="content" data-section-content>
 					<p><%= raw @idea.content %></p>
+					<% if @idea.contribution_level.present? %>
+						<hr>
+						<p>Contribution Level: <%= @idea.contribution_level %></p>
+					<% end %>
 				</div>
 			</section>
 			<% if @idea.video_url.present? %>

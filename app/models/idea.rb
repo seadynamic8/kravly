@@ -2,17 +2,18 @@
 #
 # Table name: ideas
 #
-#  id         :integer          not null, primary key
-#  title      :string(255)
-#  content    :text
-#  votes      :integer
-#  created_at :datetime
-#  updated_at :datetime
-#  board_id   :integer
-#  image      :string(255)
-#  video_url  :string(255)
-#  video_type :string(255)
-#  slug       :string(255)
+#  id                 :integer          not null, primary key
+#  title              :string(255)
+#  content            :text
+#  votes              :integer
+#  created_at         :datetime
+#  updated_at         :datetime
+#  board_id           :integer
+#  image              :string(255)
+#  video_url          :string(255)
+#  video_type         :string(255)
+#  slug               :string(255)
+#  contribution_level :string(255)
 #
 
 require 'file_size_validator'
@@ -30,7 +31,7 @@ class Idea < ActiveRecord::Base
 
 	mount_uploader :image, ImageUploader
 
-	normalize_attributes :title, :content
+	normalize_attributes :title, :content, :contribution_level
 
 	validates :title, presence: true, uniqueness: true, length: { maximum: 30 }
 	validates :content, presence: true
@@ -38,6 +39,7 @@ class Idea < ActiveRecord::Base
 																		greater_than_or_equal_to: 0 }
 	validates :image, file_size: { maximum: 2.megabytes.to_i }
 	validates :board, presence: true
+	validates :contribution_level, length: { maximum: 30 }
 
 	after_validation :move_friendly_id_error_to_name
 

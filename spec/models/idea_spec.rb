@@ -2,17 +2,18 @@
 #
 # Table name: ideas
 #
-#  id         :integer          not null, primary key
-#  title      :string(255)
-#  content    :text
-#  votes      :integer
-#  created_at :datetime
-#  updated_at :datetime
-#  board_id   :integer
-#  image      :string(255)
-#  video_url  :string(255)
-#  video_type :string(255)
-#  slug       :string(255)
+#  id                 :integer          not null, primary key
+#  title              :string(255)
+#  content            :text
+#  votes              :integer
+#  created_at         :datetime
+#  updated_at         :datetime
+#  board_id           :integer
+#  image              :string(255)
+#  video_url          :string(255)
+#  video_type         :string(255)
+#  slug               :string(255)
+#  contribution_level :string(255)
 #
 
 require 'spec_helper'
@@ -27,6 +28,7 @@ describe Idea do
 
 		it { should normalize_attribute(:title) }
 		it { should normalize_attribute(:content) }
+		it { should normalize_attribute(:contribution_level) }
 
 		it { should validate_presence_of(:title) }
 		it { should validate_uniqueness_of(:title) }
@@ -40,6 +42,8 @@ describe Idea do
 		it "is invalid with a negative number" do
 			expect(build(:idea, votes: -1)).to have(1).errors_on(:votes)
 		end
+
+		it { should validate_presence_of(:board) }
 	end
 
 	describe "functions" do

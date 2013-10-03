@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="large-2 columns">
-		<%= f.label :title, class: "left inline" %>
+		<%= f.label :title, "Title*", class: "left inline" %>
 	</div>
 	<div class="large-9 columns">
 		<%= f.text_field :title, placeholder: "Title" %>
@@ -44,8 +44,38 @@
 </div>
 
 <div class="row">
+	<div class="large-3 columns">
+		<%= f.label :contribution_level, "Your Contribution Level", class: "left inline" %>
+	</div>
+	<div class="large-9 columns">
+		<!-- <label for="idea_contribution_level_idea_producer_only">
+		<%= f.radio_button :contribution_level, "Idea Producer Only", style: "display: none;" %>
+		<span class="custom radio"></span> Idea Producer Only</label>
+
+		<%= f.radio_button :contribution_level, "Idea Producer and Product Designer" %>
+		<%= f.label :contribution_level, " Idea Producer and Product Designer",
+				value: "idea_producer_and_product_designer" %>
+
+		<label for="idea_contribution_level_founder_of_new_company">
+		<%= f.radio_button :contribution_level, "Founder of New Company" %>
+		 Founder of New Company</label>
+
+		<label for="idea_contribution_level_radio">
+		<%= f.radio_button :contribution_level, nil, id: "idea_contribution_level_radio", 
+			style: "display: none;", checked: radio_checked?(f.object.contribution_level) %>
+		Other: 
+		<%= f.text_field :contribution_level, placeholder: "Please specify" %></label> -->
+
+		<%= f.text_field :contribution_level, 
+				placeholder: "Work on Idea Only, Founder of New Company, etc." %>
+	</div>
+</div>
+
+<br>
+
+<div class="row">
 	<div class="large-2 columns">
-		<%= f.label :workspace, class: "left inline" %>
+		<%= f.label :workspace, "Workspace*", class: "left inline" %>
 	</div>
 	<div class="large-9 columns">
 		<%= f.text_area :content, class: 'ckeditor', placeholder: "Content", style: "min-height: 500px" %>
@@ -56,7 +86,7 @@
 
 <div class="row">
 	<div class="large-2 columns">
-		<%= f.label :board, class: "left inline" %>
+		<%= f.label :board, "Board*", class: "left inline" %>
 	</div>
 	<div class="large-9 columns">
 		<% if @boards.blank? %>

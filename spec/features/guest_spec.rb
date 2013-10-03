@@ -23,6 +23,7 @@ feature "Guest Actions" do
 			expect(page).to have_content idea.votes
 			expect(page).to have_content user.fullname
 			expect(page).to have_content board.name
+			# expect(page).to have_content "Contribution Level"
 			expect(page).to have_content "Comments"
 		end
 
