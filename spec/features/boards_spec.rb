@@ -7,6 +7,13 @@ feature "Board Management" do
 		let(:user) { create(:user) }
 		before(:each) { log_in user }
 
+		scenario "sees add new board page" do
+			visit new_user_board_path(user)
+			expect(page).to have_css '#board_name'
+			expect(page).to have_css '#board_description'
+			expect(page).to have_css 'input[type="hidden"]#board_user_id'
+		end
+
 		scenario "adds a new board" do
 			expect {
 				within('.top-bar-section') { click_link "Board" }

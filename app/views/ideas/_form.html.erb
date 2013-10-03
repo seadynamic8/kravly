@@ -100,7 +100,7 @@
 
 <% if params[:action] == 'new' || params[:action] == 'create' %>
 	<%= hidden_field_tag "idea[votes]", 0 %>
-<% else #edit or update action %>
+<% else #edit action %>
 	<%= hidden_field_tag "idea[votes]", @idea.votes %>
 <% end %>
 

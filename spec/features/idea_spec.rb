@@ -18,6 +18,20 @@ feature "Idea Management" do
 		let(:idea) { create(:idea, board: board) }
 		before(:each) { log_in user }
 
+		scenario "sees add a new idea page" do
+			board
+			visit new_idea_path
+			expect(page).to have_css '#idea_title'
+			expect(page).to have_css '#idea_image'
+			expect(page).to have_css '#idea_remote_image_url'
+			expect(page).to have_css 'input[type="hidden"]#idea_image_cache'
+			expect(page).to have_css '#idea_video_url'
+			expect(page).to have_css '#idea_contribution_level'
+			expect(page).to have_css '#idea_content'
+			expect(page).to have_css '#idea_board_id'
+			expect(page).to have_css 'input[value="0"]#idea_votes'
+		end
+
 		scenario "ads a new idea with no initial boards will redirect to board#new" do
 			within('.top-bar-section') { click_on "Idea" }
 			expect(current_path).to eq new_user_board_path(user)
@@ -44,6 +58,7 @@ feature "Idea Management" do
 			click_on "Create Idea"
 			expect(current_path).to eq ideas_path
 			expect(page).to have_css('div.alert')
+			expect(page).to have_css 'input[value="0"]#idea_votes'
 		end
 
 		scenario "cancel add goes back to previous page" do
@@ -55,6 +70,11 @@ feature "Idea Management" do
 			within('.top-bar-section') { click_on "Idea" }
 			click_link "Cancel"
 			expect(current_path).to eq boards_user_path(user)
+		end
+
+		scenario "sees the edit idea page" do
+			visit edit_idea_path(idea)
+			expect(page).to have_css "input[value='#{idea.votes}']#idea_votes"
 		end
 
 		scenario "edit idea from users#ideas page" do
