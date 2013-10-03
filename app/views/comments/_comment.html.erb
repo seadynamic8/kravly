@@ -11,7 +11,7 @@
 	<% end %>
 
 	<%= image_tag comment.user.avatar.small_profile.url, class: "comment-avatar" %>
-	<h6 class="name"><%= comment.user.fullname %></h6>
+	<h6 class="name"><%= comment.user.display_name %></h6>
 	<p class="comment-text"><%= comment.body %></p>
 	<!-- <%= link_to "Reply", "#" %> -->
 	<!-- <span class="middot">|</span> -->

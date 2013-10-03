@@ -18,6 +18,7 @@
 #  about                  :text
 #  location               :string(255)
 #  website                :string(255)
+#  display                :integer
 #
 
 require 'spec_helper'
@@ -67,21 +68,11 @@ describe User do
 		it { should validate_presence_of(:password_confirmation) }
 
 		# it "in invalid with avatar being greater than 2MB in size"
+
+		it { should validate_presence_of(:display) }
 	end
 
 	describe "functions" do
-
-		it "returns the full name as a string if firstname and lastname are set" do
-			user = create(:user)
-			expect(user.fullname).to eq "#{user.firstname} #{user.lastname}"
-		end
-
-		it "returns the username as a string if firstname and lastname aren't set" do
-			user = create(:user)
-			user.firstname = nil
-			user.lastname = nil
-			expect(user.fullname).to eq "#{user.username}"
-		end
 
 		it "should return votes as a total of the boards' votes" do
 			user = create(:user_with_boards)

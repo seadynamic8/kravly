@@ -13,7 +13,7 @@ feature 'User Management' do
 		new_user = User.last
 		expect(current_path).to eq boards_user_path(new_user)
 		expect(page).to have_content "Thank you for signing up!"
-		expect(page).to have_content new_user.fullname
+		expect(page).to have_content new_user.display_name
 	end
 
 	scenario "signup for a new member account without password & password confirmation" do
@@ -53,7 +53,7 @@ feature 'User Management' do
 		expect(user.email).to eq "updated@example.com"
 		expect(current_path).to eq boards_user_path(user)
 		expect(page).to have_content "Your account was updated."
-		expect(page).to have_content user.fullname
+		expect(page).to have_content user.display_name
 	end
 
 	scenario "edit a member account without password & password confirmation" do
@@ -91,5 +91,17 @@ feature 'User Management' do
 		}.to change(User, :count).by(-1)
 		expect(current_url).to eq root_url
 		expect(page).to have_content "Your account was deleted."
+	end
+
+	scenario "change the user's name display to email" do
+		user = create(:user)
+		log_in user
+		visit edit_user_path(user)
+		fill_in "Password", with: user.password
+		fill_in "Password Confirmation", with: user.password
+		select "Email", from: "user_display"
+		click_button "Update User"
+		within('.user-header-user') { expect(page).to have_content user.email }
+		within('.top-bar-section') { expect(page).to have_content user.email }
 	end
 end

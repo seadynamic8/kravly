@@ -18,6 +18,7 @@
 #  about                  :text
 #  location               :string(255)
 #  website                :string(255)
+#  display                :integer
 #
 
 require 'file_size_validator'
@@ -48,17 +49,26 @@ class User < ActiveRecord::Base
 	validates :slug, uniqueness: true, allow_nil: true
 	validates :location, length: { maximum: 255 }
 	validates :website, length: { maximum: 255 }
+	validates :display, presence: true, inclusion: { in: [1, 2, 3] }
 
 	before_validation :ensure_username_uniqueness, on: :create
 	after_validation :move_friendly_id_error_to_username
+	before_create :set_display_to_fullname_if_exist, on: :create
 	after_create :generate_slug, on: :create
 	
-	def fullname
-		name = "#{firstname} #{lastname}"
-		if name.blank?
-			name = "#{username}"
+	def display_name
+		case display
+		when 1
+			"#{firstname} #{lastname}"
+		when 2
+			"#{username}"
+		when 3
+			"#{email}"
 		end
-		name
+	end
+
+	def name
+		firstname.blank? ? username : "#{firstname}"
 	end
 
 	def votes
@@ -99,6 +109,10 @@ class User < ActiveRecord::Base
 				end
 				self.username = new_username
 			end
+		end
+
+		def set_display_to_fullname_if_exist
+			self.display = 1 if firstname.present?
 		end
 
 		def move_friendly_id_error_to_username

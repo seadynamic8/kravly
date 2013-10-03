@@ -62,6 +62,6 @@ class UsersController < ApplicationController
       params.require(:user).permit(:username, :email, :firstname, :lastname, 
                                    :password, :password_confirmation, 
                                    :avatar, :avatar_cache, :remote_avatar_url,
-                                   :about, :location, :website)
+                                   :about, :location, :website, :display)
     end
 end

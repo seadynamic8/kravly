@@ -55,7 +55,7 @@ feature "Comments Management" do
 			within('div.comment') do
 				expect(page).to have_link "Edit"
 				expect(page).to have_css "img.comment-avatar"
-				expect(page).to have_content user.fullname
+				expect(page).to have_content user.display_name
 				expect(page).to have_content "New Comment Text"
 				# expect(page).to have_link "Reply"
 				expect(page).to have_css "span.time"

@@ -27,7 +27,7 @@
 						<div class="idea-bottom">
 							<div class="vote"><%= idea.votes %></div>
 							<%= image_tag idea.user.avatar.profile.url %>
-							<div class="name"><%= link_to idea.user.fullname, 
+							<div class="name"><%= link_to idea.user.display_name, 
 																			boards_user_path(idea.user) %></div>
 						</div>
 					</div>

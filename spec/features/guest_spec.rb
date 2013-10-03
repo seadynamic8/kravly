@@ -12,7 +12,7 @@ feature "Guest Actions" do
 			visit root_url
 			expect(page).to have_content idea.title
 			expect(page).to have_content idea.votes
-			expect(page).to have_content user.fullname
+			expect(page).to have_content user.display_name
 		end
 
 		scenario "view specific idea from home page" do
@@ -21,7 +21,7 @@ feature "Guest Actions" do
 			expect(current_path).to eq idea_path(idea)
 			expect(page).to have_content idea.title
 			expect(page).to have_content idea.votes
-			expect(page).to have_content user.fullname
+			expect(page).to have_content user.display_name
 			expect(page).to have_content board.name
 			# expect(page).to have_content "Contribution Level"
 			expect(page).to have_content "Comments"
@@ -29,9 +29,9 @@ feature "Guest Actions" do
 
 		scenario "view all user's boards from home page" do
 			visit root_url
-			click_link user.fullname
+			click_link user.display_name
 			expect(current_path).to eq boards_user_path(user)
-			expect(page).to have_content user.fullname
+			expect(page).to have_content user.display_name
 			within('.user-stats') do
 				expect(page).to have_content user.boards.count
 				expect(page).to have_content user.ideas.count
@@ -44,7 +44,7 @@ feature "Guest Actions" do
 			visit boards_user_path(user)
 			within('.user-stats') { click_link "Ideas" }
 			expect(current_path).to eq ideas_user_path(user)
-			expect(page).to have_content user.fullname
+			expect(page).to have_content user.display_name
 			within('.user-stats') do
 				expect(page).to have_content user.boards.count
 				expect(page).to have_content user.ideas.count
@@ -62,12 +62,12 @@ feature "Guest Actions" do
 
 		scenario "view specific board from home page" do
 			visit root_url
-			click_link user.fullname
+			click_link user.display_name
 			click_link "#{board.name}"
 			expect(current_path).to eq user_board_path(user, board)
 			expect(page).to have_content board.name
 			within('.group-header-stats') do
-				expect(page).to have_content user.fullname
+				expect(page).to have_content user.display_name
 				expect(page).to have_content board.votes
 			end
 			expect(page).to have_content idea.title
@@ -89,9 +89,9 @@ feature "Guest Actions" do
 
 		scenario "go back to all users boards from specific board" do
 			visit user_board_path(user, board)
-			click_link "#{user.fullname}"
+			click_link "#{user.display_name}"
 			expect(current_path).to eq boards_user_path(user)
-			expect(page).to have_content user.fullname
+			expect(page).to have_content user.display_name
 		end
 
 		scenario "search for idea returns matched result" do

@@ -98,16 +98,16 @@
 	</div>
 </div>
 
-<% if params[:action] == 'new' %>
+<% if params[:action] == 'new' || params[:action] == 'create' %>
 	<%= hidden_field_tag "idea[votes]", 0 %>
-<% else %>
+<% else #edit or update action %>
 	<%= hidden_field_tag "idea[votes]", @idea.votes %>
 <% end %>
 
 <div class="row">
 	<div class="large-5 large-centered columns">
 		<%= f.submit class: "button" %>
-		<% if params[:action] == 'new' %>
+		<% if params[:action] == 'new' || params[:action] == 'create' %>
 			<%= link_to "Cancel", @return_to || boards_user_path(current_user), class: "button" %>
 		<% else %>
 			<%= link_to "Cancel", @return_to || idea_path(@idea), class: "button" %>

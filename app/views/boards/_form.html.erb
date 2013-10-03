@@ -52,7 +52,7 @@
 <div class="row">
 	<div class="large-7 large-centered columns">
 		<%= f.submit class: "button" %>
-		<% if params[:action] == 'new' %>
+		<% if params[:action] == 'new' || params[:action] == 'create' %>
 			<%= link_to "Cancel", @return_to || boards_user_path(current_user), class: "button" %>
 		<% else %>
 			<%= link_to "Cancel", @return_to || user_board_path(current_user, @board), 

@@ -76,7 +76,7 @@
               </ul>
             </li>
             <li class="divider"></li>
-            <li class="has-dropdown"><%= link_to current_user.fullname, 
+            <li class="has-dropdown"><%= link_to current_user.display_name, 
                                             boards_user_path(current_user) %>
               <ul class="dropdown">
                 <li><%= link_to "Your Boards", boards_user_path(current_user) %></li>

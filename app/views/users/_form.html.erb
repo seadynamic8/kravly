@@ -25,7 +25,7 @@
 	</div>
 </div>
 
-<% if params[:action] == 'edit' %>
+<% if params[:action] == 'edit' || params[:action] == 'update' %>
 	<div class="row">
 		<div class="large-2 columns">
 			<%= f.label :username, "Username*", class: "left inline" %>
@@ -102,10 +102,25 @@
 	</div>
 </div>
 
+<% if params[:action] == 'edit' || params[:action] == 'update' %>
+	<div class="row">
+		<div class="large-2 columns">
+			<%= f.label :display, "Display Method*", class: "left inline" %>
+		</div>
+		<div class="large-9 columns">
+			<%= f.select :display, 
+					options_for_select([['First & Last Name', '1'], 
+															['Username', '2'], ['Email', '3']], f.object.display) %>
+		</div>
+	</div>
+<% else # new or create action %>
+	<%= f.hidden_field :display, value: 2 %>
+<% end %>
+
 <div class="row">
 	<div class="large-8 large-centered columns">
 		<%= f.submit class: "button" %>
-		<% if params[:action] == 'new' %>
+		<% if params[:action] == 'new' || params[:action] == 'create' %>
 			<%= link_to "Cancel", @return_to || root_url, class: "button" %>
 		<% else %>
 			<%= link_to "Cancel", @return_to || settings_user_path(current_user), class: "button" %>
