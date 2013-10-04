@@ -15,6 +15,12 @@ feature "Guest Actions" do
 			expect(page).to have_content user.display_name
 		end
 
+		scenario "view most recent ideas on home page" do
+			visit root_url
+			click_link "Recently Updated"
+			expect(page).to have_content idea.title
+		end
+
 		scenario "view specific idea from home page" do
 			visit root_url
 			click_link "#{idea.title}"

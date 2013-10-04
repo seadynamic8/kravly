@@ -1,8 +1,11 @@
 class PublicController < ApplicationController
 
   def index
-  	@ideas = Idea.popular.page(params[:page]).per_page(9)
-  	#@most_recent_ideas = Idea.recent
+  	if params[:recent].present?
+  		@ideas = Idea.recent.page(params[:page]).per_page(9)
+  	else
+  		@ideas = Idea.popular.page(params[:page]).per_page(9)
+  	end
   end
 
   def about

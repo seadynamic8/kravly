@@ -6,14 +6,15 @@
 	</div>
 </div>
 
-<!-- <div class="row links">
+<div class="row links">
 	<div class="large-4 large-centered columns">
-		<%= link_to " Most Popular ", "#" %>|<%= link_to " Recently Updated ", "#" %>
+		<%= link_to " Most Popular ", root_url %>|
+		<%= link_to " Recently Updated ", root_url( recent: true ) %>
 	</div>
 	<div class="large-12 columns">
 		<hr>
 	</div>
-</div> -->
+</div>
 
 <% @ideas.each_with_index do |idea, index| %>
 	<% if index % 3 == 0 %>

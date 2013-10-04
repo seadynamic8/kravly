@@ -49,7 +49,7 @@ class Idea < ActiveRecord::Base
   								using: { tsearch: { dictionary: 'english' } }
 
 	scope :popular, -> { order("votes desc") }
-	#scope :recent, -> { order("updated_at desc") }
+	scope :recent, -> { order("updated_at desc") }
 
 	def user
 		board.user
