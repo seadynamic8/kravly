@@ -45,27 +45,29 @@
 				</section>
 			<% end %>
 		</div>
-
-		<div class="panel">
-			<% if permit? "ideas", "edit", @idea %>
+		
+		<% if (permit? "ideas", "edit", @idea) && (permit? "ideas", "destroy", @idea) %>
+			<div class="panel">
 				<span data-no-turbolink>
 					<%= link_to "Edit Idea", edit_idea_path(@idea), class: "small button"  %>
 				</span>
-			<% end %>
-			<% if permit? "ideas", "destroy", @idea %>
 				<%= link_to "Delete", idea_path(@idea), method: :delete, 
 						data: { confirm: "Are you sure?" }, class: "small button" %>
-			<% else %>
+			</div>
+		<% end %>
+		<% if (permit? "ideas", "vote", @idea) && current_user.not_voted?(@idea) %>
+			<div class="panel">
 				<%= link_to "Vote", vote_idea_path(@idea), class: "button" %>
-			<% end %>
-		</div>
+			</div>
+		<% end %>
+		
 	</div>
 
-	<div class="large-3 columns">
-		<div class="row idea-user idea-side">
+	<div class="large-3 columns idea-side">
+		<div class="row idea-user">
 			<h4><%= link_to @idea.board.name, user_board_path(@idea.user, @idea.board) %></h4>
 		</div>
-		<div class="row idea-user idea-side">
+		<div class="row idea-user">
 			<div class="large-4 columns">
 				<%= image_tag @idea.user.avatar.profile.url %>
 			</div>
@@ -90,7 +92,7 @@
 		</div> -->
 
 		<% if @rand_ideas %>
-			<div class="row idea-side">
+			<div class="row">
 				<h9>More Ideas</h9>
 				<hr>
 				<% @rand_ideas.each do |idea| %>
@@ -101,7 +103,7 @@
 			</div>
 		<% end %>
 
-		<div class="row idea-side">
+		<div class="row">
 			<% if current_user && current_user == @idea.user %>
 				<hr>
 				<%= link_to "Leave a Comment", "#comments", class:"button" %>
@@ -109,7 +111,9 @@
 				<h9>Give Feedback</h9>
 				<hr>
 				<%= link_to "Leave a Comment", "#comments", class:"button" %>
-				<%= link_to "Vote", vote_idea_path(@idea), class:"button" %>
+				<% if (permit? "ideas", "vote", @idea) && current_user.not_voted?(@idea) %>
+					<%= link_to "Vote", vote_idea_path(@idea), class:"button" %>
+				<% end %>
 			<% end %>
 		</div>
 	</div>

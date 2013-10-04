@@ -202,4 +202,28 @@ describe UsersController do
       expect(response).to render_template :ideas
     end
   end
+
+  describe "GET 'votes'" do
+    before :each do
+      @user = create(:user)
+    end
+
+    it "returns http success" do
+      get :votes, id: @user
+      expect(response).to be_success
+    end
+
+    it "assigns the requested user to @user" do
+      get :votes, id: @user
+      expect(assigns(:user)).to eq @user
+    end
+
+    # it "assigns the requested votes to @votes" do
+    # end
+
+    it "renders the :votes template" do
+      get :votes, id: @user
+      expect(response).to render_template :votes
+    end
+  end
 end

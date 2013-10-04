@@ -4,7 +4,7 @@ class Permission
 		permit :public, [:index, :about]
 		permit :sessions, [:new, :create, :destroy]
 		permit :password_resets, [:new, :create, :edit, :update]
-		permit :users, [:new, :create, :boards, :ideas]
+		permit :users, [:new, :create, :boards, :ideas, :votes]
 		permit :boards, [:show]
 		permit :ideas, [:index, :show]
 		if user

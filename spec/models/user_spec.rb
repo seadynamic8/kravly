@@ -27,6 +27,7 @@ describe User do
 
 	describe "relationships" do
 		it { should have_many(:boards) }
+		it { should have_many(:user_votes) }
 	end
 
 	describe "validations" do

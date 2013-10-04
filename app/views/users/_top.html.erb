@@ -32,8 +32,8 @@
 							class: "small button secondary active" %></li>
 			<li><%= link_to "#{@user.ideas.count} Ideas", ideas_user_path(@user), 
 							class: "small button secondary" %></li>
-			<li><%= link_to "#{@user.votes} Votes", "#votes_path", 
-							class: "small button secondary disabled" %></li>
+			<li><%= link_to "#{@user.votes} Votes", votes_user_path(@user), 
+							class: "small button secondary" %></li>
 		</ul>
 	</div>
 	<div class="large-3 columns">

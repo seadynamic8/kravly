@@ -1,0 +1,29 @@
+<% title @user.display_name %>
+
+<%= render 'top' %>
+
+<% @user_votes.each_with_index do |user_vote, index| %>
+  <% if index % 3 == 0 %>
+    <div class="row">
+      <ul class="large-block-grid-3">
+  <% end %>
+
+        <li id="idea-<%= "#{user_vote.idea.id}" %>">
+          <div class="block">
+            <h5><%= link_to user_vote.idea.title, idea_path(user_vote.idea) %></h5>
+            <%= link_to (image_tag user_vote.idea.image.thumb.url), idea_path(user_vote.idea) %><br>
+          </div>
+        </li>
+
+  <% if (index+1) % 3 == 0 %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+
+<div style="clear:both;"></div>
+
+<div class="pagination-centered">
+  <%= will_paginate @user_votes, inner_window: 4, outer_window: 2,
+  previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe %>
+</div>

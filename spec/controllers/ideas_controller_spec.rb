@@ -173,22 +173,38 @@ describe IdeasController do
   end
 
   describe "GET 'vote'" do
-    let(:idea) { create(:idea) }
+    let(:other_user) { create(:user) }
+    let(:other_board) { create(:board, user: other_user) }
+    let(:other_idea) { create(:idea, board: other_board) }
 
     it "assigns requested idea to @idea" do
-      get :vote, id: idea
-      expect(assigns(:idea)).to eq idea
+      get :vote, id: other_idea
+      expect(assigns(:idea)).to eq other_idea
     end
 
-    # it "increments the votes by 1" do
-    #   orig_votes = idea.votes
-    #   get :vote, id: idea
-    #   idea.votes.should eq (orig_votes + 1)
-    #   #expect { get :vote, id: idea }.to change(idea, :votes).by(1) 
-    # end
+    it "increments the votes by 1" do
+      orig_votes = other_idea.votes
+      get :vote, id: other_idea
+      other_idea.reload
+      expect(other_idea.votes).to eq orig_votes + 1
+    end
+
+    it "doesn't increments the vote by 1 if already voted" do
+      orig_votes = other_idea.votes
+      UserVote.create(idea_id: other_idea.id, user: user)
+      get :vote, id: other_idea
+      other_idea.reload
+      expect(other_idea.votes).to_not eq orig_votes + 1
+    end
+
+    it "has flash alert if already voted" do
+      UserVote.create(idea_id: other_idea.id, user: user)
+      get :vote, id: other_idea
+      expect(flash[:alert]).to eq "Can't vote more than once."
+    end
 
     it "redirect to show page" do
-      get :vote, id: idea
+      get :vote, id: other_idea
       expect(response).to redirect_to assigns(:idea)
     end
   end

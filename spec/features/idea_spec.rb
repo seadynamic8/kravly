@@ -164,7 +164,53 @@ feature "Idea Management" do
 			expect(current_path).to eq user_board_path(user, board)
 			expect(page).to have_content "Idea was deleted."
 		end
+
+		scenario "adds a vote to another user's idea" do
+			other_user = create(:user)
+			other_board = create(:board, user: other_user)
+			other_idea = create(:idea, board: other_board)
+			other_idea_votes = other_idea.votes
+
+			visit idea_path(other_idea)
+			within('div.panel') { click_link "Vote" }
+			other_idea.reload
+			expect(other_idea.votes).to eq other_idea_votes + 1
+			expect(current_path).to eq idea_path(other_idea)
+			within('.idea-header') do
+				expect(page).to have_content "#{other_idea_votes + 1} votes"
+			end
+		end
+
+		scenario "adds a vote using sidebar" do
+			other_user = create(:user)
+			other_board = create(:board, user: other_user)
+			other_idea = create(:idea, board: other_board)
+			other_idea_votes = other_idea.votes
 			
+			visit idea_path(other_idea)
+			within('.idea-side') { click_link "Vote" }
+			other_idea.reload
+			expect(other_idea.votes).to eq other_idea_votes + 1
+		end
+
+		scenario "can't add a vote to user's own idea" do
+			visit idea_path(idea)
+			within('div.panel') do
+				expect(page).to_not have_link "Vote"
+			end
+		end
+
+		scenario "can't add more than 1 vote" do
+			other_user = create(:user)
+			other_board = create(:board, user: other_user)
+			other_idea = create(:idea, board: other_board)
+			other_idea_votes = other_idea.votes
+			
+			visit idea_path(other_idea)
+			within('div.panel') { click_link "Vote" }
+			other_idea.reload
+			expect(page).to_not have_link "Vote"
+		end
 	end
 
 	context "as a admin" do

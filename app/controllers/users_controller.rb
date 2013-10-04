@@ -51,6 +51,10 @@ class UsersController < ApplicationController
     @ideas = @user.ideas.page(params[:page]).per_page(9)
   end
 
+  def votes
+    @user_votes = @user.user_votes.page(params[:page]).per_page(9)
+  end
+
   private
 
   	def current_resource

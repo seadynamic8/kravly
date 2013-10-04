@@ -29,6 +29,7 @@ Wishproto::Application.routes.draw do
       get 'settings'
       get 'boards'
       get 'ideas'
+      get 'votes'
     end
     resources :boards, only: [:index, :new, :create]
     resources :boards, path: '/', except: [:index, :new, :create]

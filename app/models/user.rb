@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
 	has_secure_password
 
 	has_many :boards, dependent: :destroy
+	has_many :user_votes, dependent: :destroy
 
 	include FriendlyId
 	friendly_id :username, use: :slugged
@@ -73,7 +74,15 @@ class User < ActiveRecord::Base
 	end
 
 	def votes
-		boards.inject(0) { |total, board| total + board.votes }
+		# boards.inject(0) { |total, board| total + board.votes }
+		user_votes.count
+	end
+
+	def not_voted?(idea)
+		self.user_votes.each do |user_vote|
+			return false if user_vote.idea_id == idea.id
+		end
+		true
 	end
 
 	def ideas

@@ -53,11 +53,55 @@ feature "Guest Actions" do
 			expect(page).to have_content idea.title
 		end
 
+		scenario "view all user's voted ideas from all user's boards" do
+			other_user = create(:user)
+			other_board = create(:board, user: other_user)
+			other_idea = create(:idea, board: other_board)
+			UserVote.create(idea_id: other_idea.id, user: user)
+
+			visit boards_user_path(user)
+			within('.user-stats') { click_link "Votes" }
+			expect(current_path).to eq votes_user_path(user)
+			expect(page).to have_content user.display_name
+			within('.user-stats') do
+				expect(page).to have_content user.boards.count
+				expect(page).to have_content user.ideas.count
+				expect(page).to have_content user.votes
+			end
+			expect(page).to have_content other_idea.title
+		end
+
+		scenario "view all user's voted ideas from all user's ideas" do
+			other_user = create(:user)
+			other_board = create(:board, user: other_user)
+			other_idea = create(:idea, board: other_board)
+			UserVote.create(idea_id: other_idea.id, user: user)
+			
+			visit ideas_user_path(user)
+			within('.user-stats') { click_link "Votes" }
+			expect(current_path).to eq votes_user_path(user)
+			expect(page).to have_content other_idea.title
+		end
+
 		scenario "view all user's boards from all user's ideas" do
 			visit ideas_user_path(user)
 			within('.user-stats') { click_link "Boards" }
 			expect(current_path).to eq boards_user_path(user)
 			expect(page).to have_content board.name
+		end
+
+		scenario "view all user's boards from all user's voted ideas" do
+			visit votes_user_path(user)
+			within('.user-stats') { click_link "Boards" }
+			expect(current_path).to eq boards_user_path(user)
+			expect(page).to have_content board.name
+		end
+
+		scenario "view all user's ideas from all user's voted ideas" do
+			visit votes_user_path(user)
+			within('.user-stats') { click_link "Ideas" }
+			expect(current_path).to eq ideas_user_path(user)
+			expect(page).to have_content user.display_name
 		end
 
 		scenario "view specific board from home page" do

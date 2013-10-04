@@ -67,8 +67,13 @@ class IdeasController < ApplicationController
   end
 
   def vote
-    @idea.votes += 1
-    @idea.save
+    if current_user.not_voted?(@idea)
+      @idea.votes += 1
+      @idea.save
+      UserVote.create(idea_id: @idea.id, user: current_user)
+    else
+      flash[:alert] = "Can't vote more than once."
+    end
     redirect_to @idea
   end
 

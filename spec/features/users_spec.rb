@@ -96,6 +96,16 @@ feature 'User Management' do
 		expect(page).to have_css 'select#user_display'
 	end
 
+	scenario "edit user's name display to email" do
+		user = create(:user)
+		log_in user
+		visit edit_user_path(user)
+		select "Email", from: "user_display"
+		click_button "Update User"
+		within('.user-header-user') { expect(page).to have_content user.email }
+		within('.top-bar-section') { expect(page).to have_content user.email }
+	end
+
 	scenario "cancel edit goes back to previous page" do
 		user = create(:user)
 		log_in user
@@ -121,13 +131,4 @@ feature 'User Management' do
 		expect(page).to have_content "Your account was deleted."
 	end
 
-	scenario "change the user's name display to email" do
-		user = create(:user)
-		log_in user
-		visit edit_user_path(user)
-		select "Email", from: "user_display"
-		click_button "Update User"
-		within('.user-header-user') { expect(page).to have_content user.email }
-		within('.top-bar-section') { expect(page).to have_content user.email }
-	end
 end
