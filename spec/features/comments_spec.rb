@@ -27,6 +27,13 @@ feature "Comments Management" do
 			expect(page).to have_content "There are no comments yet."
 		end
 
+		scenario "cannot reply to comment" do
+			user = create(:user)
+			comment = Comment.build_from(idea, user.id, "")
+			visit reply_comment_path(idea.id, comment.commentable_id)
+			expect(page).to have_content "Please login"
+		end
+
 	end
 
 	context "as a member" do
@@ -71,6 +78,8 @@ feature "Comments Management" do
 			end
 		end
 
+		
+
 		scenario "can not see Delete button" do
 			fill_in "comment[body]", with: "New Comment Text"
 			click_button "Comment"
@@ -79,14 +88,82 @@ feature "Comments Management" do
 			end
 		end
 
-		# scenario "can reply to comment" do
-		# 	other_user = create(:user)
-		# 	Comment.build_from(idea, other_user.id, "Other Comment").save
-		# 	visit idea_path(idea)
-		# 	click_button "Reply"
-		# 	expect(page).to have_button "Reply"
-		# 	expect(page).to have_css "div.reply-form"
-		# end
+		scenario "can see Reply link" do
+			other_user = create(:user)
+			Comment.build_from(idea, other_user.id, "Other Comment").save
+			visit idea_path(idea)
+			within('div.comments') { expect(page).to have_link "Reply" }
+			# expect(page).to have_css "div.reply-form"
+		end
+
+		scenario "can see Hide link and Reply Form when reply is clicked", js: true do
+			other_user = create(:user)
+			Comment.build_from(idea, other_user.id, "Other Comment").save
+
+			visit idea_path(idea)
+			click_link "Reply"
+
+			within('div.comment') { expect(page).to have_link "Hide" }
+			within('.reply-form') do
+				expect(page).to have_css "img.comment-avatar"
+				expect(page).to have_css "textarea.comment-body"
+				expect(page).to have_button "Reply"
+			end
+		end
+
+		scenario "see Reply link after clicking Hide", js: true do
+			other_user = create(:user)
+			Comment.build_from(idea, other_user.id, "Other Comment").save
+
+			visit idea_path(idea)
+			click_link "Reply"
+			click_link "Hide"
+
+			within('div.comment') { expect(page).to have_link "Reply" }
+		end
+
+		scenario "can Reply to root comment", js: true do
+			other_user = create(:user)
+			Comment.build_from(idea, other_user.id, "Other Comment").save
+
+			visit idea_path(idea)
+			click_link "Reply"
+			within('.reply-form') do
+				fill_in "comment[body]", with: "New Comment Text"
+			end
+			click_button "Reply"
+
+			expect(page).to have_css('div.child-comments')
+			within('div.child-comment') do
+				expect(page).to have_link "Edit"
+				expect(page).to have_css "img.comment-avatar"
+				expect(page).to have_content user.display_name
+				expect(page).to have_content "New Comment Text"
+				expect(page).to have_link "Reply"
+				expect(page).to have_css "span.time"
+			end
+		end
+
+		scenario "can Reply to root comment with a child comment existing", js: true do
+			other_user = create(:user)
+			parent_comment = Comment.build_from(idea, other_user.id, "Other Comment")
+			parent_comment.save
+			child_comment = Comment.build_from(idea, other_user.id, "Child Comment")
+			child_comment.save
+			child_comment.move_to_child_of(parent_comment)
+
+			visit idea_path(idea)
+			find("#reply-#{parent_comment.id}").click
+			within("#reply-form-#{parent_comment.id}") do
+				fill_in "comment[body]", with: "New Comment Text"
+				click_button "Reply"
+			end
+
+			within('div.child-comments') do
+				expect(page).to have_content "Child Comment"
+				expect(page).to have_content "New Comment Text"
+			end
+		end
 
 	end
 

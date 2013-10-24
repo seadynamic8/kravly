@@ -23,6 +23,8 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+gem 'jquery-turbolinks'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
@@ -60,6 +62,7 @@ group :test do
 	gem 'launchy'
 	gem 'shoulda-matchers'
 	# gem 'selenium-webdriver'
+	gem 'capybara-webkit'
 end
 
 # Use ActiveModel has_secure_password
@@ -74,8 +77,8 @@ gem 'unicorn'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'compass-rails', "~> 2.0.alpha.0"
-gem 'zurb-foundation', '~> 4.0.9'
+gem 'compass-rails', ">= 2.0.alpha.0"
+gem 'zurb-foundation', '>= 4.0.9'
 
 gem 'attribute_normalizer'
 
