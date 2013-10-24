@@ -22,7 +22,7 @@ class Permission
 			permit :ideas, [:vote] do |idea|
 				idea.user != user
 			end
-			permit :comments, [:create]
+			permit :comments, [:create, :reply]
 			permit :comments, [:edit, :update] do |comment|
 				comment.user == user
 			end

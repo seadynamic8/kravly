@@ -203,8 +203,25 @@
 }
 
 .comment {
+	display: block;
 	border: 1px solid #ddd;
 	padding: 1.25em;
+
+	.reply-form-style {
+		border: 1px solid #ddd;
+		padding: 1.25em;
+		margin-top: 15px;
+	}
+
+	.child-comments {
+		margin-top: 15px;
+	}
+
+	.child-comment {
+		display: block;
+		border: 1px solid #ddd;
+		padding: 1.25em;
+	}
 
 	.comment-avatar {
 		float: left;
@@ -239,6 +256,7 @@
 		color: #6f6f6f;
 	}
 }
+
 
 // .footer-clear {
 // 	padding-bottom:60px;

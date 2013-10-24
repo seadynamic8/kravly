@@ -1,1 +1,3 @@
-$('#comment-<%= @comment.id %> .comment-body').hide().after('<%= j render "edit_body_form" %>');
+$('#comment-<%= @comment.id %> .comment-text')
+	.hide()
+	.after('<%= j render "edit_body_form" %>');

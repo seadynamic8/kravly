@@ -13,7 +13,21 @@
 	<%= image_tag comment.user.avatar.small_profile.url, class: "comment-avatar" %>
 	<h6 class="name"><%= comment.user.display_name %></h6>
 	<p class="comment-text"><%= comment.body %></p>
-	<!-- <%= link_to "Reply", "#" %> -->
-	<!-- <span class="middot">|</span> -->
+
+	<% if permit? "comments", "reply" %>
+		<%= link_to "Reply", reply_comment_path(idea_id, comment), remote: true, 
+						id: "reply-#{comment.id}", class: "reply-link" %>
+		<span class="middot">|</span>
+	<% end %>
 	<span class="time"><%= distance_of_time_in_words_to_now( comment.updated_at ) %></span>
+
+	<span class="reply-form" id="reply-form-<%= comment.id %>" data-no-turbolink>
+	</span>
+
+	<% if child_comments %>
+		<div class="child-comments">
+			<%= render partial: 'comments/child_comment',  collection: child_comments,
+								locals: { idea_id: @idea.id, reply_comment: reply_comment } %>
+		</div>
+	<% end %>
 </div>

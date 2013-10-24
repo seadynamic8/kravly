@@ -124,7 +124,7 @@
 		
 		<div class="comments">
 			<%= render partial: 'comments/form', locals: { comment: @new_comment } %>
-			<% if @comments.empty? %>
+			<% if @root_comments.empty? %>
 				<div class="row empty-comments">
 					<div class="large-6 large-centered columns">
 						<br>
@@ -133,7 +133,17 @@
 					</div>
 				</div>
 			<% else %>
-				<%= render partial: 'comments/comment', collection: @comments %>
+				<% @root_comments.each do |root_comment| %>
+					<% child_comments = nil %>
+					<% if root_comment.has_children? %>
+					<%	child_comments = root_comment.children.order('created_at asc') %>
+					<% end %>
+						<%= render partial: 'comments/comment',  
+											locals: { comment: root_comment, 
+																child_comments: child_comments, 
+																idea_id: @idea.id, 
+																reply_comment: @new_comment } %>
+				<% end %>
 			<% end %>
 		</div>
 		

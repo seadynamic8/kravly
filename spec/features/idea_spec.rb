@@ -209,7 +209,8 @@ feature "Idea Management" do
 			visit idea_path(other_idea)
 			within('div.panel') { click_link "Vote" }
 			other_idea.reload
-			expect(page).to_not have_link "Vote"
+			within('.idea-main') { expect(page).to_not have_link "Vote" }
+			within('.idea-side') { expect(page).to_not have_link "Vote" }
 		end
 	end
 

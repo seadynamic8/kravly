@@ -1,0 +1,17 @@
+button = $('#reply-<%= @comment.id %>')
+button_text = button.text()
+
+if(button_text == "Reply" ) 
+	$('#reply-<%= @comment.id %>').text("Hide")
+	$('#reply-form-<%= @comment.id %>')
+		.addClass("reply-form-style")
+		.css("display", "block")
+		.show('fast')
+		.append('<%= j render "reply_form" %>')
+
+else if(button_text == "Hide")
+	$('#reply-<%= @comment.id %>').text("Reply")
+	$('#reply-form-<%= @comment.id %>')
+		.removeClass("reply-form-style")
+		.empty()
+		.hide('fast')

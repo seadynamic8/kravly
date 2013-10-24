@@ -1,23 +1,23 @@
-<div class="reply-form" data-no-turbolink>
-	<%= form_for comment, remote: true do |f| %>
+<%= form_for @reply_comment, remote: true do |f| %>
 
-			<%= f.hidden_field :commentable_id, value: comment.commentable_id %>
-			<%= f.hidden_field :commentable_type, value: comment.commentable_type %>
-			
-			<div class="row collapse">
-				<div class="large-1 columns">
-					<%= image_tag current_user.avatar.small_profile.url, class: "comment-avatar"%>
-				</div>
-				<div class="large-9 columns">
-					<%= f.text_area :body, rows: 2, label: false, 
-							placeholder: "Reply...", class: "comment-body" %>
-				</div>
-				<div class="large-2 columns">
-					<%= f.submit "Reply", class: "button postfix", 
-												disable_with: "Submitting..." %>
-				</div>
-			</div>
+	<%= f.hidden_field :commentable_id, value: @reply_comment.commentable_id %>
+	<%= f.hidden_field :commentable_type, value: @reply_comment.commentable_type %>
 
-		<% end %>
-	
-</div>
+	<%= f.hidden_field :idea_id, value: @idea.id %>
+	<%= f.hidden_field :comment_id, value: @comment.id %>
+
+	<div class="row collapse">
+		<div class="large-1 columns">
+			<%= image_tag current_user.avatar.small_profile.url, class: "comment-avatar"%>
+		</div>
+		<div class="large-9 columns">
+			<%= f.text_area :body, rows: 2, label: false, 
+			placeholder: "Reply...", class: "comment-body" %>
+		</div>
+		<div class="large-2 columns">
+			<%= f.submit "Reply", class: "button postfix", 
+			disable_with: "Submitting..." %>
+		</div>
+	</div>
+
+<% end %>

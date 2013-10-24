@@ -5,18 +5,45 @@
 jQuery ->
 	# Create a comment
 	$('.comment-form')
-		.on "ajax:beforeSend", (evt, xhr, settings) ->
+		.ajaxSend ->
 			$(this).find('textarea')
-				.addClass('uneditable-input')
 				.attr('disabled', 'disabled')
 		.on "ajax:success", (evt, data, status, xhr) ->
 			$(this).find('textarea')
-				.removeClass('uneditable-input')
 				.removeAttr('disabled', 'disabled')
-				.val('');
-			$(xhr.responseText).hide().insertAfter($(this).parent()).show('slow')
-			$('.empty-comments').hide();
+				.val('')
+			$(xhr.responseText)
+				.hide()
+				.insertAfter($(this).parent())
+				.show('slow')
+			$('.empty-comments').hide()
 
+	$(document)
+		.on "ajax:beforeSend", '.reply-form', ->
+			$(this).find('textarea')
+		.on "ajax:success", '.reply-form', (evt, data, status, xhr) ->
+			$(this).parent().find('.reply-link').text("Reply")
+			$(this).removeClass("reply-form-style")
+			$(this).find('form').remove()
+
+			# replying to a root comment with a child comment
+			if $(this).next('.child-comments').length
+				$(xhr.responseText)
+					.hide()
+					.appendTo($(this).next('.child-comments'))
+					.show 'slow'
+			 # replying to a child comment
+			else if $(this).parent().parent('.child-comments').length
+				$(xhr.responseText)
+					.hide()
+					.appendTo($(this).parent().parent('.child-comments'))
+					.show 'slow'
+			else # no child comments yet
+				$(this).after('<div class="child-comments"></div>')
+				$(xhr.responseText)
+					.hide()
+					.appendTo($(this).next('.child-comments'))
+					.show 'slow'
 
 	# Delete a comment
   # $(document)

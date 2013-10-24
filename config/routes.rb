@@ -14,6 +14,7 @@ Wishproto::Application.routes.draw do
   # get "signup", to: "sessions#signup", as: :signup
 
   resources :comments, only: [:create, :edit, :update, :destroy]
+  get "/:idea_id/comments/:id/reply", to: "comments#reply", as: :reply_comment
 
   resources :ideas do
     get 'vote', on: :member

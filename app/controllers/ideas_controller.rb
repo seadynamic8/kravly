@@ -19,7 +19,7 @@ class IdeasController < ApplicationController
       end
     end
 
-    @comments = @idea.comment_threads.order('created_at desc')
+    @root_comments = @idea.root_comments.order('created_at desc')
     @new_comment = Comment.build_from(@idea, nil, "")
   end
 
