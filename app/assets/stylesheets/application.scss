@@ -9,9 +9,9 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require foundation_and_overrides
  *= require_tree .
  */
+@import "foundation_and_overrides";
 
 //  #topnav {
 // 	#background: #232323;
@@ -28,8 +28,11 @@
 // 	}
 // }
 
+.intro {
+	padding-top: 10px;
+}
+
 .links {
-	padding-top: 20px;
 	text-align: center;
 }
 
@@ -40,6 +43,11 @@
 	h5 {
 		text-align: center;
 		margin: 0;
+	}
+
+	.board-bottom {
+		padding-top: 5px;
+		padding-left: 1px;
 	}
 
 	.idea-bottom {
@@ -139,16 +147,9 @@
 
 }
 
-.idea-user {
-	img {
-		display: inline;
-	}
-}
-
 .idea-header {
-	.title {
-		padding-left: 60px;
-	}
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .idea-main {
@@ -156,16 +157,19 @@
 	margin-right: 30px;
 }
 
-.idea-side div.row {
-	padding-bottom: 20px;
+.idea-side {
 
+	.idea-user {
+		img {
+			display: inline;
+		}
+	}
+	div.row {
+		padding-bottom: 20px;
+	}
 }
 
 .idea-comment {
-	
-
-	#margin-left: 40px;
-	#margin-right:-40px;
 	margin-bottom: 40px;
 
 	.idea-comment-inner {
