@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+	before_action :current_resource, only: [:edit, :update, :destroy, :reply]
 
 	def create
 		if params[:comment]
@@ -6,11 +7,11 @@ class CommentsController < ApplicationController
 		else
 			@comment_hash = params[:reply_comment]
 		end
+		idea = Idea.find(@comment_hash[:idea_id])
+		@new_comment = Comment.build_from(idea, nil, "")
 		@obj = @comment_hash[:commentable_type].constantize.find(@comment_hash[:commentable_id])
 		# Not implemented: check to see whether the user has permission to create a comment on this object
 		@comment = Comment.build_from(@obj, current_user.id, @comment_hash[:body])
-		idea = Idea.find(@comment_hash[:idea_id])
-		@new_comment = Comment.build_from(idea, nil, "")
 
 		if @comment.save
 			if @comment_hash[:comment_id].present?
@@ -28,16 +29,17 @@ class CommentsController < ApplicationController
 							layout: false, status: :created
 			end
 		else
-			render js: "alert('error saving comment')" #Temporary
+			render js: "alert('Comment cannot be blank');
+									$('.comment-form').find('input.button')
+										.removeAttr('disabled', 'disabled')
+										.val('Comment');" #Temporary
 		end
 	end
 
 	def edit
-		@comment = Comment.find(params[:id])
 	end
 
 	def update
-		@comment = Comment.find(params[:id])
 		if @comment.update_attributes(comment_params)
 			respond_to do |format|
 				format.html { redirect_to @comment.commentable }
@@ -49,7 +51,6 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
-		@comment = Comment.find(params[:id])
 		if @comment.destroy
 			respond_to do |format|
 				format.html { redirect_to @comment.commentable }
@@ -63,11 +64,14 @@ class CommentsController < ApplicationController
 
 	def reply
 		@idea = Idea.friendly.find(params[:idea_id])
-		@comment = Comment.find(params[:id])
 		@reply_comment = Comment.build_from(@idea, nil, "")
 	end
 
 	private
+
+		def current_resource
+			@comment = Comment.find(params[:id]) if params[:id]
+		end
 
 		def comment_params
 			params.require(:comment).permit(:body)
