@@ -25,14 +25,6 @@
 
   <body>
 
-  	<!-- <div id="topnav">
-      <div class="row">
-        <div id="logo" class="large-4 large-centered columns">
-          <h3><%= link_to "kravly", root_url %></h3>
-        </div>
-      </div>
-    </div> -->
-
     <nav class="top-bar">
       <ul class="title-area">
         <!-- Title Area -->
@@ -116,7 +108,9 @@
       </div>
     <% end %>
 
-    <%= yield %>
+    <div class="main">
+      <%= yield %>
+    </div>
 
     <div class="footer-clear"></div>
 

@@ -11,24 +11,15 @@
  *= require_self
  *= require_tree .
  */
+
 @import "foundation_and_overrides";
 
-//  #topnav {
-// 	#background: #232323;
-// 	#box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.5);
-// 	border-bottom: 2px solid #ddd;
-// 	width: 100%;
-// 	z-index: 999;
+.alert-box {
+	margin-top: 8px;
+	margin-bottom: 1em;
+}
 
-// 	#logo h3 {
-// 		height: 60px;
-// 		#color: #fff;
-// 		padding-top: 15px;
-// 		text-align: center;
-// 	}
-// }
-
-.intro {
+.main {
 	padding-top: 10px;
 }
 
@@ -148,7 +139,6 @@
 }
 
 .idea-header {
-	padding-top: 10px;
 	padding-bottom: 10px;
 }
 
