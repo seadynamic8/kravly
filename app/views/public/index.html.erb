@@ -1,8 +1,14 @@
-<div class="row intro">
+<!-- <div class="row">
 	<div class="large-10 large-centered columns">
 		<div class="panel">
 			<h6 style="text-align: center;">kravly - a community where people work together to create products/services. Read more <%= link_to "here", about_path %></h6>
 		</div>
+	</div>
+</div> -->
+
+<div class="row intro-note">
+	<div class="large-12 columns">
+		<h6>New Here? Create an account (upper right corner), then <%= link_to "Click Here", intro_path %> to learn how to start.</h6>
 	</div>
 </div>
 
@@ -46,4 +52,10 @@
 <div class="pagination-centered">
 	<%= will_paginate @ideas, inner_window: 4, outer_window: 2,
 	previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe %>
+</div>
+
+<div class="row end-note">
+	<div class="large-9 large-centered columns">
+		<h6 class="subheader"><%= link_to "Click here", about_path %> to read more about us.</h6>
+	</div>
 </div>

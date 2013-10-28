@@ -10,4 +10,7 @@ class PublicController < ApplicationController
 
   def about
   end
+
+  def intro  	
+  end
 end

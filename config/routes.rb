@@ -5,6 +5,7 @@ Wishproto::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
   get 'about', to: 'public#about', as: :about
+  get 'intro', to: 'public#intro', as: :intro
   
   resources :password_resets, only: [:new, :create, :edit, :update]
 
