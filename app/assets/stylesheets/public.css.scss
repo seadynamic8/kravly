@@ -1,3 +1,58 @@
 // Place all the styles related to the Public controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.intro {
+	background: white;
+	border: 1px solid #ccc;
+	padding: 10px 15px 20px 15px;
+	margin-bottom: 40px;
+
+	.title {
+		text-align: center;
+		margin: 0;
+	}
+	.subtitle {
+		text-align: center;
+	}
+
+	.section {
+		float: left;
+		h4 {
+			padding-left: 15px;
+		}
+	}
+
+	img.board, img.idea {
+		float: right;
+	}
+
+	img.center {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	div.center, h4.center, p.center {
+		text-align: center;
+	}
+
+	h5 {
+		padding-left: 25px;
+	}
+
+	h6 {
+		padding-left: 15px;
+	}
+
+	.sub-section {
+		clear: both;
+	}
+
+	.callout {
+		color: green;
+	}
+}
+
+.about {
+	padding: 10px 0;
+}
