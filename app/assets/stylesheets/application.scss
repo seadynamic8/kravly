@@ -1,3 +1,5 @@
+@import "foundation_and_overrides";
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -12,8 +14,13 @@
  *= require_tree .
  */
 
-@import "foundation_and_overrides";
+input[type="text"], input[type="search"], input[type="email"], input[type="url"], textarea {
+	background: #fefefe;
+}
 
+body, fieldset legend {
+	background: #f5f5f5;
+}
 
 .alert-box {
 	margin-top: 8px;
@@ -173,6 +180,10 @@
 .idea-main {
 	margin-left: 20px;
 	margin-right: 30px;
+
+	.section-container.tabs .content, .section-container.tabs .active .title {
+		background: #fefefe;
+	}
 }
 
 .idea-side {
