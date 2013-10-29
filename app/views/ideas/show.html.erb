@@ -119,9 +119,10 @@
 	</div>
 </div>
 
+<a name="comments"></a>
 <div class="row">
 	<div class="large-8 columns comment-section">
-		
+
 		<div class="comments">
 			<%= render partial: 'comments/form', locals: { comment: @new_comment } %>
 			<% if @root_comments.empty? %>
