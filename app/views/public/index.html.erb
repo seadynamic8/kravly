@@ -6,11 +6,13 @@
 	</div>
 </div> -->
 
-<div class="row intro-note">
-	<div class="large-12 columns">
-		<h6>New Here? Create an account (upper right corner), then <%= link_to "Click Here", intro_path %> to learn how to start.</h6>
+<% unless current_user %>
+	<div class="row intro-note">
+		<div class="large-12 columns">
+			<h6>New Here? Create an account (upper right corner), then <%= link_to "Click Here", intro_path %> to learn how to start.</h6>
+		</div>
 	</div>
-</div>
+<% end %>
 
 <div class="row links">
 	<div class="large-4 large-centered columns">
