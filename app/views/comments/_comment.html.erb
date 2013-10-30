@@ -10,8 +10,9 @@
 				class: "right edit-comment" %>
 	<% end %>
 
-	<%= image_tag comment.user.avatar.small_profile.url, class: "comment-avatar" %>
-	<h6 class="name"><%= comment.user.display_name %></h6>
+	<%= link_to (image_tag comment.user.avatar.small_profile.url, class: "comment-avatar"),
+			boards_user_path(comment.user) %>
+	<h6 class="name"><%= link_to comment.user.display_name, boards_user_path(comment.user) %></h6>
 	<p class="comment-text"><%= comment.body %></p>
 
 	<% if permit? "comments", "reply" %>
