@@ -92,12 +92,13 @@
 		</div> -->
 
 		<% if @rand_ideas %>
-			<div class="row">
+			<div class="row more-ideas">
 				<h9>More Ideas</h9>
 				<hr>
 				<% @rand_ideas.each do |idea| %>
 					<div class="large-4 columns">
-						<%= link_to (image_tag @idea.image.small_thumb.url), idea_path(idea) %>
+						<%= link_to (image_tag idea.image.small_thumb.url, class: "side-image"), 
+									idea_path(idea) %>
 					</div>
 				<% end %>
 			</div>

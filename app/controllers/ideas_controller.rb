@@ -12,10 +12,13 @@ class IdeasController < ApplicationController
     end
 
     # The sidebar needs a board to pull up other ideas from (3 random ones).
-    if @idea.board.ideas && @idea.board.ideas.count >= 3
+    if @idea.board.ideas && @idea.board.ideas.count > 3
       @rand_ideas = []
-      3.times do
-        @rand_ideas << @idea.board.ideas.sample
+      while @rand_ideas.count < 3 do
+        sample_idea = @idea.board.ideas.sample
+        if sample_idea != @idea && @rand_ideas.exclude?(sample_idea)
+          @rand_ideas << sample_idea
+        end
       end
     end
 
