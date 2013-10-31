@@ -24,6 +24,8 @@ class Board < ActiveRecord::Base
 	validates :name, presence:true, uniqueness: { scope: :user }, length: { maximum: 30 }
 	validates :description, length: { maximum: 255 }
 
+	scope :recent, -> { order("created_at desc") }
+
 	after_validation :move_friendly_id_error_to_name
 
 	def votes

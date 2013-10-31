@@ -10,6 +10,21 @@ class ApplicationController < ActionController::Base
 
     def store_location
       @return_to = request.referer if request.get?
+      last_loc = Rails.application.routes.recognize_path(request.referer) if request.get?
+
+      if last_loc[:controller] == "boards"
+        last_user = User.find_by_slug(last_loc[:user_id])
+
+        if current_user == last_user
+          @last_board = Board.find_by_slug(last_loc[:id])
+        end
+      elsif last_loc[:controller] == "ideas"
+        idea = Idea.find_by_slug(last_loc[:id])
+        
+        if current_user.ideas.include?(idea)
+          @last_board = idea.board
+        end
+      end
     end
 
   	def current_user

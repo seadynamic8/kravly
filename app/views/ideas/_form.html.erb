@@ -89,8 +89,9 @@
 		<%= f.label :board, "Board*", class: "left inline" %>
 	</div>
 	<div class="large-9 columns">
-		<% if @boards.blank? %>
-			<%= text_field_tag :board_name, nil, placeholder: "Board Name" %>
+		<% if @last_board %>
+			<%= f.select :board_id, 
+					@boards.map { |board| [board.name, board.id] }, { selected: @last_board.id} %>
 		<% else %>
 			<%= f.select :board_id, 
 					@boards.map { |board| [board.name, board.id] } %>
