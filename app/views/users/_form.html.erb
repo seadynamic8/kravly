@@ -57,54 +57,54 @@
 	</div>
 </div>
 
-<div class="row">
-	<div class="large-3 columns">
-		<%= f.label :profile_photo, "Profile Photo (Avatar)", class: "left inline" %>
-	</div>
-	<div class="large-9 columns">
-		<div class="row collapse">
-			<%= f.file_field :avatar %><br><br>
-			<div class="large-3 columns">
-				<span class="prefix">http://</span>
+<% if params[:action] == 'edit' || params[:action] == 'update' %>
+	<div class="row">
+		<div class="large-3 columns">
+			<%= f.label :profile_photo, "Profile Photo (Avatar)", class: "left inline" %>
+		</div>
+		<div class="large-9 columns">
+			<div class="row collapse">
+				<%= f.file_field :avatar %><br><br>
+				<div class="large-3 columns">
+					<span class="prefix">http://</span>
+				</div>
+				<div class="large-9 columns">
+					<%= f.url_field :remote_avatar_url, placeholder: "Or Image URL" %>
+				</div>
+				<h6 class="subheader">Choose a photo. Max image size: 2MB (.jpg, .jpeg, .png, .gif)</h6>
 			</div>
-			<div class="large-9 columns">
-				<%= f.url_field :remote_avatar_url, placeholder: "Or Image URL" %>
-			</div>
-			<h6 class="subheader">Choose a photo. Max image size: 2MB (.jpg, .jpeg, .png, .gif)</h6>
 		</div>
 	</div>
-</div>
 
-<%= f.hidden_field :avatar_cache %>
+	<%= f.hidden_field :avatar_cache %>
 
-<div class="row">
-	<div class="large-3 columns">
-		<%= f.label :about, "About You", class: "left inline" %>
+	<div class="row">
+		<div class="large-3 columns">
+			<%= f.label :about, "About You", class: "left inline" %>
+		</div>
+		<div class="large-9 columns">
+			<%= f.text_area :about, placeholder: "Tell us about yourself...", style: "min-height: 100px" %>
+		</div>
 	</div>
-	<div class="large-9 columns">
-		<%= f.text_area :about, placeholder: "Tell us about yourself...", style: "min-height: 100px" %>
-	</div>
-</div>
 
-<div class="row">
-	<div class="large-3 columns">
-		<%= f.label :location, class: "left inline" %>
+	<div class="row">
+		<div class="large-3 columns">
+			<%= f.label :location, class: "left inline" %>
+		</div>
+		<div class="large-9 columns">
+			<%= f.text_field :location, placeholder: "Location" %>
+		</div>
 	</div>
-	<div class="large-9 columns">
-		<%= f.text_field :location, placeholder: "Location" %>
-	</div>
-</div>
 
-<div class="row">
-	<div class="large-2 columns">
-		<%= f.label :website, class: "left inline" %>
+	<div class="row">
+		<div class="large-2 columns">
+			<%= f.label :website, class: "left inline" %>
+		</div>
+		<div class="large-9 columns">
+			<%= f.text_field :website, placeholder: "Website" %>
+		</div>
 	</div>
-	<div class="large-9 columns">
-		<%= f.text_field :website, placeholder: "Website" %>
-	</div>
-</div>
 
-<% if params[:action] == 'edit' || params[:action] == 'update' %>
 	<div class="row">
 		<div class="large-2 columns">
 			<%= f.label :display, "Display Method*", class: "left inline" %>

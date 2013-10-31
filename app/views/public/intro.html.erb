@@ -1,6 +1,8 @@
 <div class="row intro">
 	<div class="large-12 columns">
-		<p>Please <%= link_to "create an account", new_user_path %> first if you haven't already done so.</p>
+		<% unless current_user %>
+			<span class="secondary label">Please <%= link_to "create an account", new_user_path %> first, if you haven't done so already.</span>
+		<% end %>
 
 		<h2>Set Up a New Idea in a Few Easy Steps</h2>
 		<hr>
@@ -52,7 +54,7 @@
 		<h4 class="center">That's it!  Others will now chime in with their thoughts and you're on your way to having a new product being built!</h4>
 		<%= image_tag "https://s3.amazonaws.com/wishproto/intro/finished-idea.png", class: "center" %>
 
-		<h4 class="center callout">Now go add more ideas or comment/vote on other interesting ideas.</h4>
+		<h4 class="center call-to-action">Now go add more ideas or comment/vote on other interesting ideas.</h4>
 		<p class="center"><%= link_to "Home Page", root_url %></p>
 	</div>
 </div>

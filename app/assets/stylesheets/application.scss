@@ -24,12 +24,19 @@ body, fieldset legend {
 
 .top-bar {
 
-	.top-bar-section .join-button {
-		background-color: green;
+	.top-bar-section {
 
-		&:hover {
-			background-color: limegreen;
+		ul li:hover > a {
+			color: #2BA6CB;
 		}
+
+		.join-button {
+			background-color: green;
+
+			&:hover {
+				background-color: limegreen;
+			}
+		}	
 	}
 }
 
@@ -115,6 +122,11 @@ body, fieldset legend {
 
 	.right-section a {
 		float: right;
+		margin-top: 5px;
+	}
+
+	.board-desc {
+		margin-top: 0;
 	}
 
 }

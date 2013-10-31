@@ -8,19 +8,19 @@ feature 'User Management' do
 		expect(page).to have_css '#user_password_confirmation'
 		expect(page).to have_css '#user_firstname'
 		expect(page).to have_css '#user_lastname'
-		expect(page).to have_css '#user_avatar'
-		expect(page).to have_css '#user_remote_avatar_url'
-		expect(page).to have_css 'input[type="hidden"]#user_avatar_cache'
-		expect(page).to have_css '#user_about'
-		expect(page).to have_css '#user_location'
-		expect(page).to have_css '#user_website'
-		expect(page).to have_css 'input[type="hidden"]#user_display'
+		# expect(page).to have_css '#user_avatar'
+		# expect(page).to have_css '#user_remote_avatar_url'
+		# expect(page).to have_css 'input[type="hidden"]#user_avatar_cache'
+		# expect(page).to have_css '#user_about'
+		# expect(page).to have_css '#user_location'
+		# expect(page).to have_css '#user_website'
+		# expect(page).to have_css 'input[type="hidden"]#user_display'
 	end
 
 	scenario "signup for a new member account" do
 		visit root_path
 		expect {
-			click_link "New User?"
+			click_link "JOIN"
 			fill_in 'Email', with: 'newuser@example.com'
 			fill_in 'Password', with: 'secret123'
 			fill_in 'Password Confirmation', with: 'secret123'
@@ -35,7 +35,7 @@ feature 'User Management' do
 	scenario "signup for a new member account without password & password confirmation" do
 		visit root_path
 		expect {
-			click_link "New User?"
+			click_link "JOIN"
 			fill_in 'Email', with: 'newuser@example.com'
 			click_button 'Create User'
 		}.to_not change(User, :count).by(1)
@@ -48,13 +48,13 @@ feature 'User Management' do
 
 	scenario "cancel signup goes back to previous page" do
 		visit root_path
-		click_link "New User?"
+		click_link "JOIN"
 		click_link "Cancel"
 		expect(current_url).to eq root_url
 
 		user = create(:user)
 		visit boards_user_path(user)
-		click_link "New User?"
+		click_link "JOIN"
 		click_link "Cancel"
 		expect(current_path).to eq boards_user_path(user)
 	end

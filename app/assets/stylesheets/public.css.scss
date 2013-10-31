@@ -18,8 +18,14 @@
 		.subtitle {
 			text-align: center;
 		}
+		// .get-started-button {
+		// 	@include button($button-med, #FF8C00, false, false, false, false);
+		// 	@include single-transition;
+		// 	@include inset-shadow(true);
+		// }
 		.guide-link {
 			color: darkslategray;
+			font-size: 85%;
 
 			&:hover {
 				color: black;
@@ -45,6 +51,10 @@
 	border: 1px solid #ccc;
 	padding: 20px 15px 20px 15px;
 	margin-bottom: 40px;
+
+	.label {
+		padding: 10px;
+	}
 
 	.section {
 		float: left;
@@ -78,7 +88,7 @@
 		clear: both;
 	}
 
-	.callout {
+	.call-to-action {
 		color: green;
 	}
 }
