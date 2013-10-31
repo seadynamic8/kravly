@@ -8,13 +8,7 @@ feature 'User Management' do
 		expect(page).to have_css '#user_password_confirmation'
 		expect(page).to have_css '#user_firstname'
 		expect(page).to have_css '#user_lastname'
-		# expect(page).to have_css '#user_avatar'
-		# expect(page).to have_css '#user_remote_avatar_url'
-		# expect(page).to have_css 'input[type="hidden"]#user_avatar_cache'
-		# expect(page).to have_css '#user_about'
-		# expect(page).to have_css '#user_location'
-		# expect(page).to have_css '#user_website'
-		# expect(page).to have_css 'input[type="hidden"]#user_display'
+		expect(page).to have_css 'input[type="hidden"]#user_display'
 	end
 
 	scenario "signup for a new member account" do
@@ -27,7 +21,7 @@ feature 'User Management' do
 			click_button 'Create User'
 		}.to change(User, :count).by(1)
 		new_user = User.last
-		expect(current_path).to eq boards_user_path(new_user)
+		expect(current_path).to eq root_path
 		expect(page).to have_content "Thank you for signing up!"
 		expect(page).to have_content new_user.display_name
 	end
@@ -64,6 +58,12 @@ feature 'User Management' do
 		log_in user
 		visit edit_user_path(user)
 		expect(page).to have_css '#user_username'
+		expect(page).to have_css '#user_avatar'
+		expect(page).to have_css '#user_remote_avatar_url'
+		expect(page).to have_css 'input[type="hidden"]#user_avatar_cache'
+		expect(page).to have_css '#user_about'
+		expect(page).to have_css '#user_location'
+		expect(page).to have_css '#user_website'
 		expect(page).to have_css 'select#user_display'
 	end
 

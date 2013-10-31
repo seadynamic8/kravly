@@ -7,7 +7,7 @@ class PasswordResetsController < ApplicationController
   	user = User.find_by_email(params[:email])
   	if user
   		user.send_password_reset
-  		redirect_to root_url, notice: "Email sent with password reset instructions."
+  		redirect_to login_path, notice: "Email sent with password reset instructions."
   	else
   		flash.now[:alert] = "Email not found!"
   		render :new
@@ -28,7 +28,7 @@ class PasswordResetsController < ApplicationController
   	elsif @user.update_attributes(user_params)
   		@user.password_reset_token = nil
   		@user.save!
-  		redirect_to root_url, notice: "Password has been reset."
+  		redirect_to login_path, notice: "Password has been reset."
   	else
   		render :edit
   	end

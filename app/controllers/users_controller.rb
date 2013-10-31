@@ -11,7 +11,12 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       UserMailer.signup_confirmation(@user).deliver
-      redirect_to boards_user_path(@user), notice: "Thank you for signing up!"
+      flash[:notice] = "Thank you for signing up!"
+      if params[:return_to]
+        redirect_to params[:return_to]
+      else
+        redirect_to boards_user_path(@user)
+      end
     else
       render :new
     end

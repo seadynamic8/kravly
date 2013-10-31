@@ -29,7 +29,6 @@ class ApplicationController < ActionController::Base
       unless current_permission.permit?(params[:controller], params[:action], current_resource)
         redirect_to login_url, alert: "Please login."
       end
-      # redirect_to login_url, alert: "Please login." if current_user.nil?
     end
 
     delegate :permit?, to: :current_permission

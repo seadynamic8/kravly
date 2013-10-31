@@ -117,6 +117,7 @@
 	</div>
 <% else # new or create action %>
 	<%= f.hidden_field :display, value: 2 %>
+	<%= hidden_field_tag "return_to", @return_to %>
 <% end %>
 
 <div class="row">

@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
+    store_location
   end
 
   def create
@@ -10,7 +11,12 @@ class SessionsController < ApplicationController
   	end
   	if user && user.authenticate(params[:password])
   		session[:user_id] = user.id
-  		redirect_to root_url, notice: "Welcome!"
+      flash[:notice] = "Welcome!"
+      if params[:return_to]
+        redirect_to params[:return_to]
+      else
+    		redirect_to root_url
+      end
   	else
   		flash.now[:alert] = "Username or Password is invalid!"
   		render :new
