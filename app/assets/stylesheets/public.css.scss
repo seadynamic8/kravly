@@ -2,19 +2,49 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// Index Page
+.banner {
+	margin-top: -10px;
+	background-color: DeepSkyBlue;
+
+	.intro-note {
+		padding: 10px 0;
+		text-align: center;
+		
+		.title {
+			text-align: center;
+			margin: 0;
+		}
+		.subtitle {
+			text-align: center;
+		}
+		.guide-link {
+			color: darkslategray;
+
+			&:hover {
+				color: black;
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+.links {
+	text-align: center;
+	padding-top: 20px;
+}
+
+.end-note {
+	padding: 10px 0;
+	text-align: center;
+}
+
+// Intro Page
 .intro {
 	background: white;
 	border: 1px solid #ccc;
-	padding: 10px 15px 20px 15px;
+	padding: 20px 15px 20px 15px;
 	margin-bottom: 40px;
-
-	.title {
-		text-align: center;
-		margin: 0;
-	}
-	.subtitle {
-		text-align: center;
-	}
 
 	.section {
 		float: left;
@@ -53,6 +83,7 @@
 	}
 }
 
+//About Page
 .about {
 	padding: 10px 0;
 }

@@ -73,9 +73,11 @@
             <% end %>
           </li>
           <li class="divider"></li>
-          <li><%= link_to "Starter Guide", intro_path %></li>
+          <li><%= link_to "Home", root_url %></li>
           <li class="divider"></li>
           <li><%= link_to "About", about_path %></li>
+          <li class="divider"></li>
+          <li><%= link_to "Starter Guide", intro_path %></li>
           <li class="divider"></li>
         </ul>
         
@@ -105,7 +107,7 @@
             <li class="divider"></li>
             <li class="active"><%= link_to "Login", login_path %></li>
             <li class="divider"></li>
-            <li><%= link_to "New Account", new_user_path %></li>
+            <li><%= link_to "JOIN", new_user_path, class: "join-button" %></li>
           </ul>
         <% end %>
       </section>
@@ -129,9 +131,9 @@
       </div>
     <% end %>
 
-    <div class="main">
-      <%= yield %>
-    </div>
+    <div class="spacer"></div>
+    <%= yield %>
+    
 
     <div class="footer-clear"></div>
 
