@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :current_resource, only: [:edit, :update, :destroy, :settings, :boards, :ideas,
-                                          :change_password, :update_password]
+                                          :update_password]
 
   def new
     @user = User.new
@@ -58,6 +58,7 @@ class UsersController < ApplicationController
   end
 
   def change_password
+    @user = User.new
   end
 
   def update_password
