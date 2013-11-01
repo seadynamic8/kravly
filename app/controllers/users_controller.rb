@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-	before_action :current_resource, only: [:edit, :update, :destroy, :settings, :boards, :ideas]
+	before_action :current_resource, only: [:edit, :update, :destroy, :settings, :boards, :ideas,
+                                          :change_password, :update_password]
 
   def new
     @user = User.new
@@ -46,10 +47,6 @@ class UsersController < ApplicationController
 
   def boards
     @boards = @user.boards.page(params[:page]).per_page(9)
-
-    # if request.path != boards_user_path(@user)
-    #   redirect_to boards_user_path(@user), status: :moved_permanently
-    # end
   end
 
   def ideas
@@ -58,6 +55,28 @@ class UsersController < ApplicationController
 
   def votes
     @user_votes = @user.user_votes.page(params[:page]).per_page(9)
+  end
+
+  def change_password
+  end
+
+  def update_password
+    if @user.authenticate(params[:old_password])
+      if @user.password_match?(user_params)
+        if @user.update_attributes(user_params)
+          redirect_to settings_user_path(@user), notice: "Password successfully updated."
+        else
+          flash.now[:alert] = "Password not changed."
+          render :change_password
+        end
+      else
+        flash.now[:alert] = "New Password Mismatch!"
+        render :change_password
+      end
+    else
+      flash.now[:alert] = "Old Password Incorrect!"
+      render :change_password
+    end
   end
 
   private

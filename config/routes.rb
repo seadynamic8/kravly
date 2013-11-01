@@ -32,6 +32,8 @@ Wishproto::Application.routes.draw do
       get 'boards'
       get 'ideas'
       get 'votes'
+      get 'change_password'
+      patch 'update_password'
     end
     resources :boards, only: [:index, :new, :create]
     resources :boards, path: '/', except: [:index, :new, :create]

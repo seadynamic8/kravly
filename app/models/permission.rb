@@ -8,7 +8,8 @@ class Permission
 		permit :boards, [:show]
 		permit :ideas, [:index, :show]
 		if user
-			permit :users, [:edit, :update, :destroy, :settings] do |u|
+			permit :users, [:edit, :update, :destroy, :settings, 
+				 							:change_password, :update_password] do |u|
 				u == user
 			end
 			permit :boards, [:new, :create]

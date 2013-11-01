@@ -107,6 +107,11 @@ class User < ActiveRecord::Base
 		slug.blank? || username_changed?
 	end
 
+	def password_match?(user_params)
+		user_params[:password] == user_params[:password_confirmation] && 
+				!user_params[:password_confirmation].blank?
+	end
+
 	private
 
 		def ensure_username_uniqueness
