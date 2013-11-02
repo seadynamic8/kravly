@@ -13,7 +13,9 @@
 	</div>
 	<div class="large-9 columns">
 		<div class="row collapse">
-			<%= f.file_field :image %><br><br>
+			<%= image_tag(@idea.image.small_thumb.url) if @idea.image? %>
+			<%= f.file_field :image %>
+			<br><br>
 			<div class="large-2 columns">
 				<span class="prefix">http://</span>
 			</div>

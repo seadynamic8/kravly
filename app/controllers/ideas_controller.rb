@@ -54,7 +54,6 @@ class IdeasController < ApplicationController
   end
 
   def update
-    logger.debug "idea_params = #{idea_params}"
     process_video
     if @idea.update_attributes(idea_params)
       redirect_to @idea, notice: "Idea was updated."
