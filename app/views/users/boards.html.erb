@@ -14,9 +14,12 @@
 						<h5><%= link_to board.name, [@user, board] %></h5>
 
 						<% if board.ideas.count > 0 %>
-
-							<%= link_to (image_tag board.ideas.first.image.thumb.url), 
+						
+							<div class="img-container">
+								<%= link_to (image_tag board.ideas.first.image.thumb.url), 
 									user_board_path(@user, board) %>
+								<p class="img-source"><%= board.ideas.first.source %></p>
+							</div>
 							
 							<ul class="large-block-grid-3 board-bottom">
 								<li>

@@ -58,10 +58,24 @@ body, fieldset legend {
 		margin: 0;
 	}
 
-	img {
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
+	.img-container {
+		position: relative;
+		width: 317px;
+		height: 175px;
+
+		img {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.img-source {
+			position: absolute;
+			top: 159px;
+			left: 0;
+			background-color: #ccc;
+			padding: 0 5px;
+			font-size: 10px;
+		}
 	}
 
 	.board-bottom {
@@ -145,32 +159,6 @@ body, fieldset legend {
 	h5 {
 		float: right;
 	}
-}
-
-.user-item {
-	padding-bottom: 20px;
-
-	h5 {
-		text-align: center;
-	}
-	img.item-large{
-		width: 302px;
-		height: 150px;
-	}
-
-}
-
-.group-item {
-	padding-bottom: 20px;
-
-	h5 {
-		text-align: center;
-	}
-	img.item-large{
-		width: 302px;
-		height: 150px;
-	}
-
 }
 
 @import "ideas";

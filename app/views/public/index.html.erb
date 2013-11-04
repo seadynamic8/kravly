@@ -38,7 +38,10 @@
 				<li>
 					<div class="block">
 						<h5><%= link_to idea.title, idea_path(idea) %></h5>
-						<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %>
+						<div class="img-container">
+							<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %>
+							<p class="img-source"><%= idea.source %></p>
+						</div>
 						<div class="idea-bottom">
 							<div class="vote"><%= idea.votes %></div>
 							<%= link_to (image_tag idea.user.avatar.profile.url),

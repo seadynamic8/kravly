@@ -11,7 +11,12 @@
         <li id="idea-<%= "#{user_vote.idea.id}" %>">
           <div class="block">
             <h5><%= link_to user_vote.idea.title, idea_path(user_vote.idea) %></h5>
-            <%= link_to (image_tag user_vote.idea.image.thumb.url), idea_path(user_vote.idea) %><br>
+            <div class="img-container">
+              <%= link_to (image_tag user_vote.idea.image.thumb.url), 
+                      idea_path(user_vote.idea) %>
+              <p class="img-source"><%= user_vote.idea.source %></p>
+            </div>
+            <br>
           </div>
         </li>
 

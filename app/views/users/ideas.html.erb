@@ -11,7 +11,10 @@
 				<li id="idea-<%= "#{idea.id}" %>">
 					<div class="block">
 						<h5><%= link_to idea.title, idea_path(idea) %></h5>
-						<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %><br>
+						<div class="img-container">
+							<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %><br>
+							<p class="img-source"><%= idea.source %></p>
+						</div>
 
 						<% if permit? "ideas", "edit", idea %>
 							<span data-no-turbolink>

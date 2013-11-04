@@ -14,6 +14,7 @@
 #  video_type         :string(255)
 #  slug               :string(255)
 #  contribution_level :string(255)
+#  source             :string(255)
 #
 
 require 'spec_helper'

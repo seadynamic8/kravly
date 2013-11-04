@@ -46,11 +46,11 @@ class UsersController < ApplicationController
   end
 
   def boards
-    @boards = @user.boards.page(params[:page]).per_page(9)
+    @boards = @user.boards.recent.page(params[:page]).per_page(9)
   end
 
   def ideas
-    @ideas = @user.ideas.page(params[:page]).per_page(9)
+    @ideas = @user.ideas.recent.page(params[:page]).per_page(9)
   end
 
   def votes

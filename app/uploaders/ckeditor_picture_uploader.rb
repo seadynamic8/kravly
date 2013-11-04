@@ -8,7 +8,7 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
   # include CarrierWave::ImageScience
 
   # Choose what kind of storage to use for this uploader:
-  storage :fog
+  # storage :fog
 
   include CarrierWave::MimeTypes
   process :set_content_type

@@ -14,6 +14,7 @@
 #  video_type         :string(255)
 #  slug               :string(255)
 #  contribution_level :string(255)
+#  source             :string(255)
 #
 
 require 'file_size_validator'
@@ -42,6 +43,7 @@ class Idea < ActiveRecord::Base
 	validates :contribution_level, length: { maximum: 30 }
 
 	after_validation :move_friendly_id_error_to_name
+	before_save :update_source_from_remote_url
 
 	include PgSearch
 	pg_search_scope :search, 
@@ -82,6 +84,10 @@ class Idea < ActiveRecord::Base
 
 		def move_friendly_id_error_to_name
 			errors.add :name, *errors.delete(:friendly_id) if errors[:friendly_id].present?
+		end
+
+		def update_source_from_remote_url
+			self.source = URI(self.remote_image_url).host if self.remote_image_url
 		end
 																	
 end
