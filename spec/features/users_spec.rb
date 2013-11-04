@@ -59,7 +59,6 @@ feature 'User Management' do
 		visit edit_user_path(user)
 		expect(page).to have_css '#user_username'
 		expect(page).to have_css '#user_avatar'
-		expect(page).to have_css '#user_remote_avatar_url'
 		expect(page).to have_css 'input[type="hidden"]#user_avatar_cache'
 		expect(page).to have_css '#user_about'
 		expect(page).to have_css '#user_location'

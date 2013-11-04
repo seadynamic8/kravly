@@ -40,7 +40,7 @@ describe IdeasController do
 
     it "assigns current user's boards to @boards" do
       get :new
-      expect(assigns(:boards)).to eq current_user.boards
+      expect(assigns(:boards)).to eq current_user.boards.recent
     end
   end
 
@@ -77,7 +77,7 @@ describe IdeasController do
 
       it "assigns current user's boards to @boards" do
         post :create, idea: attributes_for(:invalid_idea)
-        expect(assigns(:boards)).to eq current_user.boards
+        expect(assigns(:boards)).to eq current_user.boards.recent
       end
 
       it "re-renders the :new template" do
