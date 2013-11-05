@@ -38,7 +38,10 @@ class User < ActiveRecord::Base
 
 	EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-	validates :username, uniqueness: true, length: { maximum: 30 }
+	validates :username, uniqueness: true, 
+											 length: { in: 3..40 },
+											 format: { with: /^[A-Za-z\d_-]+$/, 
+											 message: "Can only be alphanumeric with no spaces" }
 	validates :email, presence: true, uniqueness: true, format: EMAIL_REGEX
 	validates :firstname, length: { maximum: 35 }
 	validates :lastname, length: { maximum: 35 }
@@ -49,8 +52,8 @@ class User < ActiveRecord::Base
 	validates :password_confirmation, presence: true, on: :create
 	validates :avatar, file_size: { maximum: 2.megabytes.to_i }
 	validates :slug, uniqueness: true, allow_nil: true
-	validates :location, length: { maximum: 30 }
-	validates :website, length: { maximum: 30 }
+	validates :location, length: { maximum: 50 }
+	validates :website, length: { maximum: 50 }
 	validates :display, presence: true, inclusion: { in: [1, 2, 3] }
 
 	before_validation :ensure_username_uniqueness, on: :create
