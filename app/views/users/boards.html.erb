@@ -13,6 +13,7 @@
 					<div class="block">
 						<h5><%= link_to board.name, [@user, board] %></h5>
 
+						<div class="block-main">
 						<% if board.ideas.count > 0 %>
 						
 							<div class="img-container">
@@ -51,14 +52,17 @@
 						<% else %>
 							<%= image_tag "https://s3.amazonaws.com/wishproto/board-background.png" %>
 						<% end %>
+						</div>
 
-						<% if permit? "boards", "edit", board %>
-							<%= link_to "Edit", edit_user_board_path(@user, board), class: "tiny button" %>
-						<% end %>
-						<% if permit? "boards", "destroy", board %>
-							<%= link_to "Delete", user_board_path(@user, board), method: :delete, 
-									data: { confirm: "Are you sure?" },	class: "tiny button" %>
-						<% end %>
+						<span class="buttons">
+							<% if permit? "boards", "edit", board %>
+								<%= link_to "Edit", edit_user_board_path(@user, board), class: "tiny button" %>
+							<% end %>
+							<% if permit? "boards", "destroy", board %>
+								<%= link_to "Delete", user_board_path(@user, board), method: :delete, 
+										data: { confirm: "Are you sure?" },	class: "tiny button" %>
+							<% end %>
+						</span>
 					</div>
 					
 				</li>

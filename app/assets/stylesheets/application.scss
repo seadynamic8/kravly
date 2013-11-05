@@ -50,8 +50,11 @@ body, fieldset legend {
 }
 
 .block {
-	border: 1px solid #ddd;
+	border: 1px solid #ccc;
 	color: #444;
+	-webkit-box-shadow: 4px 4px 5px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    4px 4px 5px rgba(50, 50, 50, 0.75);
+	box-shadow:         4px 4px 5px rgba(50, 50, 50, 0.75);
 
 	h5 {
 		text-align: center;
@@ -109,6 +112,15 @@ body, fieldset legend {
 			font-size: 20px;
 			display: inline;
 		}
+	}
+
+	.block-main {
+		margin-bottom: 5px;
+	}
+
+	.buttons {
+		clear: both;
+		margin-left: 10px;
 	}
 }
 
