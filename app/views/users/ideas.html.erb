@@ -13,7 +13,7 @@
 						<h5><%= link_to idea.title, idea_path(idea) %></h5>
 						<div class="img-container">
 							<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %><br>
-							<p class="img-source"><%= idea.source %></p>
+							<p class="img-source hidden"><%= idea.source %></p>
 						</div>
 
 						<% if permit? "ideas", "edit", idea %>

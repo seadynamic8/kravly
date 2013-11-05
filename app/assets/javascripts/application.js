@@ -19,3 +19,14 @@
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+$(document).ready(function() {
+	$('.img-container').hover(
+		function() {
+			$(this).find('.img-source').removeClass('hidden');
+		},
+		function() {
+			$(this).find('.img-source').addClass('hidden');
+		}
+	);
+});
