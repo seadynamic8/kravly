@@ -40,8 +40,8 @@ class User < ActiveRecord::Base
 
 	validates :username, uniqueness: true, 
 											 length: { in: 3..40 },
-											 format: { with: /^[A-Za-z\d_-]+$/, 
-											 message: "Can only be alphanumeric with no spaces" }
+											 format: { with: /\A[A-Za-z\d\._-]+\z/, 
+											 message: "can only contain alphanumeric, dot, underscore, or hyphen with no spaces" }
 	validates :email, presence: true, uniqueness: true, format: EMAIL_REGEX
 	validates :firstname, length: { maximum: 35 }
 	validates :lastname, length: { maximum: 35 }

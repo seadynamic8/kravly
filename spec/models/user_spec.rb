@@ -38,12 +38,15 @@ describe User do
 		it { should normalize_attribute(:lastname) }
 
 		it "is valid with a username, email, firstname, lastname" do
+			user = create(:user)
+			
 			expect(create(:user)).to be_valid
 		end
 
 		#it { should validate_uniqueness_of(:username) } #Bug in shoulda for Rails 4
-		it { should ensure_length_of(:username).is_at_most(30) }
-
+		it { should ensure_length_of(:username)
+								.is_at_least(3)
+								.is_at_most(40) }
 
 		it { should validate_presence_of(:email) }
 		#it { should validate_uniqueness_of(:email) } #Bug in shoulda for Rails 4
@@ -62,16 +65,16 @@ describe User do
 		it { should ensure_length_of(:lastname).is_at_most(35) }
 
 		it { should validate_presence_of(:password) }
-		it { should ensure_length_of(:password).
-									is_at_least(8).
-									is_at_most(30) }
+		it { should ensure_length_of(:password)
+									.is_at_least(8)
+									.is_at_most(30) }
 		# it { should validate_confirmation_of(:password) }
 		it { should validate_presence_of(:password_confirmation) }
 
 		# it "in invalid with avatar being greater than 2MB in size"
 
-		it { should ensure_length_of(:location).is_at_most(30) }
-		it { should ensure_length_of(:website).is_at_most(30) }
+		it { should ensure_length_of(:location).is_at_most(50) }
+		it { should ensure_length_of(:website).is_at_most(50) }
 
 		it { should validate_presence_of(:display) }
 	end
