@@ -21,8 +21,6 @@ Wishproto::Application.routes.draw do
     get 'vote', on: :member
   end
 
-  get ':id(.:format)', to: "users#boards"
-
   #Keep on bottom, these will catch all
   resources :users, only: [:index, :new, :create]
   resources :users, path: '/', except: [:index, :new, :create, :show]
@@ -35,8 +33,11 @@ Wishproto::Application.routes.draw do
       get 'change_password'
       patch 'update_password'
     end
-    resources :boards, only: [:index, :new, :create]
+
+    resources :boards, only: [ :new, :create]
     resources :boards, path: '/', except: [:index, :new, :create]
   end
-
+  resources :boards, only: [:index]
+  
+  get ':id(.:format)', to: "users#boards"
 end

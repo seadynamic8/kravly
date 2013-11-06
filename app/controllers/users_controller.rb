@@ -2,6 +2,10 @@ class UsersController < ApplicationController
 	before_action :current_resource, only: [:edit, :update, :destroy, :settings, :boards, :ideas,
                                           :change_password, :update_password]
 
+  def index
+    @users = User.all
+  end
+
   def new
     @user = User.new
     store_location

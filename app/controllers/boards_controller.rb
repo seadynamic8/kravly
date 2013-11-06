@@ -1,6 +1,10 @@
 class BoardsController < ApplicationController
 	before_action :current_resource, only: [:show, :update, :edit, :destroy]
 
+  def index
+    @boards = Board.all
+  end
+
   def show
     @ideas = @board.ideas.page(params[:page]).per_page(9)
     @user = @board.user
