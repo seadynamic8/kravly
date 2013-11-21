@@ -87,6 +87,7 @@ gem 'ckeditor'
 gem 'carrierwave' # Photo uploads
 gem 'mini_magick' # Imagemagick command line wrapper
 gem 'fog' # Allow connect to Amazon S3 Cloud service
+gem 'unf' # Supporter for fog
 
 gem 'will_paginate'
 
@@ -94,8 +95,10 @@ gem 'figaro' # Stores Environment Variables Outside
 
 gem 'pg_search'
 
-gem 'acts_as_commentable_with_threading', 
-		git: "git://github.com/epiclist/acts_as_commentable_with_threading.git", 
-		ref: 'dafd24'
+gem 'acts_as_commentable_with_threading',
+	git: "https://github.com/mikeatlas/acts_as_commentable_with_threading"
+# gem 'acts_as_commentable_with_threading', 
+# 		git: "git://github.com/epiclist/acts_as_commentable_with_threading.git", 
+# 		ref: 'dafd24'
 
-gem 'friendly_id', git: 'git://github.com/norman/friendly_id.git', ref: 'master'
+gem 'friendly_id'
