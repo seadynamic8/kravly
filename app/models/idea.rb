@@ -24,6 +24,7 @@ require 'uri'
 
 class Idea < ActiveRecord::Base
 	acts_as_commentable
+	is_impressionable
 
 	belongs_to :board
 

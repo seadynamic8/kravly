@@ -92,19 +92,19 @@
 			<% end %>
 		</div>
 
-<!-- 		<div class="row idea-side">
+		<div class="row idea-side">
 			<h9>Stats</h9>
 			<hr>
 			<div class="large-4 columns">
-				231<br>views
+				<%= @idea.impressionist_count(filter: :ip_address) %><br>views
 			</div>
 			<div class="large-4 columns">
 				<%= @idea.votes %><br>votes
 			</div>
 			<div class="large-4 columns">
-				6<br>comments
+				<%= @all_comments_count %><br>comments
 			</div>
-		</div> -->
+		</div>
 
 		<% if @rand_ideas %>
 			<div class="row more-ideas">

@@ -102,3 +102,5 @@ gem 'acts_as_commentable_with_threading',
 # 		ref: 'dafd24'
 
 gem 'friendly_id'
+
+gem 'impressionist'

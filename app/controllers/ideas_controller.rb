@@ -11,6 +11,8 @@ class IdeasController < ApplicationController
       redirect_to @idea, status: :moved_permanently
     end
 
+    impressionist @idea
+
     # The sidebar needs a board to pull up other ideas from (3 random ones).
     if @idea.board.ideas && @idea.board.ideas.count > 3
       @rand_ideas = []
@@ -22,6 +24,7 @@ class IdeasController < ApplicationController
       end
     end
 
+    @all_comments_count = @idea.comment_threads.count
     @root_comments = @idea.root_comments.order('created_at desc')
     @new_comment = Comment.build_from(@idea, nil, "")
   end
