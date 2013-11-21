@@ -75,10 +75,10 @@
 
 <div class="row">
 	<div class="large-3 columns">
-		<%= f.label :contribution_level, "Contribution*", class: "left inline" %>
+		<%= f.label :commitment, "Commitment*", class: "left inline" %>
 	</div>
 	<div class="large-5 columns">
-		<%= f.select :contribution_level, options_for_select([
+		<%= f.select :commitment, options_for_select([
 					["Contribute Initial Idea Only", "Contribute Initial Idea Only"],
 					["Brainstorm on Idea", "Brainstorm on Idea"],
 					["Brainstorm Ideas and Be Advisor", "Brainstorm Ideas and Be Advisor"],
@@ -118,10 +118,10 @@
 
 <div class="row">
 	<div class="large-3 columns">
-		<%= f.label :location, "Market", class: "left inline" %>
+		<%= f.label :market, "Market", class: "left inline" %>
 	</div>
 	<div class="large-5 columns">
-		<%= f.text_field :location, placeholder: "World Wide, North America, New York, etc." %>
+		<%= f.text_field :market, placeholder: "World Wide, North America, New York, etc." %>
 	</div>
 	<div class="large-4 columns">
 		<p style="font-size: .8em;">Where are your Customers?</p>

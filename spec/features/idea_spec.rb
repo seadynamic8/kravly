@@ -11,8 +11,8 @@ feature "Idea Management" do
 		end
 
 		scenario "can see idea info if set" do
-			idea = create(:idea, contribution_level: "Contribute Initial Idea Only",
-				looking_for: ["Partners/Co-Founders"], location: "New York")
+			idea = create(:idea, commitment: "Contribute Initial Idea Only",
+				looking_for: ["Partners/Co-Founders"], market: "New York")
 			visit idea_path(idea)
 			expect(page).to have_content("Contribute Initial Idea Only")
 			expect(page).to have_content("Partners/Co-Founders")
@@ -39,9 +39,9 @@ feature "Idea Management" do
 			expect(page).to have_css '#idea_video_url'
 			expect(page).to have_css '#idea_content'
 			expect(page).to have_css '#idea_board_id'
-			expect(page).to have_css '#idea_contribution_level'
+			expect(page).to have_css '#idea_commitment'
 			expect(page).to have_css 'label[for="idea_looking_for"]'
-			expect(page).to have_css '#idea_location'
+			expect(page).to have_css '#idea_market'
 			expect(page).to have_css 'input[value="0"]#idea_votes'
 		end
 

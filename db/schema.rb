@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120210514) do
+ActiveRecord::Schema.define(version: 20131121151840) do
 
   create_table "boards", force: true do |t|
     t.string   "name"
@@ -82,10 +82,10 @@ ActiveRecord::Schema.define(version: 20131120210514) do
     t.string   "video_url"
     t.string   "video_type"
     t.string   "slug"
-    t.string   "contribution_level"
+    t.string   "commitment"
     t.string   "source"
     t.text     "looking_for"
-    t.string   "location"
+    t.string   "market"
   end
 
   add_index "ideas", ["board_id"], name: "index_ideas_on_board_id", using: :btree

@@ -3,8 +3,8 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 # jQuery ->
-# 	$('#idea_contribution_level').focus( -> $('#idea_contribution_level_radio').attr('checked','checked'))
-# 	$('#idea_contribution_level').keyup( -> $('#idea_contribution_level_radio').val($(this).val()))
+# 	$('#idea_commitment').focus( -> $('#idea_commitment_radio').attr('checked','checked'))
+# 	$('#idea_commitment').keyup( -> $('#idea_commitment_radio').val($(this).val()))
 
 jQuery ->
 	$(this).foundation('section', 'reflow')

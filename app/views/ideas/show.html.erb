@@ -74,9 +74,9 @@
 		</div>
 
 		<div class="row idea-info">
-			<% if @idea.contribution_level.present? %>
-				<h5>Contribution</h5>
-				<p><%= @idea.contribution_level %></p>
+			<% if @idea.commitment.present? %>
+				<h5>Commitment</h5>
+				<p><%= @idea.commitment %></p>
 			<% end %>
 			<% if @idea.looking_for.present? %>
 				<h5>Looking For</h5>
@@ -86,9 +86,9 @@
 				<% end %>
 				</ul>
 			<% end %>
-			<% if @idea.location.present? %>
+			<% if @idea.market.present? %>
 				<h5>Market</h5>
-				<p><%= @idea.location %></p>
+				<p><%= @idea.market %></p>
 			<% end %>
 		</div>
 

@@ -7,7 +7,7 @@ FactoryGirl.define do
     content { Faker::Lorem.paragraphs(3).join(" ") }
     sequence(:votes) { |n| n }
     #video_url { Faker::Internet.url }
-    contribution_level "Founder"
+    commitment "Founder/Co-Founder of New Company"
     
     # factory :idea_with_boards do
     # 	ignore do

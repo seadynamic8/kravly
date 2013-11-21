@@ -2,21 +2,21 @@
 #
 # Table name: ideas
 #
-#  id                 :integer          not null, primary key
-#  title              :string(255)
-#  content            :text
-#  votes              :integer
-#  created_at         :datetime
-#  updated_at         :datetime
-#  board_id           :integer
-#  image              :string(255)
-#  video_url          :string(255)
-#  video_type         :string(255)
-#  slug               :string(255)
-#  contribution_level :string(255)
-#  source             :string(255)
-#  looking_for        :text
-#  location           :string(255)
+#  id          :integer          not null, primary key
+#  title       :string(255)
+#  content     :text
+#  votes       :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  board_id    :integer
+#  image       :string(255)
+#  video_url   :string(255)
+#  video_type  :string(255)
+#  slug        :string(255)
+#  commitment  :string(255)
+#  source      :string(255)
+#  looking_for :text
+#  market      :string(255)
 #
 
 require 'spec_helper'
@@ -31,7 +31,7 @@ describe Idea do
 
 		it { should normalize_attribute(:title) }
 		it { should normalize_attribute(:content) }
-		it { should normalize_attribute(:contribution_level) }
+		it { should normalize_attribute(:market) }
 
 		it { should validate_presence_of(:title) }
 		it { should validate_uniqueness_of(:title) }
@@ -46,9 +46,8 @@ describe Idea do
 
 		it { should validate_presence_of(:board) }
 
-		it { should ensure_length_of(:contribution_level).is_at_most(30) }
-		it { should ensure_length_of(:looking_for).is_at_most(30) }
-		it { should ensure_length_of(:location).is_at_most(30) }
+		it { should ensure_length_of(:commitment).is_at_most(35) }
+		it { should ensure_length_of(:market).is_at_most(30) }
 	end
 
 	describe "functions" do
