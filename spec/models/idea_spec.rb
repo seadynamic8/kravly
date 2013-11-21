@@ -15,6 +15,8 @@
 #  slug               :string(255)
 #  contribution_level :string(255)
 #  source             :string(255)
+#  looking_for        :text
+#  location           :string(255)
 #
 
 require 'spec_helper'
@@ -45,6 +47,8 @@ describe Idea do
 		it { should validate_presence_of(:board) }
 
 		it { should ensure_length_of(:contribution_level).is_at_most(30) }
+		it { should ensure_length_of(:looking_for).is_at_most(30) }
+		it { should ensure_length_of(:location).is_at_most(30) }
 	end
 
 	describe "functions" do

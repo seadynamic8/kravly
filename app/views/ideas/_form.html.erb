@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="large-2 columns">
+	<div class="large-3 columns">
 		<%= f.label :title, "Title*", class: "left inline" %>
 	</div>
 	<div class="large-9 columns">
@@ -8,7 +8,7 @@
 </div>
 
 <div class="row">
-	<div class="large-2 columns">
+	<div class="large-3 columns">
 		<%= f.label :cover_photo, "Cover Photo", class: "left inline" %>
 	</div>
 	<div class="large-9 columns">
@@ -22,7 +22,7 @@
 			<div class="large-10 columns">
 				<%= f.url_field :remote_image_url, placeholder: "Or Image URL" %>
 			</div>
-			<h6 class="subheader">Choose a photo that represents your Idea. Max image size: 2MB (.jpg, .jpeg, .png, .gif)</h6>
+			<p style="font-size: .8em;">Choose a photo that represents your Idea. Max image size: 2MB (.jpg, .jpeg, .png, .gif)</h6>
 		</div>
 	</div>
 </div>
@@ -30,8 +30,8 @@
 <%= f.hidden_field :image_cache %>
 
 <div class="row">
-	<div class="large-2 columns">
-		<%= f.label :video_url, "Video URL" %>
+	<div class="large-3 columns">
+		<%= f.label :video_url, "Video URL", class: "left inline" %>
 	</div>
 	<div class="large-9 columns">
 		<div class="row collapse">
@@ -47,36 +47,6 @@
 
 <div class="row">
 	<div class="large-3 columns">
-		<%= f.label :contribution_level, "Your Contribution Level", class: "left inline" %>
-	</div>
-	<div class="large-9 columns">
-		<!-- <label for="idea_contribution_level_idea_producer_only">
-		<%= f.radio_button :contribution_level, "Idea Producer Only", style: "display: none;" %>
-		<span class="custom radio"></span> Idea Producer Only</label>
-
-		<%= f.radio_button :contribution_level, "Idea Producer and Product Designer" %>
-		<%= f.label :contribution_level, " Idea Producer and Product Designer",
-				value: "idea_producer_and_product_designer" %>
-
-		<label for="idea_contribution_level_founder_of_new_company">
-		<%= f.radio_button :contribution_level, "Founder of New Company" %>
-		 Founder of New Company</label>
-
-		<label for="idea_contribution_level_radio">
-		<%= f.radio_button :contribution_level, nil, id: "idea_contribution_level_radio", 
-			style: "display: none;", checked: radio_checked?(f.object.contribution_level) %>
-		Other: 
-		<%= f.text_field :contribution_level, placeholder: "Please specify" %></label> -->
-
-		<%= f.text_field :contribution_level, 
-				placeholder: "Work on Idea Only, Founder of New Company, etc." %>
-	</div>
-</div>
-
-<br>
-
-<div class="row">
-	<div class="large-2 columns">
 		<%= f.label :workspace, "Workspace*", class: "left inline" %>
 	</div>
 	<div class="large-9 columns">
@@ -87,10 +57,10 @@
 <br>
 
 <div class="row">
-	<div class="large-2 columns">
+	<div class="large-3 columns">
 		<%= f.label :board, "Board*", class: "left inline" %>
 	</div>
-	<div class="large-9 columns">
+	<div class="large-5 columns">
 		<% if @last_board %>
 			<%= f.select :board_id, 
 					@boards.map { |board| [board.name, board.id] }, { selected: @last_board.id} %>
@@ -99,6 +69,63 @@
 					@boards.map { |board| [board.name, board.id] } %>
 		<% end %>
 	</div>
+	<div class="large-4 columns">
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-3 columns">
+		<%= f.label :contribution_level, "Contribution*", class: "left inline" %>
+	</div>
+	<div class="large-5 columns">
+		<%= f.select :contribution_level, options_for_select([
+					["Contribute Initial Idea Only", "Contribute Initial Idea Only"],
+					["Brainstorm on Idea", "Brainstorm on Idea"],
+					["Brainstorm Ideas and Be Advisor", "Brainstorm Ideas and Be Advisor"],
+					["Founder/Co-Founder of New Company", "Founder/Co-Founder of New Company"]]) %>
+	</div>
+	<div class="large-4 columns">
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-3 columns">
+		<%= f.label :looking_for, "Looking For", class: "left inline" %>
+	</div>
+	<div class="large-9 columns">
+		<label>
+			<input type="checkbox" name="idea[looking_for][]" style="display: none;" 
+				value="Partners/Co-Founders" 
+				<%= resource_checked?(f.object.looking_for, "Partners/Co-Founders") %>>
+			<span class="custom checkbox"></span> Partners/Co-Founders
+		</label>
+		<label>
+			<input type="checkbox" name="idea[looking_for][]" style="display: none;" 
+				value="Early-Stage Employees"
+				<%= resource_checked?(f.object.looking_for, "Early-Stage Employees") %>>
+			<span class="custom checkbox"></span> Early-Stage Employees
+		</label>
+		<label>
+			<input type="checkbox" name="idea[looking_for][]" style="display: none;" 
+				value="Funding"
+				<%= resource_checked?(f.object.looking_for, "Funding") %>>
+			<span class="custom checkbox"></span> Funding
+		</label>
+	</div>
+</div>
+
+<br>
+
+<div class="row">
+	<div class="large-3 columns">
+		<%= f.label :location, "Market", class: "left inline" %>
+	</div>
+	<div class="large-5 columns">
+		<%= f.text_field :location, placeholder: "World Wide, North America, New York, etc." %>
+	</div>
+	<div class="large-4 columns">
+		<p style="font-size: .8em;">Where are your Customers?</p>
+	</div>
 </div>
 
 <% if params[:action] == 'new' || params[:action] == 'create' %>
@@ -106,6 +133,8 @@
 <% else #edit or update action %>
 	<%= hidden_field_tag "idea[votes]", @idea.votes %>
 <% end %>
+
+<br>
 
 <div class="row">
 	<div class="large-5 large-centered columns">

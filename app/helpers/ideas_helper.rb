@@ -1,12 +1,6 @@
 module IdeasHelper
 
-	def radio_checked?(val)
-		logger.debug "val = #{val}"
-
-		contribution = [ "Idea Producer Only", 
-										 "Idea Producer and Product Designer", 
-										 "Founder of New Company" ]
-
-		( val.blank? || contribution.include?(val) ) ? "" : "checked"
+	def resource_checked?(looking_for, val)
+		( val.blank? || looking_for.exclude?(val) ) ? "" : "checked"
 	end
 end

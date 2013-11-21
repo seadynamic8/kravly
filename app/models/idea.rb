@@ -15,6 +15,8 @@
 #  slug               :string(255)
 #  contribution_level :string(255)
 #  source             :string(255)
+#  looking_for        :text
+#  location           :string(255)
 #
 
 require 'file_size_validator'
@@ -24,6 +26,8 @@ class Idea < ActiveRecord::Base
 	acts_as_commentable
 
 	belongs_to :board
+
+	serialize :looking_for, Array
 
 	include FriendlyId
 	friendly_id :slug_candidates, use: [:slugged, :history]
@@ -41,6 +45,8 @@ class Idea < ActiveRecord::Base
 	validates :image, file_size: { maximum: 2.megabytes.to_i }
 	validates :board, presence: true
 	validates :contribution_level, length: { maximum: 30 }
+	# validates :looking_for, length: { maximum: 30 }
+	validates :location, length: { maximum: 30 }
 
 	after_validation :move_friendly_id_error_to_name
 	before_save :update_source_from_remote_url

@@ -9,6 +9,17 @@ feature "Idea Management" do
 			visit edit_idea_path(idea)
 			expect(page).to have_content('Please login.')
 		end
+
+		scenario "can see idea info if set" do
+			idea = create(:idea, contribution_level: "Contribute Initial Idea Only",
+				looking_for: ["Partners/Co-Founders"], location: "New York")
+			visit idea_path(idea)
+			expect(page).to have_content("Contribute Initial Idea Only")
+			expect(page).to have_content("Partners/Co-Founders")
+			expect(page).to have_content("New York")
+		end
+
+
 	end
 
 	context "as a member" do
@@ -26,9 +37,11 @@ feature "Idea Management" do
 			expect(page).to have_css '#idea_remote_image_url'
 			expect(page).to have_css 'input[type="hidden"]#idea_image_cache'
 			expect(page).to have_css '#idea_video_url'
-			expect(page).to have_css '#idea_contribution_level'
 			expect(page).to have_css '#idea_content'
 			expect(page).to have_css '#idea_board_id'
+			expect(page).to have_css '#idea_contribution_level'
+			expect(page).to have_css 'label[for="idea_looking_for"]'
+			expect(page).to have_css '#idea_location'
 			expect(page).to have_css 'input[value="0"]#idea_votes'
 		end
 

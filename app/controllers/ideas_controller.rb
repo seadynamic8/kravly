@@ -55,6 +55,8 @@ class IdeasController < ApplicationController
 
   def update
     process_video
+    looking_for = idea_params.delete(:looking_for) || []
+    @idea.looking_for = (@idea.looking_for || []).zip(looking_for).flatten.compact
     if @idea.update_attributes(idea_params)
       redirect_to @idea, notice: "Idea was updated."
     else
@@ -88,7 +90,7 @@ class IdeasController < ApplicationController
     def idea_params
       params.require(:idea).permit(:title, :content, :votes, 
         :image, :image_cache, :video_url, :remote_image_url, :board_id,
-        :contribution_level)
+        :contribution_level, :location, looking_for: [])
     end
 
     def process_video

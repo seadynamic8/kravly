@@ -24,10 +24,6 @@
 				</p>
 				<div class="content" data-section-content>
 					<p><%= raw @idea.content %></p>
-					<% if @idea.contribution_level.present? %>
-						<hr>
-						<p>Contribution Level: <%= @idea.contribution_level %></p>
-					<% end %>
 				</div>
 			</section>
 			<% if @idea.video_url.present? %>
@@ -75,6 +71,25 @@
 				<h5><%= link_to @idea.user.display_name, boards_user_path(@idea.user) %></h5>
 				<!-- <h8>Entrepreneur</h8> -->
 			</div>
+		</div>
+
+		<div class="row idea-info">
+			<% if @idea.contribution_level.present? %>
+				<h5>Contribution</h5>
+				<p><%= @idea.contribution_level %></p>
+			<% end %>
+			<% if @idea.looking_for.present? %>
+				<h5>Looking For</h5>
+				<ul>
+				<% @idea.looking_for.each do |resource| %>
+					<li><%= resource %><br></li>
+				<% end %>
+				</ul>
+			<% end %>
+			<% if @idea.location.present? %>
+				<h5>Market</h5>
+				<p><%= @idea.location %></p>
+			<% end %>
 		</div>
 
 <!-- 		<div class="row idea-side">

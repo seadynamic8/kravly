@@ -21,14 +21,16 @@ input[type="file"] {
 
 .idea-side {
 
+	div.row {
+		padding-bottom: 20px;
+	}
+
 	.idea-user {
 		img {
 			display: inline;
 		}
 	}
-	div.row {
-		padding-bottom: 20px;
-	}
+	
 	.more-ideas {
 
 		.columns {
