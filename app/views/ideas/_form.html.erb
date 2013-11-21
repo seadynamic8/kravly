@@ -95,6 +95,12 @@
 	<div class="large-9 columns">
 		<label>
 			<input type="checkbox" name="idea[looking_for][]" style="display: none;" 
+				value="Entrepreneur" 
+				<%= resource_checked?(f.object.looking_for, "Entrepreneur") %>>
+			<span class="custom checkbox"></span> Entrepreneur
+		</label>
+		<label>
+			<input type="checkbox" name="idea[looking_for][]" style="display: none;" 
 				value="Partners/Co-Founders" 
 				<%= resource_checked?(f.object.looking_for, "Partners/Co-Founders") %>>
 			<span class="custom checkbox"></span> Partners/Co-Founders
