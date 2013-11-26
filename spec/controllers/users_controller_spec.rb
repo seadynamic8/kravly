@@ -50,76 +50,73 @@ describe UsersController do
   end
 
   describe "GET 'edit'" do
-    before :each do
-      @user = create(:user)
-      login @user
-    end
+
+    let(:user) { create(:user) }
+    before(:each) { login user }
 
     it "returns http success" do
-      get :edit, id: @user
+      get :edit, id: user
       expect(response).to be_success
     end
 
     it "assigns the requested user to @user" do
-      get :edit, id: @user
-      expect(assigns(:user)).to eq @user
+      get :edit, id: user
+      expect(assigns(:user)).to eq user
     end
 
     it "renders the :edit template" do
-      get :edit, id: @user
+      get :edit, id: user
       expect(response).to render_template :edit
     end
   end
 
   describe "PATCH 'update'" do
-    before :each do
-      @user = create(:user, email: "test@example.com")
-      login @user
-    end
+
+    let(:user) { create(:user, email: "test@example.com") }
+    before(:each) { login user }
 
     context "valid attributes" do
       it "located the requested @user" do
-        patch :update, id: @user, user: attributes_for(:user)
-        expect(assigns(:user)).to eq(@user)
+        patch :update, id: user, user: attributes_for(:user)
+        expect(assigns(:user)).to eq(user)
       end
 
       it "changes @user attributes" do
-        patch :update, id: @user, user: attributes_for(:user,
+        patch :update, id: user, user: attributes_for(:user,
           email: "different@example.com")
-        @user.reload
-        expect(@user.email).to eq("different@example.com")
+        user.reload
+        expect(user.email).to eq("different@example.com")
       end
 
       it "redirects to the updated user's boards page" do
-        patch :update, id: @user, user: attributes_for(:user)
+        patch :update, id: user, user: attributes_for(:user)
         expect(response).to redirect_to boards_user_path(assigns[:user])
       end
     end
 
     context "invalid attributes" do
       it "does not change the user's attributes" do
-        patch :update, id: @user, user: attributes_for(:user,
+        patch :update, id: user, user: attributes_for(:user,
           email: nil)
-        @user.reload
-        expect(@user.email).to eq("test@example.com")
+        user.reload
+        expect(user.email).to eq("test@example.com")
       end
 
       it "re-renders the edit template" do
-        patch :update, id: @user, user: attributes_for(:invalid_user)
+        patch :update, id: user, user: attributes_for(:invalid_user)
         expect(response).to render_template :edit
       end
     end
   end
 
   describe "DELETE 'destroy'" do
-    before :each do
-      @user = create(:user)
-      login @user
-    end
+
+    let(:user) { create(:user) }
+    before(:each) { login user }
 
     it "deletes the contact" do
       expect {
-        delete :destroy, id: @user
+        delete :destroy, id: user
       }.to change(User, :count).by(-1)
     end
 
@@ -130,41 +127,39 @@ describe UsersController do
     # end
 
     it "redirects to root_url" do
-      delete :destroy, id: @user
+      delete :destroy, id: user
       expect(response).to redirect_to root_url
     end
   end
 
   describe "GET 'settings'" do
-    before :each do
-      @user = create(:user)
-      login @user
-    end
+
+    let(:user) { create(:user) }
+    before(:each) { login user }
 
     it "returns http success" do
-      get :settings, id: @user
+      get :settings, id: user
       expect(response).to be_success
     end
 
     it "assigns the requested user to @user" do
-      get :settings, id: @user
-      expect(assigns(:user)).to eq @user
+      get :settings, id: user
+      expect(assigns(:user)).to eq user
     end
 
     it "renders the :settings template" do
-      get :settings, id: @user
+      get :settings, id: user
       expect(response).to render_template :settings
     end
   end
 
   describe "GET 'boards'" do
-    before :each do
-      @user = create(:user)
-    end
+
+    let(:user) { create(:user) }
 
     it "assigns the requested user to @user" do
-      get :boards, id: @user
-      expect(assigns(:user)).to eq @user
+      get :boards, id: user
+      expect(assigns(:user)).to eq user
     end
 
     # it "assigns the requested boards to @boards" do
@@ -174,55 +169,53 @@ describe UsersController do
     # end
 
     it "renders the :boards template" do
-      get :boards, id: @user
+      get :boards, id: user
       expect(response).to render_template :boards
     end
   end
 
   describe "GET 'ideas'" do
-    before :each do
-      @user = create(:user)
-    end
+    
+    let(:user) { create(:user) }
 
     it "returns http success" do
-      get :ideas, id: @user
+      get :ideas, id: user
       expect(response).to be_success
     end
 
     it "assigns the requested user to @user" do
-      get :ideas, id: @user
-      expect(assigns(:user)).to eq @user
+      get :ideas, id: user
+      expect(assigns(:user)).to eq user
     end
 
     # it "assigns the requested ideas to @ideas" do
     # end
 
     it "renders the :ideas template" do
-      get :ideas, id: @user
+      get :ideas, id: user
       expect(response).to render_template :ideas
     end
   end
 
   describe "GET 'votes'" do
-    before :each do
-      @user = create(:user)
-    end
+    
+    let(:user) { create(:user) }
 
     it "returns http success" do
-      get :votes, id: @user
+      get :votes, id: user
       expect(response).to be_success
     end
 
     it "assigns the requested user to @user" do
-      get :votes, id: @user
-      expect(assigns(:user)).to eq @user
+      get :votes, id: user
+      expect(assigns(:user)).to eq user
     end
 
     # it "assigns the requested votes to @votes" do
     # end
 
     it "renders the :votes template" do
-      get :votes, id: @user
+      get :votes, id: user
       expect(response).to render_template :votes
     end
   end
