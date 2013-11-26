@@ -3,7 +3,7 @@ require 'faker'
 FactoryGirl.define do
   factory :user do
     # username { Faker::Internet.user_name }
-    email { Faker::Internet.email }
+    email { "aaa" + Faker::Internet.email }
     firstname { Faker::Name.first_name }
     lastname { Faker::Name.last_name }
     password "test1234"
@@ -18,7 +18,7 @@ FactoryGirl.define do
     	end
 
     	after(:create) do |user, evaluator|
-    		FactoryGirl.create_list(:board, evaluator.boards_count, user: user)
+    		FactoryGirl.create_list(:board, evaluator.boards_count, user: user, category: create(:category))
     	end
     end
 

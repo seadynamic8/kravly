@@ -9,6 +9,7 @@
 #  user_id     :integer
 #  description :string(255)
 #  slug        :string(255)
+#  category_id :integer
 #
 
 require 'spec_helper'
@@ -16,6 +17,7 @@ require 'spec_helper'
 describe Board do
   
   describe "relationships" do
+  	it { should belong_to(:category) }
 		it { should belong_to(:user) }
 		it { should have_many(:ideas) }
 	end
@@ -30,6 +32,9 @@ describe Board do
 		it { should ensure_length_of(:name).is_at_most(30) }
 
 		it { should ensure_length_of(:description).is_at_most(255) }
+
+		it { should validate_presence_of(:user_id) }
+		it { should validate_presence_of(:category_id) }
 	end
 
 	describe "functions" do

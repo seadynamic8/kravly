@@ -38,21 +38,30 @@
       <section class="top-bar-section">
         <!-- Left Nav Section -->
         <ul class="left">
-<!--           <li class="divider"></li>
-          <li class="has-dropdown"><%= link_to "Categories", "#" %>
+          <li class="divider"></li>
+          <li class="has-dropdown categories"><%= link_to "Categories", "#" %>
             <ul class="dropdown">
-              <li><%= link_to "Camping" %></li>
-              <li><%= link_to "Fashion" %></li>
+              <div class="cat-container">
+                <li><%= link_to "Popular", root_url %></li>
+                <li><%= link_to "Recent", root_url( recent: true ) %></li>
+              <% @categories.each_with_index do |category, index| %>
+                <li><%= link_to category.name, category_index_path(category.slug) %></li>
+                <% if index == 11 || index == 25 %>
+                  </div>
+                  <div class="cat-container">
+                <% end %>
+              <% end %>
+              </div>
             </ul>
-          </li> -->
+          </li>
           <li class="divider"></li>
           <li class="has-form">
             <%= form_tag ideas_path, method: :get do %>
-              <div class="row collaspse">
-                <div class="large-8 columns">
+              <div class="row collapse">
+                <div class="large-9 columns">
                   <%= search_field_tag :query, params[:query], placeholder: "Search" %>
                 </div>
-                <div class="large-4 columns">
+                <div class="large-3 columns">
                   <%= submit_tag "Search", class: "button postfix" %>
                 </div>
               </div>
@@ -84,6 +93,9 @@
                 <li><%= link_to "Your Ideas", ideas_user_path(current_user) %></li>
                 <li><%= link_to "Your Votes", votes_user_path(current_user) %></li>
                 <li><%= link_to "Settings", settings_user_path(current_user) %></li>
+                <% if permit? "categories", "index" %>
+                  <li><%= link_to "All Categories", categories_path %></li>
+                <% end %>
                 <li><%= link_to "Log Out", logout_path %></li>
               </ul>
             </li>

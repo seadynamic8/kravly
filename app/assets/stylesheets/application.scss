@@ -26,6 +26,15 @@ body, fieldset legend {
 
 	.top-bar-section {
 
+		.categories .dropdown {
+			width: 600px;
+
+			.cat-container {
+				float: left;
+				width: 200px;
+			}
+		}
+
 		ul li:hover > a {
 			color: #2BA6CB;
 		}

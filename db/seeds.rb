@@ -44,7 +44,7 @@ require 'faker'
 # 	Board.where(name: board[:name]).first_or_create!(board)
 # end
 
-#Users.delete_all
+#User.delete_all
 # users = [
 # 	{ firstname: "Jarvis", lastname: "Kwan", username: "jkwan", email: "jkwan@example.com" },
 # 	{ firstname: "Jovita", lastname: "Lai", username: "jlai", email: "jlai@example.com" },
@@ -60,12 +60,12 @@ require 'faker'
 # 	idea.save
 # end
 
-ideas = Idea.all
-ideas.each_with_index do |idea, index|
-	idea.slug = nil
-	# idea.title = "Idea-#{index}"
-	idea.save!
-end
+# ideas = Idea.all
+# ideas.each_with_index do |idea, index|
+# 	idea.slug = nil
+# 	# idea.title = "Idea-#{index}"
+# 	idea.save!
+# end
 
 # users = User.all
 # users.each do |user|
@@ -73,4 +73,54 @@ end
 # 	user.password_confirmation = 'test1234'
 # 	user.save!
 # end
-		
+
+# Category.delete_all
+# categories = [
+# 	{ name: "Aerospace" },
+# 	{ name: "Agriculture/Gardening" },
+# 	{ name: "Art" },
+# 	{ name: "Automotive" },
+# 	{ name: "Anime/Comics" },
+# 	{ name: "Construction/Infrastructure" },
+# 	{ name: "Dance" },
+# 	{ name: "Design" },
+# 	{ name: "Education" },
+# 	{ name: "Entertainment" },
+# 	{ name: "Fashion/Clothing" },
+# 	{ name: "Film, Video, Music & Books" },
+# 	{ name: "Finance" },
+# 	{ name: "Food & Drink" },
+# 	{ name: "Games" },
+# 	{ name: "Giftware" },
+# 	{ name: "Legal" },
+# 	{ name: "Manufacturing" },
+# 	{ name: "Medical & Pharmaceuticals" },
+# 	{ name: "Music" },
+# 	{ name: "Restaurants, Bars & Hotels" },
+# 	{ name: "Photography" },
+# 	{ name: "Publishing/Printing" },
+# 	{ name: "Technology & Communication" },
+# 	{ name: "Travel" },
+# 	{ name: "Training" },
+# 	{ name: "Nature/Wildlife" },
+# 	{ name: "Hair & Beauty" },
+# 	{ name: "Health & Fitness" },
+# 	{ name: "Kitchen & Household" },
+# 	{ name: "Kids" },
+# 	{ name: "Science" },
+# 	{ name: "Sports" },
+# 	{ name: "Weddings" },
+# 	{ name: "Wholesale & Retail" },
+# 	{ name: "Transport & Logistics" },
+# 	{ name: "Trading" },
+# 	{ name: "Home Business" },
+# 	{ name: "Real Estate" },
+# ].each do |category|
+# 	Category.where(name: category[:name]).first_or_create!(category)
+# end
+
+boards = Board.all
+boards.each do |board|
+	board.category = Category.all.sample
+	board.save!
+end

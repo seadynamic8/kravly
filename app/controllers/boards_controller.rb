@@ -1,8 +1,13 @@
 class BoardsController < ApplicationController
-	before_action :current_resource, only: [:show, :update, :edit, :destroy]
+	before_action :current_resource, only: [:show, :edit, :update, :destroy]
 
   def index
-    @boards = Board.all
+    if params[:category_id]
+      category = Category.friendly.find(params[:category_id])
+      @boards = category.boards
+    else
+      @boards = Board.all
+    end
   end
 
   def show
@@ -16,6 +21,7 @@ class BoardsController < ApplicationController
 
   def new
     @board = Board.new(user_id: current_user.id)
+    @categories = Category.sorted
     store_location
   end
 
@@ -52,6 +58,6 @@ class BoardsController < ApplicationController
   	end
 
     def board_params
-      params.require(:board).permit(:name, :description, :user_id)
+      params.require(:board).permit(:name, :description, :user_id, :category_id)
     end
 end

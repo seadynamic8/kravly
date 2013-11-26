@@ -4,6 +4,7 @@ feature "Board Management" do
 
 	context "as a member" do
 
+		let!(:category) { create(:category, name: "Test Category") }
 		let(:user) { create(:user) }
 		before(:each) { log_in user }
 
@@ -18,6 +19,7 @@ feature "Board Management" do
 			expect {
 				within('.top-bar-section') { click_link "Board" }
 				fill_in "Name", with: "Board Name"
+				select "Test Category", from: 'board_category_id'
 				click_button "Create Board"
 			}.to change(Board, :count).by(1)
 			new_board = Board.last

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :authorize
+  before_action :categories_setup
   # before_action :settings_setup
 
   protected
@@ -50,6 +51,10 @@ class ApplicationController < ActionController::Base
 
     delegate :permit?, to: :current_permission
     helper_method :permit?
+
+    def categories_setup
+      @categories = Category.sorted
+    end
 
     # def settings_setup
     #   @settings[:title] = ENV['SITE_TITLE']

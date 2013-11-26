@@ -1,0 +1,19 @@
+<% title "All Categories" %>
+
+<section class="category list">
+	<header><h1>Categories</h1></header>
+
+	<p class="addnew"><%= link_to "Add New", new_category_path %></p>
+
+	<p class="found"><%= pluralize(@categories.size, 'category') %> found</p>
+
+	<table class="listing">
+		<tr class="header">
+			<th>ID</th>
+			<th>Name</th>
+			<th>Boards</th>
+			<th>Actions</th>
+		</tr>
+		<%= render @categories %>
+	</table>
+</section>

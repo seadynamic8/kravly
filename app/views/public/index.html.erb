@@ -20,19 +20,9 @@
 	</section>
 <% end %>
 
-<div class="row links">
-	<div class="large-4 large-centered columns">
-		<%= link_to " Most Popular ", root_url %>|
-		<%= link_to " Recently Updated ", root_url( recent: true ) %>
-	</div>
-	<div class="large-12 columns">
-		<hr>
-	</div>
-</div>
-
 <% @ideas.each_with_index do |idea, index| %>
 	<% if index % 3 == 0 %>
-		<div class="row">
+		<div class="row main-ideas">
 			<ul class="large-block-grid-3">
 	<% end %>
 				<li>
@@ -68,6 +58,6 @@
 
 <div class="row end-note">
 	<div class="large-9 large-centered columns">
-		<h6 class="subheader"><%= link_to "Click here", about_path %> to read more about us.</h6>
+		<!-- <h6 class="subheader"><%= link_to "Click here", about_path %> to read more about us.</h6> -->
 	</div>
 </div>

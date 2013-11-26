@@ -9,10 +9,12 @@
 #  user_id     :integer
 #  description :string(255)
 #  slug        :string(255)
+#  category_id :integer
 #
 
 class Board < ActiveRecord::Base
 
+	belongs_to :category
 	belongs_to :user
 	has_many :ideas, dependent: :destroy
 
@@ -21,8 +23,12 @@ class Board < ActiveRecord::Base
 
 	normalize_attributes :name, :description
 
-	validates :name, presence:true, uniqueness: { scope: :user }, length: { maximum: 30 }
+	validates :name, presence: true, uniqueness: { scope: :user }, length: { maximum: 30 }
 	validates :description, length: { maximum: 255 }
+	validates :user_id, presence: true
+	validates :user, associated: true
+	validates :category_id, presence: true
+	validates :category, associated: true
 
 	scope :recent, -> { order("created_at desc") }
 

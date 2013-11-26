@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :board do
+    category
     user
     sequence(:name) { |n| "Photography Ideas#{n}" }
 
@@ -11,10 +12,10 @@ FactoryGirl.define do
     	end
 
     	after(:create) do |board, evaluator|
-    		ideas = FactoryGirl.create_list(:idea, evaluator.ideas_count)
-    		ideas.each do |idea|
-    			board.ideas << idea
-    		end
+    		ideas = FactoryGirl.create_list(:idea, evaluator.ideas_count, board: board)
+    		# ideas.each do |idea|
+    		# 	board.ideas << idea
+    		# end
     	end
     end
 

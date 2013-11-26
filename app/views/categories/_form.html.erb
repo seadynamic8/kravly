@@ -1,0 +1,10 @@
+<%= form_for @category do |f| %>
+	<%= error_messages_for(@category) %>
+
+	<p>
+		<%= f.text_field :name %>
+	</p>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>

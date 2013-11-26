@@ -1,0 +1,13 @@
+<article>
+	<tr>
+		<td><%= category.id %></td>
+		<td><%= link_to category.name, edit_category_path(category) %></td>
+		<td><%= link_to category.boards.count, category_boards_path(category) %></td>
+		<td class="actions">
+			<%= link_to "Show", category_path(category) %>
+			<%= link_to "Edit", edit_category_path(category) %>
+			<%= link_to "Delete", category_path(category), 
+				confirm: 'Are you sure?', method: :delete %>
+		</td>
+	</tr>
+</article>

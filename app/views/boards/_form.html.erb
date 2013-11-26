@@ -16,20 +16,19 @@
 	</div>
 </div>
 
-<!-- <div class="row">
+<div class="row">
 	<div class="large-2 columns">
 		<%= f.label :category, class: "left inline" %>
 	</div>
 	<div class="large-9 columns">
-		<%= #f.select :category_id, 
-				#@categories.map { |category| [category.name, category.id] },
-				#id: "customDropdown"
+		<%= f.select :category_id, 
+				@categories.map { |category| [category.name, category.id] },
+				id: "customDropdown"
 				%>
-		<%= select_tag "customDropdown", "<option>Camping</option><option>Fashion</option><option>Household Items</option><option>Surfing</option>".html_safe  %>
 	</div>
 </div>
 
-<div class="row">
+<!-- <div class="row">
 	<div class="large-2 columns">
 		<%= f.label :private, class: "left inline" %>
 	</div>
