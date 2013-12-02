@@ -11,7 +11,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @ideas = @board.ideas.page(params[:page]).per_page(9)
+    @ideas = @board.ideas.page(params[:page]).per_page(12)
     @user = @board.user
 
     if request.path != user_board_path(@user, @board)

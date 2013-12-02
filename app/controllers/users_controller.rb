@@ -50,15 +50,15 @@ class UsersController < ApplicationController
   end
 
   def boards
-    @boards = @user.boards.recent.page(params[:page]).per_page(9)
+    @boards = @user.boards.recent.page(params[:page]).per_page(12)
   end
 
   def ideas
-    @ideas = @user.ideas.recent.page(params[:page]).per_page(9)
+    @ideas = @user.ideas.recent.page(params[:page]).per_page(12)
   end
 
   def votes
-    @user_votes = @user.user_votes.page(params[:page]).per_page(9)
+    @user_votes = @user.user_votes.page(params[:page]).per_page(12)
   end
 
   def change_password

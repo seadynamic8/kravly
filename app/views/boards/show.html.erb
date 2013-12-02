@@ -39,9 +39,9 @@
 <hr>
 
 <% @ideas.each_with_index do |idea, index| %>
-	<% if index % 3 == 0 %>
+	<% if index % 4 == 0 %>
 		<div class="row">
-			<ul class="large-block-grid-3">
+			<ul class="large-block-grid-4">
 	<% end %>
 
 				<li id="idea-<%= "#{idea.id}" %>">
@@ -69,7 +69,7 @@
 					</div>
 				</li>
 
-	<% if (index+1) % 3 == 0 %>
+	<% if (index+1) % 4 == 0 %>
 			</ul>
 		</div>
 	<% end %>

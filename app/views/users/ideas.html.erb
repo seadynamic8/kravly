@@ -3,16 +3,16 @@
 <%= render 'top' %>
 
 <% @ideas.each_with_index do |idea, index| %>
-	<% if index % 3 == 0 %>
+	<% if index % 4 == 0 %>
 		<div class="row">
-			<ul class="large-block-grid-3">
+			<ul class="large-block-grid-4">
 	<% end %>
 
 				<li id="idea-<%= "#{idea.id}" %>">
 					<div class="block">
+						<h5><%= link_to idea.title, idea_path(idea) %></h5>
 
 						<div class="block-main">
-							<h5><%= link_to idea.title, idea_path(idea) %></h5>
 							<div class="img-container">
 								<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %><br>
 								<p class="img-source hidden"><%= idea.source %></p>
@@ -33,7 +33,7 @@
 					</div>
 				</li>
 
-	<% if (index+1) % 3 == 0 %>
+	<% if (index+1) % 4 == 0 %>
 			</ul>
 		</div>
 	<% end %>

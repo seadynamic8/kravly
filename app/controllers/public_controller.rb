@@ -5,11 +5,11 @@ class PublicController < ApplicationController
       category = Category.friendly.find(params[:category_id])
       boards = category.boards
       board_ids = boards.map { |b| b.id }
-      @ideas = Idea.where(board_id: board_ids).page(params[:page]).per_page(9)
+      @ideas = Idea.where(board_id: board_ids).page(params[:page]).per_page(12)
     elsif params[:recent]
-      @ideas = Idea.recent.page(params[:page]).per_page(9)
+      @ideas = Idea.recent.page(params[:page]).per_page(12)
     else
-      @ideas = Idea.popular.page(params[:page]).per_page(9)
+      @ideas = Idea.popular.page(params[:page]).per_page(12)
     end
   end
 

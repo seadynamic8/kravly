@@ -28,6 +28,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
   def default_url
     "https://s3.amazonaws.com/wishproto/default-background.png"
+    # "http://placehold.it/232x174"
   end
 
   # Process files as they are uploaded:
@@ -39,11 +40,12 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process :resize_to_fill => [317, 175]
+    # process :resize_to_fill => [317, 175]
+    process :resize_to_fill => [232, 174]
   end
 
   version :small_thumb, from_version: :thumb do
-    process :resize_to_fill => [90, 60]
+    process :resize_to_fill => [80, 60]
   end
 
   def source
