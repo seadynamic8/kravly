@@ -50,6 +50,7 @@ group :development, :test do
 	gem 'factory_girl_rails'
 	gem 'guard-rspec', require: false
 	gem 'rb-inotify', require: false
+	gem 'rb-readline', require: false
   gem 'watchr'
   gem 'annotate', ">=2.5.0"
 end
