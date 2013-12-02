@@ -3,7 +3,7 @@ class IdeasController < ApplicationController
 
   # Search is using this right now
   def index
-    @ideas = Idea.text_search(params[:query]).page(params[:page]).per_page(9)
+    @ideas = Idea.text_search(params[:query]).page(params[:page]).per_page(12)
   end
 
   def show
