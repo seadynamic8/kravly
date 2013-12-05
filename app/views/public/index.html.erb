@@ -20,11 +20,16 @@
 	</section>
 <% end %>
 
+<% if @ideas.empty? %>
+	<div id="blank-spacer">&nbsp;</div>
+<% end %>
+
 <% @ideas.each_with_index do |idea, index| %>
 	<% if index % 4 == 0 %>
 		<div class="row main-ideas">
 			<ul class="large-block-grid-4">
 	<% end %>
+
 				<li>
 					<div class="block">
 						
@@ -43,11 +48,10 @@
 						</div>
 					</div>
 				</li>
-	<% if (index+1) % 4 == 0 %>
 
+	<% if (index+1) % 4 == 0 || (index+1) == @ideas.count %>
 			</ul>
 		</div>
-
 	<% end %>
 <% end %>
 
@@ -56,10 +60,4 @@
 <div class="pagination-centered">
 	<%= will_paginate @ideas, inner_window: 4, outer_window: 2,
 	previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe %>
-</div>
-
-<div class="row end-note">
-	<div class="large-9 large-centered columns">
-		<!-- <h6 class="subheader"><%= link_to "Click here", about_path %> to read more about us.</h6> -->
-	</div>
 </div>

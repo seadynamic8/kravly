@@ -6,6 +6,8 @@ Wishproto::Application.routes.draw do
 
   get 'about', to: 'public#about', as: :about
   get 'intro', to: 'public#intro', as: :intro
+  get 'terms', to: 'public#terms', as: :terms
+  get 'privacy', to: 'public#privacy', as: :privacy
   
   resources :password_resets, only: [:new, :create, :edit, :update]
 

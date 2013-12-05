@@ -18,4 +18,10 @@ class PublicController < ApplicationController
 
   def intro  	
   end
+
+  def terms
+  end
+
+  def privacy
+  end
 end

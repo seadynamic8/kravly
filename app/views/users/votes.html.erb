@@ -19,7 +19,7 @@
           </div>
         </li>
 
-  <% if (index+1) % 4 == 0 %>
+  <% if (index+1) % 4 == 0 || (index+1) == @user_votes.count %>
       </ul>
     </div>
   <% end %>
