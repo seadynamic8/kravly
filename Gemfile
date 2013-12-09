@@ -9,7 +9,7 @@ gem 'rails', '4.0.0'
 gem 'pg'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0.rc2'
+gem 'sass-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -77,7 +77,7 @@ gem 'unicorn'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'compass-rails', ">= 2.0.alpha.0"
+gem 'compass-rails', "~> 1.1.0"
 gem 'zurb-foundation', '>= 4.0.9'
 
 gem 'attribute_normalizer'

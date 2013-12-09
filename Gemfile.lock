@@ -75,8 +75,8 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
-    compass-rails (2.0.alpha.0)
-      compass (>= 0.12.2, < 0.14)
+    compass-rails (1.1.2)
+      compass (>= 0.12.2)
     database_cleaner (1.2.0)
     diff-lcs (1.2.5)
     erubis (2.7.0)
@@ -276,7 +276,7 @@ DEPENDENCIES
   carrierwave
   ckeditor
   coffee-rails (~> 4.0.0)
-  compass-rails (>= 2.0.alpha.0)
+  compass-rails (~> 1.1.0)
   database_cleaner
   factory_girl_rails
   faker
@@ -299,7 +299,7 @@ DEPENDENCIES
   rb-inotify
   rb-readline
   rspec-rails
-  sass-rails (~> 4.0.0.rc2)
+  sass-rails
   sdoc
   shoulda-matchers
   turbolinks
