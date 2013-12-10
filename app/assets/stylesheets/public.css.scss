@@ -96,3 +96,34 @@
 .about {
 	padding: 10px 0;
 }
+
+//Basics Page
+.basics-top {
+	text-align: center;
+	background: DeepSkyBlue;
+	padding: 10px 0;
+	border-bottom: 1px solid #ccc;
+	margin-top: -10px;
+}
+
+.basics-main {
+	padding: 30px 0 20px 0;
+
+	img {
+		border: 1px solid #aaa;
+		margin: 0 5px;
+		-webkit-box-shadow: 4px 4px 5px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    4px 4px 5px rgba(50, 50, 50, 0.75);
+	box-shadow:         4px 4px 5px rgba(50, 50, 50, 0.75);
+	}
+
+	.row {
+		padding: 20px 0;
+
+		.guide {
+			h3 {
+				text-align: center;
+			}
+		}
+	}
+}

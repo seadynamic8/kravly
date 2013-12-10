@@ -19,6 +19,9 @@ class PublicController < ApplicationController
   def intro  	
   end
 
+  def basics
+  end
+
   def terms
   end
 
