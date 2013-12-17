@@ -18,6 +18,25 @@ input[type="text"], input[type="search"], input[type="email"], input[type="url"]
 	background: #fefefe;
 }
 
+* {
+	margin: 0;
+}
+
+html, body {
+	height: 100%;
+}
+
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -60px;
+}
+
+.push, footer {
+	height: 60px;
+}
+
 body, fieldset legend {
 	background: #f5f5f5;
 }
@@ -52,10 +71,6 @@ body, fieldset legend {
 .alert-box {
 	margin-top: 8px;
 	margin-bottom: 1em;
-}
-
-.spacer {
-	margin-bottom: 10px;
 }
 
 .block {
@@ -279,23 +294,11 @@ body, fieldset legend {
 		clear: both;
 	}
 
-
-.footer-clear {
-	padding-bottom:80px;
-}
-
 footer {
-	position:absolute;
-	bottom:0;
 	width:100%;
-	height:60px;			/* Height of the footer */
 	text-align: center;
 	padding-top: 20px;
 	background: #eee;
-}
-
-#blank-spacer {
-	height: 300px;
 }
 
 @import "ideas";

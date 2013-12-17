@@ -26,6 +26,8 @@
 
   <body>
 
+    <div class="wrapper">
+
     <div class="fixed">
     <nav class="top-bar">
       <ul class="title-area">
@@ -130,8 +132,13 @@
       </div>
     <% end %>
 
-    <div class="spacer"></div>
+    
+
     <%= yield %>
+
+    <div class="spacer push"></div>
+
+    </div>
     
 
     <div class="footer-clear"></div>
