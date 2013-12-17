@@ -19,4 +19,5 @@ class UserVote < ActiveRecord::Base
 	def idea
 		Idea.find(idea_id)
 	end
+
 end
