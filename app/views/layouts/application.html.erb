@@ -26,6 +26,12 @@
 
   <body>
 
+    <!-- ClickTale Top part -->
+    <script type="text/javascript">
+    var WRInitTime=(new Date()).getTime();
+    </script>
+    <!-- ClickTale end of Top part -->
+
     <div class="wrapper">
 
     <div class="fixed">
@@ -132,22 +138,35 @@
       </div>
     <% end %>
 
-    
-
     <%= yield %>
 
-    <div class="spacer push"></div>
-
+    <div class="push"></div>
     </div>
-    
-
-    <div class="footer-clear"></div>
 
     <footer>
       <h6 class="subheader">
         <%= link_to "Terms of Use", terms_path %> | <%= link_to "Privacy", privacy_path %> | kravly.com &copy; Star Cache, LLC
       </h6>
     </footer>
+
+      
+    <!-- ClickTale Bottom part -->
+
+    <script type='text/javascript'>
+    // The ClickTale Balkan Tracking Code may be programmatically customized using hooks:
+    // 
+    //   function ClickTalePreRecordingHook() { /* place your customized code here */  }
+    //
+    // For details about ClickTale hooks, please consult the wiki page http://wiki.clicktale.com/Article/Customizing_code_version_2
+
+    document.write(unescape("%3Cscript%20src='"+
+    (document.location.protocol=='https:'?
+    "https://clicktalecdn.sslcs.cdngc.net/www02/ptc/1ac41e60-05a7-4331-b9b3-36bd2a46959f.js":
+    "http://cdn.clicktale.net/www02/ptc/1ac41e60-05a7-4331-b9b3-36bd2a46959f.js")+"'%20type='text/javascript'%3E%3C/script%3E"));
+    </script>
+
+    <!-- ClickTale end of Bottom part -->
+
 
     <script src="//static.getclicky.com/js" type="text/javascript"></script>
     <script type="text/javascript">try{ clicky.init(100670206); }catch(e){}</script>
