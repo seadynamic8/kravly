@@ -27,3 +27,25 @@
 	<span class="reply-form" id="reply-form-<%= child_comment.id %>" data-no-turbolink>
 	</span>
 </div>
+
+				<!-- 				<% @root_comments.each do |root_comment| %>
+					<% child_comments = nil %>
+					<% if root_comment.has_children? %>
+					<%	child_comments = root_comment.children.order('created_at asc') %>
+					<% end %>
+						<%= render partial: 'comments/comment',  
+											locals: { comment: root_comment, 
+																child_comments: child_comments, 
+																idea_id: @idea.id, 
+																reply_comment: @new_comment } %>
+				<% end %> -->
+
+<!-- <div class="comment" id="comment-<%= comment.id %>" data-no-turbolink> -->
+
+<!-- 	<% if child_comments %>
+		<div class="child-comments">
+			<%= render partial: 'comments/child_comment',  collection: child_comments,
+								locals: { idea_id: @idea.id, reply_comment: reply_comment } %>
+		</div>
+	<% end %>
+</div> -->

@@ -14,6 +14,8 @@ jQuery ->
 				.val('')
 			$(xhr.responseText)
 				.hide()
+				# .before('<div class="comment" id="comment-<%= root_comment.id %>" data-no-turbolink>')
+				.after('</div>')
 				.insertAfter($(this).parent())
 				.show('slow')
 			$('.empty-comments').hide()
@@ -31,18 +33,21 @@ $(document)
 		if $(this).next('.child-comments').length
 			$(xhr.responseText)
 				.hide()
+				.after('</div>')
 				.appendTo($(this).next('.child-comments'))
 				.show 'slow'
 		 # replying to a child comment
 		else if $(this).parent().parent('.child-comments').length
 			$(xhr.responseText)
 				.hide()
+				.after('</div>')
 				.appendTo($(this).parent().parent('.child-comments'))
 				.show 'slow'
 		else # no child comments yet
 			$(this).after('<div class="child-comments"></div>')
 			$(xhr.responseText)
 				.hide()
+				.after('</div>')
 				.appendTo($(this).next('.child-comments'))
 				.show 'slow'
 

@@ -157,15 +157,30 @@
 				</div>
 			<% else %>
 				<% @root_comments.each do |root_comment| %>
+					<%= render partial: 'comments/comment',  
+										locals: { comment: root_comment, 
+															idea_id: @idea.id, 
+															reply_comment: @new_comment } %>
+
 					<% child_comments = nil %>
+
 					<% if root_comment.has_children? %>
-					<%	child_comments = root_comment.children.order('created_at asc') %>
+						<% child_comments = root_comment.children.order('created_at asc') %>
+
+							<div class="child-comments">
+
+								<% child_comments.each do |child_comment| %>
+									<%= render partial: 'comments/comment',
+														locals: { comment: child_comment,
+																			idea_id: @idea.id, 
+																			reply_comment: @new_comment } %>
+									</div>
+								<% end %>
+
+							</div>
 					<% end %>
-						<%= render partial: 'comments/comment',  
-											locals: { comment: root_comment, 
-																child_comments: child_comments, 
-																idea_id: @idea.id, 
-																reply_comment: @new_comment } %>
+
+					</div>
 				<% end %>
 			<% end %>
 		</div>

@@ -192,7 +192,7 @@ feature "Comments Management" do
 				click_button "Reply"
 
 				expect(page).to have_css('div.child-comments')
-				within('div.child-comment') do
+				within('div.child-comments') do
 					expect(page).to have_link "Edit"
 					expect(page).to have_css "img.comment-avatar"
 					expect(page).to have_content user.display_name

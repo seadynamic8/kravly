@@ -24,11 +24,3 @@
 
 	<span class="reply-form" id="reply-form-<%= comment.id %>" data-no-turbolink>
 	</span>
-
-	<% if child_comments %>
-		<div class="child-comments">
-			<%= render partial: 'comments/child_comment',  collection: child_comments,
-								locals: { idea_id: @idea.id, reply_comment: reply_comment } %>
-		</div>
-	<% end %>
-</div>

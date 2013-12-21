@@ -18,16 +18,10 @@ class CommentsController < ApplicationController
 				parent_comment = Comment.find(@comment_hash[:comment_id])
 				parent_comment = parent_comment.parent if parent_comment.parent
 				@comment.move_to_child_of(parent_comment)
-
-				render partial: 'comments/child_comment', locals: { child_comment: @comment, 
-							idea_id: idea.id, reply_comment: @new_comment }, 
-							layout: false, status: :created
-			else
-				render partial: 'comments/comment', locals: { comment: @comment, 
-							child_comments: nil,
-							idea_id: idea.id, reply_comment: @new_comment }, 
-							layout: false, status: :created
 			end
+			render partial: 'comments/comment', locals: { comment: @comment,
+						idea_id: idea.id, reply_comment: @new_comment }, 
+						layout: false, status: :created
 		else
 			render js: "alert('Comment cannot be blank');
 									$('.comment-form').find('input.button')
