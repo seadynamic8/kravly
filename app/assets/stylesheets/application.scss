@@ -42,8 +42,21 @@ body, fieldset legend {
 }
 
 .top-bar {
+	background: #3e3d42;
 
 	.top-bar-section {
+
+		li {
+			background: #3e3d42;
+			
+			a {
+				background: #3e3d42;
+
+				&:hover, &:focus, &:active {
+					background: #3e3d42;
+				}
+			}
+		}
 
 		.categories .dropdown {
 			width: 600px;
@@ -54,8 +67,17 @@ body, fieldset legend {
 			}
 		}
 
-		ul li:hover > a {
-			color: #2BA6CB;
+		ul {
+			background: #3e3d42;
+
+			.divider {
+				border-left: none;
+				border-right: 1px solid rgb(77,77,77);
+			}
+
+			li:hover > a {
+				color: #2BA6CB;
+			}
 		}
 
 		.join-button {
