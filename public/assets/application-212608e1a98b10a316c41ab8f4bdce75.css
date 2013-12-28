@@ -7217,52 +7217,53 @@ input[type="file"] {
 
 /* line 9, /home/jkwan/projects/wishproto/app/assets/stylesheets/ideas.css.scss */
 .idea-header {
+  margin-top: 10px;
   padding-bottom: 10px;
 }
-/* line 12, /home/jkwan/projects/wishproto/app/assets/stylesheets/ideas.css.scss */
+/* line 13, /home/jkwan/projects/wishproto/app/assets/stylesheets/ideas.css.scss */
 .idea-header img {
   width: 80px;
   height: 60px;
 }
-/* line 17, /home/jkwan/projects/wishproto/app/assets/stylesheets/ideas.css.scss */
+/* line 18, /home/jkwan/projects/wishproto/app/assets/stylesheets/ideas.css.scss */
 .idea-header h4, .idea-header h5 {
   line-height: 60px;
   vertical-align: middle;
   padding: 0;
   margin: 0;
 }
-/* line 24, /home/jkwan/projects/wishproto/app/assets/stylesheets/ideas.css.scss */
+/* line 25, /home/jkwan/projects/wishproto/app/assets/stylesheets/ideas.css.scss */
 .idea-header h5 {
   text-align: right;
 }
 
-/* line 29, /home/jkwan/projects/wishproto/app/assets/stylesheets/ideas.css.scss */
+/* line 30, /home/jkwan/projects/wishproto/app/assets/stylesheets/ideas.css.scss */
 .idea-main {
   margin-left: 20px;
   margin-right: 30px;
 }
-/* line 33, /home/jkwan/projects/wishproto/app/assets/stylesheets/ideas.css.scss */
+/* line 34, /home/jkwan/projects/wishproto/app/assets/stylesheets/ideas.css.scss */
 .idea-main .section-container.tabs .content, .idea-main .section-container.tabs .active .title {
   background: #fefefe;
 }
 
-/* line 40, /home/jkwan/projects/wishproto/app/assets/stylesheets/ideas.css.scss */
+/* line 41, /home/jkwan/projects/wishproto/app/assets/stylesheets/ideas.css.scss */
 .idea-side div.row {
   padding-bottom: 20px;
 }
-/* line 45, /home/jkwan/projects/wishproto/app/assets/stylesheets/ideas.css.scss */
+/* line 46, /home/jkwan/projects/wishproto/app/assets/stylesheets/ideas.css.scss */
 .idea-side .idea-user img {
   display: inline;
 }
-/* line 51, /home/jkwan/projects/wishproto/app/assets/stylesheets/ideas.css.scss */
+/* line 52, /home/jkwan/projects/wishproto/app/assets/stylesheets/ideas.css.scss */
 .idea-side .idea-stats .columns {
   text-align: center;
 }
-/* line 58, /home/jkwan/projects/wishproto/app/assets/stylesheets/ideas.css.scss */
+/* line 59, /home/jkwan/projects/wishproto/app/assets/stylesheets/ideas.css.scss */
 .idea-side .more-ideas .columns {
   padding: 0 .5em;
 }
-/* line 61, /home/jkwan/projects/wishproto/app/assets/stylesheets/ideas.css.scss */
+/* line 62, /home/jkwan/projects/wishproto/app/assets/stylesheets/ideas.css.scss */
 .idea-side .more-ideas .side-image {
   width: 52px;
   height: 39px;
@@ -7294,77 +7295,81 @@ input[type="file"] {
   color: #eee;
 }
 /* line 32, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
+.banner .intro-note .get-started-button {
+  margin-top: 10px;
+}
+/* line 36, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .banner .intro-note .guide-link {
   color: #eee;
   font-size: 85%;
 }
-/* line 37, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
+/* line 41, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .banner .intro-note .guide-link:hover {
   color: white;
   text-decoration: underline;
 }
 
-/* line 45, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
+/* line 49, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .main-ideas {
   padding-top: 20px;
 }
 
-/* line 50, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
+/* line 54, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .intro {
   background: white;
   border: 1px solid #ccc;
   padding: 20px 15px 20px 15px;
   margin-bottom: 40px;
 }
-/* line 56, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
+/* line 60, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .intro .label {
   padding: 10px;
 }
-/* line 60, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
+/* line 64, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .intro .section {
   float: left;
 }
-/* line 62, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
+/* line 66, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .intro .section h4 {
   padding-left: 15px;
 }
-/* line 67, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
+/* line 71, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .intro img.board, .intro img.idea {
   float: right;
 }
-/* line 71, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
+/* line 75, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .intro img.center {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
-/* line 76, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
+/* line 80, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .intro div.center, .intro h4.center, .intro p.center {
   text-align: center;
 }
-/* line 80, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
+/* line 84, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .intro h5 {
   padding-left: 25px;
 }
-/* line 84, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
+/* line 88, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .intro h6 {
   padding-left: 15px;
 }
-/* line 88, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
+/* line 92, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .intro .sub-section {
   clear: both;
 }
-/* line 92, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
+/* line 96, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .intro .call-to-action {
   color: green;
 }
 
-/* line 98, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
+/* line 102, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .about {
   padding: 10px 0;
 }
 
-/* line 103, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
+/* line 107, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .basics-top {
   text-align: center;
   background: DeepSkyBlue;
@@ -7373,11 +7378,11 @@ input[type="file"] {
   margin-top: -10px;
 }
 
-/* line 111, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
+/* line 115, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .basics-main {
   padding: 30px 0 20px 0;
 }
-/* line 114, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
+/* line 118, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .basics-main img {
   border: 1px solid #aaa;
   margin: 0 5px;
@@ -7385,15 +7390,15 @@ input[type="file"] {
   -moz-box-shadow: 4px 4px 5px rgba(50, 50, 50, 0.75);
   box-shadow: 4px 4px 5px rgba(50, 50, 50, 0.75);
 }
-/* line 122, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
+/* line 126, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .basics-main .row {
   padding: 20px 0;
 }
-/* line 126, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
+/* line 130, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .basics-main .row .guide h3 {
   text-align: center;
 }
-/* line 129, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
+/* line 133, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .basics-main .row .guide p {
   text-align: center;
   font-size: 20px;
@@ -7404,4 +7409,9 @@ input[type="file"] {
 .block h5 {
   padding: 0 5px;
   text-align: center;
+}
+
+/* line 5, /home/jkwan/projects/wishproto/app/assets/stylesheets/boards.css.scss */
+.group-header {
+  margin-top: 10px;
 }
