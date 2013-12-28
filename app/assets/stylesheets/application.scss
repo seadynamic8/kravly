@@ -312,9 +312,17 @@ body, fieldset legend {
 
 footer {
 	width:100%;
-	text-align: center;
 	padding-top: 20px;
-	background: #eee;
+	background-color: #808080;
+	color: #eee;
+
+	a {
+		color: #eee;
+	}
+
+	.credit {
+		text-align: right;
+	}
 }
 
 @import "ideas";

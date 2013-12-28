@@ -141,9 +141,14 @@
     </div>
 
     <footer>
-      <h6 class="subheader">
-        <%= link_to "Terms of Use", terms_path %> | <%= link_to "Privacy", privacy_path %> | kravly.com &copy; Star Cache, LLC
-      </h6>
+      <div class="row">
+        <div class="large-4 columns">
+          <%= link_to "Terms of Use", terms_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Privacy", privacy_path %>
+        </div>
+        <div class="large-4 columns credit">
+          kravly.com &copy; Star Cache, LLC
+        </div>
+      </div>
     </footer>
 
     <script src="//static.getclicky.com/js" type="text/javascript"></script>
