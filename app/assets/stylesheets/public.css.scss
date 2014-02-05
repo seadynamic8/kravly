@@ -93,11 +93,6 @@ section.home-main {
 			text-align: center;
 			color: #eee;
 		}
-		// .get-started-button {
-		// 	@include button($button-med, #FF8C00, false, false, false, false);
-		// 	@include single-transition;
-		// 	@include inset-shadow(true);
-		// }
 		.get-started-button {
 			margin-top: 10px;
 		}
@@ -112,6 +107,17 @@ section.home-main {
 				text-decoration: underline;
 			}
 		}
+	}
+}
+
+.filter {
+	padding-top: 10px;
+	text-align: center;
+	border-bottom: 1px solid #aaa;
+
+	.inline-list {
+		margin-bottom: 0;
+		padding-bottom: 2px;
 	}
 }
 
