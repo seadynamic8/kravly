@@ -25,7 +25,7 @@ feature 'User Management' do
 			click_link "JOIN"
 			fill_in 'Email', with: 'newuser@example.com'
 			fill_in 'Password', with: 'secret123'
-			fill_in 'Password Confirmation', with: 'secret123'
+			# fill_in 'Password Confirmation', with: 'secret123'
 			click_button 'Create User'
 		}.to change(User, :count).by(1)
 		new_user = User.last
