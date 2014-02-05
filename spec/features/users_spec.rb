@@ -5,14 +5,22 @@ feature 'User Management' do
 		visit new_user_path
 		expect(page).to have_css '#user_email'
 		expect(page).to have_css '#user_password'
-		expect(page).to have_css '#user_password_confirmation'
+		# expect(page).to have_css '#user_password_confirmation'
 		expect(page).to have_css '#user_firstname'
 		expect(page).to have_css '#user_lastname'
 		expect(page).to have_css 'input[type="hidden"]#user_display'
 	end
 
+	scenario "Logo link goes to discover page" do
+		user = create(:user)
+		log_in user
+		visit discover_path
+		within('.top-bar') { click_link "Kravly" }
+		expect(current_path).to eq discover_path
+	end
+
 	scenario "signup for a new member account" do
-		visit root_path
+		visit discover_path
 		expect {
 			click_link "JOIN"
 			fill_in 'Email', with: 'newuser@example.com'
@@ -21,13 +29,13 @@ feature 'User Management' do
 			click_button 'Create User'
 		}.to change(User, :count).by(1)
 		new_user = User.last
-		expect(current_path).to eq root_path
+		expect(current_path).to eq discover_path
 		expect(page).to have_content "Thank you for signing up!"
 		expect(page).to have_content new_user.display_name
 	end
 
-	scenario "signup for a new member account without password & password confirmation" do
-		visit root_path
+	scenario "signup for a new member account without password" do
+		visit discover_path
 		expect {
 			click_link "JOIN"
 			fill_in 'Email', with: 'newuser@example.com'
@@ -36,15 +44,28 @@ feature 'User Management' do
 		expect(current_path).to eq users_path
 		expect(page).to have_css 'div.alert'
 		expect(page).to have_css '#user_password'
-		expect(page).to have_css '#user_password_confirmation'
+		# expect(page).to have_css '#user_password_confirmation'
 		expect(page).to have_css 'input[type="hidden"]#user_display'
 	end
 
+	scenario "signup for a new member account from home page" do
+		visit root_url
+		expect {
+			fill_in 'Email', with: 'newuser@example.com'
+			fill_in 'Password', with: 'secret123'
+			click_button "Create Your New Account"
+		}.to change(User, :count).by(1)
+		new_user = User.last
+		expect(current_path).to eq boards_user_path(new_user)
+		expect(page).to have_content "Thank you for signing up!"
+		expect(page).to have_content new_user.display_name
+	end
+
 	scenario "cancel signup goes back to previous page" do
-		visit root_path
+		visit discover_path
 		click_link "JOIN"
 		click_link "Cancel"
-		expect(current_url).to eq root_url
+		expect(current_path).to eq discover_path
 
 		user = create(:user)
 		visit boards_user_path(user)
@@ -105,6 +126,19 @@ feature 'User Management' do
 		within('.top-bar-section') { expect(page).to have_content user.email }
 	end
 
+	scenario "edit user's password" do
+		user = create(:user, password: "secret123")
+		log_in user
+		visit change_password_user_path(user)
+		fill_in "Old Password", with: "secret123"
+		fill_in "New Password", with: "newsecret1234"
+		fill_in "New Password Confirmation", with: "newsecret1234"
+		click_button "Update Password"
+		user.reload
+		expect(current_path).to eq settings_user_path(user)
+		expect(page).to have_content "Password successfully updated."
+	end
+
 	scenario "cancel edit goes back to previous page" do
 		user = create(:user)
 		log_in user
@@ -127,7 +161,6 @@ feature 'User Management' do
 			click_link "Delete Account"
 		}.to change(User, :count).by(-1)
 		expect(current_url).to eq root_url
-		expect(page).to have_content "Your account was deleted."
 	end
 
 end

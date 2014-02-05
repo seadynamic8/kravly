@@ -119,6 +119,8 @@
 <% else # new or create action %>
 	<%= f.hidden_field :display, value: 2 %>
 	<%= hidden_field_tag "return_to", @return_to %>
+
+	<p>By creating an account, you agree to our <%= link_to "terms of use", terms_path %>.</p>
 <% end %>
 
 <div class="row">

@@ -36,7 +36,13 @@
       <ul class="title-area">
         <!-- Title Area -->
         <li class="name">
-          <h1><%= link_to "kravly", root_url %></h1>
+          <h1>
+          <% if current_user %>
+            <%= link_to "Kravly", discover_path %>
+          <% else %>
+            <%= link_to "Kravly", root_url %>
+          <% end %>
+          </h1>
         </li>
         <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
       </ul>
@@ -48,8 +54,8 @@
           <li class="has-dropdown categories"><%= link_to "Categories", "#" %>
             <ul class="dropdown">
               <div class="cat-container">
-                <li><%= link_to "Popular", root_url %></li>
-                <li><%= link_to "Recent", root_url( recent: true ) %></li>
+                <li><%= link_to "Popular", discover_path %></li>
+                <li><%= link_to "Recent", discover_path( recent: true ) %></li>
               <% @categories.each_with_index do |category, index| %>
                 <li><%= link_to category.name, category_index_path(category.slug) %></li>
                 <% if index == 11 || index == 25 %>
@@ -74,9 +80,9 @@
             <% end %>
           </li>
           <li class="divider"></li>
-          <li><%= link_to "Home", root_url %></li>
-          <li class="divider"></li>
-          <li><%= link_to "About", about_path %></li>
+          <li><%= link_to "Discover", discover_path %></li>
+          <!-- <li class="divider"></li> -->
+          <!-- <li><%= link_to "About", about_path %></li> -->
           <li class="divider"></li>
           <li><%= link_to "Basics", basics_path %></li>
           <li class="divider"></li>
@@ -143,7 +149,9 @@
     <footer>
       <div class="row">
         <div class="large-4 columns">
-          <%= link_to "Terms of Use", terms_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Privacy", privacy_path %>
+          <!-- <%= link_to "About", about_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+          <%= link_to "Terms of Use", terms_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= link_to "Privacy", privacy_path %>
         </div>
         <div class="large-4 columns credit">
           kravly.com &copy; Star Cache, LLC

@@ -77,7 +77,7 @@ feature "Idea Management" do
 		scenario "cancel add goes back to previous page" do
 			within('.top-bar-section') { click_on "Idea" }
 			click_link "Cancel"
-			expect(current_url).to eq root_url
+			expect(current_path).to eq discover_path
 
 			visit boards_user_path(user)
 			within('.top-bar-section') { click_on "Idea" }

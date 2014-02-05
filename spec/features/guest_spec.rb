@@ -8,15 +8,27 @@ feature "Guest Actions" do
 		let(:board) { create(:board, user: user) }
 		let!(:idea) { create(:idea, board: board) }
 
-		scenario "view idea on home page" do
+		scenario "go to discover page from home page" do
 			visit root_url
+			click_link "Discover New Ideas"
+			expect(current_path).to eq discover_path
+		end
+
+		scenario "Logo link from discover page goes to home page" do
+			visit discover_path
+			within('.top-bar') { click_link "Kravly" }
+			expect(current_url).to eq root_url
+		end
+
+		scenario "view idea on discover page" do
+			visit discover_path
 			expect(page).to have_content idea.title
 			expect(page).to have_content idea.votes
 			expect(page).to have_content user.display_name
 		end
 
-		scenario "view specific idea from home page" do
-			visit root_url
+		scenario "view specific idea from discover page" do
+			visit discover_path
 			click_link "#{idea.title}"
 			expect(current_path).to eq idea_path(idea)
 			expect(page).to have_content idea.title
@@ -27,8 +39,8 @@ feature "Guest Actions" do
 			expect(page).to have_content "Comments"
 		end
 
-		scenario "view all user's boards from home page" do
-			visit root_url
+		scenario "view all user's boards from discover page" do
+			visit discover_path
 			click_link user.display_name
 			expect(current_path).to eq boards_user_path(user)
 			expect(page).to have_content user.display_name
@@ -104,8 +116,8 @@ feature "Guest Actions" do
 			expect(page).to have_content user.display_name
 		end
 
-		scenario "view specific board from home page" do
-			visit root_url
+		scenario "view specific board from discover page" do
+			visit discover_path
 			click_link user.display_name
 			click_link "#{board.name}"
 			expect(current_path).to eq user_board_path(user, board)
@@ -140,7 +152,7 @@ feature "Guest Actions" do
 
 		scenario "search for idea returns matched result" do
 			create(:idea, board: board, title: "Cool Idea")
-			visit root_url
+			visit discover_path
 			fill_in "query", with: "Cool Idea"
 			click_button "Search"
 			expect(current_path).to eq ideas_path
