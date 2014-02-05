@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    logger.debug "*****updating_password = #{@user.updating_password}"
     if @user.save
       session[:user_id] = @user.id
       UserMailer.signup_confirmation(@user).deliver
@@ -43,7 +44,7 @@ class UsersController < ApplicationController
     UserMailer.goodbye_message(@user).deliver
     @user.destroy
     session[:user_id] = nil
-    redirect_to root_url, notice: "Your account was deleted. Sorry to see you go :("
+    redirect_to root_url
   end
 
   def settings
@@ -67,6 +68,7 @@ class UsersController < ApplicationController
   def update_password
     if @user.authenticate(params[:old_password])
       if @user.password_match?(user_params)
+        @user.updating_password = true
         if @user.update_attributes(user_params)
           redirect_to settings_user_path(@user), notice: "Password successfully updated."
         else

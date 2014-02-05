@@ -16,14 +16,13 @@ Wishproto::Application.routes.draw do
   resources :sessions, only: :create
   get "login", to: "sessions#new", as: :login
   get "logout", to: "sessions#destroy", as: :logout
-  # get "signup", to: "sessions#signup", as: :signup
 
   resources :comments, only: [:create, :edit, :update, :destroy]
   get "/:idea_id/comments/:id/reply", to: "comments#reply", as: :reply_comment
 
   resources :categories
   get "/category/boards/:category_id", to: "boards#index", as: :category_boards
-  get "/all/:category_id", to: "public#index", as: :category_index
+  get "/all/:category_id", to: "public#discover", as: :category_index
 
   resources :ideas do
     get 'vote', on: :member

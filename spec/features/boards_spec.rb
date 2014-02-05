@@ -40,7 +40,7 @@ feature "Board Management" do
 		scenario "goes back to previous page if cancel adding a board" do
 			within('.top-bar-section') { click_link "Board" }
 			click_link "Cancel"
-			expect(current_url).to eq root_url
+			expect(current_path).to eq discover_path
 
 			visit boards_user_path(user)
 			within('.top-bar-section') { click_link "Board" }

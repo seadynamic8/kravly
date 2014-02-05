@@ -69,7 +69,7 @@ describe User do
 									.is_at_least(8)
 									.is_at_most(30) }
 		# it { should validate_confirmation_of(:password) }
-		it { should validate_presence_of(:password_confirmation) }
+		# it { should validate_presence_of(:password_confirmation) }
 
 		# it "in invalid with avatar being greater than 2MB in size"
 

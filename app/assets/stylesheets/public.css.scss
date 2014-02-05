@@ -49,9 +49,15 @@ section.home-main {
 		p {
 			font-size: 20px;
 		}
+
 		.button-row {
 			margin-top: 10px;
 		}
+
+		.disclaimer {
+			font-size: 13px;
+		}
+
 		.new-account-button {
 			$button-font-color: #161529;
 			@include button-base;
@@ -169,7 +175,7 @@ section.home-main {
 //Basics Page
 .basics-top {
 	text-align: center;
-	background: DeepSkyBlue;
+	background: #6EB1FF;
 	padding: 10px 0;
 	border-bottom: 1px solid #ccc;
 	margin-top: -10px;

@@ -38,6 +38,8 @@ class User < ActiveRecord::Base
 
 	EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
+	attr_accessor :updating_password
+
 	validates :username, uniqueness: true, 
 											 length: { in: 3..40 },
 											 format: { with: /\A[A-Za-z\d\._-]+\z/, 
@@ -47,15 +49,17 @@ class User < ActiveRecord::Base
 	validates :lastname, length: { maximum: 35 }
 	validates :password, presence: true, 
 											 length: { in: 8..30 },
-											 confirmation: true,
-											 on: :create
-	validates :password_confirmation, presence: true, on: :create
+											 # confirmation: true,
+											 if: :should_validate_password?
+	validates :password_confirmation, presence: true,
+											if: :should_validate_password_confirmation?
 	validates :avatar, file_size: { maximum: 2.megabytes.to_i }
 	validates :slug, uniqueness: true, allow_nil: true
 	validates :location, length: { maximum: 50 }
 	validates :website, length: { maximum: 50 }
 	validates :display, presence: true, inclusion: { in: [1, 2, 3] }
 
+	before_validation :copy_password_to_confirmation, on: :create
 	before_validation :ensure_username_uniqueness, on: :create
 	after_validation :move_friendly_id_error_to_username
 	before_create :set_display_to_fullname_if_exist, on: :create
@@ -116,6 +120,21 @@ class User < ActiveRecord::Base
 	end
 
 	private
+
+		def should_validate_password?
+		  updating_password || new_record?
+		end
+
+		def should_validate_password_confirmation?
+			updating_password
+		end
+
+		# Used only on create
+		# This is unfortunately needed because has_secure_password requires a
+		# password_confirmation, when I dont want to use that on create.
+		def copy_password_to_confirmation
+			self.password_confirmation = self.password
+		end
 
 		def ensure_username_uniqueness
 			if email && ( self.username.blank? || User.find_by_username(self.username) )
