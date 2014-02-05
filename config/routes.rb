@@ -4,6 +4,7 @@ Wishproto::Application.routes.draw do
   
   mount Ckeditor::Engine => '/ckeditor'
 
+  get 'discover', to: 'public#discover', as: :discover
   get 'about', to: 'public#about', as: :about
   get 'intro', to: 'public#intro', as: :intro
   get 'basics', to: 'public#basics', as: :basics

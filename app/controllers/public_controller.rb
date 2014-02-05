@@ -1,6 +1,11 @@
 class PublicController < ApplicationController
 
   def index
+    @user = User.new
+    render layout: "home"
+  end
+
+  def discover
     if params[:category_id]
       category = Category.friendly.find(params[:category_id])
       boards = category.boards

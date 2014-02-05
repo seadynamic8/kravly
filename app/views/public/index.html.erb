@@ -1,54 +1,71 @@
-<% unless current_user %>
-	<section class="banner">
-		<div class="banner-overlay">
-			<div class="row intro-note">
-				<div class="large-9 large-centered columns">
-					<h1 class="title">Welcome to kravly!</h1>
-					<h4 class="subtitle">Post your business ideas and 
-						get feedback from members.<br>
-						 Share your portfolio of ideas with your friends.</h3>
-					<%= link_to "GET STARTED NOW", new_user_path, class: "small button get-started-button" %><br>
-					<%= link_to "How does it work?", basics_path, class: "guide-link" %>
-				</div>
-			</div>
+<header>
+	<div class="row">
+		<div class="large-3 columns">
+			<h1>Kravly</h1>
 		</div>
-	</section>
-<% end %>
+		<div class="large-5 columns nav">
+			<%= link_to "Discover", discover_path %>
+			<%= link_to "Basics", basics_path %>
+			<%= link_to "Log In", login_path, class: "login-link" %>
+		</div>
+	</div>
+</header>
 
-<% @ideas.each_with_index do |idea, index| %>
-	<% if index % 4 == 0 %>
-		<div class="row main-ideas">
-			<ul class="large-block-grid-4">
-	<% end %>
+<section class="home-main">
+	<div class="row">
+		<div class="large-7 large-centered columns">
+			<h2>
+				Share your business ideas.<br>
+				Get feedback.<br>
+				Help influence new ideas.
+			</h2>
+			
+		</div>
+	</div>
 
-				<li>
-					<div class="block">
-						
-						<div class="img-container">
-							<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %>
-							<p class="img-source hidden"><%= idea.source %></p>
+	<div class="row login-form">
+		<div class="large-6 large-centered columns">
+			<div class="panel">
+				<p>Get Started Now by Creating an Account:</p>
+
+				<%= form_for @user, html: { class: "custom" } do |f| %>
+					<%= error_messages_for(@user) %>
+
+					<div class="row">
+						<div class="large-2 columns">
+							<%= f.label :email, "Email", class: "left inline" %>
 						</div>
-						<div class="idea-bottom">
-							<h6><%= link_to idea.title, idea_path(idea) %></h6>
-							<div class="vote"><%= idea.votes %></div>
-							<%= link_to (image_tag idea.user.avatar.profile.url),
-										boards_user_path(idea.user) %>
-							<div class="name"><%= link_to idea.user.display_name, 
-																			boards_user_path(idea.user) %></div>
-							<div style="clear:both;"></div>
+						<div class="large-9 columns">
+							<%= f.email_field :email, placeholder: "Email" %>
 						</div>
 					</div>
-				</li>
 
-	<% if (index+1) % 4 == 0 || (index+1) == @ideas.count %>
-			</ul>
+					<div class="row">
+						<div class="large-2 columns">
+							<%= f.label :password, "Password", class: "left inline" %>
+						</div>
+						<div class="large-9 columns">
+							<%= f.password_field :password, placeholder: "Password" %>
+						</div>
+					</div>
+
+					<div class="row button-row">
+						<div class="large-8 large-centered columns">
+							<%= submit_tag "Create Your New Account", class: "new-account-button" %>
+						</div>
+					</div>
+				<% end %>
+			</div>
 		</div>
-	<% end %>
-<% end %>
+	</div>
 
-<div style="clear:both;"></div>
+	<div class="row lower">
+		<div class="large-7 large-centered columns">
+			<p>or</p>
+			
+			<%= link_to "Discover New Ideas", discover_path, class: "button" %>
 
-<div class="pagination-centered">
-	<%= will_paginate @ideas, inner_window: 4, outer_window: 2,
-	previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe %>
-</div>
+			<p>Already have an account?  <%= link_to "Log In", login_path, class: "login-link" %></p>
+		</div>
+	</div>
+</section>

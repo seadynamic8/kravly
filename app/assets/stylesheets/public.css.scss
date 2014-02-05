@@ -2,7 +2,70 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// Index Page
+//Index Page
+
+.home {
+	background-color: #6eb1ff;
+	padding-bottom: 400px;
+
+	.login-link {
+		color: #232329;
+		font-weight: bold;
+
+		&:hover {
+			color: #565663;
+		}
+	}
+}
+
+header  {
+	.nav {
+		padding-top: 30px;
+		text-align: right;
+
+		a {
+			margin-left: 15px;
+			color: #161529;
+
+			&:hover {
+				color: #383773;
+			}
+		}
+	}
+}
+
+section.home-main {
+	text-align: center;
+
+	h2 {
+		margin-top: 25px;
+	}
+	.login-form {
+
+		.panel {
+			background-color: #D8E7EB;
+		}
+
+		p {
+			font-size: 20px;
+		}
+		.button-row {
+			margin-top: 10px;
+		}
+		.new-account-button {
+			$button-font-color: #161529;
+			@include button-base;
+		  @include button-size;
+		  @include button-style(#ff8c2e);
+		  @include radius;
+		  @include single-transition;
+		  @include inset-shadow(true);
+		  margin-bottom: 0px;
+		}
+	}
+}
+
+// Discover Page
 .banner {
 	margin-top: -10px;
 	background: url(https://s3.amazonaws.com/wishproto/banner.jpg) no-repeat center -180px;

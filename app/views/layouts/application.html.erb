@@ -36,7 +36,7 @@
       <ul class="title-area">
         <!-- Title Area -->
         <li class="name">
-          <h1><%= link_to "kravly", root_url %></h1>
+          <h1><%= link_to "kravly", discover_path %></h1>
         </li>
         <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
       </ul>
@@ -48,8 +48,8 @@
           <li class="has-dropdown categories"><%= link_to "Categories", "#" %>
             <ul class="dropdown">
               <div class="cat-container">
-                <li><%= link_to "Popular", root_url %></li>
-                <li><%= link_to "Recent", root_url( recent: true ) %></li>
+                <li><%= link_to "Popular", discover_path %></li>
+                <li><%= link_to "Recent", discover_path( recent: true ) %></li>
               <% @categories.each_with_index do |category, index| %>
                 <li><%= link_to category.name, category_index_path(category.slug) %></li>
                 <% if index == 11 || index == 25 %>
@@ -74,9 +74,9 @@
             <% end %>
           </li>
           <li class="divider"></li>
-          <li><%= link_to "Home", root_url %></li>
-          <li class="divider"></li>
-          <li><%= link_to "About", about_path %></li>
+          <li><%= link_to "Discover", discover_path %></li>
+          <!-- <li class="divider"></li> -->
+          <!-- <li><%= link_to "About", about_path %></li> -->
           <li class="divider"></li>
           <li><%= link_to "Basics", basics_path %></li>
           <li class="divider"></li>
