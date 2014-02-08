@@ -35,8 +35,12 @@
 							<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(@idea), class: "edit-button" %>
 						</span>
 					<% end %>
-					<% if (permit? "ideas", "vote", @idea) && current_user.not_voted?(@idea) %>
+					<% if (permit? "ideas", "vote", @idea) %>
+						<% if current_user.not_voted?(@idea) %>
 						<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), vote_idea_path(@idea), class: "tiny button like-button" %>
+						<% else %>
+						<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), vote_idea_path(@idea), class: "tiny button disabled like-button" %>
+						<% end %>
 					<% end %>
 				</div>
 			</div>
