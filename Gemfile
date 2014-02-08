@@ -79,6 +79,7 @@ gem 'unicorn'
 
 gem 'compass-rails', "~> 1.1.0"
 gem 'zurb-foundation', '>= 4.0.9'
+gem 'foundation-icons-sass-rails'
 
 gem 'attribute_normalizer'
 

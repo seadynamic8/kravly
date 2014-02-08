@@ -17,6 +17,14 @@ h4 {
 	font-size: 17px;
 }
 
+.back-to-board {
+
+	i {
+		font-size: 23px;
+		vertical-align: middle;
+	}
+}
+
 .main-section {
 
 	.idea-overview {
@@ -28,6 +36,7 @@ h4 {
 		img {
 			padding: 5px;
 			border: 1px solid #ccc;
+			line-height: 35px;
 		}
 	}
 
@@ -42,8 +51,20 @@ h4 {
 			display: block;
 			float: right;
 		}
+		i {
+			font-size: 25px;
+		}
 		.edit-button {
-			margin-right: 5px;
+			margin-right: 15px;
+		}
+		.like-button {
+			font-size: 15px;
+			padding-top: .1em;
+			padding-bottom: .1em;
+		}
+		.like-symbol {
+			padding-left: 3px;
+			vertical-align: middle;
 		}
 	}
 
@@ -114,65 +135,3 @@ h4 {
 		padding-bottom: 25px;
 	}
 }
-
-// .idea-header {
-// 	margin-top: 10px;
-// 	padding-bottom: 10px;
-
-// 	img {
-// 		width: 80px;
-// 		height: 60px;
-// 	}
-
-// 	h4, h5 {
-// 		line-height: 60px;
-// 		vertical-align: middle;
-// 		padding: 0;
-// 		margin: 0;
-// 	}
-
-// 	h5 {
-// 		text-align: right;
-// 	}
-// }
-
-// .idea-main {
-// 	margin-left: 20px;
-// 	margin-right: 30px;
-
-// 	.section-container.tabs .content, .section-container.tabs .active .title {
-// 		background: #fefefe;
-// 	}
-// }
-
-// .idea-side {
-
-// 	div.row {
-// 		padding-bottom: 20px;
-// 	}
-
-// 	.idea-user {
-// 		img {
-// 			display: inline;
-// 		}
-// 	}
-
-// 	.idea-stats {
-// 		.columns {
-// 			text-align: center;
-// 		}
-// 	}
-	
-// 	.more-ideas {
-
-// 		.columns {
-// 			padding: 0 .5em;
-// 		}
-// 		.side-image {
-// 			// width: 67px;
-// 			// height: 40px;
-// 			width: 52px;
-// 			height: 39px;
-// 		}
-// 	}
-// }
