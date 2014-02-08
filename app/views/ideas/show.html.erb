@@ -25,7 +25,7 @@
 			<hr>
 			<div class="row overview-bottom">
 				<div class="large-8 columns">
-					<p><%= @idea.board.category.name %></p>
+					<p><%= @idea.board.category.name if @idea.board.category %></p>
 				</div>
 				<div class="large-4 columns">
 					<% if (permit? "ideas", "edit", @idea) && (permit? "ideas", "destroy", @idea) %>
