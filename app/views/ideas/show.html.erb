@@ -1,5 +1,192 @@
 <% title @idea.title %>
 
+<br>
+
+<div class="row">
+	<div class="large-8 columns">
+		<p><- <%= link_to "Back to Board: #{@idea.board.name}", user_board_path(@idea.user, @idea.board) %></p>
+	</div>
+</div>
+
+<div class="row">
+
+	<div class="large-8 columns main-section">
+		<div class="panel idea-overview">
+			<h4><%= @idea.title %></h4>
+			<div class="row">
+				<div class="large-9 columns">
+			 		<p></p>
+			 	</div>
+				<div class="large-3 columns">
+					<%= image_tag @idea.image.small_thumb.url %>
+				</div>
+			</div>
+			<hr>
+			<div class="row overview-bottom">
+				<div class="large-8 columns">
+					<p><%= @idea.board.category.name %></p>
+				</div>
+				<div class="large-4 columns">
+					<% if (permit? "ideas", "edit", @idea) && (permit? "ideas", "destroy", @idea) %>
+							<%= link_to "Delete", idea_path(@idea), method: :delete, 
+									data: { confirm: "Are you sure?" }, class: "tiny button" %>
+							<span data-no-turbolink>
+								<%= link_to "Edit Idea", edit_idea_path(@idea), class: "tiny button edit-button"  %>
+							</span>
+					<% end %>
+					<% if (permit? "ideas", "vote", @idea) && current_user.not_voted?(@idea) %>
+							<%= link_to "Vote", vote_idea_path(@idea), class: "small button" %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+
+		<div class="section-container auto" data-section data-options="deep_linking: true, one_up: false">
+			<section class="active">
+				<p class="title" data-section-title>
+					<%= link_to "Description", "#description" %>
+				</p>
+				<div class="content idea-main-content" data-slug="description" data-section-content>
+					<p><%= raw @idea.content %></p>
+				</div>
+			</section>
+			<% if @idea.video_url.present? %>
+			<section>
+				<p class="title" data-section-title>
+					<%= link_to "Video", "#video" %>
+				</p>
+				<div class="content" data-slug="video" data-section-content>
+					<p>
+						<div class="flex-video <%= @idea.video_type %>">
+							<iframe src="<%= @idea.video_url %>" frameborder="0" width="604" height="431" allowfullscreen></iframe>
+						</div>
+					</p>
+				</div>
+			</section>
+			<% end %>
+			<section>
+				<p class="title" data-section-title>
+					<%= link_to "Comments / Feedback", "#comments" %>
+				</p>
+				<div class="content" data-slug="comments" data-section-content>
+					<div class="comments">
+						<%= render partial: 'comments/form', locals: { comment: @new_comment } %>
+						<% if @root_comments.empty? %>
+							<div class="row empty-comments">
+								<div class="large-6 large-centered columns">
+									<br>
+									<br>
+									<h6 class="subheader">There are no comments yet.</h6>
+								</div>
+							</div>
+						<% else %>
+							<% @root_comments.each do |root_comment| %>
+								<%= render partial: 'comments/comment',  
+													locals: { comment: root_comment, 
+																		idea_id: @idea.id, 
+																		reply_comment: @new_comment } %>
+
+								<% child_comments = nil %>
+
+								<% if root_comment.has_children? %>
+									<% child_comments = root_comment.children.order('created_at asc') %>
+
+										<div class="child-comments">
+
+											<% child_comments.each do |child_comment| %>
+												<%= render partial: 'comments/comment',
+																	locals: { comment: child_comment,
+																						idea_id: @idea.id, 
+																						reply_comment: @new_comment } %>
+												</div>
+											<% end %>
+
+										</div>
+								<% end %>
+
+								</div>
+							<% end %>
+						<% end %>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<!-- Sidebar Section -->
+	<div class="large-4 columns sidebar">
+		<div class="panel idea-user">
+			<h4>Inventor</h4>
+			<%= image_tag @idea.user.avatar.profile.url %>
+			<h5 class="idea-user-name"><%= link_to @idea.user.display_name, boards_user_path(@idea.user) %></h5>
+			<p class="idea-user-location"><%= @idea.user.location %></p>
+		</div>
+
+		<div class="panel idea-stats">
+			<h4>Stats</h4>
+			<ul class="large-block-grid-3">
+				<li><%= @idea.votes %><br>votes</li>
+				<li><%= @idea.impressionist_count(filter: :ip_address) %><br>views</li>
+				<li><%= @all_comments_count %><br>comments</li>
+			</ul>
+		</div>
+
+		<% if ( @idea.commitment.present? || @idea.looking_for.present? || 
+						@idea.market.present? ) %>
+		<div class="panel extra-info">
+				<% if @idea.commitment.present? %>
+					<h5>Commitment</h5>
+					<p><%= @idea.commitment %></p>
+				<% end %>
+				<% if @idea.looking_for.present? %>
+					<h5>Looking For</h5>
+					<ul>
+					<% @idea.looking_for.each do |resource| %>
+						<li><p><%= resource %></p></li>
+					<% end %>
+					</ul>
+				<% end %>
+				<% if @idea.market.present? %>
+					<h5>Market</h5>
+					<p><%= @idea.market %></p>
+				<% end %>
+		</div>
+		<% end %>
+
+		<% if @rand_ideas %>
+			<div class="panel more-ideas">
+				<h4>More Ideas</h4>
+				<ul class="large-block-grid-3">
+				<% @rand_ideas.each do |idea| %>
+					<li><%= link_to (image_tag idea.image.small_thumb.url, class: "side-image"), 
+									idea_path(idea) %></li>
+				<% end %>
+				</ul>
+			</div>
+		<% end %>
+
+		<div class="row more-stuff">
+			<div class="large-9 large-centered columns">
+<!-- 				<% if current_user && current_user == @idea.user %>
+					<%= link_to "Leave a Comment", "#comments", class:"button" %>
+				<% else %>
+					<%= link_to "Leave a Comment", "#comments", class:"button" %>
+					<% if (permit? "ideas", "vote", @idea) && current_user.not_voted?(@idea) %>
+						<%= link_to "Vote", vote_idea_path(@idea), class:"button" %>
+					<% end %>
+				<% end %> -->
+
+				<span class='st_facebook_large' displayText='Facebook'></span>
+				<span class='st_twitter_large' displayText='Tweet'></span>
+				<span class='st_linkedin_large' displayText='LinkedIn'></span>
+				<span class='st_pinterest_large' displayText='Pinterest'></span>
+				<span class='st_stumbleupon_large' displayText='StumbleUpon'></span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 
 <div class="row idea-header">
 	<div class="large-2 columns">
 		<%= image_tag @idea.image.small_thumb.url %>
@@ -7,9 +194,6 @@
 	<div class="large-7 columns">
 		<h4><%= @idea.title %></h4>
 	</div>
-<!-- 	<div class="large-2 columns">
-		<h5><%= @idea.votes %> Votes</h5>
-	</div> -->
 	<div class="large-3 columns">
 	</div>
 </div>
@@ -69,7 +253,6 @@
 			</div>
 			<div class="large-8 columns">
 				<h5><%= link_to @idea.user.display_name, boards_user_path(@idea.user) %></h5>
-				<!-- <h8>Entrepreneur</h8> -->
 			</div>
 		</div>
 
@@ -187,5 +370,5 @@
 		
 	</div>
 </div>
-
+ -->
 

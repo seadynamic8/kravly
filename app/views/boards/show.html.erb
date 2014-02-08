@@ -48,7 +48,7 @@
 					<div class="block">
 
 						<div class="block-main">
-							<h5><%= link_to idea.title, idea_path(idea) %></h5>
+							<h5 class="block-title"><%= link_to idea.title, idea_path(idea) %></h5>
 							<div class="img-container">
 								<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %>
 								<p class="img-source hidden"><%= idea.source %></p>
