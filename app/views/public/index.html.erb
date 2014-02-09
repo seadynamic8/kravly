@@ -28,7 +28,7 @@
 			<div class="panel">
 				<p>Get Started Now by Creating an Account:</p>
 
-				<%= form_for @user, html: { class: "custom" } do |f| %>
+				<%= form_for @user do |f| %>
 					<%= error_messages_for(@user) %>
 
 					<div class="row">

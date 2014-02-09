@@ -2,7 +2,7 @@
 
 <div class="row">
 	<div class="large-10 large-centered columns">
-		<%= form_for @idea, html: { class: "custom", multipart: true } do |f| %>
+		<%= form_for @idea, html: { multipart: true } do |f| %>
 			<%= error_messages_for(@idea) %>
 
 			<fieldset>
