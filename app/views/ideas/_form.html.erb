@@ -93,30 +93,25 @@
 		<%= f.label :looking_for, "Looking For", class: "left inline" %>
 	</div>
 	<div class="large-9 columns">
-		<label>
-			<input type="checkbox" name="idea[looking_for][]" style="display: none;" 
-				value="Entrepreneur" 
+		<input type="checkbox" name="idea[looking_for][]"
+				value="Entrepreneur"
 				<%= resource_checked?(f.object.looking_for, "Entrepreneur") %>>
-			<span class="custom checkbox"></span> Entrepreneur
-		</label>
-		<label>
-			<input type="checkbox" name="idea[looking_for][]" style="display: none;" 
+		<%= label_tag :entrepreneur %>
+		<br>
+		<input type="checkbox" name="idea[looking_for][]"
 				value="Partners/Co-Founders" 
 				<%= resource_checked?(f.object.looking_for, "Partners/Co-Founders") %>>
-			<span class="custom checkbox"></span> Partners/Co-Founders
-		</label>
-		<label>
-			<input type="checkbox" name="idea[looking_for][]" style="display: none;" 
+		<%= label_tag "partners-cofounders", "Partners/Co-Founders" %>
+		<br>
+		<input type="checkbox" name="idea[looking_for][]"
 				value="Early-Stage Employees"
 				<%= resource_checked?(f.object.looking_for, "Early-Stage Employees") %>>
-			<span class="custom checkbox"></span> Early-Stage Employees
-		</label>
-		<label>
-			<input type="checkbox" name="idea[looking_for][]" style="display: none;" 
+		<%= label_tag "earlystage-employees", "Early-Stage Employees" %>
+		<br>
+		<input type="checkbox" name="idea[looking_for][]"
 				value="Funding"
 				<%= resource_checked?(f.object.looking_for, "Funding") %>>
-			<span class="custom checkbox"></span> Funding
-		</label>
+		<%= label_tag :funding %>
 	</div>
 </div>
 
