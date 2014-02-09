@@ -68,6 +68,24 @@ h4 {
 		}
 	}
 
+	.tabs dd {
+		border-top: 1px solid #ccc;
+		border-left: 1px solid #ccc;
+
+		&:last-child {
+			border-right: 1px solid #ccc;
+		}
+	}
+
+	.tabs-content {
+
+		.content {
+			background-color: #fff;
+			border: 1px solid #ccc;
+			padding: 1.25rem;
+		}
+	}
+
 	.section-container {
 
 		.idea-main-content {

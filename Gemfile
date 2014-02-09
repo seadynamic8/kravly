@@ -78,7 +78,7 @@ gem 'unicorn'
 # gem 'debugger', group: [:development, :test]
 
 gem 'compass-rails', "~> 1.1.0"
-gem 'zurb-foundation', '>= 4.0.9'
+gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
 
 gem 'attribute_normalizer'

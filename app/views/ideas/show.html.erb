@@ -12,6 +12,7 @@
 <div class="row">
 
 	<div class="large-8 columns main-section">
+
 		<div class="panel idea-overview">
 			<h4><%= @idea.title %></h4>
 			<div class="row">
@@ -46,7 +47,74 @@
 			</div>
 		</div>
 
-		<div class="section-container auto" data-section data-options="deep_linking: true, one_up: false">
+		<!-- Main Section -->
+		<dl class="tabs" data-tab>
+			<dd class="active"><%= link_to "Description", "#description" %></dd>
+			<% if @idea.video_url.present? %>
+			<dd><%= link_to "Video", "#video" %></dd>
+			<% end %>
+			<dd><%= link_to "Comments / Feedback", "#comments" %></dd>
+		</dl>
+		<div class="tabs-content">
+			<div class="content active" id="description">
+				<%= raw @idea.content %>
+			</div>
+
+			<% if @idea.video_url.present? %>
+			<div class="content" id="video">
+				<div class="flex-video <%= @idea.video_type %>">
+					<iframe src="<%= @idea.video_url %>" frameborder="0" width="604" height="431" allowfullscreen></iframe>
+				</div>
+			</div>
+			<% end %>
+
+			<div class="content" id="comments">
+				<div class="comments">
+					<%= render partial: 'comments/form', locals: { comment: @new_comment } %>
+					<% if @root_comments.empty? %>
+						<div class="row empty-comments">
+							<div class="large-6 large-centered columns">
+								<br>
+								<br>
+								<h6 class="subheader">There are no comments yet.</h6>
+							</div>
+						</div>
+					<% else %>
+						<% @root_comments.each do |root_comment| %>
+							<%= render partial: 'comments/comment',  
+												locals: { comment: root_comment, 
+																	idea_id: @idea.id, 
+																	reply_comment: @new_comment } %>
+
+							<% child_comments = nil %>
+
+							<% if root_comment.has_children? %>
+								<% child_comments = root_comment.children.order('created_at asc') %>
+
+									<div class="child-comments">
+
+										<% child_comments.each do |child_comment| %>
+											<%= render partial: 'comments/comment',
+																locals: { comment: child_comment,
+																					idea_id: @idea.id, 
+																					reply_comment: @new_comment } %>
+											</div>
+										<% end %>
+
+									</div>
+							<% end %>
+
+							</div>
+						<% end %>
+					<% end %>
+				</div>
+			</div>
+
+		</div>
+		
+		
+
+	<!-- 	<div class="section-container auto" data-section data-options="deep_linking: true, one_up: false">
 			<section class="active">
 				<p class="title" data-section-title>
 					<%= link_to "Description", "#description" %>
@@ -115,7 +183,7 @@
 					</div>
 				</div>
 			</section>
-		</div>
+		</div> -->
 	</div>
 
 	<!-- Sidebar Section -->

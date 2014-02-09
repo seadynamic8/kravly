@@ -39,6 +39,10 @@ html, body {
 	margin: 0 auto -60px;
 }
 
+.clear-header {
+	margin-top: 55px;
+}
+
 .push, footer {
 	height: 60px;
 }
@@ -52,48 +56,47 @@ body, fieldset legend {
 
 	.name a {
 		font-family: "Bad Script", "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-		font-size: 1.33em;
+		font-size: 1.5em;
 	}
 
 	.top-bar-section {
+
+		li:not(.has-form) a:not(.button) {
+			background: #3e3d42;
+
+			&:hover {
+				background-color: #333333;
+			}
+		}
 
 		li {
 			background: #3e3d42;
 			
 			a {
 				background: #3e3d42;
-				font-size: .9em;
-
-				&:hover, &:focus, &:active {
-					background: #3e3d42;
-				}
+				// font-size: .85em;
 			}
 		}
 
-		.categories .dropdown {
-			width: 600px;
+		.categories {
 
-			.cat-container {
-				float: left;
-				width: 200px;
+			.categories-button {
+				font-size: 19px;
 			}
+
+			// .dropdown {
+			// 	width: 600px;
+
+			// 	.cat-container {
+			// 		float: left;
+			// 		width: 200px;
+			// 	}
+			// }
 		}
-
-		ul {
-			background: #3e3d42;
-
-			.divider {
-				border-left: none;
-				border-right: 1px solid rgb(77,77,77);
-			}
-
-			li:hover > a {
-				color: #2BA6CB;
-			}
-		}
-
-		.search-button {
-			padding-right: 15px;
+		
+		.add-button {
+			font-size: 17px;
+			$topbar-dropdown-toggle-size: 0px;
 		}
 
 		.join-button {
@@ -101,6 +104,7 @@ body, fieldset legend {
 
 			&:hover {
 				background-color: limegreen;
+				color: #003300;
 			}
 		}	
 	}
