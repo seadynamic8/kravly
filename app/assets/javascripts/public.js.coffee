@@ -4,8 +4,8 @@
 
 onEndless = ->
   $(window).off 'scroll', onEndless
-  url = $('.pagination .next_page a').attr('href')
-  $('.pagination').hide()
+  url = $('.paginate .next_page a').attr('href')
+  $('.paginate').hide()
   if url && $(window).scrollTop() > $(document).height() - $(window).height() - 50
     $('#ideas').show()
     $.getScript url, ->
