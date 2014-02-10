@@ -62,7 +62,8 @@ group :test do
 	gem 'launchy'
 	gem 'shoulda-matchers'
 	# gem 'selenium-webdriver'
-	gem 'capybara-webkit'
+	# gem 'capybara-webkit'
+	gem 'poltergeist'
 end
 
 # Use ActiveModel has_secure_password

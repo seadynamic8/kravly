@@ -31,16 +31,16 @@
 				<div class="large-4 columns">
 					<% if (permit? "ideas", "edit", @idea) && (permit? "ideas", "destroy", @idea) %>
 						<%= link_to raw("<i class='fi-x'></i>"), idea_path(@idea), method: :delete, 
-								data: { confirm: "Are you sure?" } %>
+								data: { confirm: "Are you sure?" }, id: "delete-button" %>
 						<span data-no-turbolink>
-							<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(@idea), class: "edit-button" %>
+							<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(@idea), id: "edit-button" %>
 						</span>
 					<% end %>
 					<% if (permit? "ideas", "vote", @idea) %>
 						<% if current_user.not_voted?(@idea) %>
-						<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), vote_idea_path(@idea), class: "tiny button like-button" %>
+						<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), vote_idea_path(@idea), class: "tiny button", id: "like-button" %>
 						<% else %>
-						<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), vote_idea_path(@idea), class: "tiny button disabled like-button" %>
+						<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), vote_idea_path(@idea), class: "tiny button disabled", id: "like-button" %>
 						<% end %>
 					<% end %>
 				</div>
@@ -111,79 +111,7 @@
 			</div>
 
 		</div>
-		
-		
 
-	<!-- 	<div class="section-container auto" data-section data-options="deep_linking: true, one_up: false">
-			<section class="active">
-				<p class="title" data-section-title>
-					<%= link_to "Description", "#description" %>
-				</p>
-				<div class="content idea-main-content" data-slug="description" data-section-content>
-					<p><%= raw @idea.content %></p>
-				</div>
-			</section>
-			<% if @idea.video_url.present? %>
-			<section>
-				<p class="title" data-section-title>
-					<%= link_to "Video", "#video" %>
-				</p>
-				<div class="content" data-slug="video" data-section-content>
-					<p>
-						<div class="flex-video <%= @idea.video_type %>">
-							<iframe src="<%= @idea.video_url %>" frameborder="0" width="604" height="431" allowfullscreen></iframe>
-						</div>
-					</p>
-				</div>
-			</section>
-			<% end %>
-			<section>
-				<p class="title" data-section-title>
-					<%= link_to "Comments / Feedback", "#comments" %>
-				</p>
-				<div class="content" data-slug="comments" data-section-content>
-					<div class="comments">
-						<%= render partial: 'comments/form', locals: { comment: @new_comment } %>
-						<% if @root_comments.empty? %>
-							<div class="row empty-comments">
-								<div class="large-6 large-centered columns">
-									<br>
-									<br>
-									<h6 class="subheader">There are no comments yet.</h6>
-								</div>
-							</div>
-						<% else %>
-							<% @root_comments.each do |root_comment| %>
-								<%= render partial: 'comments/comment',  
-													locals: { comment: root_comment, 
-																		idea_id: @idea.id, 
-																		reply_comment: @new_comment } %>
-
-								<% child_comments = nil %>
-
-								<% if root_comment.has_children? %>
-									<% child_comments = root_comment.children.order('created_at asc') %>
-
-										<div class="child-comments">
-
-											<% child_comments.each do |child_comment| %>
-												<%= render partial: 'comments/comment',
-																	locals: { comment: child_comment,
-																						idea_id: @idea.id, 
-																						reply_comment: @new_comment } %>
-												</div>
-											<% end %>
-
-										</div>
-								<% end %>
-
-								</div>
-							<% end %>
-						<% end %>
-					</div>
-				</div>
-			</section>
-		</div> -->
 	</div>
 
 	<!-- Sidebar Section -->

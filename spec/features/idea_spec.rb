@@ -104,7 +104,7 @@ feature "Idea Management" do
 			idea = create(:idea, board: board, title: "Old Title")
 			click_link "Your Ideas"
 			click_link "#{idea.title}"
-			click_link "Edit Idea"
+			find('#edit-button').click
 			fill_in "Title", with: "New Title"
 			click_button "Update Idea"
 			idea.reload
@@ -132,7 +132,7 @@ feature "Idea Management" do
 
 		scenario "cancel edit goes back to previous page" do
 			visit idea_path(idea)
-			click_link "Edit Idea"
+			find('#edit-button').click
 			click_link "Cancel"
 			expect(current_path).to eq idea_path(idea)
 
@@ -152,7 +152,7 @@ feature "Idea Management" do
 			expect {
 				click_link "Your Ideas"
 				click_link "#{idea.title}"
-				click_link "Delete"
+				find('#delete-button').click
 			}.to change(Idea, :count).by(-1)
 			expect(current_path).to eq user_board_path(user, board)
 			expect(page).to have_content "Idea was deleted."
@@ -185,32 +185,30 @@ feature "Idea Management" do
 			other_idea_votes = other_idea.votes
 
 			visit idea_path(other_idea)
-			within('div.panel') { click_link "Vote" }
+			find('#like-button').click
 			other_idea.reload
 			expect(other_idea.votes).to eq other_idea_votes + 1
 			expect(current_path).to eq idea_path(other_idea)
-			within('.idea-side') do
+			within('.sidebar') do
 				expect(page).to have_content "#{other_idea_votes + 1}votes"
 			end
 		end
 
-		scenario "adds a vote using sidebar" do
-			other_user = create(:user)
-			other_board = create(:board, user: other_user)
-			other_idea = create(:idea, board: other_board)
-			other_idea_votes = other_idea.votes
+		# scenario "adds a vote using sidebar" do
+		# 	other_user = create(:user)
+		# 	other_board = create(:board, user: other_user)
+		# 	other_idea = create(:idea, board: other_board)
+		# 	other_idea_votes = other_idea.votes
 			
-			visit idea_path(other_idea)
-			within('.idea-side') { click_link "Vote" }
-			other_idea.reload
-			expect(other_idea.votes).to eq other_idea_votes + 1
-		end
+		# 	visit idea_path(other_idea)
+		# 	find('#like-button').click
+		# 	other_idea.reload
+		# 	expect(other_idea.votes).to eq other_idea_votes + 1
+		# end
 
 		scenario "can't add a vote to user's own idea" do
 			visit idea_path(idea)
-			within('div.panel') do
-				expect(page).to_not have_link "Vote"
-			end
+			within('.idea-overview') { expect(page).to_not have_link "Vote" }
 		end
 
 		scenario "can't add more than 1 vote" do
@@ -220,10 +218,9 @@ feature "Idea Management" do
 			other_idea_votes = other_idea.votes
 			
 			visit idea_path(other_idea)
-			within('div.panel') { click_link "Vote" }
+			find('#like-button').click
 			other_idea.reload
-			within('.idea-main') { expect(page).to_not have_link "Vote" }
-			within('.idea-side') { expect(page).to_not have_link "Vote" }
+			expect(page).to have_css "#like-button.disabled"
 		end
 	end
 
@@ -236,7 +233,7 @@ feature "Idea Management" do
 			log_in user
 			visit idea_path(idea)
 			expect(page).to have_content("Old Title")
-			click_on "Edit Idea"
+			find('#edit-button').click
 			fill_in "Title", with: "New Title"
 			click_on "Update Idea"
 			expect(page).to have_content("Idea was updated.")
@@ -249,7 +246,7 @@ feature "Idea Management" do
 			log_in user
 			visit idea_path(idea)
 			expect(page).to have_content("Oops")
-			click_on "Delete"
+			find('#delete-button').click
 			expect(page).to have_content("Idea was deleted.")
 			expect(page).to_not have_content("Oops")
 		end

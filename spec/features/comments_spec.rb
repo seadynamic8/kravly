@@ -102,7 +102,9 @@ feature "Comments Management" do
 			scenario "can see Cancel link, when Edit is clicked", js: true do
 				Comment.build_from(idea, user.id, "New Comment").save
 				visit idea_path(idea)
-				click_link "Edit"
+
+				click_link "Comments / Feedback"
+				within('.comments') { find('.edit-comment').click }
 				within('div.comment') do
 					expect(page).to have_link "Cancel"
 				end
@@ -112,10 +114,12 @@ feature "Comments Management" do
 				end
 			end
 
-			scenario "can Edit comment", js: true do
+			scenario "can Edit comment", js:true do
 				Comment.build_from(idea, user.id, "New Comment").save
 				visit idea_path(idea)
-				click_link "Edit"
+
+				click_link "Comments / Feedback"
+				find('.edit-comment').click
 				within('.edit-comment-form') do
 					fill_in "comment[body]", with: "Updated Comment"
 					click_button "Update Comment"
@@ -131,6 +135,7 @@ feature "Comments Management" do
 				child_comment.move_to_child_of(parent_comment)
 				visit idea_path(idea)
 
+				click_link "Comments / Feedback"
 				within('.child-comments') do
 					click_link "Edit"
 					within('.edit-comment-form') do
@@ -159,6 +164,7 @@ feature "Comments Management" do
 				Comment.build_from(idea, other_user.id, "Other Comment").save
 
 				visit idea_path(idea)
+				click_link "Comments / Feedback"
 				click_link "Reply"
 
 				within('div.comment') { expect(page).to have_link "Hide" }
@@ -174,6 +180,7 @@ feature "Comments Management" do
 				Comment.build_from(idea, other_user.id, "Other Comment").save
 
 				visit idea_path(idea)
+				click_link "Comments / Feedback"
 				click_link "Reply"
 				click_link "Hide"
 
@@ -185,6 +192,7 @@ feature "Comments Management" do
 				Comment.build_from(idea, other_user.id, "Other Comment").save
 
 				visit idea_path(idea)
+				click_link "Comments / Feedback"
 				click_link "Reply"
 				within('.reply-form') do
 					fill_in "comment[body]", with: "New Comment Text"
@@ -209,6 +217,7 @@ feature "Comments Management" do
 				child_comment.move_to_child_of(parent_comment)
 
 				visit idea_path(idea)
+				click_link "Comments / Feedback"
 				find("#reply-#{parent_comment.id}").click
 				within("#reply-form-#{parent_comment.id}") do
 					fill_in "comment[body]", with: "New Comment Text"
@@ -228,6 +237,7 @@ feature "Comments Management" do
 				child_comment.move_to_child_of(parent_comment)
 
 				visit idea_path(idea)
+				click_link "Comments / Feedback"
 				within('.child-comments') do
 					click_link "Reply"
 					within("#reply-form-#{child_comment.id}") do

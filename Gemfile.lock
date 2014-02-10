@@ -45,15 +45,12 @@ GEM
       activerecord (>= 4.0.0, < 5)
     bcrypt-ruby (3.0.1)
     builder (3.1.4)
-    capybara (2.2.0)
+    capybara (2.2.1)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    capybara-webkit (1.1.0)
-      capybara (~> 2.0, >= 2.0.2)
-      json
     carrierwave (0.9.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -64,6 +61,7 @@ GEM
     ckeditor (4.0.9)
       mime-types
       orm_adapter (~> 0.5.0)
+    cliver (0.3.2)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -171,6 +169,11 @@ GEM
       activerecord (>= 3.1)
       activesupport (>= 3.1)
       arel
+    poltergeist (1.5.0)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      multi_json (~> 1.0)
+      websocket-driver (>= 0.2.0)
     polyglot (0.3.3)
     pry (0.9.12.4)
       coderay (~> 1.0)
@@ -264,6 +267,7 @@ GEM
       rack
       raindrops (~> 0.7)
     watchr (0.7)
+    websocket-driver (0.3.2)
     will_paginate (3.0.5)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -277,7 +281,6 @@ DEPENDENCIES
   attribute_normalizer
   bcrypt-ruby (~> 3.0.0)
   capybara
-  capybara-webkit
   carrierwave
   ckeditor
   coffee-rails (~> 4.0.0)
@@ -301,6 +304,7 @@ DEPENDENCIES
   newrelic_rpm
   pg
   pg_search
+  poltergeist
   rails (= 4.0.0)
   rails_12factor
   rb-inotify
