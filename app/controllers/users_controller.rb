@@ -13,7 +13,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    logger.debug "*****updating_password = #{@user.updating_password}"
     if @user.save
       session[:user_id] = @user.id
       UserMailer.signup_confirmation(@user).deliver
