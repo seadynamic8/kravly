@@ -19,6 +19,7 @@ class CommentsController < ApplicationController
 				parent_comment = parent_comment.parent if parent_comment.parent
 				@comment.move_to_child_of(parent_comment)
 			end
+			CommentMailer.comment_notification(idea).deliver
 			render partial: 'comments/comment', locals: { comment: @comment,
 						idea_id: idea.id, reply_comment: @new_comment }, 
 						layout: false, status: :created

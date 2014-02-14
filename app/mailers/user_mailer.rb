@@ -1,18 +1,18 @@
 class UserMailer < ActionMailer::Base
-  default from: "kravlysite@gmail.com"
+  default from: "kravlycom@gmail.com"
 
   def signup_confirmation(user)
     @user = user
-    mail to: user.email, subject: "kravly - Welcome!"
+    mail to: user.email, subject: "Kravly - Welcome!"
   end
 
   def goodbye_message(user)
     @user = user
-    mail to: user.email, subject: "kravly - Goodbye :("
+    mail to: user.email, subject: "Kravly - Goodbye :("
   end
 
   def password_reset(user)
     @user = user
-    mail to: user.email, subject: "kravly - Password Reset"
+    mail to: user.email, subject: "Kravly - Password Reset"
   end
 end
