@@ -242,7 +242,7 @@ ActiveAdmin.setup do |config|
 
   config.skip_before_filter :authorize
   config.skip_before_filter :categories_setup
-
+  config.skip_before_filter :authenticate_user!
 
   ActiveAdmin::ResourceController.class_eval do
     def find_resource
