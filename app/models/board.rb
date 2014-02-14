@@ -30,7 +30,8 @@ class Board < ActiveRecord::Base
 	validates :category_id, presence: true
 	validates :category, associated: true
 
-	scope :recent, -> { order("created_at desc") }
+	scope :recent, -> { order("updated_at desc") }
+	scope :newly_created, -> { order("created_at desc") }
 
 	after_validation :move_friendly_id_error_to_name
 

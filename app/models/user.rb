@@ -64,6 +64,8 @@ class User < ActiveRecord::Base
 	after_validation :move_friendly_id_error_to_username
 	before_create :set_display_to_fullname_if_exist, on: :create
 	after_create :generate_slug, on: :create
+
+	scope :newly_created, -> { order("created_at desc") }
 	
 	def display_name
 		case display

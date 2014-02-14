@@ -104,7 +104,7 @@ feature "Comments Management" do
 				visit idea_path(idea)
 
 				click_link "Comments / Feedback"
-				within('.comments') { find('.edit-comment').click }
+				within('.comments') { click_link "Edit" }
 				within('div.comment') do
 					expect(page).to have_link "Cancel"
 				end

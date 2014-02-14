@@ -34,7 +34,7 @@ class IdeasController < ApplicationController
       redirect_to new_user_board_path(current_user), notice: "Please create a board first."
     else
       @idea = Idea.new
-      @boards = current_user.boards.recent
+      @boards = current_user.boards.newly_created
       store_location
     end
   end
@@ -46,7 +46,7 @@ class IdeasController < ApplicationController
     if @idea.save
       redirect_to @idea, notice: "Idea was created."
     else
-      @boards = current_user.boards.recent
+      @boards = current_user.boards.newly_created
       render :new
     end
   end
