@@ -1,7 +1,5 @@
 <p>Hi <%= @user.name %>,</p>
 
-<p>Someone voted on your idea, <%= link_to idea_url( @idea.title, idea_url(@idea) ) %>.</p>
-
-<p>Congrats!</p>
+<p>Someone voted for your idea, <%= link_to @idea.title, idea_url(@idea) %>!</p>
 
 <p>Kravly.com</p>
