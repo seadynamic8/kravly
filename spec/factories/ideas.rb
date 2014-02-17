@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: ideas
+#
+#  id          :integer          not null, primary key
+#  title       :string(255)
+#  content     :text
+#  votes       :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  board_id    :integer
+#  image       :string(255)
+#  video_url   :string(255)
+#  video_type  :string(255)
+#  slug        :string(255)
+#  commitment  :string(255)
+#  source      :string(255)
+#  looking_for :text
+#  market      :string(255)
+#
+
 require 'faker'
 
 FactoryGirl.define do

@@ -78,7 +78,7 @@ class IdeasController < ApplicationController
       @idea.votes += 1
       @idea.save
       UserVote.create(idea_id: @idea.id, user: current_user)
-      VoteMailer.vote_notification(@idea.user, @idea).deliver
+      VoteMailer.vote_notification(@idea).deliver if @idea.user.notify_vote
     else
       flash[:alert] = "Can't vote more than once."
     end

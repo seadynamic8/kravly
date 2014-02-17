@@ -34,5 +34,7 @@ module Wishproto
     config.compass.images_dir = 'app/assets/images'
 
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+
+    I18n.enforce_available_locales = true
   end
 end

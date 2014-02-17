@@ -107,6 +107,19 @@
 															['Username', '2'], ['Email', '3']], f.object.display) %>
 		</div>
 	</div>
+
+	<div class="row">
+		<div class="large-2 columns">
+			<%= f.label :email_notifications, "Email Notifications", class: "left inline" %>
+		</div>
+		<div class="large-9 columns">
+			<%= f.check_box :notify_vote %>
+			<%= f.label :votes %>
+
+			<%= f.check_box :notify_comment %>
+			<%= f.label :comments %>
+		</div>
+	</div>
 <% else # new or create action %>
 	<%= f.hidden_field :display, value: 2 %>
 	<%= hidden_field_tag "return_to", @return_to %>

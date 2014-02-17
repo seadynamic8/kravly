@@ -1,5 +1,7 @@
-<p>Hi <%= @user.name %>,</p>
+<p>Hi <%= @idea.user.name %>,</p>
 
 <p>Someone voted for your idea, <%= link_to @idea.title, idea_url(@idea) %>!</p>
 
 <p>Kravly.com</p>
+
+<p>Vote notification settings under your user account settings, <%= link_to "Edit User Account", edit_user_url(@idea.user) %></p>

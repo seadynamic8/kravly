@@ -19,6 +19,8 @@
 #  location               :string(255)
 #  website                :string(255)
 #  display                :integer
+#  notify_vote            :boolean          default(TRUE)
+#  notify_comment         :boolean          default(TRUE)
 #
 
 require 'file_size_validator'

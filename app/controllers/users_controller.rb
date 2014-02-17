@@ -95,6 +95,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(:username, :email, :firstname, :lastname, 
                                    :password, :password_confirmation, 
                                    :avatar, :avatar_cache, :remote_avatar_url,
-                                   :about, :location, :website, :display)
+                                   :about, :location, :website, :display,
+                                   :notify_vote, :notify_comment)
     end
 end

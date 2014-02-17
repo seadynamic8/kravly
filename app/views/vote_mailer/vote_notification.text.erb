@@ -1,4 +1,4 @@
-Hi <%= @user.name %>,
+Hi <%= @idea.user.name %>,
 
 Someone voted for your idea, <%= @idea.title %>!
 
@@ -7,3 +7,5 @@ Go to http://www.kravly.com/idea/<%= @idea.slug %> to see your idea.
 Congrats!
 
 Kravly.com
+
+Vote notification settings under your user account settings, http://www.kravly/<%= @idea.user.username %>/edit
