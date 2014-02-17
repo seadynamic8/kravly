@@ -8,7 +8,7 @@ describe UserMailer do
 		it "sends user password reset url" do
 			expect(mail.subject).to eq("kravly - Password Reset")
 			expect(mail.to).to eq([user.email])
-			expect(mail.from).to eq(["kravlysite@gmail.com"])
+			expect(mail.from).to eq(["kravlycom@gmail.com"])
 		end
 
 		it "renders the body" do
