@@ -23,8 +23,8 @@ feature 'User Management' do
 		visit discover_path
 		expect {
 			click_link "JOIN"
-			fill_in 'Email', with: 'newuser@example.com'
-			fill_in 'Password', with: 'secret123'
+			fill_in 'user[email]', with: 'newuser@example.com'
+			fill_in 'user[password]', with: 'secret123'
 			# fill_in 'Password Confirmation', with: 'secret123'
 			click_button 'Create User'
 		}.to change(User, :count).by(1)
@@ -38,7 +38,7 @@ feature 'User Management' do
 		visit discover_path
 		expect {
 			click_link "JOIN"
-			fill_in 'Email', with: 'newuser@example.com'
+			fill_in 'user[email]', with: 'newuser@example.com'
 			click_button 'Create User'
 		}.to_not change(User, :count).by(1)
 		expect(current_path).to eq users_path
@@ -51,9 +51,9 @@ feature 'User Management' do
 	scenario "signup for a new member account from home page" do
 		visit root_url
 		expect {
-			fill_in 'Email', with: 'newuser@example.com'
-			fill_in 'Password', with: 'secret123'
-			click_button "Create Your New Account"
+			fill_in 'user[email]', with: 'newuser@example.com'
+			fill_in 'user[password]', with: 'secret123'
+			find('.create-account').click
 		}.to change(User, :count).by(1)
 		new_user = User.last
 		expect(current_path).to eq boards_user_path(new_user)

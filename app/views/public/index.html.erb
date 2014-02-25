@@ -1,75 +1,105 @@
+
+<!-- HEADER SECTION -->
 <header>
+
 	<div class="row">
-		<div class="large-3 columns">
-			<h1 class="logo">Kravly</h1>
-		</div>
-		<div class="large-5 columns nav">
+
+		<div class="large-4 columns">
+			<h1 class="logo"><a class="hide-text" href="">Kravly</a></h1>
+		</div> <!-- end large-3 -->
+
+		<nav class="large-5 columns">
 			<%= link_to "Discover", discover_path %>
 			<%= link_to "Basics", basics_path %>
 			<%= link_to "Log In", login_path, class: "login-link" %>
-		</div>
-	</div>
+		</nav> <!-- end large-5 -->
+
+	</div> <!-- end row -->
+
 </header>
 
-<section class="home-main">
+
+<!-- MAIN SECTION -->
+<section class="main">
+
 	<div class="row">
-		<div class="large-7 large-centered columns">
-			<h2>
-				Share your business ideas.<br>
-				Get feedback.<br>
-				Help influence new ideas.
-			</h2>
+		<div class="large-12 columns">
+
+			<h1>
+				Share Your <strong>Business</strong> Ideas<br>
+				Get Feedback<br>
+				<strong class="secondary">Help Influence New <span class="ideas">Ideas</span></strong>
+			</h1>
+
+			<h4><%= "Get started now by".upcase %><br>
+					<%= "creating a new account".upcase %></h4>
 			
-		</div>
-	</div>
+			<!-- LOGIN FORM -->
+			<%= form_for @user do |f| %>
+				<%= error_messages_for(@user) %>
 
-	<div class="row login-form">
-		<div class="large-6 large-centered columns">
-			<div class="panel">
-				<p>Get Started Now by Creating an Account:</p>
+				<%= f.hidden_field :display, value: 2 %>
 
-				<%= form_for @user do |f| %>
-					<%= error_messages_for(@user) %>
+				<div class="row">
 
-					<div class="row">
-						<div class="large-2 columns">
-							<%= f.label :email, "Email", class: "left inline" %>
-						</div>
-						<div class="large-9 columns">
-							<%= f.email_field :email, placeholder: "Email" %>
-						</div>
+					<div class="large-5 columns">
+						<%= f.email_field :email, placeholder: "email" %>
+					</div>
+					<div class="large-5 columns">
+						<%= f.password_field :password, placeholder: "password" %>
+					</div>
+					<div class="large-2 columns">
+						<%= f.submit "Create\r\nAccount", class: "create-account" %>
 					</div>
 
-					<div class="row">
-						<div class="large-2 columns">
-							<%= f.label :password, "Password", class: "left inline" %>
-						</div>
-						<div class="large-9 columns">
-							<%= f.password_field :password, placeholder: "Password" %>
-						</div>
-					</div>
+				</div> <!-- end row -->
 
-					<%= f.hidden_field :display, value: 2 %>
+			<% end %> <!-- end form -->
 
-					<p class="disclaimer">By creating an account, you agree to our <%= link_to "terms of use", terms_path %>.</p>
-
-					<div class="row button-row">
-						<div class="large-8 large-centered columns">
-							<%= submit_tag "Create Your New Account", class: "new-account-button" %>
-						</div>
-					</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
-
-	<div class="row lower">
-		<div class="large-7 large-centered columns">
-			<p>or</p>
+			<p class="disclaimer">By creating an account, you agree to our <%= link_to "terms of use", terms_path %>.</p>
 			
-			<%= link_to "Discover New Ideas", discover_path, class: "button" %>
+		</div> <!-- end large-12 -->
+	</div> <!-- end row -->
 
-			<p>Already have an account?  <%= link_to "Log In", login_path, class: "login-link" %></p>
-		</div>
-	</div>
-</section>
+</section> <!-- end section main -->
+
+
+<!-- STEPS SECTION -->
+<section class="steps">
+	
+	<h1>STEPS</h1>
+
+	<div class="row">
+
+		<ul class="steps-list">
+		
+			<li class="large-4 columns">
+				<div class="newidea"></div>
+				<h3>Come up with an awesome new idea.</h3>
+			</li>
+			<li class="large-4 columns">
+				<div class="social"></div>
+				<h3>Share with others, get feedback, refine idea.</h3>
+			</li>
+			<li class="large-4 columns">
+				<div class="market"></div>
+				<h3>Get resources together, bring to market.</h3>
+			</li>
+
+		</ul> <!-- end ul steps -->
+
+	</div> <!-- end row -->	
+
+</section> <!-- end section steps -->
+
+<hr class="cta-border">
+
+<!-- CTA SECTION -->
+<section class="cta">
+	
+	<h2>ready to explore?</h2>
+	<%= link_to "Discover Kravly", discover_path, class: "cta-button" %>
+
+	<p>Already have an account?  <%= link_to "Log In", login_path, class: "login-link" %></p>
+
+</section> <!-- end section cta -->

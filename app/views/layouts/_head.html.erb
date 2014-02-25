@@ -1,0 +1,29 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+  	<meta charset="utf-8" />
+
+    <meta name="description" content="A community for sharing your business ideas. Find your inspiration or discover interesting product ideas. Find cofounders or investors as well." />
+    <meta name="keywords" content="business ideas, business opportunities, entrepreneur ideas, entreprenuer opportunities, business inspiration, inspirational ideas, find a cofounder, business to start, business trends, product ideas" />
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  	<!-- Set the viewport width to device width for mobile -->
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  	<title>
+      <%= content_for?(:title) ? yield(:title) + " - kravly | Share Business Ideas" : "Share Business Ideas, Find Cofounders, Discover Products | kravly" %>
+    </title>
+
+  	<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>

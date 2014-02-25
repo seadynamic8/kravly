@@ -10,7 +10,7 @@ feature "Guest Actions" do
 
 		scenario "go to discover page from home page" do
 			visit root_url
-			click_link "Discover New Ideas"
+			click_link "Discover"
 			expect(current_path).to eq discover_path
 		end
 

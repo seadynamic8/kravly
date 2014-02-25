@@ -2,80 +2,354 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//Index Page
 
-.home {
-	background-color: #6eb1ff;
-	padding-bottom: 400px;
 
-	.logo {
-		font-family: "Bad Script", "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-	}
+// ************* VARIABLES *****************
 
-	.login-link {
-		color: #232329;
-		font-weight: bold;
+$header-bg-color: white;
+$steps-bg-color: white;
+$cta-bg-color: #125d7e;
 
-		&:hover {
-			color: #565663;
-		}
-	}
+$text-color-one: #125d7e;
+$text-color-two: white;
+$text-color-three: #fa4786;
+
+$body-font: 'Quicksand', 'Arial', sans-serif;
+$header-font: $body-font;
+
+// ************* SASS MIXINS ******************
+
+@mixin round ($radius: 5px) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	border-radius: $radius;
+
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
 }
 
-header  {
-	.nav {
-		padding-top: 30px;
-		text-align: right;
+@mixin box-shadow($top, $left, $blur, $spread, $color, $inset:"") {
+  -webkit-box-shadow: $top $left $blur $spread $color #{$inset};
+  -moz-box-shadow: $top $left $blur $spread $color #{$inset};
+  box-shadow: $top $left $blur $spread $color #{$inset};
+}
 
-		a {
-			margin-left: 15px;
-			color: #161529;
+@mixin gradient ($from, $to) {
+	background-color: $from;
+	background-image: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+	background-image: -webkit-linear-gradient(top, $from, $to);
+	background-image:    -moz-linear-gradient(top, $from, $to);
+	background-image:      -o-linear-gradient(top, $from, $to);
+	background-image:         linear-gradient(to bottom, $from, $to);
+}
 
-			&:hover {
-				color: #383773;
+//Index Page
+
+body .home {
+	font: 16px/20px $body-font;
+	color: $text-color-one;
+	background-color: white;
+
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.home {
+
+	
+	// ************* GENERAL STYLES *****************
+
+	h1, h2, h3, h4, h5, h6, p {
+		color: $text-color-one;
+		font-family: $body-font;
+	}
+	
+	.hide-text {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+	}
+
+
+	// ************* HEADER SECTION *****************
+	header {
+		background-color: $header-bg-color;
+		padding: 3em 0 1em;
+		// margin-bottom: 1em;
+		
+		.logo {
+			margin: 0;
+			position: relative;
+
+			a {
+				// font-family: "Grand Hotel", "Bad Script", "Arial", sans-serif;
+				// font-size: 100px;
+				background: transparent url("https://s3.amazonaws.com/wishproto/home/logo.png") left top no-repeat;
+				display: block;
+				width: 100%;
+				height: 116px;
+				position: absolute;
+				top: -20px;
+				left: 0;
+			}
+		}
+
+		nav {
+			text-align: right;
+			margin-top: 1.5em;
+
+			a {
+				font-size: 24px;
+				font-weight: bold;
+				color: $text-color-one;
+				border: 1px solid white;
+
+				margin: 10px 0 0 25px;
+				padding: .2em;
+
+				&:hover, &:active {
+					color: lighten($text-color-one, 15%);
+					border: 1px solid $text-color-one;
+					@include round(10px);
+				}
+
+				&:last-child {
+					color: $text-color-three;
+
+					&:hover, &:active {
+						color: darken(#7ec8b9, 5%);
+						// color: darken($text-color-three, 25%);
+						// background-color: lighten($text-color-three, 25%);
+					}
+				}
 			}
 		}
 	}
-}
 
-section.home-main {
-	text-align: center;
+	// ************* MAIN SECTION *****************
+	.main {
+		text-align: center;
+		background: white url("https://s3.amazonaws.com/wishproto/home/main-background.png") center -230px repeat-x;
+		padding: 4em 0 10em;
 
-	h2 {
-		margin-top: 25px;
+		@include box-shadow(0, 10px, 10px, 0, rgba(0, 0, 0, 0.1), inset);
+
+		h1 {
+			margin-bottom: 1em;
+			font-size: 50px;
+
+			.secondary {
+				color: $text-color-two;
+
+				span.ideas {
+					color: $text-color-three;
+				}
+			}
+		}
+
+		h4 {
+			font-size: 25px;
+			font-weight: bold;
+			margin-bottom: 1em;
+		}
+
+		form {
+
+			.row {
+				margin: 0 1em;
+			}
+
+			input[type="text"], input[type="email"], input[type="password"] {
+				background: rgba(255, 255, 255, .2);
+				
+				font-size: 20px;
+				font-weight: bold;
+				font-style: italic;
+				line-height: 1.5em;
+				color: $text-color-one;
+
+				height: 60px;
+				// width: 400px;
+
+				@include round(12px);
+
+				border: 2px solid $text-color-two;
+				outline: none;
+
+				padding: 0 1em;
+
+				&::-webkit-input-placeholder {
+				   text-align: center;
+				}
+
+				&:-moz-placeholder { /* Firefox 18- */
+				   text-align: center;
+				}
+
+				&::-moz-placeholder {  /* Firefox 19+ */
+				   text-align: center;
+				}
+
+				&:-ms-input-placeholder {  
+				   text-align: center;
+				}
+			}
+
+			input[type="submit"] {
+				display: inline-block;
+				padding: 0 1em;
+				height: 3.9em;
+
+				// line-height: 4em;
+				font-size: 16px;
+				font-weight: bold;
+				font-family: $body-font;
+				color: $text-color-two;
+				text-transform: uppercase;
+
+				background-color: $text-color-one;
+				border: 1px solid darken($text-color-one, 5%);
+
+				@inlcude gradient($text-color-one, darken($text-color-one, 5%));
+				@include round(10px);
+
+				// -webkit-box-shadow: 0 0 0 4px lighten(#E0E0E0, 7%), inset 0 1px 2px ligthen($text-color-one, 25%);
+				// box-shadow: 0 0 0 4px lighten(#E0E0E0, 7%), inset 0 1px 2px ligthen($text-color-one, 25%);
+
+				&:hover {
+					@include gradient(lighten($text-color-one, 5%), $text-color-one);
+
+					color: lighten($text-color-one, 25%);
+				}
+
+				&:active {
+					@include gradient($text-color-one, lighten($text-color-one, 5%));
+				}
+			}
+		}
+
 	}
-	.login-form {
 
-		.panel {
-			background-color: #D8E7EB;
+	// ************* STEPS SECTION *****************
+	.steps {
+		text-align: center;
+		background-color: $steps-bg-color;
+		margin: 3em 0 5em;
+
+		h1 {
+			font-size: 50px;
+			font-weight: 300;
+			margin-bottom: 1em;
+		}
+
+		.steps-list {
+			list-style: none;
+			background: transparent;
+
+			li {
+				div {
+					margin: 0 0 1em 2.5em;
+
+					height: 200px;
+					width: 200px;
+					border: 2px solid $text-color-one;
+					@include round(100px);
+
+					&.newidea {
+						background: url("https://s3.amazonaws.com/wishproto/home/lightbulb.png") 55px 32px no-repeat;				
+					}
+					&.social {
+						background: url("https://s3.amazonaws.com/wishproto/home/social.png") 27px 27px no-repeat;				
+					}
+					&.market {
+						background: url("https://s3.amazonaws.com/wishproto/home/rocketship.png") 38px 39px no-repeat;				
+					}
+				}
+
+				h3 {
+					font-weight: bold;
+					font-size: 24px;
+				}
+			}
+		}
+	}
+
+	.cta-border {	
+		background: url("https://s3.amazonaws.com/wishproto/home/cta-border.png") repeat-x;
+		display: block;
+		height: 73px;
+		border: none;
+		margin: 0;
+	}
+
+	// ************* CTA SECTION *****************
+	.cta {
+		background-color: $cta-bg-color;
+		text-align: center;
+		padding: 3em 0 10em;
+		
+		h2 {
+			margin: 0 0 1em;
+			color: $text-color-two;
+			font-size: 30px;
+		}
+
+		.cta-button {
+			display: inline-block;
+			padding: 0 2em;
+			height: 1.5em;
+
+			line-height: 1.5em;
+			font-size: 56px;
+			font-weight: 300;
+			font-family: $body-font;
+			color: $text-color-two;
+
+			border: 2px solid $text-color-two;			
+			background-color: $text-color-three;
+
+			@inlcude gradient($text-color-three, darken($text-color-three, 5%));
+			@include round(10px);
+
+			&:hover {
+				@include gradient(lighten($text-color-three, 5%), $text-color-three);
+
+				color: darken($text-color-one, 5%);
+				font-weight: normal;
+			}
+
+			&:active {
+				@include gradient($text-color-three, lighten($text-color-three, 5%));
+			}
 		}
 
 		p {
+			margin-top: 2em;
+			color: darken($text-color-two, 15%);
 			font-size: 20px;
-		}
 
-		.button-row {
-			margin-top: 10px;
-		}
+			a {
+				color: lighten(#0078A0, 15%);
 
-		.disclaimer {
-			font-size: 13px;
-		}
-
-		.new-account-button {
-			$button-font-color: #161529;
-			@include button-base;
-		  @include button-size;
-		  @include button-style(#ff8c2e);
-		  @include radius;
-		  @include single-transition;
-		  @include inset-shadow(true);
-		  margin-bottom: 0px;
+				&:hover {
+					font-weight: bold;
+				}
+			}
 		}
 	}
+
 }
 
-// Discover Page
+// *******************************************************************
+// ************************  Discover Page ***************************
+
 .banner {
 	margin-top: -10px;
 	background: url(https://s3.amazonaws.com/wishproto/banner.jpg) no-repeat center -180px;

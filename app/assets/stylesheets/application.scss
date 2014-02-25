@@ -2,6 +2,8 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
 @import url(http://fonts.googleapis.com/css?family=Bad+Script);
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:600,400,300);
+@import url(http://fonts.googleapis.com/css?family=Quicksand:400,300,700);
+@import url(http://fonts.googleapis.com/css?family=Grand+Hotel);
 
 @import "foundation_and_overrides";
 @import "foundation-icons";
@@ -42,8 +44,8 @@ body, fieldset legend {
 	background: #3e3d42;
 
 	.name a {
-		font-family: "Bad Script", "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-		font-size: 1.5em;
+		font-family: "Grand Hotel", "Bad Script", "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+		font-size: 1.8em;
 	}
 
 	.top-bar-section {
