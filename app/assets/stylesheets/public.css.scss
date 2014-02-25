@@ -109,14 +109,14 @@ body .home {
 				font-size: 24px;
 				font-weight: bold;
 				color: $text-color-one;
-				border: 1px solid white;
+				border: 2px solid white;
 
 				margin: 10px 0 0 25px;
 				padding: .2em;
 
 				&:hover, &:active {
 					color: lighten($text-color-one, 15%);
-					border: 1px solid $text-color-one;
+					border: 2px solid $text-color-one;
 					@include round(10px);
 				}
 
@@ -125,8 +125,6 @@ body .home {
 
 					&:hover, &:active {
 						color: darken(#7ec8b9, 5%);
-						// color: darken($text-color-three, 25%);
-						// background-color: lighten($text-color-three, 25%);
 					}
 				}
 			}
@@ -254,12 +252,21 @@ body .home {
 			background: transparent;
 
 			li {
-				div {
-					margin: 0 0 1em 2.5em;
+				display: inline-block;
+				height: 278px;
+				width: 292px;
+				vertical-align: top;
 
+				/*Dirty IE Hack*/
+			  zoom: 1;
+			  *display: inline;
+
+				div {
+					margin : 0 auto 1em;
 					height: 200px;
 					width: 200px;
 					border: 2px solid $text-color-one;
+
 					@include round(100px);
 
 					&.newidea {
@@ -277,6 +284,19 @@ body .home {
 					font-weight: bold;
 					font-size: 24px;
 				}
+			}
+
+			hr {
+				display: inline-block;
+				width: 130px;
+				height: 278px;
+
+				margin: 100px -51px 0;
+				border-top: 1px solid $text-color-one;
+
+				/*Dirty IE Hack*/
+			  zoom: 1;
+			  *display: inline;
 			}
 		}
 	}
@@ -301,7 +321,7 @@ body .home {
 			font-size: 30px;
 		}
 
-		.cta-button {
+		a {
 			display: inline-block;
 			padding: 0 2em;
 			height: 1.5em;
@@ -327,20 +347,6 @@ body .home {
 
 			&:active {
 				@include gradient($text-color-three, lighten($text-color-three, 5%));
-			}
-		}
-
-		p {
-			margin-top: 2em;
-			color: darken($text-color-two, 15%);
-			font-size: 20px;
-
-			a {
-				color: lighten(#0078A0, 15%);
-
-				&:hover {
-					font-weight: bold;
-				}
 			}
 		}
 	}

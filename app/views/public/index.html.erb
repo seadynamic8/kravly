@@ -69,26 +69,24 @@
 	
 	<h1>STEPS</h1>
 
-	<div class="row">
+	<ul class="steps-list">
+	
+		<li>
+			<div class="newidea"></div>
+			<h3>Come up with an awesome new idea.</h3>
+		</li>
+		<hr>
+		<li>
+			<div class="social"></div>
+			<h3>Share with others, get feedback, refine idea.</h3>
+		</li>
+		<hr>
+		<li>
+			<div class="market"></div>
+			<h3>Get resources together, bring to market.</h3>
+		</li>
 
-		<ul class="steps-list">
-		
-			<li class="large-4 columns">
-				<div class="newidea"></div>
-				<h3>Come up with an awesome new idea.</h3>
-			</li>
-			<li class="large-4 columns">
-				<div class="social"></div>
-				<h3>Share with others, get feedback, refine idea.</h3>
-			</li>
-			<li class="large-4 columns">
-				<div class="market"></div>
-				<h3>Get resources together, bring to market.</h3>
-			</li>
-
-		</ul> <!-- end ul steps -->
-
-	</div> <!-- end row -->	
+	</ul> <!-- end ul steps -->
 
 </section> <!-- end section steps -->
 
@@ -98,8 +96,6 @@
 <section class="cta">
 	
 	<h2>ready to explore?</h2>
-	<%= link_to "Discover Kravly", discover_path, class: "cta-button" %>
-
-	<p>Already have an account?  <%= link_to "Log In", login_path, class: "login-link" %></p>
+	<%= link_to "Discover Kravly", discover_path %>
 
 </section> <!-- end section cta -->
