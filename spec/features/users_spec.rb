@@ -53,7 +53,7 @@ feature 'User Management' do
 		expect {
 			fill_in 'user[email]', with: 'newuser@example.com'
 			fill_in 'user[password]', with: 'secret123'
-			find('.create-account').click
+			click_button "Create Account"
 		}.to change(User, :count).by(1)
 		new_user = User.last
 		expect(current_path).to eq boards_user_path(new_user)
