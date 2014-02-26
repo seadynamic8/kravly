@@ -7,12 +7,12 @@ CarrierWave.configure do |config|
   config.fog_directory = ENV["AWS_S3_BUCKET"]
   config.fog_authenticated_url_expiration = 600
   config.asset_host = "http://img.kravly.com"
-  # config.fog_public = false
 
   if Rails.env.test?
   	config.storage = :file
     config.enable_processing = false
   elsif Rails.env.development?
+    config.asset_host = nil
   	config.storage = :file
   elsif Rails.env.production?
   	config.storage = :fog
