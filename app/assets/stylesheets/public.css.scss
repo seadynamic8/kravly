@@ -91,7 +91,7 @@ body .home {
 			a {
 				// font-family: "Grand Hotel", "Bad Script", "Arial", sans-serif;
 				// font-size: 100px;
-				background: transparent url("https://s3.amazonaws.com/wishproto/home/logo.png") left top no-repeat;
+				background: transparent url("http://img.kravly.com/home/logo.png") left top no-repeat;
 				display: block;
 				width: 100%;
 				height: 116px;
@@ -134,7 +134,7 @@ body .home {
 	// ************* MAIN SECTION *****************
 	.main {
 		text-align: center;
-		background: white url("https://s3.amazonaws.com/wishproto/home/main-background.png") center -230px repeat-x;
+		background: white url("http://img.kravly.com/home/main-background.png") center -230px repeat-x;
 		padding: 4em 0 10em;
 
 		@include box-shadow(0, 10px, 10px, 0, rgba(0, 0, 0, 0.1), inset);
@@ -270,13 +270,13 @@ body .home {
 					@include round(100px);
 
 					&.newidea {
-						background: url("https://s3.amazonaws.com/wishproto/home/lightbulb.png") 55px 32px no-repeat;				
+						background: url("http://img.kravly.com/home/lightbulb.png") 55px 32px no-repeat;				
 					}
 					&.social {
-						background: url("https://s3.amazonaws.com/wishproto/home/social.png") 27px 27px no-repeat;				
+						background: url("http://img.kravly.com/home/social.png") 27px 27px no-repeat;				
 					}
 					&.market {
-						background: url("https://s3.amazonaws.com/wishproto/home/rocketship.png") 38px 39px no-repeat;				
+						background: url("http://img.kravly.com/home/rocketship.png") 38px 39px no-repeat;				
 					}
 				}
 
@@ -302,7 +302,7 @@ body .home {
 	}
 
 	.cta-border {	
-		background: url("https://s3.amazonaws.com/wishproto/home/cta-border.png") repeat-x;
+		background: url("http://img.kravly.com/home/cta-border.png") repeat-x;
 		display: block;
 		height: 73px;
 		border: none;
@@ -358,7 +358,7 @@ body .home {
 
 .banner {
 	margin-top: -10px;
-	background: url(https://s3.amazonaws.com/wishproto/banner.jpg) no-repeat center -180px;
+	background: url(http://img.kravly.com/banner.jpg) no-repeat center -180px;
 
 	.banner-overlay {
 		background-color: rgba(0,0,0,0.4);

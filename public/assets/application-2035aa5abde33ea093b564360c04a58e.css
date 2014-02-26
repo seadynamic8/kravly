@@ -7370,7 +7370,7 @@ section.home-main .login-form .new-account-button:active {
 /* line 75, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .banner {
   margin-top: -10px;
-  background: url(https://s3.amazonaws.com/wishproto/banner.jpg) no-repeat center -180px;
+  background: url(http://img.kravly.com/banner.jpg) no-repeat center -180px;
 }
 /* line 79, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .banner .banner-overlay {

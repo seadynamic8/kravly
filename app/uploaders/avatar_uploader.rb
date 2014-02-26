@@ -27,7 +27,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
   def default_url
-    "https://s3.amazonaws.com/wishproto/default-avatar.jpg"
+    "http://img.kravly.com/default-avatar.jpg"
   end
 
   # Process files as they are uploaded:

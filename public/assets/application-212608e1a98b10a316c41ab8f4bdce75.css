@@ -7272,7 +7272,7 @@ input[type="file"] {
 /* line 6, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .banner {
   margin-top: -10px;
-  background: url(https://s3.amazonaws.com/wishproto/banner.jpg) no-repeat center -180px;
+  background: url(http://img.kravly.com/banner.jpg) no-repeat center -180px;
 }
 /* line 10, /home/jkwan/projects/wishproto/app/assets/stylesheets/public.css.scss */
 .banner .banner-overlay {
