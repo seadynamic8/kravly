@@ -5,6 +5,7 @@ CarrierWave.configure do |config|
     aws_secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"]
   }
   config.fog_directory = ENV["AWS_S3_BUCKET"]
+  config.fog_authenticated_url_expiration = 600
 
   if Rails.env.test?
   	config.storage = :file
