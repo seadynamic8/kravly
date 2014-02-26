@@ -9,6 +9,7 @@ CarrierWave.configure do |config|
   config.asset_host = "http://img.kravly.com"
 
   if Rails.env.test?
+    config.asset_host = nil
   	config.storage = :file
     config.enable_processing = false
   elsif Rails.env.development?
