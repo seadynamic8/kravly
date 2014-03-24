@@ -2,23 +2,24 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-onEndless = ->
-  $(window).off 'scroll', onEndless
-  url = $('.paginate .next_page a').attr('href')
-  $('.paginate').hide()
-  if url && $(window).scrollTop() > $(document).height() - $(window).height() - 50
-    $('#ideas').show()
-    $.getScript url, ->
-      $(window).on 'scroll', onEndless
-  else
-    $(window).on 'scroll', onEndless
+jQuery ->
+	if $('.pagination').length # if pagination exists (ie if there is pagination on this page)
+		onEndless = ->
+		  $(window).off 'scroll', onEndless
+		  url = $('.paginate .next_page a').attr('href')
+		  if url && $(window).scrollTop() > $(document).height() - $(window).height() - 50
+		    $('.pagination').text("Fetching more ideas...")
+		    $.getScript url, ->
+		      $(window).on 'scroll', onEndless
+		  else
+		    $(window).on 'scroll', onEndless
 
-$(window).on 'scroll', onEndless
-  
-$(window).scroll()
+		$(window).on 'scroll', onEndless
+
+		$(window).trigger 'scroll'
 
 # jQuery ->
-# 	if $('.pagination').length
+# 	if $('.pagination').length # if pagination exists (ie if there is pagination on this page)
 # 		$(window).scroll ->
 # 			url = $('.pagination .next_page a').attr('href')
 # 			if url && $(window).scrollTop() > $(document).height() - $(window).height() - 50
