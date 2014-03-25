@@ -1,6 +1,22 @@
 <% title @board.name %>
 
-<div class="row group-header">
+<div class="board-show-page">
+
+<!-- ##################### HEADER SECTION ###########################-->
+
+<div class="board-header">
+	<p>Board</p>
+
+	<h1><%= @board.name %></h1>
+
+	<h2><%= @board.description %></h2>
+
+	<% if current_user && current_user == @user %>
+		<%= link_to "Add Idea", new_idea_path, class: "add-button small button" %>
+	<% end %>
+</div>
+
+<!-- <div class="row group-header">
 		<div class="large-4 large-offset-4 columns">
 			<div class="board-name"><h4><%= @board.name %></h4></div>
 		</div>
@@ -14,10 +30,53 @@
 	<div class="large-12 columns">
 		<h5 class="subheader board-desc"><%= @board.description %></h5>
 	</div>
+</div> -->
+
+<!-- ##################### END HEADER SECTION ###########################-->
+
+<!-- ##################### BAR SECTION ###########################-->
+
+<div class="board-bar">
+	<div class="board-user">
+		<%= link_to (image_tag @user.avatar.small_profile.url),
+					boards_user_path(@user) %>
+		<p><%= link_to @user.display_name, boards_user_path(@user) %></p>
+	</div>
+	
+	<% if @board.category %>
+		<span class="board-category"><%= @board.category.name %></span>
+	<% end %>
+
+	<div class="right">
+			<span class="vote">
+				<%= @board.votes %>
+				<i class="fi-like"></i>
+			</span>
+			<span class="seperator">|</span>
+
+			<% if permit? "boards", "edit", @board %>
+			<span class="board-edit-links">
+				<span data-no-turbolink>
+					<%= link_to raw("<i class='fi-widget'></i>"), 
+								edit_user_board_path(@user, @board), class: "edit-link" %>
+				</span>
+				<%= link_to raw("<i class='fi-x'></i>"), 
+							user_board_path(@user, @board), method: :delete, 
+							data: { confirm: "Are you sure you want to delete the board?" } %>
+			</span>
+			<span class="seperator">|</span>
+			<% end %>
+
+			<span class="social">
+				<span class='st_facebook'></span>
+				<span class='st_twitter'></span>
+				<span class='st_linkedin'></span>
+				<span class='st_pinterest'></span>
+				<span class='st_stumbleupon'></span>
+			</span>
+	</div>
 </div>
-
-<hr>
-
+<!-- 
 <div class="row group-header-stats">
 	<div class="large-4 columns">
 		<%= link_to (image_tag @user.avatar.small_profile.url, 
@@ -34,10 +93,74 @@
 	<div class="large-4 columns">
 		<h5><%= @board.votes %> Votes</h5>
 	</div>
+</div> -->
+
+<!-- ##################### END BAR SECTION ###########################-->
+
+<!-- ##################### IDEAS SECTION ###########################-->
+
+<% @ideas.each_with_index do |idea, index| %>
+
+	<!-- Only output row when mutiple of 4 (ie each row has 4 items) -->
+	<% if index % 4 == 0 %> 
+		<div class="row">
+	<% end %>
+			
+			<div id="idea-<%= "#{idea.id}" %>" class="square">
+				<header>
+					<%= link_to idea.title, idea_path(idea) %><br>
+
+					<% if Rails.env == "development" %>
+						<div class="pitch">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, aliquam harum eos nobis nostrum et nulla similique suscipit consequatur quasi?
+						</div>
+					<% end %>
+				</header>
+
+				<div class="img-container">
+					<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %>
+
+					<p class="img-source hidden"><%= idea.source %></p>
+				</div>
+				
+				<div class="square-extras">
+					<% if permit? "ideas", "edit", idea %>
+						<span data-no-turbolink>
+							<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(idea) %>
+						</span>
+					<% end %>
+					<% if permit? "ideas", "destroy", idea %>
+						<%= link_to raw("<i class='fi-x'></i>"), idea_path(idea), method: :delete, 
+								data: { confirm: "Are you sure?" } %>
+					<% end %>
+					<% if (permit? "ideas", "vote", idea) %>
+						<% if current_user.not_voted?(idea) %>
+						<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), 
+									vote_idea_path(idea), class: "tiny button", id: "like-button" %>
+						<% else %>
+						<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), 
+									vote_idea_path(idea), class: "tiny button disabled", 
+									id: "like-button" %>
+						<% end %>
+					<% end %>
+				</div>
+
+			</div>
+
+	<% if (index+1) % 4 == 0 || (index+1) == @ideas.count %>
+		</div>
+	<% end %>
+
+<% end %>
+
+<div style="clear:both;"></div>
+
+<div class="pagination-centered">
+	<%= will_paginate @ideas, inner_window: 4, outer_window: 2,
+	previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe %>
 </div>
 
-<hr>
-
+<!-- 
 <% @ideas.each_with_index do |idea, index| %>
 	<% if index % 4 == 0 %>
 		<div class="row">
@@ -80,4 +203,8 @@
 <div class="pagination-centered">
 	<%= will_paginate @ideas, inner_window: 4, outer_window: 2,
 	previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe %>
+</div>
+ -->
+<!-- ##################### END IDEAS SECTION ###########################-->
+
 </div>

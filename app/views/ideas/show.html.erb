@@ -113,7 +113,12 @@
 				<% end %>
 			</header>
 
-			<%= image_tag @idea.image.thumb.url %>
+			
+			<div class="img-container">
+				<%= image_tag @idea.image.thumb.url %>
+
+				<p class="img-source hidden"><%= @idea.source %></p>
+			</div>
 
 			<div class="idea-overview-extras">
 				<% if @idea.board.category %>
@@ -123,16 +128,20 @@
 
 				<% if (permit? "ideas", "edit", @idea) && (permit? "ideas", "destroy", @idea) %>
 					<span data-no-turbolink>
-						<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(@idea), id: "edit-button" %>
+						<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(@idea), 
+									id: "edit-button" %>
 					</span>
 					<%= link_to raw("<i class='fi-x'></i>"), idea_path(@idea), method: :delete, 
 							data: { confirm: "Are you sure?" }, id: "delete-button" %>
 				<% end %>
 				<% if (permit? "ideas", "vote", @idea) %>
 					<% if current_user.not_voted?(@idea) %>
-					<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), vote_idea_path(@idea), class: "tiny button", id: "like-button" %>
+					<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), 
+								vote_idea_path(@idea), class: "tiny button", id: "like-button" %>
 					<% else %>
-					<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), vote_idea_path(@idea), class: "tiny button disabled", id: "like-button" %>
+					<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), 
+								vote_idea_path(@idea), class: "tiny button disabled", 
+								id: "like-button" %>
 					<% end %>
 				<% end %>
 			</div>
