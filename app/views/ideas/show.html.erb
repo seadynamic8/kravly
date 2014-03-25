@@ -36,7 +36,7 @@
 					<%= @all_comments_count %><br>
 					<i class="fi-comments"></i>
 				</li>
-				<li>
+				<li class="vote">
 					<%= @idea.votes %><br>
 					<i class="fi-like"></i>
 				</li>
@@ -122,11 +122,11 @@
 				<% end %>
 
 				<% if (permit? "ideas", "edit", @idea) && (permit? "ideas", "destroy", @idea) %>
-					<%= link_to raw("<i class='fi-x'></i>"), idea_path(@idea), method: :delete, 
-							data: { confirm: "Are you sure?" }, id: "delete-button" %>
 					<span data-no-turbolink>
 						<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(@idea), id: "edit-button" %>
 					</span>
+					<%= link_to raw("<i class='fi-x'></i>"), idea_path(@idea), method: :delete, 
+							data: { confirm: "Are you sure?" }, id: "delete-button" %>
 				<% end %>
 				<% if (permit? "ideas", "vote", @idea) %>
 					<% if current_user.not_voted?(@idea) %>
@@ -160,13 +160,9 @@
 
 			<%= render partial: 'comments/form', locals: { comment: @new_comment } %>
 
-			<% if @root_comments.empty? # If No Comments, Display Note%>
-				<div class="row empty-comments">
-					<div class="large-6 large-centered columns">
-						<br>
-						<br>
-						<h6 class="subheader">There are no comments yet.</h6>
-					</div>
+			<% if @root_comments.empty? # If No Comments, Display Note %>
+				<div class="empty-comments">
+						<p>There are no comments yet.</p>
 				</div>
 
 			<% else # There are comments %>
@@ -184,14 +180,15 @@
 
 							<div class="child-comments">
 
-								<% child_comments.each do |child_comment| %>
-									<%= render partial: 'comments/comment',
-														locals: { comment: child_comment,
-																			idea_id: @idea.id, 
-																			reply_comment: @new_comment } %>
-								<% end %>
+							<% child_comments.each do |child_comment| %>
+								<%= render partial: 'comments/comment',
+													locals: { comment: child_comment,
+																		idea_id: @idea.id, 
+																		reply_comment: @new_comment } %>
+							<% end %>
 
 							</div>
+
 					<% end %>
 
 				<% end %>

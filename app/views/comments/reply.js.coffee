@@ -5,7 +5,6 @@ if(reply_link_text == "reply" )
 	reply_link.text("hide")
 	$('#reply-form-<%= @comment.id %>')
 		.addClass("comment-reply-form")
-		.css("display", "block")
 		.show('fast')
 		.append('<%= j render "reply_form" %>')
 

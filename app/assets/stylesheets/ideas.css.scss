@@ -138,7 +138,7 @@ $comments-border-color: #fa4786;
 			font-size: 25px;
 			vertical-align: middle;
 		}
-		#edit-button {
+		#delete-button {
 			margin-left: 10px;
 		}
 		#like-button {
@@ -168,6 +168,12 @@ $comments-border-color: #fa4786;
 	background: $comments-bg-color;
 	margin-bottom: 3em;
 
+	.empty-comments p {
+		text-align: center;
+		color: #aaa;
+		padding: 1em 0;
+	}
+
 	.comment:nth-child(even) {
 		background: #eee;
 	}
@@ -182,6 +188,7 @@ $comments-border-color: #fa4786;
 
 	legend {
 		color: $text-color-three;
+		background: $comments-bg-color;
 	}
 
 	.comment-form-input {
@@ -281,9 +288,11 @@ $comments-border-color: #fa4786;
 	}
 
 	.comment-reply-form {
+		display: block;
 		border-top: 1px solid #aaa;
 		padding: 1.25em;
 		margin-top: 15px;
+		width: 100%;
 
 		.comment-avatar {
 			width: 40px;

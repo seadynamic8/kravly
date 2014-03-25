@@ -34,7 +34,7 @@ feature "Guest Actions" do
 			expect(page).to have_content idea.title
 			expect(page).to have_content idea.votes
 			expect(page).to have_content user.display_name
-			expect(page).to have_content board.name
+			# expect(page).to have_content board.name
 			# expect(page).to have_content "Contribution Level"
 			expect(page).to have_content "Comments"
 		end
@@ -138,7 +138,8 @@ feature "Guest Actions" do
 
 		scenario "go back to specific board page from specific idea" do
 			visit idea_path(idea)
-			click_link "#{board.name}"
+			# click_link "#{board.name}"
+			click_link "Back to Board"
 			expect(current_path).to eq user_board_path(user, board)
 			expect(page).to have_content board.name
 		end

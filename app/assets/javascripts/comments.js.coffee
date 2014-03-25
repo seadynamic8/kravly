@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-	# Create a comment
+	# Create a new comment
 	$('.comment-form')
 		.ajaxSend ->
 			$(this).find('textarea')
@@ -14,42 +14,57 @@ jQuery ->
 				.val('')
 			$(xhr.responseText)
 				.hide()
-				# .before('<div class="comment" id="comment-<%= root_comment.id %>" data-no-turbolink>')
-				.after('</div>')
-				.insertAfter($(this).parent())
+				.appendTo($(this).parent())
 				.show('slow')
 			$('.empty-comments').hide()
 
-$(document)
-	.on "ajax:beforeSend", '.reply-form', (evt) ->
-		$(this).find('textarea')
-			.attr('disabled', 'disabled')
-	.on "ajax:success", '.reply-form', (evt, data, status, xhr) ->
-		$(this).parent().find('.reply-link').text("Reply")
-		$(this).removeClass("reply-form-style")
-		$(this).find('form').remove()
+	# Create a new reply comment
+	$('.comments')
+		.on "ajax:beforeSend", '.reply-form', (evt) ->
+			$(this).find('textarea')
+				.attr('disabled', 'disabled')
 
-		# replying to a root comment with a child comment
-		if $(this).next('.child-comments').length
-			$(xhr.responseText)
-				.hide()
-				.after('</div>')
-				.appendTo($(this).next('.child-comments'))
-				.show 'slow'
-		 # replying to a child comment
-		else if $(this).parent().parent('.child-comments').length
-			$(xhr.responseText)
-				.hide()
-				.after('</div>')
-				.appendTo($(this).parent().parent('.child-comments'))
-				.show 'slow'
-		else # no child comments yet
-			$(this).after('<div class="child-comments"></div>')
-			$(xhr.responseText)
-				.hide()
-				.after('</div>')
-				.appendTo($(this).next('.child-comments'))
-				.show 'slow'
+		.on "ajax:success", '.reply-form', (evt, data, status, xhr) ->
+			$replyFormContainer = $(this)
+			$comment = $(this).parent()
+
+			$comment.find('.reply-link').text("reply")
+			$replyFormContainer.removeClass("comment-reply-form")
+			$replyFormContainer.find('form').remove()
+			
+
+			# replying to a root comment with a child comment
+			#
+			# if the comment has a child-comments div sibling,
+			# append new comment to that child-comments div sibling
+			if $comment.next('.child-comments').length
+				$(xhr.responseText)
+					.hide()
+					.appendTo($comment.next('.child-comments'))
+					.show 'slow'
+
+			# replying to a child comment
+			# 
+			# if the comment is within a child-comments div (ie it is a child comment),
+			# append new comment to that child-comments div
+			else if $comment.parent('.child-comments').length
+				$(xhr.responseText)
+					.hide()
+					.appendTo($comment.parent('.child-comments'))
+					.show 'slow'
+
+			# no child comments yet
+			#
+			# create child-comments div
+			# append new comment to new child-comments div
+			else
+				$comment.after('<div class="child-comments"></div>')
+				$(xhr.responseText)
+					.hide()
+					.appendTo($comment.next('.child-comments'))
+					.show 'slow'
+
+
 
 	# Delete a comment
   # $(document)

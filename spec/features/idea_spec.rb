@@ -189,8 +189,8 @@ feature "Idea Management" do
 			other_idea.reload
 			expect(other_idea.votes).to eq other_idea_votes + 1
 			expect(current_path).to eq idea_path(other_idea)
-			within('.sidebar') do
-				expect(page).to have_content "#{other_idea_votes + 1}votes"
+			within('.sidebar .idea-stats .vote') do
+				expect(page).to have_content "#{other_idea_votes + 1}"
 			end
 		end
 

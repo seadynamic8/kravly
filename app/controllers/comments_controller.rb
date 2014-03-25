@@ -1,27 +1,28 @@
 class CommentsController < ApplicationController
 	before_action :current_resource, only: [:edit, :update, :destroy, :reply]
 
+	# create a new comment and create a new reply comment
 	def create
 		if params[:comment]
-			@comment_hash = params[:comment]
+			comment_hash = params[:comment]
 		else
-			@comment_hash = params[:reply_comment]
+			comment_hash = params[:reply_comment]
 		end
-		idea = Idea.find(@comment_hash[:idea_id])
-		@new_comment = Comment.build_from(idea, nil, "")
-		@obj = @comment_hash[:commentable_type].constantize.find(@comment_hash[:commentable_id])
+		idea = Idea.find(comment_hash[:idea_id])
+		new_comment = Comment.build_from(idea, nil, "")
+		obj = comment_hash[:commentable_type].constantize.find(comment_hash[:commentable_id])
 		# Not implemented: check to see whether the user has permission to create a comment on this object
-		@comment = Comment.build_from(@obj, current_user.id, @comment_hash[:body])
+		comment = Comment.build_from(obj, current_user.id, comment_hash[:body])
 
-		if @comment.save
-			if @comment_hash[:comment_id].present?
-				parent_comment = Comment.find(@comment_hash[:comment_id])
+		if comment.save
+			if comment_hash[:comment_id].present?
+				parent_comment = Comment.find(comment_hash[:comment_id])
 				parent_comment = parent_comment.parent if parent_comment.parent
-				@comment.move_to_child_of(parent_comment)
+				comment.move_to_child_of(parent_comment)
 			end
 			CommentMailer.comment_notification(idea).deliver if idea.user.notify_comment
-			render partial: 'comments/comment', locals: { comment: @comment,
-						idea_id: idea.id, reply_comment: @new_comment }, 
+			render partial: 'comments/comment', locals: { comment: comment,
+						idea_id: idea.id, reply_comment: new_comment }, 
 						layout: false, status: :created
 		else
 			render js: "alert('Comment cannot be blank');

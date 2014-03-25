@@ -48,7 +48,7 @@ feature "Comments Management" do
 			fill_in "comment[body]", with: "New Comment Text"
 			click_button "Comment"
 			within('div.comment') do
-				expect(page).to_not have_link "x"
+				expect(page).to_not have_css "i.fi-x"
 			end
 		end
 
@@ -70,11 +70,11 @@ feature "Comments Management" do
 					click_button "Comment"
 				}.to change(Comment, :count).by(1)
 				within('div.comment') do
-					expect(page).to have_link "Edit"
-					expect(page).to have_css "img.comment-avatar"
+					expect(page).to have_css "i.fi-page-edit"
+					expect(page).to have_css ".comment-user img" # comment avatar img
 					expect(page).to have_content user.display_name
 					expect(page).to have_content "New Comment Text"
-					expect(page).to have_link "Reply"
+					expect(page).to have_link "reply"
 					expect(page).to have_css "span.time"
 				end
 			end
@@ -87,7 +87,7 @@ feature "Comments Management" do
 				Comment.build_from(idea, other_user.id, "Other Comment").save
 				visit idea_path(idea)
 				within('div.comment') do
-					expect(page).to_not have_link "Edit"
+					expect(page).to_not have_css "i.fi-page-edit"
 				end
 			end
 
@@ -95,7 +95,7 @@ feature "Comments Management" do
 				Comment.build_from(idea, user.id, "New Comment").save
 				visit idea_path(idea)
 				within('div.comment') do
-					expect(page).to have_link "Edit"
+					expect(page).to have_css "i.fi-page-edit"
 				end
 			end
 
@@ -103,12 +103,11 @@ feature "Comments Management" do
 				Comment.build_from(idea, user.id, "New Comment").save
 				visit idea_path(idea)
 
-				click_link "Comments / Feedback"
-				within('.comments') { click_link "Edit" }
+				within('.comments') { find('.edit-link').trigger('click') }
 				within('div.comment') do
 					expect(page).to have_link "Cancel"
 				end
-				within('.edit-comment-form') do
+				within('.comment-edit-form') do
 					expect(page).to have_css "textarea"
 					expect(page).to have_button "Update Comment"
 				end
@@ -118,9 +117,8 @@ feature "Comments Management" do
 				Comment.build_from(idea, user.id, "New Comment").save
 				visit idea_path(idea)
 
-				click_link "Comments / Feedback"
-				find('.edit-comment').click
-				within('.edit-comment-form') do
+				within('.comments') { find('i.fi-page-edit').trigger('click') }
+				within('.comment-edit-form') do
 					fill_in "comment[body]", with: "Updated Comment"
 					click_button "Update Comment"
 				end
@@ -135,10 +133,9 @@ feature "Comments Management" do
 				child_comment.move_to_child_of(parent_comment)
 				visit idea_path(idea)
 
-				click_link "Comments / Feedback"
 				within('.child-comments') do
-					click_link "Edit"
-					within('.edit-comment-form') do
+					find('.edit-link').trigger('click')
+					within('.comment-edit-form') do
 						fill_in "comment[body]", with: "Updated Comment"
 						click_button "Update Comment"
 					end
@@ -155,7 +152,7 @@ feature "Comments Management" do
 				other_user = create(:user)
 				Comment.build_from(idea, other_user.id, "Other Comment").save
 				visit idea_path(idea)
-				within('div.comments') { expect(page).to have_link "Reply" }
+				within('div.comments') { expect(page).to have_link "reply" }
 				# expect(page).to have_css "div.reply-form"
 			end
 
@@ -164,10 +161,9 @@ feature "Comments Management" do
 				Comment.build_from(idea, other_user.id, "Other Comment").save
 
 				visit idea_path(idea)
-				click_link "Comments / Feedback"
-				click_link "Reply"
+				click_link "reply"
 
-				within('div.comment') { expect(page).to have_link "Hide" }
+				within('div.comment') { expect(page).to have_link "hide" }
 				within('.reply-form') do
 					expect(page).to have_css "img.comment-avatar"
 					expect(page).to have_css "textarea.comment-body"
@@ -180,11 +176,10 @@ feature "Comments Management" do
 				Comment.build_from(idea, other_user.id, "Other Comment").save
 
 				visit idea_path(idea)
-				click_link "Comments / Feedback"
-				click_link "Reply"
-				click_link "Hide"
+				click_link "reply"
+				click_link "hide"
 
-				within('div.comment') { expect(page).to have_link "Reply" }
+				within('div.comment') { expect(page).to have_link "reply" }
 			end
 
 			scenario "can Reply to root comment", js: true do
@@ -192,8 +187,7 @@ feature "Comments Management" do
 				Comment.build_from(idea, other_user.id, "Other Comment").save
 
 				visit idea_path(idea)
-				click_link "Comments / Feedback"
-				click_link "Reply"
+				click_link "reply"
 				within('.reply-form') do
 					fill_in "comment[body]", with: "New Comment Text"
 				end
@@ -201,11 +195,11 @@ feature "Comments Management" do
 
 				expect(page).to have_css('div.child-comments')
 				within('div.child-comments') do
-					expect(page).to have_link "Edit"
-					expect(page).to have_css "img.comment-avatar"
+					expect(page).to have_css "i.fi-page-edit"
+					expect(page).to have_css ".comment-user img" # comment avatar img
 					expect(page).to have_content user.display_name
 					expect(page).to have_content "New Comment Text"
-					expect(page).to have_link "Reply"
+					expect(page).to have_link "reply"
 					expect(page).to have_css "span.time"
 				end
 			end
@@ -217,8 +211,7 @@ feature "Comments Management" do
 				child_comment.move_to_child_of(parent_comment)
 
 				visit idea_path(idea)
-				click_link "Comments / Feedback"
-				find("#reply-#{parent_comment.id}").click
+				within("#comment-#{parent_comment.id}") { find(".reply-link").click }
 				within("#reply-form-#{parent_comment.id}") do
 					fill_in "comment[body]", with: "New Comment Text"
 					click_button "Reply"
@@ -237,9 +230,8 @@ feature "Comments Management" do
 				child_comment.move_to_child_of(parent_comment)
 
 				visit idea_path(idea)
-				click_link "Comments / Feedback"
 				within('.child-comments') do
-					click_link "Reply"
+					click_link "reply"
 					within("#reply-form-#{child_comment.id}") do
 						fill_in "comment[body]", with: "New Comment Text"
 						click_button "Reply"
@@ -267,7 +259,7 @@ feature "Comments Management" do
 			Comment.build_from(idea, other_user.id, "Other Comment").save
 			visit idea_path(idea)
 			within('div.comment') do
-				expect(page).to have_link "x"
+				expect(page).to have_css "i.fi-x"
 			end
 		end
 
@@ -276,7 +268,7 @@ feature "Comments Management" do
 			fill_in "comment[body]", with: "New Comment Text"
 			click_button "Comment"
 			within('div.comment') do
-				expect(page).to have_link "x"
+				expect(page).to have_css "i.fi-x"
 			end
 		end
 
@@ -284,7 +276,7 @@ feature "Comments Management" do
 			Comment.build_from(idea, user.id, "New Comment Text").save
 			visit idea_path(idea)
 			expect {
-				click_link "x"
+				find('.comment .delete-link').click
 			}.to change(Comment, :count).by(-1)
 			expect(page).to_not have_content "New Comment Text"
 			expect(page).to have_css ".empty-comments"
@@ -296,7 +288,7 @@ feature "Comments Management" do
 			child_comment.move_to_child_of(parent_comment)
 			visit idea_path(idea)
 			within('.child-comments') do
-				click_link "x"
+				find('.comment .delete-link').click
 			end
 			expect(page).to have_content "New Comment"
 			expect(page).to_not have_content "Child Comment"

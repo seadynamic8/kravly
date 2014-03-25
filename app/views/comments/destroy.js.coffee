@@ -1,12 +1,16 @@
 comment = $('#comment-<%= @comment.id %>')
 
-if comment.parent('.child-comments').children().length == 1
-	comment.parent('.child-comments')
+# if comment has child comments, remove child comments
+if comment.next('.child-comments').children().length
+	comment.next('.child-comments')
 		.fadeOut 'slow', ->
 			$(this).remove()
-else
-	comment
-		.fadeOut 'slow', ->
-			$(this).remove()
-			$('.empty-comments').show() if $('.comment').length == 0
+
+# Remove comment
+comment
+	.fadeOut 'slow', ->
+		$(this).remove()
+
+		# show empty comments if no more comments
+		$('.empty-comments').show() if $('.comment').length == 0
 
