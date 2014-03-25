@@ -53,6 +53,7 @@ group :development, :test do
 	gem 'rb-readline', require: false
   gem 'watchr'
   gem 'annotate', ">=2.5.0"
+  gem 'guard-livereload', require: false
 end
 
 group :test do

@@ -1,4 +1,4 @@
-<fieldset>
+<fieldset class="comment-form">
 	<legend>Comments</legend>
 
 	<% if current_user.nil? %>
@@ -9,7 +9,7 @@
 
 	<% else %>
 
-		<div class="comment-form" data-no-turbolink>
+		<div class="comment-form-input" data-no-turbolink>
 			<%= form_for comment, remote: true do |f| %>
 
 				<%= f.hidden_field :commentable_id, value: comment.commentable_id %>
@@ -17,19 +17,13 @@
 
 				<%= f.hidden_field :idea_id, value: @idea.id %>
 				
-				<div class="row collapse">
-					<div class="large-1 columns">
-						<%= image_tag current_user.avatar.small_profile.url, class: "comment-avatar"%>
-					</div>
-					<div class="large-9 columns">
-						<%= f.text_area :body, rows: 2, label: false, 
-								placeholder: "Leave your thoughts...", class: "comment-body" %>
-					</div>
-					<div class="large-2 columns">
-						<%= f.submit "Comment", class: "button postfix comment-button", 
-													data: { disable_with: "Submitting..." } %>
-					</div>
-				</div>
+				<%= image_tag current_user.avatar.small_profile.url, class: "comment-avatar"%>
+
+				<%= f.text_area :body, rows: 2, label: false, 
+						placeholder: "Leave your thoughts...", class: "comment-body" %>
+
+				<%= f.submit "Comment", class: "button postfix comment-button", 
+											data: { disable_with: "Submitting..." } %>
 
 			<% end %>
 		</div>

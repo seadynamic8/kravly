@@ -69,10 +69,10 @@ class User < ActiveRecord::Base
 
 	scope :newly_created, -> { order("created_at desc") }
 	
-	def display_name
+	def display_name(newline = false)
 		case display
 		when 1
-			"#{firstname} #{lastname}"
+			newline ? "#{firstname}\n#{lastname}" : "#{firstname} #{lastname}"
 		when 2
 			"#{username}"
 		when 3

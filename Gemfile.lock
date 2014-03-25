@@ -122,7 +122,11 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    em-websocket (0.5.0)
+      eventmachine (>= 0.12.9)
+      http_parser.rb (~> 0.5.3)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     excon (0.31.0)
     execjs (2.0.2)
     factory_girl (4.4.0)
@@ -163,6 +167,10 @@ GEM
       lumberjack (~> 1.0)
       pry (>= 0.9.12)
       thor (>= 0.18.1)
+    guard-livereload (2.1.2)
+      em-websocket (~> 0.5)
+      guard (~> 2.0)
+      multi_json (~> 1.8)
     guard-rspec (4.2.6)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
@@ -170,6 +178,7 @@ GEM
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
     hike (1.2.3)
+    http_parser.rb (0.5.3)
     httpclient (2.3.4.1)
     i18n (0.6.9)
     impressionist (1.5.1)
@@ -358,6 +367,7 @@ DEPENDENCIES
   foundation-icons-sass-rails
   foundation-rails
   friendly_id
+  guard-livereload
   guard-rspec
   impressionist
   jbuilder (~> 1.2)

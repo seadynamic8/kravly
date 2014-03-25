@@ -5,154 +5,480 @@
 input[type="file"] {
 	width: 75%;
 }
+// ##################### VARIABLES #########################
+$text-color-one: #125d7d;
+$text-color-two: white;
+$text-color-three: #fa4786;
 
+$link-hover-color: #39BBE6;
 
-// Idea Show Page
+$sidebar-bg-color: #125d7d;
+$idea-overview-bg-color: #13c4a2;
+$description-bg-color: white;
+$comments-bg-color: white;
 
-.panel {
-	background-color: #fff;
+$description-border-color: #13c4a2;
+$comments-border-color: #fa4786;
+
+// ##################### IDEA SHOW PAGE #########################
+
+.idea-show-page {
+	background: url('https://s3.amazonaws.com/wishproto/white-grey-background.png') repeat;
 }
 
-h4 {
-	font-size: 17px;
-}
 
-.back-to-board {
+// ---------------- SIDEBAR SECTION -----------------------------
+.sidebar {
+	background-color: $sidebar-bg-color;
+	padding: 20px 20px;
+	width: 300px;
+	-webkit-border-radius: 150px 150px 0 0;
+	-moz-border-radius: 150px 150px 0 0;
+	border-radius: 150px 150px 0 0;
+	text-align: center;
+	color: $text-color-three;
 
-	i {
-		font-size: 23px;
-		vertical-align: middle;
+	header {
+		color: $text-color-two;
+		font-weight: bold;
+		font-size: 1.2em;
+		margin-bottom: 8px;
 	}
-}
 
-.main-section {
-
-	.idea-overview {
-
-		h4 {
-			font-size: 25px;
-		}
-
+	.idea-user {
 		img {
-			padding: 5px;
-			border: 1px solid #ccc;
-			line-height: 35px;
+			width: 200px;
+			height: 200px;
+			-webkit-border-radius: 100px;
+			-moz-border-radius: 100px;
+			border-radius: 100px;
+			margin-bottom: 10px;
 		}
-	}
 
-	.overview-bottom {
+		a.idea-user-name {
+			color: $text-color-two;
+			font-weight: bold;
+			font-size: 1.2em;
 
-		p {
-			padding-bottom: 0;
-			margin-bottom: 0;
-		}
-		a {
-			margin-bottom: 0;
-			display: block;
-			float: right;
-		}
-		i {
-			font-size: 25px;
-		}
-		#edit-button {
-			margin: 0 15px;
-		}
-		#like-button {
-			font-size: 15px;
-			padding-top: .1em;
-			padding-bottom: .1em;
-		}
-		.like-symbol {
-			padding-left: 3px;
-			vertical-align: middle;
-		}
-	}
-
-	.tabs dd {
-		border-top: 1px solid #ccc;
-		border-left: 1px solid #ccc;
-
-		&:last-child {
-			border-right: 1px solid #ccc;
-		}
-	}
-
-	.tabs-content {
-
-		.content {
-			background-color: #fff;
-			border: 1px solid #ccc;
-			padding: 1.25rem;
-		}
-	}
-
-	.section-container {
-
-		.idea-main-content {
-			ul {
-				margin-left: 20px;
+			&:hover {
+				color: $link-hover-color;
 			}
 		}
 
-		.comment-button {
-			margin-left: 2px;
-		}
-	}
-}
+		.idea-user-location {
+			font-size: .8em;
 
-.sidebar {
-
-	.idea-user {
-
-		img {
-			display: block;
-			margin-left: auto;
-			margin-right: auto;
-			padding: 5px 0;
-		}
-		.idea-user-name, .idea-user-location {
-			text-align: center;
 		}
 	}
 
 	.idea-stats {
+		color: $text-color-two;
 
-		li {
-			text-align: center;
-			padding-bottom: 0;
-		}
-
-		li:first-child {
-			font-weight: bold;
+		i {
+			font-size: 1.5em;
 		}
 	}
 
 	.extra-info {
 
-		h5 {
-			font-size: 16px;
+		.looking-for {
+			list-style: none;
+		}
+	}
+}
+
+// ---------------- END SIDEBAR SECTION -----------------------------
+
+// ---------------- MAIN SECTION -------------------------------------
+
+// Idea Overview ----------------------------
+
+.idea-overview {
+	background: $idea-overview-bg-color;
+	padding: 10px 3px 3px;
+	margin-bottom: 20px;
+	color: $text-color-one;
+	position: relative;
+
+	header {
+		text-align: center;
+
+		h1 {
+			color: $text-color-two;
+			font-size: 1.7em;
+			font-weight: bold;
+			margin-bottom: 2px;
 		}
 
 		p {
-			font-size: 14px;
-		}
-
-		ul {
-			margin-left: 15px;
-			p {
-				margin-bottom: 0;
-			}
+			margin-bottom: 10px;
 		}
 	}
 
-	.more-ideas {
-
-		li {
-			padding-bottom: 0;
-		}
+	img {
+		width: 100%;
 	}
 
-	.more-stuff {
-		padding-bottom: 25px;
+	.idea-overview-extras {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		z-index: 1;
+		padding: 7px 20px;
+		background: $idea-overview-bg-color;
+		color: white;
+		// vertical-align: top;
+		// font-size: 1.1em;
+
+		.seperator {
+			margin: 0 10px;
+		}
+
+		i {
+			font-size: 25px;
+			vertical-align: middle;
+		}
+		#edit-button {
+			margin-left: 10px;
+		}
+		#like-button {
+			font-size: 15px;
+			padding: 0.1em 0.8em;
+		}
+		.like-symbol {
+			padding-left: 5px;
+			vertical-align: middle;
+		}
 	}
 }
+
+// Description -------------------------------------
+
+.description {
+	border: 3px solid $description-border-color;
+	background: $description-bg-color;
+	padding: 2em;
+	margin-bottom: 20px;
+}
+
+// Comments ----------------------------------------
+
+.comments {
+	border: 3px solid $comments-border-color;
+	background: $comments-bg-color;
+	margin-bottom: 3em;
+
+	.comment:nth-child(even) {
+		background: #eee;
+	}
+
+}
+
+// Comment Main Form
+
+.comment-form {
+	padding-bottom: 0;
+	margin: 1em;
+
+	legend {
+		color: $text-color-three;
+	}
+
+	.comment-form-input {
+
+		.comment-avatar {
+			width: 48px;
+			height: 48px;
+			-webkit-border-ra48us: 24px;
+			-moz-border-48dius: 24px;
+			border-radius: 24px;
+			margin-right: 5px;
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		.comment-body {
+			width: 73%;
+			display: inline-block;
+			margin-right: 5px;
+			color: $text-color-one;
+		}
+
+		.comment-button {
+			width: 15%;
+			display: inline-block;
+			vertical-align: top;
+			margin-top: 8px;
+		}
+	}
+}
+
+// Individual Comments
+
+.comment {
+	display: block;
+	padding: 1em;
+	position: relative;
+	color: $text-color-one;
+
+	.comment-user {
+		display: inline-block;
+		width: 12%;
+		margin-right: .5em;
+		text-align: center;
+		vertical-align: top;
+
+		img {
+			width: 40px;
+			height: 40px;
+			-webkit-border-radius: 20px;
+			-moz-border-radius: 20px;
+			border-radius: 20px;
+			margin-bottom: 2px;
+		}
+		.comment-user-name p {
+			font-size: 0.8em;
+			margin: 0;
+		}
+	}
+
+	.comment-text {
+		display: inline-block;
+		width: 78%;
+		vertical-align: top;
+		margin-top: .5em;
+	}
+
+	.comment-edit-section {
+		position: absolute;
+		top: 1em;
+		right: 1em;
+		font-size: 0.9em;
+
+		.delete-link {
+			margin-left: 10px;
+		}
+	}
+	.comment-edit-form {
+		display: inline-block;
+		width: 75%;
+
+		textarea {
+			min-height: 6em;
+			margin-bottom: 0.5em;
+			color: $text-color-one;
+		}
+
+		#update-button {
+			padding: 0.5em 0.8em;
+		}
+	}
+
+	.comment-reply-section {
+		text-align: right;
+		font-size: 0.8em;
+		color: #777;
+	}
+
+	.comment-reply-form {
+		border-top: 1px solid #aaa;
+		padding: 1.25em;
+		margin-top: 15px;
+
+		.comment-avatar {
+			width: 40px;
+			height: 40px;
+			-webkit-border-ra48us: 20px;
+			-moz-border-48dius: 20px;
+			border-radius: 20px;
+			margin-right: 5px;
+			margin-top: 4px;
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		.comment-body {
+			width: 73%;
+			display: inline-block;
+			margin-right: 5px;
+			color: $text-color-one;
+		}
+
+		.comment-button {
+			width: 15%;
+			display: inline-block;
+			vertical-align: top;
+			margin-top: 8px;
+		}
+	}
+	
+}
+
+// Child Commments
+
+.child-comments {
+
+	.comment {
+		margin-left: 30px;
+	}
+
+	.comment:nth-child(odd) {
+		background: #e8e8e8;
+	}
+	.comment:nth-child(even) {
+		background: #ddd;
+	}
+}
+
+// ---------------- END MAIN SECTION -----------------------------
+
+
+// Idea Show Page
+
+// .panel {
+// 	background-color: #fff;
+// }
+
+// h4 {
+// 	font-size: 17px;
+// }
+
+// .back-to-board {
+
+// 	i {
+// 		font-size: 23px;
+// 		vertical-align: middle;
+// 	}
+// }
+
+// .main-section {
+
+// 	.idea-overview {
+
+// 		h4 {
+// 			font-size: 25px;
+// 		}
+
+// 		img {
+// 			padding: 5px;
+// 			border: 1px solid #ccc;
+// 			line-height: 35px;
+// 		}
+// 	}
+
+// 	.overview-bottom {
+
+// 		p {
+// 			padding-bottom: 0;
+// 			margin-bottom: 0;
+// 		}
+// 		a {
+// 			margin-bottom: 0;
+// 			display: block;
+// 			float: right;
+// 		}
+// 		i {
+// 			font-size: 25px;
+// 		}
+// 		#edit-button {
+// 			margin: 0 15px;
+// 		}
+// 		#like-button {
+// 			font-size: 15px;
+// 			padding-top: .1em;
+// 			padding-bottom: .1em;
+// 		}
+// 		.like-symbol {
+// 			padding-left: 3px;
+// 			vertical-align: middle;
+// 		}
+// 	}
+
+// 	.tabs dd {
+// 		border-top: 1px solid #ccc;
+// 		border-left: 1px solid #ccc;
+
+// 		&:last-child {
+// 			border-right: 1px solid #ccc;
+// 		}
+// 	}
+
+// 	.tabs-content {
+
+// 		.content {
+// 			background-color: #fff;
+// 			border: 1px solid #ccc;
+// 			padding: 1.25rem;
+// 		}
+// 	}
+
+// 	.section-container {
+
+// 		.idea-main-content {
+// 			ul {
+// 				margin-left: 20px;
+// 			}
+// 		}
+
+// 		.comment-button {
+// 			margin-left: 2px;
+// 		}
+// 	}
+// }
+
+// .sidebar {
+
+// 	.idea-user {
+
+// 		img {
+// 			display: block;
+// 			margin-left: auto;
+// 			margin-right: auto;
+// 			padding: 5px 0;
+// 		}
+// 		.idea-user-name, .idea-user-location {
+// 			text-align: center;
+// 		}
+// 	}
+
+// 	.idea-stats {
+
+// 		li {
+// 			text-align: center;
+// 			padding-bottom: 0;
+// 		}
+
+// 		li:first-child {
+// 			font-weight: bold;
+// 		}
+// 	}
+
+// 	.extra-info {
+
+// 		h5 {
+// 			font-size: 16px;
+// 		}
+
+// 		p {
+// 			font-size: 14px;
+// 		}
+
+// 		ul {
+// 			margin-left: 15px;
+// 			p {
+// 				margin-bottom: 0;
+// 			}
+// 		}
+// 	}
+
+// 	.more-ideas {
+
+// 		li {
+// 			padding-bottom: 0;
+// 		}
+// 	}
+
+// 	.more-stuff {
+// 		padding-bottom: 25px;
+// 	}
+// }

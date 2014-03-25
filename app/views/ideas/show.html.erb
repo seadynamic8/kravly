@@ -1,188 +1,211 @@
 <% title @idea.title %>
 
+<div class="idea-show-page">
+
 <br>
 
 <div class="row back-to-board">
 	<div class="large-8 columns">
 		<p><%= link_to raw("<i class='fi-arrow-left'></i>"), user_board_path(@idea.user, @idea.board) %>
-		 <%= link_to "Back to Board: #{@idea.board.name}", user_board_path(@idea.user, @idea.board) %></p>
+		 <%= link_to "Back to Board", user_board_path(@idea.user, @idea.board) %></p>
 	</div>
 </div>
 
 <div class="row">
 
-	<div class="large-8 columns main-section">
-
-		<div class="panel idea-overview">
-			<h4><%= @idea.title %></h4>
-			<div class="row">
-				<div class="large-9 columns">
-			 		<p></p>
-			 	</div>
-				<div class="large-3 columns">
-					<%= image_tag @idea.image.small_thumb.url %>
-				</div>
-			</div>
-			<hr>
-			<div class="row overview-bottom">
-				<div class="large-8 columns">
-					<p><%= @idea.board.category.name if @idea.board.category %></p>
-				</div>
-				<div class="large-4 columns">
-					<% if (permit? "ideas", "edit", @idea) && (permit? "ideas", "destroy", @idea) %>
-						<%= link_to raw("<i class='fi-x'></i>"), idea_path(@idea), method: :delete, 
-								data: { confirm: "Are you sure?" }, id: "delete-button" %>
-						<span data-no-turbolink>
-							<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(@idea), id: "edit-button" %>
-						</span>
-					<% end %>
-					<% if (permit? "ideas", "vote", @idea) %>
-						<% if current_user.not_voted?(@idea) %>
-						<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), vote_idea_path(@idea), class: "tiny button", id: "like-button" %>
-						<% else %>
-						<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), vote_idea_path(@idea), class: "tiny button disabled", id: "like-button" %>
-						<% end %>
-					<% end %>
-				</div>
-			</div>
-		</div>
-
-		<!-- Main Section -->
-		<dl class="tabs" data-tab>
-			<dd class="active"><%= link_to "Description", "#description" %></dd>
-			<% if @idea.video_url.present? %>
-			<dd><%= link_to "Video", "#video" %></dd>
-			<% end %>
-			<dd><%= link_to "Comments / Feedback", "#comments" %></dd>
-		</dl>
-		<div class="tabs-content">
-			<div class="content active" id="description">
-				<%= raw @idea.content %>
-			</div>
-
-			<% if @idea.video_url.present? %>
-			<div class="content" id="video">
-				<div class="flex-video <%= @idea.video_type %>">
-					<iframe src="<%= @idea.video_url %>" frameborder="0" width="604" height="431" allowfullscreen></iframe>
-				</div>
-			</div>
-			<% end %>
-
-			<div class="content" id="comments">
-				<div class="comments">
-					<%= render partial: 'comments/form', locals: { comment: @new_comment } %>
-					<% if @root_comments.empty? %>
-						<div class="row empty-comments">
-							<div class="large-6 large-centered columns">
-								<br>
-								<br>
-								<h6 class="subheader">There are no comments yet.</h6>
-							</div>
-						</div>
-					<% else %>
-						<% @root_comments.each do |root_comment| %>
-							<%= render partial: 'comments/comment',  
-												locals: { comment: root_comment, 
-																	idea_id: @idea.id, 
-																	reply_comment: @new_comment } %>
-
-							<% child_comments = nil %>
-
-							<% if root_comment.has_children? %>
-								<% child_comments = root_comment.children.order('created_at asc') %>
-
-									<div class="child-comments">
-
-										<% child_comments.each do |child_comment| %>
-											<%= render partial: 'comments/comment',
-																locals: { comment: child_comment,
-																					idea_id: @idea.id, 
-																					reply_comment: @new_comment } %>
-											</div>
-										<% end %>
-
-									</div>
-							<% end %>
-
-							</div>
-						<% end %>
-					<% end %>
-				</div>
-			</div>
-
-		</div>
-
-	</div>
-
-	<!-- Sidebar Section -->
+	<!-- ##################### SIDEBAR SECTION ###########################-->
 	<div class="large-4 columns sidebar">
-		<div class="panel idea-user">
-			<h4>Inventor</h4>
-			<%= image_tag @idea.user.avatar.profile.url %>
-			<h5 class="idea-user-name"><%= link_to @idea.user.display_name, boards_user_path(@idea.user) %></h5>
-			<p class="idea-user-location"><%= @idea.user.location %></p>
+
+		<div class="idea-user">
+			<%= link_to (image_tag @idea.user.avatar.profile.url), boards_user_path(@idea.user) %>
+			<p>
+				<%= link_to @idea.user.display_name, boards_user_path(@idea.user), class: "idea-user-name" %>
+				<br>
+				<span class="idea-user-location"><%= @idea.user.location %></span>
+			</p>
 		</div>
 
-		<div class="panel idea-stats">
-			<h4>Stats</h4>
+		<div class="idea-stats">
+			<header>Stats</header>
 			<ul class="large-block-grid-3">
-				<li><%= @idea.votes %><br>votes</li>
-				<li><%= @idea.impressionist_count(filter: :ip_address) %><br>views</li>
-				<li><%= @all_comments_count %><br>comments</li>
+				<li>
+					<%= @idea.impressionist_count(filter: :ip_address) %><br>
+					<i class="fi-eye"></i>
+				</li>
+				<li>
+					<%= @all_comments_count %><br>
+					<i class="fi-comments"></i>
+				</li>
+				<li>
+					<%= @idea.votes %><br>
+					<i class="fi-like"></i>
+				</li>
 			</ul>
 		</div>
 
 		<% if ( @idea.commitment.present? || @idea.looking_for.present? || 
 						@idea.market.present? ) %>
-		<div class="panel extra-info">
-				<% if @idea.commitment.present? %>
-					<h5>Commitment</h5>
-					<p><%= @idea.commitment %></p>
+		<div class="extra-info">
+			<% if @idea.commitment.present? %>
+				<header>Commitment</header>
+				<p><%= @idea.commitment %></p>
+			<% end %>
+			<% if @idea.looking_for.present? %>
+				<header>Looking For</header>
+				<ul class="looking-for">
+				<% @idea.looking_for.each do |resource| %>
+					<li><p><%= resource %></p></li>
 				<% end %>
-				<% if @idea.looking_for.present? %>
-					<h5>Looking For</h5>
-					<ul>
-					<% @idea.looking_for.each do |resource| %>
-						<li><p><%= resource %></p></li>
-					<% end %>
-					</ul>
-				<% end %>
-				<% if @idea.market.present? %>
-					<h5>Market</h5>
-					<p><%= @idea.market %></p>
-				<% end %>
+				</ul>
+			<% end %>
+			<% if @idea.market.present? %>
+				<header>Market</header>
+				<p><%= @idea.market %></p>
+			<% end %>
 		</div>
 		<% end %>
 
 		<% if @rand_ideas %>
-			<div class="panel more-ideas">
-				<h4>More Ideas</h4>
-				<ul class="large-block-grid-3">
-				<% @rand_ideas.each do |idea| %>
-					<li><%= link_to (image_tag idea.image.small_thumb.url, class: "side-image"), 
-									idea_path(idea) %></li>
-				<% end %>
-				</ul>
-			</div>
+		<div class="more-ideas">
+			<header>More Ideas</header>
+			<ul class="large-block-grid-3">
+			<% @rand_ideas.each do |idea| %>
+				<li><%= link_to (image_tag idea.image.small_thumb.url, class: "side-image"), 
+								idea_path(idea) %></li>
+			<% end %>
+			</ul>
+		</div>
 		<% end %>
 
-		<div class="row more-stuff">
-			<div class="large-9 large-centered columns">
-<!-- 				<% if current_user && current_user == @idea.user %>
-					<%= link_to "Leave a Comment", "#comments", class:"button" %>
-				<% else %>
-					<%= link_to "Leave a Comment", "#comments", class:"button" %>
-					<% if (permit? "ideas", "vote", @idea) && current_user.not_voted?(@idea) %>
-						<%= link_to "Vote", vote_idea_path(@idea), class:"button" %>
-					<% end %>
-				<% end %> -->
+		<div class="more-stuff">
+<!-- 	<% if current_user && current_user == @idea.user %>
+				<%= link_to "Leave a Comment", "#comments", class:"button" %>
+			<% else %>
+				<%= link_to "Leave a Comment", "#comments", class:"button" %>
+				<% if (permit? "ideas", "vote", @idea) && current_user.not_voted?(@idea) %>
+					<%= link_to "Vote", vote_idea_path(@idea), class:"button" %>
+				<% end %>
+			<% end %> -->
 
-				<span class='st_facebook_large' displayText='Facebook'></span>
-				<span class='st_twitter_large' displayText='Tweet'></span>
-				<span class='st_linkedin_large' displayText='LinkedIn'></span>
-				<span class='st_pinterest_large' displayText='Pinterest'></span>
-				<span class='st_stumbleupon_large' displayText='StumbleUpon'></span>
-			</div>
+			<span class='st_facebook_large' displayText='Facebook'></span>
+			<span class='st_twitter_large' displayText='Tweet'></span>
+			<span class='st_linkedin_large' displayText='LinkedIn'></span>
+			<span class='st_pinterest_large' displayText='Pinterest'></span>
+			<span class='st_stumbleupon_large' displayText='StumbleUpon'></span>
 		</div>
+
 	</div>
+	<!-- ##################### END SIDEBAR SECTION ###########################-->
+
+	<!-- ##################### MAIN SECTION ###########################-->
+	<div class="large-8 columns main-section">
+
+
+		<!-- ********* IDEA OVERVIEW SECTION ********** -->
+		<div class="idea-overview">
+
+			<header>
+				<h1><%= @idea.title %></h1>
+				<% if Rails.env == "development" %>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo beatae cum totam illum placeat debitis impedit rem dolorum veniam laboriosam.
+				</p>
+				<% end %>
+			</header>
+
+			<%= image_tag @idea.image.thumb.url %>
+
+			<div class="idea-overview-extras">
+				<% if @idea.board.category %>
+					<span><%= @idea.board.category.name %></span>
+					<span class="seperator">|</span>
+				<% end %>
+
+				<% if (permit? "ideas", "edit", @idea) && (permit? "ideas", "destroy", @idea) %>
+					<%= link_to raw("<i class='fi-x'></i>"), idea_path(@idea), method: :delete, 
+							data: { confirm: "Are you sure?" }, id: "delete-button" %>
+					<span data-no-turbolink>
+						<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(@idea), id: "edit-button" %>
+					</span>
+				<% end %>
+				<% if (permit? "ideas", "vote", @idea) %>
+					<% if current_user.not_voted?(@idea) %>
+					<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), vote_idea_path(@idea), class: "tiny button", id: "like-button" %>
+					<% else %>
+					<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), vote_idea_path(@idea), class: "tiny button disabled", id: "like-button" %>
+					<% end %>
+				<% end %>
+			</div>
+
+		</div>
+		<!-- ********* END IDEA OVERVEW SECTION ********** -->
+
+
+		<!-- ********* DESCRIPTION SECTION ********** -->
+		<div class="description">
+
+			<% if @idea.video_url.present? %>
+				<div class="flex-video <%= @idea.video_type %>">
+					<iframe src="<%= @idea.video_url %>" frameborder="0" width="604" height="431" allowfullscreen></iframe>
+				</div>
+			<% end %>
+
+			<%= raw @idea.content %>
+		</div>
+		
+		<!-- ********* END DESCRIPTION SECTION ********** -->
+
+		<!-- ********* COMMENTS SECTION ********** -->
+		<div class="comments">
+
+			<%= render partial: 'comments/form', locals: { comment: @new_comment } %>
+
+			<% if @root_comments.empty? # If No Comments, Display Note%>
+				<div class="row empty-comments">
+					<div class="large-6 large-centered columns">
+						<br>
+						<br>
+						<h6 class="subheader">There are no comments yet.</h6>
+					</div>
+				</div>
+
+			<% else # There are comments %>
+
+				<% @root_comments.each do |root_comment| %>
+					<%= render partial: 'comments/comment',  
+										locals: { comment: root_comment, 
+															idea_id: @idea.id, 
+															reply_comment: @new_comment } %>
+
+					<% child_comments = nil %>
+
+					<% if root_comment.has_children? %>
+						<% child_comments = root_comment.children.order('created_at asc') %>
+
+							<div class="child-comments">
+
+								<% child_comments.each do |child_comment| %>
+									<%= render partial: 'comments/comment',
+														locals: { comment: child_comment,
+																			idea_id: @idea.id, 
+																			reply_comment: @new_comment } %>
+								<% end %>
+
+							</div>
+					<% end %>
+
+				<% end %>
+
+			<% end %>
+
+		</div>
+		<!-- ********* END COMMENTS SECTION ********** -->
+
+	</div>
+	<!-- ##################### END MAIN SECTION ###########################-->
+
+
+</div>
+
+
 </div>

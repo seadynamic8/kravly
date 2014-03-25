@@ -1,5 +1,7 @@
-$('#comment-<%= @comment.id %> > .edit-comment').text("Edit");
-$('.edit-comment-form').remove();
+$('#comment-<%= @comment.id %>').find('.edit-link').html("<i class=fi-page-edit></i>");
+
+$('.comment-edit-form').remove();
+
 $('#comment-<%= @comment.id %> > .comment-text')
 	.empty()
 	.append('<%= @comment.body %>')

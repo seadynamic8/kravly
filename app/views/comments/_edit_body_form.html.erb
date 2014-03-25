@@ -1,4 +1,5 @@
-<%= form_for @comment, remote: true, html: { class: "edit-comment-form" } do |f| %>
-	<%= f.text_area :body, rows: 2, label: false %>
-	<%= f.submit class: "small button" %>
+<% @comment.body = "Edit: " + @comment.body %>
+<%= form_for @comment, remote: true, html: { class: "comment-edit-form" } do |f| %>
+	<%= f.text_area :body, label: false %>
+	<%= f.submit class: "small button", id: "update-button" %>
 <% end %>

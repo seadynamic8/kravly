@@ -19,9 +19,9 @@
 //= require ckeditor/init
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
-
 $(document).ready(function() {
+	$(document).foundation();
+	
 	$('.img-container').hover(
 		function() {
 			$(this).find('.img-source').removeClass('hidden');
