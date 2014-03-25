@@ -25,6 +25,7 @@ $block-bg-color: #13c4a2;
 
 .board-header {
 	text-align: center;
+	padding-top: .3em;
 
 	p {
 		color: #aaa;
@@ -47,6 +48,12 @@ $block-bg-color: #13c4a2;
 		float: right;
 		margin-top: -80px;
 		margin-right: 90px;
+	}
+
+	.back-to-user {
+		float: left;
+		margin-left: 2em;
+		margin-top: -3em;
 	}
 }
 

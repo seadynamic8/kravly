@@ -14,6 +14,11 @@
 	<% if current_user && current_user == @user %>
 		<%= link_to "Add Idea", new_idea_path, class: "add-button small button" %>
 	<% end %>
+
+	<div class="back-to-user">
+		<%= link_to raw("<i class='fi-arrow-left'></i>"), boards_user_path(@user) %>
+		<%= link_to "Back to User", boards_user_path(@user) %>
+	</div>
 </div>
 
 <!-- <div class="row group-header">
