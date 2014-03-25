@@ -115,7 +115,7 @@ feature "Idea Management" do
 			idea = create(:idea, board: board, title: "Old Title")
 			click_link "Your Boards"
 			click_link "#{board.name}"
-			within("#idea-#{idea.id}") { click_link "Edit" }
+			within("#idea-#{idea.id}") { find('.edit-link').click }
 			fill_in "Title", with: "New Title"
 			click_button "Update Idea"
 			idea.reload
@@ -137,7 +137,7 @@ feature "Idea Management" do
 			expect(current_path).to eq idea_path(idea)
 
 			visit user_board_path(user, board)
-			within("#idea-#{idea.id}") { click_link "Edit" }
+			within("#idea-#{idea.id}") { find('.edit-link').click }
 			click_link "Cancel"
 			expect(current_path).to eq user_board_path(user, board)
 		end
@@ -172,7 +172,7 @@ feature "Idea Management" do
 			idea
 			expect {
 				visit user_board_path(user, board)
-				within("#idea-#{idea.id}") { click_link "Delete" }
+				within("#idea-#{idea.id}") { find('.delete-link').click }
 			}.to change(Idea, :count).by(-1)
 			expect(current_path).to eq user_board_path(user, board)
 			expect(page).to have_content "Idea was deleted."

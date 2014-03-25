@@ -66,7 +66,8 @@ feature "Board Management" do
 			board = create(:board, user: user, name: "Original Board Name")
 			click_link "Your Boards"
 			click_link "#{board.name}"
-			click_link "Edit Board"
+			# click_link "Edit Board"
+			within('.board-bar') { find('.edit-link').click }
 			fill_in "Name", with: "New Board Name"
 			click_button "Update Board"
 			board.reload
@@ -89,7 +90,7 @@ feature "Board Management" do
 			expect(current_path).to eq boards_user_path(user)
 			
 			click_link "#{board.name}"
-			click_link "Edit Board"
+			within('.board-bar') { find('.edit-link').click }
 			click_link "Cancel"
 			expect(current_path).to eq user_board_path(user, board)
 		end

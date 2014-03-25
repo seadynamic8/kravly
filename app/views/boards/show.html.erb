@@ -126,12 +126,13 @@
 				<div class="square-extras">
 					<% if permit? "ideas", "edit", idea %>
 						<span data-no-turbolink>
-							<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(idea) %>
+							<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(idea),
+										class: "edit-link" %>
 						</span>
 					<% end %>
 					<% if permit? "ideas", "destroy", idea %>
 						<%= link_to raw("<i class='fi-x'></i>"), idea_path(idea), method: :delete, 
-								data: { confirm: "Are you sure?" } %>
+								data: { confirm: "Are you sure?" }, class: "delete-link" %>
 					<% end %>
 					<% if (permit? "ideas", "vote", idea) %>
 						<% if current_user.not_voted?(idea) %>
