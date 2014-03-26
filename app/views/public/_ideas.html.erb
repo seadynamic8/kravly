@@ -1,30 +1,53 @@
 <% @ideas.each_with_index do |idea, index| %>
-	<% if index % 4 == 0 %>
-		<div class="row main-ideas">
-			<ul class="large-block-grid-4">
+	<% if index % 3 == 0 %>
+		<div class="row">
 	<% end %>
 
-				<li>
-					<div class="block">
-						
-						<div class="img-container">
-							<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %>
-							<p class="img-source hidden"><%= idea.source %></p>
-						</div>
-						<div class="idea-bottom">
-							<h5 class="idea-title"><%= link_to idea.title, idea_path(idea) %></h5>
-							<div class="vote"><%= idea.votes %></div>
-							<%= link_to (image_tag idea.user.avatar.profile.url),
-										boards_user_path(idea.user) %>
-							<div class="name"><%= link_to idea.user.display_name, 
-																			boards_user_path(idea.user) %></div>
-							<div style="clear:both;"></div>
-						</div>
-					</div>
-				</li>
+			<li class="discover-square">
 
-	<% if (index+1) % 4 == 0 || (index+1) == @ideas.count %>
-			</ul>
+				<% if idea.board.category %>
+					<div class="category"><%= idea.board.category.name %></div>
+				<% end %>
+
+				<header><%= link_to idea.title, idea_path(idea) %></header>
+
+				<% if Rails.env == "development" %>
+				<p class="pitch">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo beatae cum totam illum placeat debitis impedit rem dolorum veniam laboriosam.
+				</p>
+				<% end %>
+
+				<div class="img-container">
+					<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %>
+					<p class="img-source hidden"><%= idea.source %></p>
+				</div>
+
+				<div class="discover-square-extras">
+					<div class="user-section">
+						<%= link_to (image_tag idea.user.avatar.small_profile.url),
+									boards_user_path(idea.user) %>
+						<%= link_to idea.user.display_name, 
+							boards_user_path(idea.user), class: "user-name" %>
+					</div>
+					
+					<div class="vote-section">
+						<% if (permit? "ideas", "vote", idea) %>
+							<% if current_user.not_voted?(idea) %>
+							<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), 
+										vote_idea_path(idea), class: "tiny button", id: "like-button" %>
+							<% else %>
+							<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), 
+										vote_idea_path(idea), class: "tiny button disabled", 
+										id: "like-button" %>
+							<% end %>
+						<% end %>
+						<span class="vote"><%= idea.votes %></span>
+					</div>
+				</div>
+
+			</li>
+
+	<% if (index+1) % 3 == 0 || (index+1) == @ideas.count %>
 		</div>
 	<% end %>
 <% end %>

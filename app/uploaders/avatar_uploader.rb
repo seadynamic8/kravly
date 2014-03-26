@@ -27,8 +27,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
   def default_url
-    "http://img.kravly.com/default-avatar.jpg"
+    "http://img.kravly.com/default-avatar.jpg" 
   end
+  # ######################################################################
+  # ###### Defautl Image - NEED TO MAKE 200 x 200 ########################
+  # ######################################################################
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
@@ -39,11 +42,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :profile do
-    process :resize_to_fill => [60, 60]
+    process :resize_to_fill => [200, 200]
   end
 
   version :small_profile, from_version: :profile do
-    process :resize_to_fill => [25, 25]
+    process :resize_to_fill => [30, 30]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

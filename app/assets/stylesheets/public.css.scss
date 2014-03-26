@@ -4,16 +4,25 @@
 
 
 
-// ************* VARIABLES *****************
+// ##################### VARIABLES #########################
 
 $header-bg-color: white;
 $steps-bg-color: white;
 $cta-bg-color: #125d7e;
+$discover-block-bg-color: white;
+$bar-bg-color: #125d7d;
 
 $text-color-one: #125d7e;
 $text-color-two: white;
 $text-color-three: #fa4786;
+// $text-color-one: #125d7d;
+// $text-color-two: white;
+// $text-color-three: #fa4786;
 
+$link-hover-color: #39BBE6;
+$link-hover-color-two: #007095;
+
+$logo-font: "Grand Hotel", "Bad Script", "Arial", sans-serif;
 $body-font: 'Quicksand', 'Arial', sans-serif;
 $header-font: $body-font;
 
@@ -44,7 +53,7 @@ $header-font: $body-font;
 	background-image:         linear-gradient(to bottom, $from, $to);
 }
 
-//Index Page
+// ##################### INDEX (HOME) PAGE #########################
 
 body .home {
 	font: 16px/20px $body-font;
@@ -360,61 +369,189 @@ body .home {
 
 }
 
-// *******************************************************************
-// ************************  Discover Page ***************************
+// ##################### END INDEX (HOME) PAGE #########################
+
+// ##################### DISCOVER PAGE #########################
+
+.discover-page {
+	background: url('https://s3.amazonaws.com/wishproto/green-white-background.png') repeat;
+}
 
 .banner {
-	margin-top: -10px;
-	background: url(http://img.kravly.com/banner.jpg) no-repeat center -180px;
+	width: 100%;
+	text-align: center;
 
-	.banner-overlay {
-		background-color: rgba(0,0,0,0.4);
+	h1 {
+		font-family: $logo-font;
+		color: $text-color-one;
+		text-shadow: 0 0 8px white, 0 0 8px white, 0 0 8px white;
+		padding-top: 0.5em;
+		margin-bottom: 0;
 	}
 
-	.intro-note {
-		padding: 20px 0 30px 0;
-		text-align: center;
-		
-		.title {
-			text-align: center;
-			margin: 0;
-			color: #eee;
-		}
-		.subtitle {
-			text-align: center;
-			color: #eee;
-		}
-		.get-started-button {
-			margin-top: 10px;
-		}
+	p {
+		color: $text-color-two;
+		font-size: 1.3em;
+		font-weight: bold;
+		margin-bottom: 1em;
 
-		.guide-link {
-			// color: darkslategray;
-			color: #eee;
-			font-size: 85%;
+		span {
+			color: $text-color-three;
+		}
+	}
+}
+
+#ideas {
+	padding-top: 1em;
+}
+
+.discover-square {
+	background: $discover-block-bg-color;
+	display: inline-block;
+	vertical-align: top;
+	width: 314px;
+	margin: 0.5em 0.5em;
+	text-align: left;
+
+	-webkit-box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    5px 5px 5px rgba(50, 50, 50, 0.75);
+	box-shadow:         5px 5px 5px rgba(50, 50, 50, 0.75);
+
+	.category {
+		background: $bar-bg-color;
+		color: $text-color-two;
+		padding: 0.2em 0;
+		text-align: center;
+	}
+
+	header {
+		padding: 0.4em 0.5em;
+
+		a {
+			font-size: 1.5em;
+			font-weight: bold;
+			color: $text-color-three;
 
 			&:hover {
-				color: white;
-				text-decoration: underline;
+				color: $link-hover-color;
 			}
 		}
 	}
-}
 
-.filter {
-	padding-top: 10px;
-	text-align: center;
-	border-bottom: 1px solid #aaa;
+	.pitch {
+		color: $text-color-one;
+		margin: 0.2em 0.5em;
+		font-size: 0.9em;
+	}
 
-	.inline-list {
-		margin-bottom: 0;
-		padding-bottom: 2px;
+	.img-container img {
+		width: 100%;
+		padding: 0 3px 3px;
+	}
+
+	.discover-square-extras {
+		padding: 0.3em 0.5em;
+
+		.user-section, .vote-section {
+			display: inline-block;
+		}
+
+		.user-section {
+			width: 65%;
+
+			img {
+				width: 30px;
+				height: 30px;
+				-webkit-border-radius: 15px;
+				-moz-border-radius: 15px;
+				border-radius: 15px;
+				margin-right: 2px;
+			}
+
+			.user-name {
+				color: $text-color-one;
+
+				&:hover {
+					color: $link-hover-color;
+				}
+			}
+
+		}
+
+		.vote-section {
+			width: 33%;
+			text-align: right;
+
+			#like-button {
+				padding: 0.3em 0.5em;
+				margin: 0;
+				font-size: 1em;
+			}
+
+			.vote {
+				text-align: right;
+				color: $text-color-three;
+				font-size: 1.1em;
+			}
+		}
+		
 	}
 }
 
-.main-ideas {
-	padding-top: 20px;
-}
+// .banner {
+// 	margin-top: -10px;
+// 	background: url(http://img.kravly.com/banner.jpg) no-repeat center -180px;
+
+// 	.banner-overlay {
+// 		background-color: rgba(0,0,0,0.4);
+// 	}
+
+// 	.intro-note {
+// 		padding: 20px 0 30px 0;
+// 		text-align: center;
+		
+// 		.title {
+// 			text-align: center;
+// 			margin: 0;
+// 			color: #eee;
+// 		}
+// 		.subtitle {
+// 			text-align: center;
+// 			color: #eee;
+// 		}
+// 		.get-started-button {
+// 			margin-top: 10px;
+// 		}
+
+// 		.guide-link {
+// 			// color: darkslategray;
+// 			color: #eee;
+// 			font-size: 85%;
+
+// 			&:hover {
+// 				color: white;
+// 				text-decoration: underline;
+// 			}
+// 		}
+// 	}
+// }
+
+// .filter {
+// 	padding-top: 10px;
+// 	text-align: center;
+// 	border-bottom: 1px solid #aaa;
+
+// 	.inline-list {
+// 		margin-bottom: 0;
+// 		padding-bottom: 2px;
+// 	}
+// }
+
+// .main-ideas {
+// 	padding-top: 20px;
+// }
+
+// ##################### END DISCOVER PAGE #########################
 
 // Intro Page
 .intro {
@@ -485,8 +622,8 @@ body .home {
 		border: 1px solid #aaa;
 		margin: 0 5px;
 		-webkit-box-shadow: 4px 4px 5px rgba(50, 50, 50, 0.75);
-	-moz-box-shadow:    4px 4px 5px rgba(50, 50, 50, 0.75);
-	box-shadow:         4px 4px 5px rgba(50, 50, 50, 0.75);
+		-moz-box-shadow:    4px 4px 5px rgba(50, 50, 50, 0.75);
+		box-shadow:         4px 4px 5px rgba(50, 50, 50, 0.75);
 	}
 
 	.row {
@@ -504,3 +641,4 @@ body .home {
 		}
 	}
 }
+

@@ -1,4 +1,14 @@
+<div class="discover-page">
+
+<!-- ##################### BANNER SECTION ###########################-->
+
 <% unless current_user %>
+
+<section class="banner">
+	<h1>Discover New Ideas</h1>
+	<p>Vote for New Ideas, Collaborate, or <span>Create your own.</span></p>
+</section>
+
 <!-- 	<section class="banner">
 		<div class="banner-overlay">
 			<div class="row intro-note">
@@ -24,6 +34,10 @@
 	</div>
 </div> -->
 
+<!-- ##################### END BANNER SECTION ###########################-->
+
+<!-- ##################### IDEAS SECTION ###########################-->
+
 <div id="ideas">
 	<%= render 'ideas' %>
 </div>
@@ -33,4 +47,8 @@
 <div class="pagination-centered paginate">
 	<%= will_paginate @ideas, inner_window: 4, outer_window: 2,
 	previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe %>
+</div>
+
+<!-- ##################### END IDEAS SECTION ###########################-->
+
 </div>
