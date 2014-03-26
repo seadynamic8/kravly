@@ -6,9 +6,7 @@
 			<li class="discover-square">
 				
 				<div class="category">
-				<% if idea.board.category %>
-					<%= idea.board.category.name %>
-				<% end %>
+					<%= idea.board.category.name if idea.board.category %>
 				</div>
 
 				<header><%= link_to idea.title, idea_path(idea) %></header>
