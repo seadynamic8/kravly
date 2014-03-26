@@ -4,10 +4,12 @@
 	<% end %>
 
 			<li class="discover-square">
-
+				
+				<div class="category">
 				<% if idea.board.category %>
-					<div class="category"><%= idea.board.category.name %></div>
+					<%= idea.board.category.name %>
 				<% end %>
+				</div>
 
 				<header><%= link_to idea.title, idea_path(idea) %></header>
 
