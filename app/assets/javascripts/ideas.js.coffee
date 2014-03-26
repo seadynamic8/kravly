@@ -5,7 +5,3 @@
 # jQuery ->
 # 	$('#idea_commitment').focus( -> $('#idea_commitment_radio').attr('checked','checked'))
 # 	$('#idea_commitment').keyup( -> $('#idea_commitment_radio').val($(this).val()))
-
-jQuery ->
-	$(this).foundation('section', 'reflow')
-

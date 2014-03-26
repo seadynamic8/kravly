@@ -30,37 +30,4 @@ $(document).ready(function() {
 			$(this).find('.img-source').addClass('hidden');
 		}
 	);
-
-	ShareThisTurbolinks.reload();
 });
-
-
-$(document).on('page:restore', function() {
-	ShareThisTurbolinks.restore();
-});
-  
-
-ShareThisTurbolinks = {
-	load: function() {
-		window.switchTo5x = false;
-     $.getScript('http://w.sharethis.com/button/buttons.js', function() {
-     		window.stLight.options({publisher: '65f77ed9-0386-4f4f-ac59-1c4b80642bbb'});
-     });
-	},   
-
-  reload: function() {
-  	if(window.stlib !== null) {
-  		// window.cookie.deleteAllSTCookie();
-  	}
-    $('[src*="sharethis.com"], [href*="sharethis.com"]').remove();
-    window.stLight = undefined;
-    this.load();
-  },    
-
-  restore: function() {
-  	$('.stwrapper, #stOverlay').remove();
-    this.reload();
-  }
-     
-}
-  

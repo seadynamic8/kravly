@@ -57,9 +57,10 @@
 				<%= @board.votes %>
 				<i class="fi-like"></i>
 			</span>
-			<span class="seperator">|</span>
+			
 
 			<% if permit? "boards", "edit", @board %>
+			<span class="seperator">|</span>
 			<span class="board-edit-links">
 				<span data-no-turbolink>
 					<%= link_to raw("<i class='fi-widget'></i>"), 
@@ -69,16 +70,16 @@
 							user_board_path(@user, @board), method: :delete, 
 							data: { confirm: "Are you sure you want to delete the board?" } %>
 			</span>
-			<span class="seperator">|</span>
+			<!-- <span class="seperator">|</span> -->
 			<% end %>
 
-			<span class="social">
+<!-- 			<span class="social">
 				<span class='st_facebook'></span>
 				<span class='st_twitter'></span>
 				<span class='st_linkedin'></span>
 				<span class='st_pinterest'></span>
 				<span class='st_stumbleupon'></span>
-			</span>
+			</span> -->
 	</div>
 </div>
 <!-- 
