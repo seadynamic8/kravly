@@ -1,7 +1,67 @@
 <% title @user.display_name %>
 
+<div class="user-boards-page">
+
 <%= render 'top' %>
 
+<!-- ##################### BOARDS SECTION ###########################-->
+
+<% @boards.each_with_index do |board, index| %>
+
+	<% if index % 4 == 0 %>
+		<div class="row">
+	<% end %>
+			
+				<li id="board-<%= "#{board.id}" %>" class="square">
+						<header><%= link_to board.name, [@user, board] %></header>
+
+						<% if board.ideas.count > 0 %>
+	
+							<div class="img-container">
+								<%= link_to (image_tag board.ideas.first.image.thumb.url), 
+									user_board_path(@user, board) %>
+								<p class="img-source hidden"><%= board.ideas.first.source %></p>
+							</div>
+
+						<% else %>
+							<%= image_tag "http://img.kravly.com/board-background.png" %>
+						<% end %>
+
+						<div class="square-extra-boards">
+							<span><%= mini_image(board.ideas.second, 
+												user_board_path(@user, board)) %></span>
+							<span><%= mini_image(board.ideas.third, 
+												user_board_path(@user, board)) %></span>
+							<span><%= mini_image(board.ideas.fourth, 
+												user_board_path(@user, board)) %></span>
+						</div>
+
+						<div style="clear:both;"></div>
+
+						<% if board.category %>
+						<div class="square-bottom">
+							<span class="category"><%= board.category.name %></span>
+						</div>
+						<% end %>
+					
+				</li>
+	
+	<% if (index+1) % 4 == 0 || (index+1) == @boards.count %>
+		</div>
+	<% end %>
+
+<% end %>
+
+<div style="clear:both;"></div>
+
+<%= will_paginate @boards %>
+
+<div class="pagination-centered">
+	<%= will_paginate @boards, inner_window: 4, outer_window: 2,
+	previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe %>
+</div>
+
+<!-- 
 <% @boards.each_with_index do |board, index| %>
 
 	<% if index % 4 == 0 %>
@@ -81,4 +141,9 @@
 <div class="pagination-centered">
 	<%= will_paginate @boards, inner_window: 4, outer_window: 2,
 	previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe %>
+</div> -->
+
+<!-- ##################### END BOARDS SECTION ###########################-->
+
 </div>
+

@@ -122,7 +122,7 @@ feature 'User Management' do
 		visit edit_user_path(user)
 		select "Email", from: "user_display"
 		click_button "Update User"
-		within('.user-header-user') { expect(page).to have_content user.email }
+		within('.user-header') { expect(page).to have_content user.email }
 		within('.top-bar-section') { expect(page).to have_content user.email }
 	end
 
@@ -148,7 +148,7 @@ feature 'User Management' do
 		expect(current_path).to eq settings_user_path(user)
 		
 		visit boards_user_path(user)
-		within('.user-header-user') { click_link "Edit" }
+		within('.user-header') { find('.edit-link').click }
 		click_link "Cancel"
 		expect(current_path).to eq boards_user_path(user)
 	end

@@ -1,40 +1,39 @@
 <% title @user.display_name %>
 
+<div class="user-ideas-page">
+
 <%= render 'top' %>
+
+<!-- ##################### IDEAS SECTION ###########################-->
 
 <% @ideas.each_with_index do |idea, index| %>
 	<% if index % 4 == 0 %>
 		<div class="row">
-			<ul class="large-block-grid-4">
 	<% end %>
 
-				<li id="idea-<%= "#{idea.id}" %>">
-					<div class="block">
-						<h5 class="block-title"><%= link_to idea.title, idea_path(idea) %></h5>
+			<li id="idea-<%= "#{idea.id}" %>" class="square">
+				<header><%= link_to idea.title, idea_path(idea) %></header>
 
-						<div class="block-main">
-							<div class="img-container">
-								<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %><br>
-								<p class="img-source hidden"><%= idea.source %></p>
-							</div>
-						</div>
-						
-						<span class="buttons">
-							<% if permit? "ideas", "edit", idea %>
-								<span data-no-turbolink>
-									<%= link_to "Edit", edit_idea_path(idea), class: "tiny button" %>
-								</span>
-							<% end %>
-							<% if permit? "ideas", "destroy", idea %>
-								<%= link_to "Delete", idea_path(idea), method: :delete, 
-										data: { confirm: "Are you sure?" }, class: "tiny button" %>
-							<% end %>
-						</span>
-					</div>
-				</li>
+				<div class="img-container">
+					<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %><br>
+					<p class="img-source hidden"><%= idea.source %></p>
+				</div>
+
+				<span class="square-extras">
+					<% if permit? "ideas", "edit", idea %>
+					<span data-no-turbolink>
+						<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(idea), 
+									class: "edit-link" %>
+					</span>
+					<% end %>
+					<% if permit? "ideas", "destroy", idea %>
+					<%= link_to raw("<i class='fi-x'></i>"), idea_path(idea), method: :delete, 
+								data: { confirm: "Are you sure?" }, class: "delete-link" %>
+					<% end %>
+				</span>
+			</li>
 
 	<% if (index+1) % 4 == 0 || (index+1) == @ideas.count %>
-			</ul>
 		</div>
 	<% end %>
 <% end %>
@@ -44,4 +43,8 @@
 <div class="pagination-centered">
 	<%= will_paginate @ideas, inner_window: 4, outer_window: 2,
 	previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe %>
+</div>
+
+<!-- ##################### END IDEAS SECTION ###########################-->
+
 </div>

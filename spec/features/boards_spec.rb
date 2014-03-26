@@ -48,19 +48,19 @@ feature "Board Management" do
 			expect(current_path).to eq boards_user_path(user)
 		end
 
-		scenario "edits a board from users#boards page" do
-			create(:category, name: "Old Category")
-			create(:category, name: "New Category")
-			board = create(:board, user: user, name: "Original Board Name")
-			click_link "Your Boards"
-			within("#board-#{board.id}") { click_link "Edit" }
-			fill_in "Name", with: "New Board Name"
-			select "New Category", from: 'board_category_id'
-			click_button "Update Board"
-			board.reload
-			expect(board.name).to eq "New Board Name"
-			expect(board.category.name).to eq "New Category"
-		end
+		# scenario "edits a board from users#boards page" do
+		# 	create(:category, name: "Old Category")
+		# 	create(:category, name: "New Category")
+		# 	board = create(:board, user: user, name: "Original Board Name")
+		# 	click_link "Your Boards"
+		# 	within("#board-#{board.id}") { click_link "Edit" }
+		# 	fill_in "Name", with: "New Board Name"
+		# 	select "New Category", from: 'board_category_id'
+		# 	click_button "Update Board"
+		# 	board.reload
+		# 	expect(board.name).to eq "New Board Name"
+		# 	expect(board.category.name).to eq "New Category"
+		# end
 
 		scenario "edits a board from boards#show page" do
 			board = create(:board, user: user, name: "Original Board Name")
@@ -82,27 +82,27 @@ feature "Board Management" do
 			expect(page).to have_css 'div.alert'
 		end
 
-		scenario "goes back to previous page if cancel editing a board" do
-			board = create(:board, user: user)
-			click_link "Your Boards"
-			within("#board-#{board.id}") { click_link "Edit" }
-			click_link "Cancel"
-			expect(current_path).to eq boards_user_path(user)
+		# scenario "goes back to previous page if cancel editing a board" do
+		# 	board = create(:board, user: user)
+		# 	click_link "Your Boards"
+		# 	within("#board-#{board.id}") { click_link "Edit" }
+		# 	click_link "Cancel"
+		# 	expect(current_path).to eq boards_user_path(user)
 			
-			click_link "#{board.name}"
-			within('.board-bar') { find('.edit-link').click }
-			click_link "Cancel"
-			expect(current_path).to eq user_board_path(user, board)
-		end
+		# 	click_link "#{board.name}"
+		# 	within('.board-bar') { find('.edit-link').click }
+		# 	click_link "Cancel"
+		# 	expect(current_path).to eq user_board_path(user, board)
+		# end
 
-		scenario "deletes a board from users#boards page" do
-			board = create(:board, user: user, name: "Original Board Name")
-			expect {
-				click_link "Your Boards"
-				within("#board-#{board.id}") { click_link "Delete" }
-			}.to change(Board, :count).by(-1)
-			expect(current_path).to eq boards_user_path(user)
-			expect(page).to have_content "Board was deleted."
-		end
+		# scenario "deletes a board from users#boards page" do
+		# 	board = create(:board, user: user, name: "Original Board Name")
+		# 	expect {
+		# 		click_link "Your Boards"
+		# 		within("#board-#{board.id}") { click_link "Delete" }
+		# 	}.to change(Board, :count).by(-1)
+		# 	expect(current_path).to eq boards_user_path(user)
+		# 	expect(page).to have_content "Board was deleted."
+		# end
 	end
 end

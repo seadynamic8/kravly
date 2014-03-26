@@ -1,3 +1,39 @@
+
+<!-- ##################### HEADER SECTION ###########################-->
+
+<div class="user-header">
+	<%= image_tag @user.avatar.profile.url %>
+
+	<div class="user-info">
+		<h1>
+			<%= @user.display_name %>
+			<span class="user-location">
+				<%= " - " + @user.location if @user.location.present? %>
+			</span>
+		</h1>
+		
+		<% if @user.about.present? %>
+			<p class="user-about"><%= @user.about %></p>
+		<% else %>
+			<p class="request">Awesome Kravly community member :)</p>
+		<% end %>
+		
+		<% if @user.website.present? %>
+			<p class="user-website"><i class="fi-web"></i> <%= @user.website %></p>
+		<% end %>
+
+		<% if permit? "users", "edit", @user %>
+			<div class="edit-button">
+				<%= link_to raw("<i class='fi-widget'></i>"), edit_user_path(@user), 
+							class: "edit-link" %>
+			</div>
+		<% end %>
+	</div>
+
+</div>
+
+
+<!-- 
 <div class="row">
 	<div class="large-10 large-centered columns">
 		<div class="row user-header-user">
@@ -23,9 +59,44 @@
 		</div>
 		<hr>
 	</div>
+</div> -->
+
+<!-- ##################### END HEADER SECTION ###########################-->
+
+<!-- ##################### USER BAR SECTION ###########################-->
+
+<div class="user-bar">
+	<ul class="user-nav">
+		<li>
+			<span class="count"><%= link_to "#{@user.boards.count}", 
+																boards_user_path(@user) %></span>
+			<%= link_to "Boards", boards_user_path(@user) %>
+		</li>
+		<span class="seperator">|</span>
+		<li>
+			<span class="count"><%= link_to "#{@user.ideas.count}",
+																ideas_user_path(@user) %></span>
+			<%= link_to "Ideas", ideas_user_path(@user) %>
+		</li>
+		<span class="seperator">|</span>
+		<li>
+			<span class="count"><%= link_to "#{@user.votes}",
+																votes_user_path(@user) %></span>
+			<%= link_to raw("<i class='fi-like'></i>"), votes_user_path(@user),
+					class: "vote-link" %>
+		</li>
+	</ul>
+
+	<span class="social">
+		<span class='st_facebook'></span>
+		<span class='st_twitter'></span>
+		<span class='st_linkedin'></span>
+		<span class='st_pinterest'></span>
+		<span class='st_stumbleupon'></span>
+	</span>
 </div>
 
-<div class="row user-stats">
+<!-- <div class="row user-stats">
 	<div class="large-5 columns">
 		<ul class="button-group">
 			<li><%= link_to "#{@user.boards.count} Boards", boards_user_path(@user), 
@@ -43,6 +114,6 @@
 		<span class='st_pinterest_large' displayText='Pinterest'></span>
 		<span class='st_stumbleupon_large' displayText='StumbleUpon'></span>
 	</div>
-</div>
+</div> -->
 
-<hr>
+<!-- ##################### END USER BAR SECTION ###########################-->

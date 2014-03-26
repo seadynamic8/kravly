@@ -2,9 +2,201 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.block {
-	.block-title {
-		padding: 0 5px;
-		text-align: center;
+// ##################### VARIABLES #########################
+$text-color-one: #125d7d; // blue
+$text-color-two: white;
+$text-color-three: #fa4786; // fuschia
+$text-color-four: #6f6f6f;
+$text-color-five: #13c4a2;
+
+$link-hover-color: #39BBE6;
+$link-hover-color-two: #007095;
+
+$bar-bg-color: #125d7d;
+$block-bg-color: #13c4a2;
+
+// ##################### USER TOP PARTIAL #########################
+
+.user-header {
+	width: 1000px;
+	margin: 0 auto;
+	padding: 0.5em 0 0.7em;
+
+	img {
+		width: 120px;
+		height: 120px;
+		-webkit-border-radius: 60px;
+		-moz-border-radius: 60px;
+		border-radius: 60px;
+		display: inline-block;
+		vertical-align: top;
+		margin-right: 1em;
+	}
+
+	.user-info {
+		position: relative;
+		display: inline-block;
+		vertical-align: top;
+		width: 600px;
+		background: $block-bg-color;
+		min-height: 120px;
+		padding: 0 1em 0.3em;
+
+		-webkit-border-radius: 0 60px 60px 0;
+		-moz-border-radius: 0 60px 60px 0;
+		border-radius: 0 60px 60px 0;
+
+		h1 {
+			font-size: 1.5em;
+			color: $text-color-two;
+			margin-bottom: .1em;
+
+			.user-location {
+				margin-bottom: 0;
+				font-size: 0.7em;
+				vertical-align: middle;
+			}
+		}
+
+		.user-about {
+			margin-bottom: 0.5em;
+			font-size: 0.9em;
+			color: $text-color-one;
+		}
+		.request {
+			font-size: 0.9em;
+			color: $text-color-one;
+		}
+
+		.user-website {
+			margin-bottom: 0;
+			font-size: 0.8em;
+			color: $text-color-three;
+		}
+	}
+
+	.edit-button {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		padding: 0 3em .5em 0;
+
+		a {
+			font-size: 1.4em;
+		}
+		
 	}
 }
+
+.user-bar {
+	background: $bar-bg-color;
+	margin: 0 2em 1em;
+	padding: 0.4em 1em;
+	color: $text-color-two;
+	
+	.user-nav {
+		display: inline-block;
+		width: 50%;
+		list-style: none;
+		margin: 0;
+
+		li {
+			display: inline-block;
+
+			.count a {
+				color: $text-color-three;
+			}
+
+			a {
+				margin: 0;
+				margin-left: 5px;
+				color: $text-color-two;
+				font-weight: bold;
+
+				&:hover {
+					color: $link-hover-color;
+				}
+			}
+
+			i {
+				font-size: 1.3em;
+				vertical-align: middle;
+			}
+		}
+
+		.seperator {
+			margin: 0 0.5em;
+		}
+	}
+
+	.social {
+		display: inline-block;
+		width: 49%;
+		text-align: right;
+	}
+}
+
+// ##################### END USER TOP PARTIAL #########################
+
+// ##################### USER BOARDS PAGE #########################
+
+.user-boards-page {
+	background: url('https://s3.amazonaws.com/wishproto/white-grey-background.png') repeat;
+	padding-bottom: 1000px;
+}
+
+.square {
+	
+	.square-extra-boards {
+
+		span {
+			float: left;
+			padding-right: 3px;
+			padding-bottom: 3px;
+
+			img {
+				width: 75px;
+				padding: 0;
+			}
+
+			&:first-child {
+				padding-left: 3px;
+			}
+		}
+		
+	}
+
+	.square-bottom {
+		padding: .2em 0;
+		color: $text-color-two;
+		font-weight: light;
+		background: $bar-bg-color;
+	}
+}
+
+// .block {
+// 	.block-title {
+// 		padding: 0 5px;
+// 		text-align: center;
+// 	}
+// }
+
+// ##################### END USER BOARDS PAGE #########################
+
+// ##################### USER IDEAS PAGE #########################
+
+.user-ideas-page {
+	background: url('https://s3.amazonaws.com/wishproto/white-grey-background.png') repeat;
+	padding-bottom: 1000px;
+}
+
+// ##################### END USER BOARDS PAGE #########################
+
+// ##################### USER VOTES PAGE #########################
+
+.user-votes-page {
+	background: url('https://s3.amazonaws.com/wishproto/white-grey-background.png') repeat;
+	padding-bottom: 1000px;
+}
+
+// ##################### END VOTES BOARDS PAGE #########################

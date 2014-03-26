@@ -44,7 +44,7 @@ feature "Guest Actions" do
 			click_link user.display_name
 			expect(current_path).to eq boards_user_path(user)
 			expect(page).to have_content user.display_name
-			within('.user-stats') do
+			within('.user-bar') do
 				expect(page).to have_content user.boards.count
 				expect(page).to have_content user.ideas.count
 				expect(page).to have_content user.votes
@@ -54,10 +54,10 @@ feature "Guest Actions" do
 
 		scenario "view all user's ideas from all user's boards" do
 			visit boards_user_path(user)
-			within('.user-stats') { click_link "Ideas" }
+			within('.user-bar') { click_link "Ideas" }
 			expect(current_path).to eq ideas_user_path(user)
 			expect(page).to have_content user.display_name
-			within('.user-stats') do
+			within('.user-bar') do
 				expect(page).to have_content user.boards.count
 				expect(page).to have_content user.ideas.count
 				expect(page).to have_content user.votes
@@ -72,10 +72,10 @@ feature "Guest Actions" do
 			UserVote.create(idea_id: other_idea.id, user: user)
 
 			visit boards_user_path(user)
-			within('.user-stats') { click_link "Votes" }
+			within('.user-bar') { find('.vote-link').click }
 			expect(current_path).to eq votes_user_path(user)
 			expect(page).to have_content user.display_name
-			within('.user-stats') do
+			within('.user-bar') do
 				expect(page).to have_content user.boards.count
 				expect(page).to have_content user.ideas.count
 				expect(page).to have_content user.votes
@@ -90,28 +90,28 @@ feature "Guest Actions" do
 			UserVote.create(idea_id: other_idea.id, user: user)
 			
 			visit ideas_user_path(user)
-			within('.user-stats') { click_link "Votes" }
+			within('.user-bar') { find('.vote-link').click }
 			expect(current_path).to eq votes_user_path(user)
 			expect(page).to have_content other_idea.title
 		end
 
 		scenario "view all user's boards from all user's ideas" do
 			visit ideas_user_path(user)
-			within('.user-stats') { click_link "Boards" }
+			within('.user-bar') { click_link "Boards" }
 			expect(current_path).to eq boards_user_path(user)
 			expect(page).to have_content board.name
 		end
 
 		scenario "view all user's boards from all user's voted ideas" do
 			visit votes_user_path(user)
-			within('.user-stats') { click_link "Boards" }
+			within('.user-bar') { click_link "Boards" }
 			expect(current_path).to eq boards_user_path(user)
 			expect(page).to have_content board.name
 		end
 
 		scenario "view all user's ideas from all user's voted ideas" do
 			visit votes_user_path(user)
-			within('.user-stats') { click_link "Ideas" }
+			within('.user-bar') { click_link "Ideas" }
 			expect(current_path).to eq ideas_user_path(user)
 			expect(page).to have_content user.display_name
 		end

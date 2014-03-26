@@ -1,26 +1,27 @@
 <% title @user.display_name %>
 
+<div class="user-votes-page">
+
 <%= render 'top' %>
+
+<!-- ##################### VOTES SECTION ###########################-->
 
 <% @user_votes.each_with_index do |user_vote, index| %>
   <% if index % 4 == 0 %>
     <div class="row">
-      <ul class="large-block-grid-4">
   <% end %>
 
-        <li id="idea-<%= "#{user_vote.idea.id}" %>">
-          <div class="block">
-            <h5 class="block-title"><%= link_to user_vote.idea.title, idea_path(user_vote.idea) %></h5>
-            <div class="img-container">
-              <%= link_to (image_tag user_vote.idea.image.thumb.url), 
-                      idea_path(user_vote.idea) %>
-              <p class="img-source hidden"><%= user_vote.idea.source %></p>
-            </div>
-          </div>
-        </li>
+      <li id="idea-<%= "#{user_vote.idea.id}" %>" class="square">
+        <header><%= link_to user_vote.idea.title, idea_path(user_vote.idea) %></header>
+
+        <div class="img-container">
+          <%= link_to (image_tag user_vote.idea.image.thumb.url), 
+          idea_path(user_vote.idea) %>
+          <p class="img-source hidden"><%= user_vote.idea.source %></p>
+        </div>
+      </li>
 
   <% if (index+1) % 4 == 0 || (index+1) == @user_votes.count %>
-      </ul>
     </div>
   <% end %>
 <% end %>
@@ -30,4 +31,8 @@
 <div class="pagination-centered">
   <%= will_paginate @user_votes, inner_window: 4, outer_window: 2,
   previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe %>
+</div>
+
+<!-- ##################### END VOTES SECTION ###########################-->
+
 </div>
