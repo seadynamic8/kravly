@@ -395,8 +395,12 @@ body .home {
 		font-weight: bold;
 		margin-bottom: 1em;
 
-		span {
+		a {
 			color: $text-color-three;
+
+			&:hover {
+				color: #0078A0;
+			}
 		}
 	}
 }
