@@ -110,3 +110,5 @@ gem 'impressionist'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'ransack', github: "activerecord-hackery/ransack", branch: "rails-4"
+
+gem 'jquery-validation-rails'

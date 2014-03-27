@@ -6,9 +6,11 @@ input[type="file"] {
 	width: 75%;
 }
 // ##################### VARIABLES #########################
-$text-color-one: #125d7d;
+$text-color-one: #125d7d; // blue
 $text-color-two: white;
-$text-color-three: #fa4786;
+$text-color-three: #fa4786; // fuschia
+$text-color-four: #6f6f6f; // grey
+$text-color-five: #13c4a2; // green
 
 $link-hover-color: #39BBE6;
 
@@ -16,6 +18,8 @@ $sidebar-bg-color: #125d7d;
 $idea-overview-bg-color: #13c4a2;
 $description-bg-color: white;
 $comments-bg-color: white;
+$progress-icon-bg-color: white;
+$progress-icon-active-bg-color: #fa4786;
 
 $description-border-color: #13c4a2;
 $comments-border-color: #fa4786;
@@ -28,7 +32,7 @@ $comments-border-color: #fa4786;
 
 
 // ---------------- SIDEBAR SECTION -----------------------------
-.sidebar {
+.idea-show-sidebar {
 	background-color: $sidebar-bg-color;
 	padding: 20px 20px;
 	width: 300px;
@@ -339,6 +343,123 @@ $comments-border-color: #fa4786;
 }
 
 // ---------------- END MAIN SECTION -----------------------------
+
+// ##################### END IDEA SHOW PAGE #########################
+
+// ##################### IDEA NEW PAGE #########################
+
+.idea-new-page {
+	background: url('http://img.kravly.com/white-grey-background.png') repeat;
+	color: $text-color-one;
+	padding-bottom: 1000px;
+}
+
+// ******************** IDEA NEW HEADER SECTION *********************
+
+.idea-new-header {
+	width: 1000px;
+	margin: 0 auto;
+	padding: 3em 0 2em;
+
+	h1 {
+		color: $text-color-five;
+		font-weight: bold;
+		font-size: 2.3em;
+		display: inline-block;
+		width: 35%;
+	}
+
+	.idea-new-progress-bar {
+		list-style: none;
+		display: inline-block;
+		vertical-align: top;
+		width: 62%;
+
+		hr {
+			border-top: 3px solid $text-color-one;
+			margin-top: 2em;
+			z-index: 0;
+		}
+
+		li {
+			display: inline-block;
+			vertical-align: top;
+			width: 32%;
+			z-index: 2;
+			margin-top: -4.5em;
+
+			header {
+				color: $text-color-one;
+				text-align: center;
+			}
+
+			.icon {
+				background: $progress-icon-bg-color;
+				border: 4px solid $text-color-one;
+				width: 45px;
+				height: 45px;
+				border-radius: 50%;
+				margin: .2em auto 0;
+			}
+
+			.active {
+				background: $progress-icon-active-bg-color;
+			}
+		}
+	}
+}
+
+// ******************** END IDEA NEW HEADER SECTION *********************
+
+
+
+#idea-new-form {
+	width: 1000px;
+	margin: 0 auto;
+
+	input[type="text"], textarea {
+		&.error {
+			border: 2px solid #f04124;
+		}
+	}
+
+	.page {
+		
+		padding-bottom: 2em;
+		display: none;
+
+		header {
+			text-align: center;
+			font-weight: bold;
+			font-style: italic;
+			font-size: 1.5em;
+			padding-bottom: 1em;
+		}
+
+		.form-section {
+			list-style: none;
+			display: inline-block;
+			width: 69%;
+			margin: 0;
+			padding-right: 2em;
+		}
+
+		.sidebar {
+			display: inline-block;
+			vertical-align: top;
+			width: 30%;
+			padding-left: 1em;
+		}
+		
+	}
+
+	// ******************** IDEA NEW PITCH SECTION *********************
+
+}
+
+
+
+// ##################### END IDEA NEW PAGE #########################
 
 
 // Idea Show Page
