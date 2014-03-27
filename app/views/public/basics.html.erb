@@ -1,14 +1,22 @@
 
 <div class="basics-page">
 
+<!-- ************* HEADER SECTION ******************* -->
+
 <header class="basics-header">
 	<h1>Basics</h1>
 	<p>A Few Key Concepts to Get You Started!</p>
 </header>
 
+<!-- ************* END HEADER SECTION ******************* -->
+
 <hr class="basics-header-border">
 
+<!-- ************* BASICS MAIN SECTION ******************* -->
+
 <div class="basics-main">
+
+	<!-- ........... Basics Idea ................ -->
 	
 	<div class="basics-idea basics-block">
 		<div class="basics-description left">
@@ -19,18 +27,57 @@
 		</div>
 
 		<div class="basics-screenshot right">
-			<%= image_tag "http://img.kravly.com/basics/idea-cover.png" %>
-			<%= image_tag "http://img.kravly.com/basics/idea-screenshot.png" %>
+			<div class="discover-square">
+				
+				<div class="category">
+					Kitchen & Household
+				</div>
+
+				<header><%= link_to "Funnel for Breville Juicer", "#" %></header>
+
+				<p class="pitch">
+					Don't let the juices get everywhere, with a custom funnel, all your
+					vegetables and fruits go all into your juicer!.
+				</p>
+
+				<div class="img-container">
+					<%= image_tag "http://img.kravly.com/uploads/idea/image/4/thumb_juicer-cover-photo.png" %>
+				</div>
+
+				<div class="discover-square-extras">
+					<div class="user-section">
+						<%= link_to (image_tag "http://img.kravly.com/uploads/user/avatar/1/small_profile__IGP1867.jpg"),
+									"#" %>
+						<%= link_to "jarvis", 
+							"#", class: "user-name" %>
+					</div>
+					
+					<div class="vote-section">
+						<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), 
+									"#", class: "tiny button", id: "like-button" %>
+						<span class="vote">7</span>
+					</div>
+				</div>
+
+			</div>
 		</div>
 	</div>
 
+	<!-- ........... End Basics Idea ................ -->
+
 	<hr>
 
+	<!-- ........... Basics Vote ................ -->
+
 	<div class="basics-vote basics-block">
-		<div class="basics-screenshot left">
+		<div class="basics-screenshot left"><!-- 
 			<%= image_tag "http://img.kravly.com/basics/main-vote.png" %>
 			<%= image_tag "http://img.kravly.com/basics/idea-vote.png" %>
-			<%= image_tag "http://img.kravly.com/basics/idea-vote-action.png" %>
+			<%= image_tag "http://img.kravly.com/basics/idea-vote-action.png" %> -->
+
+			<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), 
+						"#", class: "tiny button", id: "like-button" %>
+			<span class="vote">8</span>
 		</div>
 
 		<div class="basics-description right">
@@ -41,7 +88,11 @@
 		</div>
 	</div>
 
+	<!-- ........... End Basics Vote ................ -->
+
 	<hr>
+
+	<!-- ........... Basics Comments ................ -->
 
 	<div class="basics-comments basics-block">
 		<div class="basics-description left">
@@ -52,15 +103,19 @@
 		</div>
 
 		<div class="basics-screenshot right">
-			<%= image_tag "http://img.kravly.com/basics/comments.png" %>
+			<%= image_tag "https://s3.amazonaws.com/img.kravly.com/basics/comments.png" %>
 		</div>
 	</div>
 
+	<!-- ........... End Basics Comments ................ -->
+
 	<hr>
 
-	<div class="basis-boards basics-block">
+	<!-- ........... Basics Boards ................ -->
+
+	<div class="basics-boards basics-block">
 		<div class="basics-screenshot left">
-			<%= image_tag "http://img.kravly.com/basics/board.png" %>
+			<%= image_tag "https://s3.amazonaws.com/img.kravly.com/basics/board.png" %>
 		</div>
 
 		<div class="basics-description right">
@@ -70,21 +125,28 @@
 			</p>
 		</div>
 	</div>
+
+	<!-- ........... End Basics Boards ................ -->
 	
 </div>
+
+<!-- ************* END BASICS MAIN SECTION ******************* -->
+
+<!-- ************* BASICS CTA SECTION ******************* -->
 
 <div class="basics-cta">
 	<p>Get Started!</p>
 
 	<% if current_user %>
 		1. <%= link_to "Add Board", new_user_board_path(current_user), class: "left-button button" %>
-		2. <%= link_to "Add Idea", new_user_board_path(current_user), class: "right-button button" %>
+		2. <%= link_to "Add Idea", new_idea_path, class: "right-button button" %>
 	<% else %>
 		<%= link_to "Log In", login_path, class: "left-button button" %>
 		<%= link_to "Sign Up", new_user_path, class: "right-button button" %>
 	<% end %>
 </div>
 
+<!-- ************* END BASICS CTA SECTION ******************* -->
 
 <!-- <div class="basics-top">
 	<h2>Kravly Basics</h2>

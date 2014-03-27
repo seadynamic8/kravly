@@ -491,6 +491,7 @@ body .home {
 			text-align: right;
 
 			#like-button {
+				@include button( $button-tny, $text-color-three, false, false, false, false);
 				padding: 0.3em 0.5em;
 				margin: 0;
 				font-size: 1em;
@@ -690,8 +691,12 @@ body .home {
 			}
 		}
 
+		.basics-screenshot {
+			text-align: center;
+		}
+
 		&:first-child {
-			padding-top: 2em;
+			padding-top: 1em;
 		}
 	}
 
@@ -701,10 +706,38 @@ body .home {
 		margin: 0 auto;
 	}
 
-	// TEMPORARY UNTIL NEW SCREENSHOT ********************************
 	.basics-idea {
-		.basics-screenshot img {
-			width: 232px;
+		.basics-description {
+			margin-top: 4em;
+		}
+	}
+
+	.basics-vote {
+		.basics-screenshot {
+			margin-top: 4em;
+
+			#like-button {
+				@include button( $button-tny, $text-color-three, false, false, false, false);
+				padding: 0.3em 0.5em;
+				margin-right: 1em;
+				font-size: 2em;
+			}
+			.vote {
+				color: $text-color-three;
+				font-size: 2em;
+			}
+		}
+	}
+
+	.basics-comments {
+		.basics-screenshot {
+			margin-top: 1em;
+		}
+	}
+
+	.basics-boards {
+		.basics-description {
+			margin-top: 3em;
 		}
 	}
 
@@ -714,7 +747,7 @@ body .home {
 	text-align: center;
 	width: 1000px;
 	margin: 1em auto 0;
-	padding-bottom: 4em;
+	padding-bottom: 6em;
 	color: $text-color-one;
 
 	p {
