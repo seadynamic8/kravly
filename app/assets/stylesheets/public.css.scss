@@ -11,10 +11,13 @@ $steps-bg-color: white;
 $cta-bg-color: #125d7e;
 $discover-block-bg-color: white;
 $bar-bg-color: #125d7d;
+$basics-bg-color: white;
 
 $text-color-one: #125d7e;
 $text-color-two: white;
 $text-color-three: #fa4786;
+$text-color-four: #6f6f6f; // grey
+$text-color-five: #13c4a2; // green
 // $text-color-one: #125d7d;
 // $text-color-two: white;
 // $text-color-three: #fa4786;
@@ -488,6 +491,7 @@ body .home {
 			text-align: right;
 
 			#like-button {
+				@include button( $button-tny, $text-color-three, false, false, false, false);
 				padding: 0.3em 0.5em;
 				margin: 0;
 				font-size: 1em;
@@ -611,39 +615,197 @@ body .home {
 	padding: 10px 0;
 }
 
-//Basics Page
-.basics-top {
+// ##################### BASICS PAGE #########################
+
+.basics-page {
+	background-color: white;
+}
+
+.basics-header {
+	background: #99d4c8 url("http://img.kravly.com/home/main-background.png") center -504px no-repeat;
+	padding-bottom: 2em;
 	text-align: center;
-	background: #6EB1FF;
-	padding: 10px 0;
-	border-bottom: 1px solid #ccc;
-	margin-top: -10px;
+	color: $text-color-one;
+
+	h1 {
+		color: $text-color-one;
+		font-family: $logo-font;
+		font-size: 3em;
+		text-shadow: 0 0 8px white, 0 0 8px white, 0 0 8px white;
+		padding-top: 0.5em;
+		margin-bottom: 0;
+	}
+
+		p {
+		font-size: 1.3em;
+		font-weight: bold;
+		margin-bottom: 2em;
+	}
+}
+
+.basics-header-border {
+	background: url("http://img.kravly.com/home/main-bg-border.png") center top repeat-x;
+	display: block;
+	height: 50px;
+	border: none;
+	margin: 0;
 }
 
 .basics-main {
-	padding: 30px 0 20px 0;
+	background: $basics-bg-color;
+	padding-top: 4em;
+	width: 1000px;
+	margin: 0 auto;
 
-	img {
-		border: 1px solid #aaa;
-		margin: 0 5px;
-		-webkit-box-shadow: 4px 4px 5px rgba(50, 50, 50, 0.75);
-		-moz-box-shadow:    4px 4px 5px rgba(50, 50, 50, 0.75);
-		box-shadow:         4px 4px 5px rgba(50, 50, 50, 0.75);
+	.basics-block {
+		padding: 4em 0;
+		overflow: hidden;
+
+		.left, .right {
+			width: 50%;
+			display: inline-block;
+		}
+
+		.left {
+			padding-right: 2em;
+		}
+
+		.right {
+			padding-left: 2em;
+		}
+
+		.basics-description {
+
+			h2 {
+				color: $text-color-five;
+				font-weight: bold;
+			}
+
+			p {
+				color: $text-color-one;
+
+				.basics-block-item {
+					color: $text-color-three;
+					font-weight: bold;
+				}
+			}
+		}
+
+		.basics-screenshot {
+			text-align: center;
+		}
+
+		&:first-child {
+			padding-top: 1em;
+		}
 	}
 
-	.row {
-		padding: 20px 0;
+	hr {
+		border-top: 1px solid $text-color-one;
+		width: 95%;
+		margin: 0 auto;
+	}
 
-		.guide {
-			h3 {
-				text-align: center;
+	.basics-idea {
+		.basics-description {
+			margin-top: 4em;
+		}
+	}
+
+	.basics-vote {
+		.basics-screenshot {
+			margin-top: 4em;
+
+			#like-button {
+				@include button( $button-tny, $text-color-three, false, false, false, false);
+				padding: 0.3em 0.5em;
+				margin-right: 1em;
+				font-size: 2em;
 			}
-			p {
-				text-align: center;
-				font-size: 20px;
-				font-weight: bold;
+			.vote {
+				color: $text-color-three;
+				font-size: 2em;
 			}
 		}
 	}
+
+	.basics-comments {
+		.basics-screenshot {
+			margin-top: 1em;
+		}
+	}
+
+	.basics-boards {
+		.basics-description {
+			margin-top: 3em;
+		}
+	}
+
 }
 
+.basics-cta {
+	text-align: center;
+	width: 1000px;
+	margin: 1em auto 0;
+	padding-bottom: 6em;
+	color: $text-color-one;
+
+	p {
+		font-size: 2em;
+		font-style: italic;
+		color: $text-color-five;
+		text-shadow: 1px 1px 3px rgba(50, 50, 50, 0.75);
+	}
+
+	.button {
+		@include button( $button-tny, $text-color-three, false, false, false, false);
+		padding: 0.4em 3em;
+		font-size: 1em;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	.left-button {
+		margin: 0 1em;
+	}
+	.right-button {
+		margin-left: 1em;
+	}
+}
+
+// .basics-top {
+// 	text-align: center;
+// 	background: #6EB1FF;
+// 	padding: 10px 0;
+// 	border-bottom: 1px solid #ccc;
+// 	margin-top: -10px;
+// }
+
+// .basics-main {
+// 	padding: 30px 0 20px 0;
+
+// 	img {
+// 		border: 1px solid #aaa;
+// 		margin: 0 5px;
+// 		-webkit-box-shadow: 4px 4px 5px rgba(50, 50, 50, 0.75);
+// 		-moz-box-shadow:    4px 4px 5px rgba(50, 50, 50, 0.75);
+// 		box-shadow:         4px 4px 5px rgba(50, 50, 50, 0.75);
+// 	}
+
+// 	.row {
+// 		padding: 20px 0;
+
+// 		.guide {
+// 			h3 {
+// 				text-align: center;
+// 			}
+// 			p {
+// 				text-align: center;
+// 				font-size: 20px;
+// 				font-weight: bold;
+// 			}
+// 		}
+// 	}
+// }
+
+// ##################### END BASICS PAGE #########################

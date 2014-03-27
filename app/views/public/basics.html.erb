@@ -1,4 +1,154 @@
-<div class="basics-top">
+
+<div class="basics-page">
+
+<!-- ************* HEADER SECTION ******************* -->
+
+<header class="basics-header">
+	<h1>Basics</h1>
+	<p>A Few Key Concepts to Get You Started!</p>
+</header>
+
+<!-- ************* END HEADER SECTION ******************* -->
+
+<hr class="basics-header-border">
+
+<!-- ************* BASICS MAIN SECTION ******************* -->
+
+<div class="basics-main">
+
+	<!-- ........... Basics Idea ................ -->
+	
+	<div class="basics-idea basics-block">
+		<div class="basics-description left">
+			<h2>What's an Idea?</h2>
+			<p>
+				<span class="basics-block-item">Ideas</span> are where you <strong>post</strong> about your thoughts for a new product/service.  You can use it just to share your ideas or as a discussion platform for an existing business.  Find <strong>co-partners, funding opportunities</strong> or have other entreprenuers (or work with them to) build your dream product.
+			</p>
+		</div>
+
+		<div class="basics-screenshot right">
+			<div class="discover-square">
+				
+				<div class="category">
+					Kitchen & Household
+				</div>
+
+				<header><%= link_to "Funnel for Breville Juicer", "#" %></header>
+
+				<p class="pitch">
+					Don't let the juices get everywhere, with a custom funnel, all your
+					vegetables and fruits go all into your juicer!.
+				</p>
+
+				<div class="img-container">
+					<%= image_tag "http://img.kravly.com/uploads/idea/image/4/thumb_juicer-cover-photo.png" %>
+				</div>
+
+				<div class="discover-square-extras">
+					<div class="user-section">
+						<%= link_to (image_tag "http://img.kravly.com/uploads/user/avatar/1/small_profile__IGP1867.jpg"),
+									"#" %>
+						<%= link_to "jarvis", 
+							"#", class: "user-name" %>
+					</div>
+					
+					<div class="vote-section">
+						<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), 
+									"#", class: "tiny button", id: "like-button" %>
+						<span class="vote">7</span>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- ........... End Basics Idea ................ -->
+
+	<hr>
+
+	<!-- ........... Basics Vote ................ -->
+
+	<div class="basics-vote basics-block">
+		<div class="basics-screenshot left"><!-- 
+			<%= image_tag "http://img.kravly.com/basics/main-vote.png" %>
+			<%= image_tag "http://img.kravly.com/basics/idea-vote.png" %>
+			<%= image_tag "http://img.kravly.com/basics/idea-vote-action.png" %> -->
+
+			<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), 
+						"#", class: "tiny button", id: "like-button" %>
+			<span class="vote">8</span>
+		</div>
+
+		<div class="basics-description right">
+			<h2>Vote for your favorite Ideas</h2>
+			<p>
+				Cast a <span class="basics-block-item">Vote</span> for the Ideas that seem interesting to you. By doing this you help everyone to find the <strong>best Ideas</strong>.  The best Ideas will be shown on the discover page.  More votes will lead to more views and feedback for your ideas.
+			</p>
+		</div>
+	</div>
+
+	<!-- ........... End Basics Vote ................ -->
+
+	<hr>
+
+	<!-- ........... Basics Comments ................ -->
+
+	<div class="basics-comments basics-block">
+		<div class="basics-description left">
+			<h2>Discuss Ideas with Comments</h2>
+			<p>
+				<strong>Share your thoughts</strong> on Ideas by writing <span class="basics-block-item">Comments</span>.  This helps other users learn what can be improved or just share your enthusiam for the idea.  Offer help or advice when you can, or even offer to join the team if they are looking for more team members.
+			</p>
+		</div>
+
+		<div class="basics-screenshot right">
+			<%= image_tag "https://s3.amazonaws.com/img.kravly.com/basics/comments.png" %>
+		</div>
+	</div>
+
+	<!-- ........... End Basics Comments ................ -->
+
+	<hr>
+
+	<!-- ........... Basics Boards ................ -->
+
+	<div class="basics-boards basics-block">
+		<div class="basics-screenshot left">
+			<%= image_tag "https://s3.amazonaws.com/img.kravly.com/basics/board.png" %>
+		</div>
+
+		<div class="basics-description right">
+			<h2>Collect Ideas on Boards</h2>
+			<p>
+				<span class="basics-block-item">Boards</span> are where you <strong>organize your Ideas</strong> by grouping similar ones together.  Set up group boards to <strong>share ideas</strong> or <strong>plan new businesses</strong> with your friends or co-founders.  Use it to quickly show off many Ideas and have your friends see your creative side.
+			</p>
+		</div>
+	</div>
+
+	<!-- ........... End Basics Boards ................ -->
+	
+</div>
+
+<!-- ************* END BASICS MAIN SECTION ******************* -->
+
+<!-- ************* BASICS CTA SECTION ******************* -->
+
+<div class="basics-cta">
+	<p>Get Started!</p>
+
+	<% if current_user %>
+		1. <%= link_to "Add Board", new_user_board_path(current_user), class: "left-button button" %>
+		2. <%= link_to "Add Idea", new_idea_path, class: "right-button button" %>
+	<% else %>
+		<%= link_to "Log In", login_path, class: "left-button button" %>
+		<%= link_to "Sign Up", new_user_path, class: "right-button button" %>
+	<% end %>
+</div>
+
+<!-- ************* END BASICS CTA SECTION ******************* -->
+
+<!-- <div class="basics-top">
 	<h2>Kravly Basics</h2>
 	<h4>A few key concepts to get you started.</h4>
 </div>
@@ -61,9 +211,9 @@
 		</div>
 	</div>
 
-	<hr>
+	<hr> -->
 
-	<div class="row">
+<!-- 	<div class="row">
 		<div class="large-12 columns guide">
 			<h3>
 			<% if current_user %>
@@ -81,6 +231,8 @@
 			<h3>Use our <%= link_to "Starter Guide", intro_path %> for more Step-by-Step Help</h3>
 			<%= image_tag "http://img.kravly.com/basics/starter-guide.png" %>
 		</div>
-	</div>
+	</div> 
+
+</div> -->
 
 </div>
