@@ -39,9 +39,9 @@ feature "Idea Management" do
 			expect(page).to have_css '#idea_video_url'
 			expect(page).to have_css '#idea_content'
 			expect(page).to have_css '#idea_board_id'
-			expect(page).to have_css '#idea_commitment'
-			expect(page).to have_css 'label[for="idea_looking_for"]'
-			expect(page).to have_css '#idea_market'
+			# expect(page).to have_css '#idea_commitment'
+			# expect(page).to have_css 'label[for="idea_looking_for"]'
+			# expect(page).to have_css '#idea_market'
 			expect(page).to have_css 'input[value="0"]#idea_votes'
 		end
 
@@ -55,9 +55,11 @@ feature "Idea Management" do
 			board
 			expect {
 				within('.top-bar-section') { click_on "Idea" }
-				fill_in "Title", with: "FakeTitle"
-				fill_in "idea_content", with: "FakeContent"
-				click_on "Create Idea"
+				fill_in "idea[title]", with: "FakeTitle"
+				click_on "Next: Describe Your Idea"
+				fill_in "idea[content]", with: "FakeContent"
+				click_on "Next: Add Media"
+				click_on "Finish: Add Your Idea"
 			}.to change(Idea, :count).by(1)
 			idea = Idea.last
 			expect(current_path).to eq idea_path(idea)
@@ -65,13 +67,12 @@ feature "Idea Management" do
 			expect(page).to have_content("FakeTitle")
 		end
 
-		scenario "doesn't add a new idea without invalid attributes" do
+		scenario "doesn't add a new idea with invalid attributes" do
 			board
-			within('.top-bar-section') { click_on "Idea" }
-			click_on "Create Idea"
+			visit new_idea_path + "#!page=media"
+			click_on "Finish: Add Your Idea"
 			expect(current_path).to eq ideas_path
 			expect(page).to have_css('div.alert')
-			expect(page).to have_css 'input[value="0"]#idea_votes'
 		end
 
 		scenario "cancel add goes back to previous page" do
@@ -189,7 +190,7 @@ feature "Idea Management" do
 			other_idea.reload
 			expect(other_idea.votes).to eq other_idea_votes + 1
 			expect(current_path).to eq idea_path(other_idea)
-			within('.sidebar .idea-stats .vote') do
+			within('.idea-show-sidebar .idea-stats .vote') do
 				expect(page).to have_content "#{other_idea_votes + 1}"
 			end
 		end

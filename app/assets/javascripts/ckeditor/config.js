@@ -1,7 +1,7 @@
 CKEDITOR.editorConfig = function( config ) {
 
 		//config.language = 'fr';
-		// config.uiColor = '#aaa';
+		config.uiColor = '#125d7e';
 
 		config.toolbar = [
 			{ name: 'document', items: [ 'Source' ] },

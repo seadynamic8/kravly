@@ -17,11 +17,11 @@
 			<div class="icon active"></div>
 		</li>
 		<li>
-			<header>Description</header>
+			<header>Describe Idea</header>
 			<div class="icon"></div>
 		</li>
 		<li>
-			<header>Images/Media</header>
+			<header>Add Media</header>
 			<div class="icon"></div>
 		</li>
 	</ul>
@@ -32,6 +32,8 @@
 <%= form_for @idea, html: { multipart: true, id: "idea-new-form" } do |f| %>
 
 	<%= error_messages_for(@idea) %>
+
+	<%= hidden_field_tag "idea[votes]", 0 %>
 
 <!-- ************** IDEA-NEW PITCH SECTION **************** -->
 
@@ -44,7 +46,8 @@
 		<ul class="form-section">
 			<li class="title">
 				<%= f.label :title, "Give your idea a title" %>
-				<%= f.text_field :title, placeholder: "Title" %>
+				<%= f.text_field :title, 
+							placeholder: "In 2-3 Words, Describe Your Idea".upcase %>
 			</li>
 
 			<li class="board">
@@ -52,7 +55,8 @@
 
 				<% if @last_board %>
 					<%= f.select :board_id, 
-							@boards.map { |board| [board.name, board.id] }, { selected: @last_board.id} %>
+							@boards.map { |board| [board.name, board.id] }, 
+								{ selected: @last_board.id } %>
 				<% else %>
 					<%= f.select :board_id, 
 							@boards.map { |board| [board.name, board.id] } %>
@@ -60,16 +64,14 @@
 			</li>
 
 			<li class="nav">
-				<%= link_to "Next: Describe Your Idea", "#", class: "next-button small button" %>
+				<%= link_to "Next: Describe Your Idea", "#", class: "next-button right button" %>
 			</li>
 		</ul>
 
 		<div class="sidebar">
 			<h3>Tips:</h3>
 			<ul>
-				<li>Describe what your idea is and what it does.</li>
 				<li>Make it captivating.</li>
-				<li>Help the reader visualize the idea.</li>
 				<li>Use correct grammar and spelling.</li>
 			</ul>
 		</div>
@@ -89,20 +91,20 @@
 		<ul class="form-section">
 			<li class="workspace">
 				<%= f.label :workspace, "Workspace"%>
-				<%= f.text_area :content, placeholder: "Describe your Idea", style: "min-height: 200px" %>
+				<%= f.text_area :content, placeholder: "Describe your Idea".upcase, 
+							class: 'ckeditor' %>
 			</li>
 
-			<li>
-				<%= link_to "Back", "#", class: "prev-button small button" %>
-				<%= link_to "Next: Add Media", "#", class: "next-button small button" %>
+			<li class="nav">
+				<%= link_to "Back", "#", class: "prev-button button" %>
+				<%= link_to "Next: Add Media", "#", class: "next-button right button" %>
 			</li>
 		</ul>
 
 		<div class="sidebar">
 			<h3>Tips:</h3>
 			<ul>
-				<li>Describe what you idea is and what it does.</li>
-				<li>Make it captivating.</li>
+				<li>Describe what your idea is and what it does.</li>
 				<li>Help the reader visualize the idea.</li>
 				<li>Use correct grammar and spelling.</li>
 			</ul>
@@ -125,9 +127,12 @@
 				<%= f.label :cover_photo, "Upload a Photo" %>
 				<%= f.file_field :image %>
 
-				<%= f.url_field :remote_image_url, placeholder: "Or Image URL" %>
+				<p class="notice">Choose a photo that represents your Idea. 
+					Max image size: 2MB (.jpg, .jpeg, .png, .gif)</p>
 
-				<p class="notice">Choose a photo that represents your Idea. Max image size: 2MB (.jpg, .jpeg, .png, .gif)</h6>
+				<%= f.label "Or URL" %>
+				<%= f.url_field :remote_image_url, 
+							placeholder: "Upload from the Internet".upcase %>
 
 				<%= image_tag(@idea.image.small_thumb.url) if @idea.image? %>
 
@@ -135,23 +140,23 @@
 			</li>
 
 			<li class="video">
-				<%= f.label :video_url, "Video URL", class: "left inline" %>
-				<%= f.url_field :video_url, placeholder: "Video URL (Youtube or Vimeo)" %>
+				<%= f.label :video_url, "Video URL" %>
+				<%= f.url_field :video_url, placeholder: "Youtube or Vimeo Only".upcase %>
 			</li>
 
-			<li>
-				<%= link_to "Back", "#", class: "prev-button small button" %>
-				<%= link_to "Finish: Add Your Idea", "#", class: "next-button small button" %>
+			<li class="nav">
+				<%= link_to "Back", "#", class: "prev-button button" %>
+				<%= submit_tag "Finish: Add Your Idea", class: "right button" %>
 			</li>
 		</ul>
 
 		<div class="sidebar">
 			<h3>Tips:</h3>
 			<ul>
-				<li>Describe what you idea is and what it does.</li>
-				<li>Make it captivating.</li>
-				<li>Help the reader visualize the idea.</li>
-				<li>Use correct grammar and spelling.</li>
+				<li>High quality images lead to more views and therefore more community 
+						feedback.</li>
+				<li>Use only your own images, stock images, or images with a Creative
+						Commons license for free distribution.</li>
 			</ul>
 		</div>
 

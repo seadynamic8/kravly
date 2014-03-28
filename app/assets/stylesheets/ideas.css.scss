@@ -20,6 +20,7 @@ $description-bg-color: white;
 $comments-bg-color: white;
 $progress-icon-bg-color: white;
 $progress-icon-active-bg-color: #fa4786;
+$progress-icon-finished-bg-color: #13c4a2;
 
 $description-border-color: #13c4a2;
 $comments-border-color: #fa4786;
@@ -378,14 +379,14 @@ $comments-border-color: #fa4786;
 		hr {
 			border-top: 3px solid $text-color-one;
 			margin-top: 2em;
-			z-index: 0;
 		}
 
 		li {
+			position: relative;
 			display: inline-block;
 			vertical-align: top;
 			width: 32%;
-			z-index: 2;
+			z-index: 1;
 			margin-top: -4.5em;
 
 			header {
@@ -405,13 +406,15 @@ $comments-border-color: #fa4786;
 			.active {
 				background: $progress-icon-active-bg-color;
 			}
+
+			.finished {
+				background: $progress-icon-finished-bg-color;
+			}
 		}
 	}
 }
 
 // ******************** END IDEA NEW HEADER SECTION *********************
-
-
 
 #idea-new-form {
 	width: 1000px;
@@ -424,16 +427,14 @@ $comments-border-color: #fa4786;
 	}
 
 	.page {
-		
 		padding-bottom: 2em;
-		display: none;
 
 		header {
 			text-align: center;
 			font-weight: bold;
 			font-style: italic;
 			font-size: 1.5em;
-			padding-bottom: 1em;
+			padding-bottom: 2em;
 		}
 
 		.form-section {
@@ -441,7 +442,76 @@ $comments-border-color: #fa4786;
 			display: inline-block;
 			width: 69%;
 			margin: 0;
-			padding-right: 2em;
+			padding: 0 2em;
+
+			li {
+				padding-bottom: 2em;
+
+				label {
+					color: $text-color-one;
+					text-transform: uppercase;
+					font-weight: bold;
+					font-size: 1.2em;
+					padding-bottom: 0.2em;
+
+					&.error {
+						color: #f04124;
+						font-size: 0.9em;
+						text-transform: none;
+						font-weight: normal;
+					}
+				}
+
+				input, textarea {
+					margin-bottom: 0.2em;
+					border: 2px solid $text-color-one;
+
+					&[placeholder] {
+						font-weight: bold;
+					}
+
+					&.error {
+						border: 2px solid #f04124;
+					}
+				}
+
+				textarea {
+					min-height: 200px;
+				}
+
+				select {
+					color: $text-color-three;
+					border: 2px solid $text-color-one;
+				}
+
+				.counter {
+					display: block;
+					text-align: right;
+					text-transform: uppercase;
+					font-weight: light;
+					font-size: 0.9em;
+				}
+			}
+
+			.nav {
+				text-align: left;
+
+				.right {
+					text-align: right;
+				}
+
+				.button {
+					@include button( $button-sml, $text-color-three, false, false, false, false);
+					font-size: 1.1em;
+					padding: 1em 3em;
+				}
+
+				.prev-button {
+					@include button( $button-sml, $text-color-four, false, false, false, false);
+					font-size: 1.1em;
+					padding: 1em 3em;
+				}
+			}
 		}
 
 		.sidebar {
@@ -449,15 +519,58 @@ $comments-border-color: #fa4786;
 			vertical-align: top;
 			width: 30%;
 			padding-left: 1em;
+			color: $text-color-five;
+			font-weight: bold;
+
+			h3 {
+				color: inherit;
+				font-weight: inherit;
+				font-size: 1.2em;
+				text-transform: uppercase;
+			}
 		}
 		
 	}
 
 	// ******************** IDEA NEW PITCH SECTION *********************
 
+	#idea-new-pitch {
+
+		.form-section .title {
+			padding-right: 5em;
+		}
+
+		select {
+			width: 40%;
+		}
+	}
+
+	#idea-new-description, #idea-new-media {
+		display: none;
+	}
+
+	// ******************** IDEA NEW MEDIA SECTION *********************
+
+	#idea-new-media {
+
+		.photo {
+			padding-bottom: 5em;
+
+			input[type=file] {
+				margin-bottom: 1em;
+				height: 2.8em;
+				width: 100%;
+				padding: 0.1em 0.8em;
+				background: white;
+			}
+
+			.notice {
+				font-size: .8em;
+			}
+		}		
+	}
+
 }
-
-
 
 // ##################### END IDEA NEW PAGE #########################
 
