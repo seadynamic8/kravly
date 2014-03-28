@@ -87,9 +87,9 @@
     if ( currentStepIndex < targetStepIndex ) {
       
       // update progress bar class
-      this.$progessBar.eq(this.stepsCount).removeClass('active');
-      this.$progessBar.eq(this.stepsCount).addClass('finished');
-      this.$progessBar.eq(this.stepsCount + 1).addClass('active');
+      this.$progessBar.eq(currentStepIndex).removeClass('active');
+      this.$progessBar.eq(currentStepIndex).addClass('finished');
+      this.$progessBar.eq(targetStepIndex).addClass('active');
     }
     // if targetStep is prev step
     else if ( targetStepIndex < currentStepIndex ) {
@@ -99,9 +99,9 @@
       this.$form.find('.error').removeClass('error');
 
       // update progress bar class
-      this.$progessBar.eq(this.stepsCount).removeClass('active');
-      this.$progessBar.eq(this.stepsCount - 1).removeClass('finished');
-      this.$progessBar.eq(this.stepsCount - 1).addClass('active');
+      this.$progessBar.eq(currentStepIndex).removeClass('active');
+      this.$progessBar.eq(targetStepIndex).removeClass('finished');
+      this.$progessBar.eq(targetStepIndex).addClass('active');
     }
     else { // targetStep is the same step
       return false;
