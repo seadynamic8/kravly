@@ -1,15 +1,26 @@
 <% title "Settings" %>
 
-<div class="row">
-	<div class="large-6 large-centered columns">
-		<fieldset>
-				<legend><%= yield(:title) %></legend>
-				<ul>
-					<li><%= link_to "Change Password", change_password_user_path(@user) %></li>
-					<li><%= link_to "Edit Account", edit_user_path(@user) %></li>
-					<li><%= link_to "Delete Account", user_path(@user),
-									data: { confirm: "Are you sure?" }, method: :delete %></li>
-				</ul>
-		</fieldset>
-	</div>
+<div class="users-settings-page">
+
+<header class="users-settings-header">
+	<h1><%= yield(:title) %></h1>
+</header>
+
+<div class="users-settings-links">
+	<ul class="links">
+		<li>
+			<%= link_to "Edit Account", edit_user_path(@user),
+						class: "button" %>
+		</li>
+		<li>
+			<%= link_to "Change Password", change_password_user_path(@user),
+						class: "button" %>
+		</li>
+		<li>
+			<%= link_to "Delete Account", user_path(@user),
+						data: { confirm: "Are you sure you want to delete your account?" },
+						method: :delete,
+						class: "button" %>
+		</li>
+	</ul>
 </div>

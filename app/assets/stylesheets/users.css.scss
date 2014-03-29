@@ -418,4 +418,42 @@ $block-bg-color: #13c4a2;
 	}
 }
 
-// ##################### END USERS CHANGE-PASSWORD PAGE #########################
+// ##################### END USERS CHANGE-PASSWORD PAGE ######################
+
+// ##################### USERS SETTINGS PAGE ######################
+
+.users-settings-page {
+	background: url('http://img.kravly.com/white-grey-background.png') repeat;
+	padding-bottom: 1000px;
+}
+
+.users-settings-header {
+	width: 500px;
+	margin: 0 auto;
+	padding: 3em 0 2em;
+
+	h1 {
+		color: $text-color-five;
+		font-weight: bold;
+		font-size: 2.3em;
+		text-align: center;
+	}
+}
+
+.users-settings-links {
+	width: 500px;
+	margin: 0 auto;
+	text-align: center;
+
+	.links {
+		list-style: none;
+
+		.button {
+			font-size: 1.1em;
+			width: 251px;
+		}
+	}
+}
+
+// ##################### END USERS SETTINGS PAGE ######################
+
