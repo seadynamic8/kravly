@@ -1,15 +1,16 @@
 <% title "Edit Idea" %>
 
-<div class="row">
-	<div class="large-10 large-centered columns">
-		<%= form_for @idea, html: { multipart: true } do |f| %>
-			<%= error_messages_for(@idea) %>
-			
-			<fieldset>
-				<legend><%= yield(:title) %></legend>
+<div class="idea-edit-page">
 
-				<%= render partial: 'form', locals: { f: f } %>
-			</fieldset>
-		<% end %>
-	</div>
+<header class="idea-edit-header">
+	<h1><%= yield(:title) %></h1>
+</header>
+
+<%= form_for @idea, html: { multipart: true, class: "idea-edit-form" } do |f| %>
+	<%= error_messages_for(@idea) %>
+
+		<%= render partial: 'form', locals: { f: f } %>
+
+<% end %>
+
 </div>

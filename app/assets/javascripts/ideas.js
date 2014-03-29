@@ -5,7 +5,6 @@
   function Wizard(form, steps_map) {
     this.$form = form;
     this.$progessBar = $(".idea-new-progress-bar").find(".icon");
-    this.idPrefix = "#idea-new-";
     this.steps_map = steps_map;
     this.stateAnchorMap = {};
 
@@ -107,7 +106,7 @@
       return false;
     }
 
-    this.$form.find(this.idPrefix + targetStep).show();
+    this.$form.find("." + targetStep).show();
 
     return true;
   };
@@ -244,7 +243,7 @@
       schema_map: anchor_schema_map
     });
 
-    wizard = new Wizard($('#idea-new-form'), steps_map);
+    wizard = new Wizard($('.idea-new-form'), steps_map);
 
 
     // Validation 

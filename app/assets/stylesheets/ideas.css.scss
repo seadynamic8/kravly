@@ -420,7 +420,7 @@ $comments-border-color: #fa4786;
 
 // ******************** END IDEA NEW HEADER SECTION *********************
 
-#idea-new-form {
+.idea-new-form {
 	width: 1000px;
 	margin: 0 auto;
 
@@ -536,9 +536,9 @@ $comments-border-color: #fa4786;
 		
 	}
 
-	// ******************** IDEA NEW PITCH SECTION *********************
+	// ******************** IDEA NEW SPECIFIC SECTION *********************
 
-	#idea-new-pitch {
+	.pitch {
 
 		.form-section .title {
 			padding-right: 5em;
@@ -549,13 +549,11 @@ $comments-border-color: #fa4786;
 		}
 	}
 
-	#idea-new-description, #idea-new-media {
+	.description, .media {
 		display: none;
 	}
 
-	// ******************** IDEA NEW MEDIA SECTION *********************
-
-	#idea-new-media {
+	.media {
 
 		.photo {
 			padding-bottom: 5em;
@@ -577,6 +575,194 @@ $comments-border-color: #fa4786;
 }
 
 // ##################### END IDEA NEW PAGE #########################
+
+// ##################### IDEA EDIT PAGE #########################
+
+.idea-edit-page {
+	background: url('http://img.kravly.com/white-grey-background.png') repeat;
+	padding-bottom: 1000px;
+}
+
+.idea-edit-header {
+	width: 1000px;
+	margin: 0 auto;
+	padding: 3em 0 2em;
+
+	h1 {
+		color: $text-color-five;
+		font-weight: bold;
+		font-size: 2.3em;
+		width: 35%;
+	}
+}
+
+.idea-edit-form {
+	width: 1000px;
+	margin: 0 auto;
+
+	input[type="text"], textarea {
+		&.error {
+			border: 2px solid #f04124;
+		}
+	}
+
+	.page {
+		padding-bottom: 3em;  // Special
+
+		header {  // Special
+			// text-align: center;
+			font-weight: bold;
+			// font-style: italic;
+			font-size: 1.5em;
+			padding: 0.3em 1em;
+			margin-bottom: 2em;
+			background: $text-color-four;
+			color: $text-color-two;
+		}
+
+		.form-section {
+			list-style: none;
+			display: inline-block;
+			width: 69%;
+			margin: 0;
+			padding: 0 2em;
+
+			li {
+				padding-bottom: 2em;
+
+				label {
+					color: $text-color-one;
+					text-transform: uppercase;
+					font-weight: bold;
+					font-size: 1.2em;
+					padding-bottom: 0.2em;
+
+					&.error {
+						color: #f04124;
+						font-size: 0.9em;
+						text-transform: none;
+						font-weight: normal;
+					}
+				}
+
+				input, textarea {
+					margin-bottom: 0.2em;
+					border: 2px solid $text-color-one;
+
+					&[placeholder] {
+						font-weight: bold;
+						color: $text-color-four;  // Added
+					}
+
+					&.error {
+						border: 2px solid #f04124;
+					}
+				}
+
+				input[type=file] {
+					margin-bottom: 1em;
+					height: 2.8em;
+					padding: 0.1em 0.8em;
+					background: white;
+				}
+
+				textarea {
+					min-height: 100px;  // Special
+				}
+
+				select {
+					color: $text-color-three;
+					border: 2px solid $text-color-one;
+					width: 50%;  // Special
+				}
+
+				&.title {
+					padding-right: 5em; // Special
+				}
+
+				.counter {
+					display: block;
+					text-align: right;
+					text-transform: uppercase;
+					font-weight: light;
+					font-size: 0.9em;
+				}
+			}
+
+			.photo {  // Special
+				padding-bottom: 5em;
+
+				input[type=file] {
+					margin-bottom: 1em;
+					height: 2.8em;
+					width: 100%;
+					padding: 0.1em 0.8em;
+					background: white;
+				}
+
+				.notice {
+					font-size: .8em;
+				}
+
+				img {
+					max-height: 300px;
+				}
+			}
+
+			.looking-for { // Special
+				
+				.checkbox-label {
+					font-size: 1em;
+					color: $text-color-four;
+				}
+			}
+
+			.market { // Special
+
+				.customer-location {
+					color: $text-color-four;
+					margin-top: .3em;
+				}
+			}
+
+			.nav {
+				text-align: left;
+				margin-top: 3em;  // Special
+
+				.right {
+					@include button( $button-sml, $text-color-three, false, false, false, false);
+					font-size: 1.1em;
+					padding: 1em 3em;
+					text-align: right;
+				}
+
+				.prev-button {
+					@include button( $button-sml, $text-color-four, false, false, false, false);
+					font-size: 1.1em;
+					padding: 1em 3em;
+				}
+			}
+		}
+
+		.sidebar {
+			display: inline-block;
+			vertical-align: top;
+			width: 30%;
+			padding-left: 1em;
+			color: $text-color-five;
+			font-weight: bold;
+
+			h3 {
+				color: inherit;
+				font-weight: inherit;
+				font-size: 1.2em;
+				text-transform: uppercase;
+			}
+		}
+	}
+}
+
+// ##################### END IDEA EDIT PAGE #########################
 
 
 // Idea Show Page

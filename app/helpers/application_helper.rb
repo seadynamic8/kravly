@@ -8,4 +8,12 @@ module ApplicationHelper
 		content_for(:title) { h(page_title.to_s) }
 	end
 
+	def action_new_create?
+		params[:action] == 'new' || params[:action] == 'create'
+	end
+
+	def action_edit_update?
+		params[:action] == 'edit' || params[:action] == 'update'
+	end
+
 end

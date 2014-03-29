@@ -95,7 +95,7 @@ feature "Idea Management" do
 			idea = create(:idea, board: board, title: "Old Title")
 			click_link "Your Ideas"
 			within("#idea-#{idea.id}") { find('.edit-link').click }
-			fill_in "Title", with: "New Title"
+			fill_in "idea[title]", with: "New Title"
 			click_button "Update Idea"
 			idea.reload
 			expect(idea.title).to eq "New Title"
@@ -106,7 +106,7 @@ feature "Idea Management" do
 			click_link "Your Ideas"
 			click_link "#{idea.title}"
 			find('#edit-button').click
-			fill_in "Title", with: "New Title"
+			fill_in "idea[title]", with: "New Title"
 			click_button "Update Idea"
 			idea.reload
 			expect(idea.title).to eq "New Title"
@@ -117,7 +117,7 @@ feature "Idea Management" do
 			click_link "Your Boards"
 			click_link "#{board.name}"
 			within("#idea-#{idea.id}") { find('.edit-link').click }
-			fill_in "Title", with: "New Title"
+			fill_in "idea[title]", with: "New Title"
 			click_button "Update Idea"
 			idea.reload
 			expect(idea.title).to eq "New Title"
@@ -125,7 +125,7 @@ feature "Idea Management" do
 
 		scenario "edit idea without title" do
 			visit edit_idea_path(idea)
-			fill_in "Title", with: ""
+			fill_in "idea[title]", with: ""
 			click_button "Update Idea"
 			expect(page).to have_css 'div.alert'
 			expect(page).to have_css "input[value='#{idea.votes}']#idea_votes"
@@ -235,7 +235,7 @@ feature "Idea Management" do
 			visit idea_path(idea)
 			expect(page).to have_content("Old Title")
 			find('#edit-button').click
-			fill_in "Title", with: "New Title"
+			fill_in "idea[title]", with: "New Title"
 			click_on "Update Idea"
 			expect(page).to have_content("Idea was updated.")
 			expect(page).to have_content("New Title")

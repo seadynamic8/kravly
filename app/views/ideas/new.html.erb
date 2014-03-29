@@ -2,7 +2,7 @@
 
 <div class="idea-new-page">
 
-<!-- ##################### IDEA-NEW PITCH PAGE ###########################-->
+<!-- ##################### IDEA-NEW PAGE ###########################-->
 
 <!-- ************** IDEA-NEW HEADER SECTION **************** -->
 
@@ -29,144 +29,15 @@
 
 <!-- ************** END IDEA-NEW HEADER SECTION **************** -->
 
-<%= form_for @idea, html: { multipart: true, id: "idea-new-form" } do |f| %>
+<%= form_for @idea, html: { multipart: true, class: "idea-new-form" } do |f| %>
 
 	<%= error_messages_for(@idea) %>
 
-	<%= hidden_field_tag "idea[votes]", 0 %>
-
-<!-- ************** IDEA-NEW PITCH SECTION **************** -->
-
-	<div class="page" id="idea-new-pitch">
-		
-		<header>
-			Give a brief overview of your idea
-		</header>
-
-		<ul class="form-section">
-			<li class="title">
-				<%= f.label :title, "Give your idea a title" %>
-				<%= f.text_field :title, 
-							placeholder: "In 2-3 Words, Describe Your Idea".upcase %>
-			</li>
-
-			<li class="board">
-				<%= f.label :board, "Which board are you adding your idea to?" %>
-
-				<% if @last_board %>
-					<%= f.select :board_id, 
-							@boards.map { |board| [board.name, board.id] }, 
-								{ selected: @last_board.id } %>
-				<% else %>
-					<%= f.select :board_id, 
-							@boards.map { |board| [board.name, board.id] } %>
-				<% end %>
-			</li>
-
-			<li class="nav">
-				<%= link_to "Next: Describe Your Idea", "#", class: "next-button right button" %>
-			</li>
-		</ul>
-
-		<div class="sidebar">
-			<h3>Tips:</h3>
-			<ul>
-				<li>Make it captivating.</li>
-				<li>Use correct grammar and spelling.</li>
-			</ul>
-		</div>
-
-	</div>
-
-<!-- ************** END IDEA-NEW PITCH SECTION **************** -->
-
-<!-- ************** IDEA-NEW DESCRIPTION SECTION **************** -->
-
-	<div class="page" id="idea-new-description">
-		
-		<header>
-			How does your idea work and what makes it special?
-		</header>
-
-		<ul class="form-section">
-			<li class="workspace">
-				<%= f.label :workspace, "Workspace"%>
-				<%= f.text_area :content, placeholder: "Describe your Idea".upcase, 
-							class: 'ckeditor' %>
-			</li>
-
-			<li class="nav">
-				<%= link_to "Back", "#", class: "prev-button button" %>
-				<%= link_to "Next: Add Media", "#", class: "next-button right button" %>
-			</li>
-		</ul>
-
-		<div class="sidebar">
-			<h3>Tips:</h3>
-			<ul>
-				<li>Describe what your idea is and what it does.</li>
-				<li>Help the reader visualize the idea.</li>
-				<li>Use correct grammar and spelling.</li>
-			</ul>
-		</div>
-
-	</div>
-
-<!-- ************** END IDEA-NEW DESCRIPTION SECTION **************** -->
-
-<!-- ************** IDEA-NEW MEDIA SECTION **************** -->
-
-	<div class="page" id="idea-new-media">
-		
-		<header>
-			Help the community visualize the idea
-		</header>
-
-		<ul class="form-section">
-			<li class="photo">
-				<%= f.label :cover_photo, "Upload a Photo" %>
-				<%= f.file_field :image %>
-
-				<p class="notice">Choose a photo that represents your Idea. 
-					Max image size: 2MB (.jpg, .jpeg, .png, .gif)</p>
-
-				<%= f.label "Or URL" %>
-				<%= f.url_field :remote_image_url, 
-							placeholder: "Upload from the Internet".upcase %>
-
-				<%= image_tag(@idea.image.small_thumb.url) if @idea.image? %>
-
-				<%= f.hidden_field :image_cache %>
-			</li>
-
-			<li class="video">
-				<%= f.label :video_url, "Video URL" %>
-				<%= f.url_field :video_url, placeholder: "Youtube or Vimeo Only".upcase %>
-			</li>
-
-			<li class="nav">
-				<%= link_to "Back", "#", class: "prev-button button" %>
-				<%= submit_tag "Finish: Add Your Idea", class: "right button" %>
-			</li>
-		</ul>
-
-		<div class="sidebar">
-			<h3>Tips:</h3>
-			<ul>
-				<li>High quality images lead to more views and therefore more community 
-						feedback.</li>
-				<li>Use only your own images, stock images, or images with a Creative
-						Commons license for free distribution.</li>
-			</ul>
-		</div>
-
-	</div>
-
-<!-- ************** END IDEA-NEW MEDIA SECTION **************** -->
+		<%= render partial: 'form', locals: { f: f } %>
 
 <% end %>
 
-<!-- ##################### END IDEA-NEW PITCH PAGE ###########################-->
+<!-- ##################### END IDEA-NEW PAGE ###########################-->
 
 <!-- <div class="row">
 	<div class="large-10 large-centered columns">
