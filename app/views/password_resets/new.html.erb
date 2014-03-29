@@ -1,24 +1,24 @@
 <% title "Reset Password" %>
 
-<div class="row">
-	<div class="large-6 large-centered columns">
-		<%= form_tag password_resets_path, method: :post do |f| %>
-			<fieldset>
-				<legend><%= yield(:title) %></legend>
+<div class="password_resets-new-page"> <!-- Reset Password from Login -->
 
-				<div class="row">
-					<div class="large-12 columns">
-						<%= label_tag :email %>
-						<%= text_field_tag :email, params[:email] %>
-					</div>
-				</div>
+<header class="password_resets-new-header">
+	<h1><%= yield(:title) %></h1>
+</header>
 
-				<div class="row">
-					<div class="large-12 columns">
-						<%= button_tag "Reset Password", class: "button" %>
-					</div>
-				</div>
-			</fieldset>
-		<% end %>
-	</div>
-</div>
+<%= form_tag password_resets_path, method: :post, 
+			class: "password_resets-new-form" do |f| %>
+
+	<ul class="form-section">
+		<li class="email">
+			<%= label_tag :email %>
+			<%= text_field_tag :email, params[:email],
+					placeholder: "Enter your email to reset password".upcase %>
+		</li>
+
+		<li class="nav">
+			<%= button_tag "Reset Password", class: "button" %>
+		</li>
+	</ul>
+
+<% end %>

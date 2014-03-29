@@ -6,7 +6,6 @@
 	<h1><%= yield(:title) %></h1>
 </header>
 
-
 <%= form_tag sessions_path, class: "session-new-form" do |f| %>
 
 	<ul class="form-section">
@@ -30,7 +29,6 @@
 	</ul>
 
 <% end %>
-
 
 <div class="session-extras">
 		<p><%= link_to "New User?", new_user_path %></p>

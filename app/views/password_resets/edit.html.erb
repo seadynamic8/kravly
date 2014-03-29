@@ -1,37 +1,30 @@
 <% title "Reset Password" %>
 
-<div class="row">
-	<div class="large-6 large-centered columns">
-		<%= form_for @user, url: password_reset_path(params[:id]) do |f| %>
-			<%= error_messages_for(@user) %>
+<div class="password_resets-edit-page"> <!-- Reset Password Link From Email -->
 
-			<fieldset>
-				<legend><%= yield(:title) %></legend>
+<header class="password_resets-edit-header">
+	<h1><%= yield(:title) %></h1>
+</header>
 
-				<div class="row">
-					<div class="large-2 columns">
-						<%= f.label :password, class: "left" %>
-					</div>
-					<div class="large-8 columns">
-						<%= f.password_field :password, placeholder: "Password" %>
-					</div>
-				</div>
+<%= form_for @user, url: password_reset_path(params[:id]),
+			html: { class: "password_resets-edit-form" } do |f| %>
 
-				<div class="row">
-					<div class="large-2 columns">
-						<%= f.label :password_confirmation, class: "left" %>
-					</div>
-					<div class="large-8 columns">
-						<%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
-					</div>
-				</div>
+	<%= error_messages_for(@user) %>
 
-				<div class="row">
-					<div class="large-5 large-centered columns">
-						<%= f.submit "Update Password", class: "button" %>
-					</div>
-				</div>
-			</fieldset>
-		<% end %>
-	</div>
-</div>
+	<ul class="form-section">
+		<li class="password">
+			<%= f.label :password %>
+			<%= f.password_field :password, placeholder: "Password" %>
+		</li>
+
+		<li class="password_confirmation">
+			<%= f.label :password_confirmation %>
+			<%= f.password_field :password_confirmation, 
+						placeholder: "Password Confirmation" %>
+		</li>
+
+		<li class="nav">
+			<%= f.submit "Update Password", class: "button" %>
+		</li>
+	</ul>
+<% end %>
