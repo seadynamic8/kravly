@@ -200,3 +200,102 @@ $block-bg-color: #13c4a2;
 }
 
 // ##################### END VOTES BOARDS PAGE #########################
+
+// ##################### USER NEW PAGE #########################
+
+.user-new-page {
+	background: url('http://img.kravly.com/white-grey-background.png') repeat;
+	padding-bottom: 1000px;
+}
+
+.user-new-header {
+	width: 500px;
+	margin: 0 auto;
+	padding: 3em 0 2em;
+
+	h1 {
+		color: $text-color-five;
+		font-weight: bold;
+		font-size: 2.3em;
+		text-align: center;
+	}
+}
+
+.user-new-form {
+	width: 500px;
+	margin: 0 auto;
+
+	.form-section {
+		list-style: none;
+		margin: 0;
+		padding: 0 2em;
+
+		li {
+			padding-bottom: 2em;
+
+			label {
+				color: $text-color-one;
+				text-transform: uppercase;
+				font-weight: bold;
+				font-size: 1.2em;
+				padding-bottom: 0.2em;
+
+				&.error {
+					color: #f04124;
+					font-size: 0.9em;
+					text-transform: none;
+					font-weight: normal;
+				}
+			}
+
+			input {
+				margin-bottom: 0.2em;
+				border: 2px solid $text-color-one;
+
+				&[placeholder] {
+					font-weight: bold;
+					color: $text-color-four;  // Added
+				}
+
+				&.error {
+					border: 2px solid #f04124;
+				}
+			}
+
+			.counter {
+				display: block;
+				text-align: right;
+				text-transform: uppercase;
+				font-weight: light;
+				font-size: 0.9em;
+			}
+		}
+
+		.disclaimer {
+			color: $text-color-four;
+			text-align: center;
+		}
+
+		.nav {
+			text-align: left;
+
+			.right {
+				text-align: right;
+			}
+
+			.button {
+				@include button( $button-sml, $text-color-three, false, false, false, false);
+				font-size: 1.1em;
+				padding: 1em 3em;
+			}
+
+			.prev-button {
+				@include button( $button-sml, $text-color-four, false, false, false, false);
+				font-size: 1.1em;
+				padding: 1em 3em;
+			}
+		}
+	}
+}
+
+// ##################### END USERS NEW PAGE #########################

@@ -1,4 +1,46 @@
-<div class="row">
+
+<ul class="form-section">
+	<li class="name">
+		<%= f.label :name, "Name*" %>
+		<%= f.text_field :name, placeholder: "Give your board a name".upcase %>
+	</li>
+
+	<li class="description">
+		<%= f.label :description %>
+		<%= f.text_area :description, 
+				placeholder: "A quick description of your board".upcase %>
+	</li>
+
+	<li class="category">
+		<%= f.label :category %>
+		<%= f.select :category_id, 
+				@categories.map { |category| [category.name, category.id] }
+				%>
+	</li>
+
+	<%= f.hidden_field :user_id %>
+
+	<li class="nav">
+		<% if params[:action] == 'new' || params[:action] == 'create' %>
+			<%= link_to "Cancel", @return_to || boards_user_path(current_user), 
+					class: "prev-button button" %>
+		<% else %>
+			<%= link_to "Cancel", @return_to || user_board_path(current_user, @board), 
+					class: "prev-button button" %>
+		<% end %>
+		<%= f.submit class: "right button" %>
+	</li>
+</ul>
+
+<div class="sidebar">
+	<h3>Tips:</h3>
+	<ul>
+		<li>Boards are 'groups' which you put your Ideas into.</li>
+		<li>Use them as your own folder to seperate out different Ideas.</li>
+	</ul>
+</div>
+
+<!-- <div class="row">
 	<div class="large-2 columns">
 		<%= f.label :name, "Name*", class: "left inline" %>
 	</div>
@@ -26,7 +68,7 @@
 				id: "customDropdown"
 				%>
 	</div>
-</div>
+</div> -->
 
 <!-- <div class="row">
 	<div class="large-2 columns">
@@ -45,7 +87,7 @@
 		</div>
 	</div>
 </div> -->
-
+<!-- 
 <%= f.hidden_field :user_id %>
 
 <div class="row">
@@ -59,3 +101,4 @@
 		<% end %>
 	</div>
 </div>
+ -->

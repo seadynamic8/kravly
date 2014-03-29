@@ -12,11 +12,13 @@ class SessionsController < ApplicationController
   	if user && user.authenticate(params[:password])
   		session[:user_id] = user.id
       flash[:notice] = "Welcome #{user.name}!"
-      if params[:return_to] && params[:return_to] != root_url
-        redirect_to params[:return_to]
-      else
+      # ******* Temporarily unitl I find a better solution. 
+      #
+      # if params[:return_to] && params[:return_to] != root_url
+      #   redirect_to params[:return_to]
+      # else
     		redirect_to discover_path
-      end
+      # end
   	else
   		flash.now[:alert] = "Username or Password is invalid!"
   		render :new

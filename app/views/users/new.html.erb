@@ -1,15 +1,43 @@
 <% title "New User" %>
 
-<div class="row">
-	<div class="large-7 large-centered columns">
-		<%= form_for @user do |f| %>
-			<%= error_messages_for(@user) %>
+<div class="user-new-page"> <!-- SIGN UP PAGE -->
 
-			<fieldset>
-				<legend><%= yield(:title) %></legend>
+<header class="user-new-header">
+	<h1><%= yield(:title) %></h1>
+</header>
 
-				<%= render partial: 'form', locals: { f: f } %>
-			</fieldset>
-		<% end %>
-	</div>
+<%= form_for @user, html: { class: "user-new-form" }  do |f| %>
+	<%= error_messages_for(@user) %>
+
+	<%= f.hidden_field :display, value: 2 %>
+	<%= hidden_field_tag "return_to", @return_to %>
+
+	<ul class="form-section">
+		<li class="email">
+			<%= f.label :email, "Email*" %>
+			<%= f.email_field :email, placeholder: "Email" %>
+		</li>
+
+		<li class="password">
+			<%= f.label :password, "Password*" %>
+			<%= f.password_field :password, placeholder: "Password" %>
+		</li>
+
+		<li class="name">
+			<%= f.label :name %>
+			<%= f.text_field :firstname, placeholder: "First Name" %>
+			<%= f.text_field :lastname, placeholder: "Last Name" %>
+		</li>
+
+		<p class="disclaimer">By creating an account, you agree to our
+			<%= link_to "terms of use", terms_path %>.</p>
+
+		<li class="nav">
+			<%= link_to "Cancel", @return_to || root_url, class: "prev-button button" %>
+			<%= f.submit class: "right button" %>
+		</li>
+	</ul>
+
+<% end %>
+
 </div>

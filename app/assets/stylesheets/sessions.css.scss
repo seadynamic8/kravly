@@ -1,3 +1,98 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// ##################### VARIABLES #########################
+$text-color-one: #125d7d; // blue
+$text-color-two: white;
+$text-color-three: #fa4786; // fuschia
+$text-color-four: #6f6f6f; // grey
+$text-color-five: #13c4a2; // green
+
+$link-hover-color: #39BBE6;
+
+.session-new-page {
+	background: url('http://img.kravly.com/white-grey-background.png') repeat;
+	padding-bottom: 1000px;
+}
+
+.session-new-header {
+	width: 500px;
+	margin: 0 auto;
+	padding: 3em 0 2em;
+
+	h1 {
+		color: $text-color-five;
+		font-weight: bold;
+		font-size: 2.3em;
+		text-align: center;
+	}
+}
+
+.session-new-form {
+	width: 500px;
+	margin: 0 auto;
+
+	.form-section {
+		list-style: none;
+		margin: 0;
+		padding: 0 2em;
+
+		li {
+			padding-bottom: 2em;
+
+			label {
+				color: $text-color-one;
+				text-transform: uppercase;
+				font-weight: bold;
+				font-size: 1.2em;
+				padding-bottom: 0.2em;
+
+				&.error {
+					color: #f04124;
+					font-size: 0.9em;
+					text-transform: none;
+					font-weight: normal;
+				}
+			}
+
+			input {
+				margin-bottom: 0.2em;
+				border: 2px solid $text-color-one;
+
+				&[placeholder] {
+					font-weight: bold;
+					color: $text-color-four;  // Added
+				}
+
+				&.error {
+					border: 2px solid #f04124;
+				}
+			}
+
+			.counter {
+				display: block;
+				text-align: right;
+				text-transform: uppercase;
+				font-weight: light;
+				font-size: 0.9em;
+			}
+		}
+
+		.nav {
+			text-align: center;
+
+			.button {
+				@include button( $button-sml, $text-color-three, false, false, false, false);
+				font-size: 1.1em;
+				padding: 1em 3em;
+			}
+		}
+	}
+}
+
+.session-extras {
+	width: 500px;
+	margin: 0 auto;
+	text-align: center;
+}

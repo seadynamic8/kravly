@@ -320,14 +320,14 @@ $block-bg-color: #13c4a2;
 
 // ##################### END BOARD SHOW PAGE #########################
 
-// ##################### BOARD NEW PAGE #########################
+// ##################### BOARD NEW & EDIT PAGE #########################
 
-.board-new-page {
+.board-new-page, .board-edit-page {
 	background: url('http://img.kravly.com/white-grey-background.png') repeat;
 	padding-bottom: 1000px;
 }
 
-.board-new-header {
+.board-new-header, .board-edit-header {
 	width: 1000px;
 	margin: 0 auto;
 	padding: 3em 0 2em;
@@ -341,7 +341,7 @@ $block-bg-color: #13c4a2;
 	}
 }
 
-.board-new-form {
+.board-new-form, .board-edit-form {
 	width: 1000px;
 	margin: 0 auto;
 
@@ -376,6 +376,7 @@ $block-bg-color: #13c4a2;
 
 				&[placeholder] {
 					font-weight: bold;
+					color: $text-color-four;  // Added
 				}
 
 				&.error {
@@ -439,4 +440,4 @@ $block-bg-color: #13c4a2;
 	}
 }
 
-// ##################### END BOARD SHOW PAGE #########################
+// ##################### END BOARD NEW & EDIT PAGE #########################

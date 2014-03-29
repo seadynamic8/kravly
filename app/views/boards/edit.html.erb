@@ -1,6 +1,19 @@
 <% title "Edit A Board" %>
 
-<div class="row">
+<div class="board-edit-page">
+
+<header class="board-edit-header">
+	<h1><%= yield(:title) %></h1>
+</header>
+
+<%= form_for [@board.user, @board], html: { class: "board-edit-form" } do |f| %>
+	<%= error_messages_for(@board) %>
+	
+	<%= render partial: 'form', locals: { f: f } %>
+
+<% end %>
+
+<!-- <div class="row">
 	<div class="large-7 large-centered columns">
 		<%= form_for [@board.user, @board] do |f| %>
 			<%= error_messages_for(@board) %>
@@ -8,8 +21,9 @@
 			<fieldset>
 				<legend><%= yield(:title) %></legend>
 
-				<%= render partial: 'form', locals: { f: f } %>
 			</fieldset>
 		<% end %>
 	</div>
+</div> -->
+
 </div>

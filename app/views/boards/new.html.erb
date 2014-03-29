@@ -9,41 +9,7 @@
 <%= form_for [@board.user, @board], html: { class: "board-new-form" } do |f| %>
 	<%= error_messages_for(@board) %>
 	
-	<ul class="form-section">
-		<li class="name">
-			<%= f.label :name, "Name*", class: "left inline" %>
-			<%= f.text_field :name, placeholder: "Name".upcase %>
-		</li>
-
-		<li class="description">
-			<%= f.label :description, class: "left inline" %>
-			<%= f.text_area :description, 
-					placeholder: "A quick description of your board".upcase %>
-		</li>
-
-		<li class="category">
-			<%= f.label :category, class: "left inline" %>
-			<%= f.select :category_id, 
-					@categories.map { |category| [category.name, category.id] }
-					%>
-		</li>
-
-		<%= f.hidden_field :user_id %>
-
-		<li class="nav">
-			<%= link_to "Cancel", @return_to || boards_user_path(current_user), 
-						class: "prev-button button" %>
-			<%= f.submit class: "right button" %>
-		</li>
-	</ul>
-
-	<div class="sidebar">
-		<h3>Tips:</h3>
-		<ul>
-			<li>Boards are 'groups' which you put your Ideas into.</li>
-			<li>Use them as your own folder to seperate out different Ideas.</li>
-		</ul>
-	</div>
+	<%= render partial: 'form', locals: { f: f } %>
 
 <% end %>
 
