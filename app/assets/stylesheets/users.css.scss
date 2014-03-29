@@ -201,14 +201,14 @@ $block-bg-color: #13c4a2;
 
 // ##################### END VOTES BOARDS PAGE #########################
 
-// ##################### USER NEW PAGE #########################
+// ##################### USER NEW & EDIT PAGE #########################
 
-.user-new-page {
+.user-new-page, .user-edit-page {
 	background: url('http://img.kravly.com/white-grey-background.png') repeat;
 	padding-bottom: 1000px;
 }
 
-.user-new-header {
+.user-new-header, .user-edit-header {
 	width: 500px;
 	margin: 0 auto;
 	padding: 3em 0 2em;
@@ -221,7 +221,7 @@ $block-bg-color: #13c4a2;
 	}
 }
 
-.user-new-form {
+.user-new-form, .user-edit-form {
 	width: 500px;
 	margin: 0 auto;
 
@@ -248,7 +248,7 @@ $block-bg-color: #13c4a2;
 				}
 			}
 
-			input {
+			input, textarea {
 				margin-bottom: 0.2em;
 				border: 2px solid $text-color-one;
 
@@ -262,6 +262,22 @@ $block-bg-color: #13c4a2;
 				}
 			}
 
+			input[type=file] {
+				margin-bottom: 1em;
+				height: 2.8em;
+				padding: 0.1em 0.8em;
+				background: white;
+			}
+
+			textarea {
+				min-height: 100px;  // Special
+			}
+
+			select {
+				color: $text-color-three;
+				border: 2px solid $text-color-one;
+			}
+
 			.counter {
 				display: block;
 				text-align: right;
@@ -271,9 +287,19 @@ $block-bg-color: #13c4a2;
 			}
 		}
 
-		.disclaimer {
-			color: $text-color-four;
-			text-align: center;
+		.profile-photo {
+			img {
+				width: 60px;
+				height: 60px;
+			}
+		}
+
+		.email-notifications {
+
+			.checkbox-label {
+				font-size: 1em;
+				// text-transform: none;
+			}
 		}
 
 		.nav {
@@ -298,7 +324,7 @@ $block-bg-color: #13c4a2;
 	}
 }
 
-// ##################### END USERS NEW PAGE #########################
+// ##################### END USERS & EDIT NEW PAGE #########################
 
 // ##################### USERS CHANGE-PASSWORD PAGE #########################
 

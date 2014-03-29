@@ -57,13 +57,6 @@
 			<div class="row collapse">
 				<%= image_tag(@user.avatar.profile.url) if @user.avatar? %>
 				<%= f.file_field :avatar %><br><br>
-				<!-- <div class="large-3 columns">
-					<span class="prefix">http://</span>
-				</div>
-				<div class="large-9 columns">
-					<%= f.url_field :remote_avatar_url, placeholder: "Or Image URL" %>
-				</div>
-				<h6 class="subheader">Choose a photo. Max image size: 2MB (.jpg, .jpeg, .png, .gif)</h6> -->
 			</div>
 		</div>
 	</div>

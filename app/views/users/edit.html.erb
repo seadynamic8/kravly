@@ -1,15 +1,92 @@
 <% title "Edit User" %>
 
-<div class="row">
-	<div class="large-7 large-centered columns">
-		<%= form_for @user do |f| %>
-			<%= error_messages_for(@user) %>
-			
-			<fieldset>
-				<legend><%= yield(:title) %></legend>
+<div class="user-edit-page">
 
-				<%= render partial: 'form', locals: { f: f } %>
-			</fieldset>
-		<% end %>
-	</div>
+<header class="user-edit-header">
+	<h1><%= yield(:title) %></h1>
+</header>
+
+<%= form_for @user, html: { class: "user-edit-form" } do |f| %>
+	<%= error_messages_for(@user) %>
+
+	<ul class="form-section">
+	
+		<li class="email">
+			<%= f.label :email, "Email*" %>
+			<%= f.email_field :email, placeholder: "Email".upcase %>
+		</li>
+
+		<li class="username">
+			<%= f.label :username, "Username*" %>
+			<div class="row collapse">
+				<div class="large-5 columns">
+					<span class="prefix"><%= "http://www.kravly.com/" %></span>
+				</div>
+				<div class="large-7 columns">
+					<%= f.text_field :username, placeholder: "Username".upcase %>
+				</div>
+			</div>
+		</li>
+
+		<li class="name">
+			<%= f.label :name, "Name" %>
+			<%= f.text_field :firstname, placeholder: "First Name".upcase %>
+			<%= f.text_field :lastname, placeholder: "Last Name".upcase %>
+		</li>
+
+		<li class="profile_photo">
+			<%= f.label :profile_photo, "Profile Photo (Avatar)" %>
+			<%= image_tag(@user.avatar.profile.url) if @user.avatar? %>
+			<%= f.file_field :avatar %>
+		</li>
+
+		<%= f.hidden_field :avatar_cache %>
+
+		<br>
+
+		<li class="about">
+			<%= f.label :about, "About You" %>
+			<%= f.text_area :about, placeholder: "Tell us about yourself...".upcase %>
+		</li>
+
+		<li class="location">
+			<%= f.label :location %>
+			<%= f.text_field :location, placeholder: "Where are you located?".upcase %>
+		</li>
+
+		<li class="website">
+			<%= f.label :website %>
+			<%= f.text_field :website, placeholder: "Do you have a website?".upcase %>
+		</li>
+
+		<li class="display-method">
+			<%= f.label :display, "Display Method*" %>
+			<%= f.select :display, options_for_select([
+																									['First & Last Name', '1'], 
+																									['Username', '2'],
+																									['Email', '3']
+																								], 
+																									f.object.display) %>
+		</li>
+
+		<li class="email-notifications">
+			<%= f.label :email_notifications, "Email Notifications" %>
+
+			<%= f.check_box :notify_vote %>
+			<%= f.label :votes, class: "checkbox-label" %>
+
+			<%= f.check_box :notify_comment %>
+			<%= f.label :comments, class: "checkbox-label"  %>
+		</li>
+
+		<li class="nav">
+			<%= link_to "Cancel", @return_to || settings_user_path(current_user), 
+						class: "prev-button button" %>
+			<%= f.submit class: "right button" %>
+		</li>
+
+	</ul> <!-- End form-section -->
+
+<% end %>
+
 </div>
