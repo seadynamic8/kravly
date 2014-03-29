@@ -96,251 +96,255 @@ $comments-border-color: #fa4786;
 
 // ---------------- MAIN SECTION -------------------------------------
 
-// Idea Overview ----------------------------
+.main-section {
 
-.idea-overview {
-	background: $idea-overview-bg-color;
-	padding: 10px 3px 3px;
-	margin-bottom: 20px;
-	color: $text-color-one;
-	position: relative;
+	// Idea Overview ----------------------------
 
-	header {
-		text-align: center;
-
-		h1 {
-			color: $text-color-two;
-			font-size: 1.7em;
-			font-weight: bold;
-			margin-bottom: 2px;
-		}
-
-		p {
-			margin-bottom: 10px;
-		}
-	}
-
-	img {
-		width: 100%;
-	}
-
-	.idea-overview-extras {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		z-index: 1;
-		padding: 7px 20px;
+	.idea-overview {
 		background: $idea-overview-bg-color;
-		color: white;
+		padding: 10px 3px 3px;
+		margin-bottom: 20px;
+		color: $text-color-one;
+		position: relative;
 
-		.seperator {
-			margin: 0 10px;
+		header {
+			text-align: center;
+
+			h1 {
+				color: $text-color-two;
+				font-size: 1.7em;
+				font-weight: bold;
+				margin-bottom: 2px;
+			}
+
+			p {
+				margin-bottom: 10px;
+			}
 		}
-
-		i {
-			font-size: 25px;
-			vertical-align: middle;
-		}
-		#delete-button {
-			margin-left: 10px;
-		}
-		#like-button {
-			font-size: 15px;
-			padding: 0.1em 0.8em;
-			margin: 0;
-		}
-		.like-symbol {
-			padding-left: 5px;
-			vertical-align: middle;
-		}
-	}
-}
-
-// Description -------------------------------------
-
-.description {
-	border: 3px solid $description-border-color;
-	background: $description-bg-color;
-	padding: 2em;
-	margin-bottom: 20px;
-}
-
-// Comments ----------------------------------------
-
-.comments {
-	border: 3px solid $comments-border-color;
-	background: $comments-bg-color;
-	margin-bottom: 3em;
-
-	.empty-comments p {
-		text-align: center;
-		color: #aaa;
-		padding: 1em 0;
-	}
-
-	.comment:nth-child(even) {
-		background: #eee;
-	}
-
-}
-
-// Comment Main Form
-
-.comment-form {
-	padding-bottom: 0;
-	margin: 1em;
-
-	legend {
-		color: $text-color-three;
-		background: $comments-bg-color;
-	}
-
-	.comment-form-input {
-
-		.comment-avatar {
-			width: 48px;
-			height: 48px;
-			-webkit-border-ra48us: 24px;
-			-moz-border-48dius: 24px;
-			border-radius: 24px;
-			margin-right: 5px;
-			display: inline-block;
-			vertical-align: top;
-		}
-
-		.comment-body {
-			width: 73%;
-			display: inline-block;
-			margin-right: 5px;
-			color: $text-color-one;
-		}
-
-		.comment-button {
-			width: 15%;
-			display: inline-block;
-			vertical-align: top;
-			margin-top: 8px;
-		}
-	}
-}
-
-// Individual Comments
-
-.comment {
-	display: block;
-	padding: 1em;
-	position: relative;
-	color: $text-color-one;
-
-	.comment-user {
-		display: inline-block;
-		width: 12%;
-		margin-right: .5em;
-		text-align: center;
-		vertical-align: top;
 
 		img {
-			width: 40px;
-			height: 40px;
-			-webkit-border-radius: 20px;
-			-moz-border-radius: 20px;
-			border-radius: 20px;
-			margin-bottom: 2px;
-		}
-		.comment-user-name p {
-			font-size: 0.8em;
-			margin: 0;
-		}
-	}
-
-	.comment-text {
-		display: inline-block;
-		width: 78%;
-		vertical-align: top;
-		margin-top: .5em;
-	}
-
-	.comment-edit-section {
-		position: absolute;
-		top: 1em;
-		right: 1em;
-		font-size: 0.9em;
-
-		.delete-link {
-			margin-left: 10px;
-		}
-	}
-	.comment-edit-form {
-		display: inline-block;
-		width: 75%;
-
-		textarea {
-			min-height: 6em;
-			margin-bottom: 0.5em;
-			color: $text-color-one;
+			width: 100%;
 		}
 
-		#update-button {
-			padding: 0.5em 0.8em;
+		.idea-overview-extras {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			z-index: 1;
+			padding: 7px 20px;
+			background: $idea-overview-bg-color;
+			color: white;
+
+			.seperator {
+				margin: 0 10px;
+			}
+
+			i {
+				font-size: 25px;
+				vertical-align: middle;
+			}
+			#delete-button {
+				margin-left: 10px;
+			}
+			#like-button {
+				font-size: 15px;
+				padding: 0.1em 0.8em;
+				margin: 0;
+			}
+			.like-symbol {
+				padding-left: 5px;
+				vertical-align: middle;
+			}
 		}
 	}
 
-	.comment-reply-section {
-		text-align: right;
-		font-size: 0.8em;
-		color: #777;
+	// Description -------------------------------------
+
+	.description {
+		border: 3px solid $description-border-color;
+		background: $description-bg-color;
+		padding: 2em;
+		margin-bottom: 20px;
 	}
 
-	.comment-reply-form {
-		display: block;
-		border-top: 1px solid #aaa;
-		padding: 1.25em;
-		margin-top: 15px;
-		width: 100%;
+	// Comments ----------------------------------------
 
-		.comment-avatar {
-			width: 40px;
-			height: 40px;
-			-webkit-border-ra48us: 20px;
-			-moz-border-48dius: 20px;
-			border-radius: 20px;
-			margin-right: 5px;
-			margin-top: 4px;
-			display: inline-block;
-			vertical-align: top;
+	.comments {
+		border: 3px solid $comments-border-color;
+		background: $comments-bg-color;
+		margin-bottom: 3em;
+
+		.empty-comments p {
+			text-align: center;
+			color: #aaa;
+			padding: 1em 0;
 		}
 
-		.comment-body {
-			width: 73%;
-			display: inline-block;
-			margin-right: 5px;
-			color: $text-color-one;
+		.comment:nth-child(even) {
+			background: #eee;
 		}
 
-		.comment-button {
-			width: 15%;
-			display: inline-block;
-			vertical-align: top;
-			margin-top: 8px;
+	}
+
+	// Comment Main Form
+
+	.comment-form {
+		padding-bottom: 0;
+		margin: 1em;
+
+		legend {
+			color: $text-color-three;
+			background: $comments-bg-color;
+		}
+
+		.comment-form-input {
+
+			.comment-avatar {
+				width: 48px;
+				height: 48px;
+				-webkit-border-ra48us: 24px;
+				-moz-border-48dius: 24px;
+				border-radius: 24px;
+				margin-right: 5px;
+				display: inline-block;
+				vertical-align: top;
+			}
+
+			.comment-body {
+				width: 73%;
+				display: inline-block;
+				margin-right: 5px;
+				color: $text-color-one;
+			}
+
+			.comment-button {
+				width: 15%;
+				display: inline-block;
+				vertical-align: top;
+				margin-top: 8px;
+			}
 		}
 	}
-	
-}
 
-// Child Commments
-
-.child-comments {
+	// Individual Comments
 
 	.comment {
-		margin-left: 30px;
+		display: block;
+		padding: 1em;
+		position: relative;
+		color: $text-color-one;
+
+		.comment-user {
+			display: inline-block;
+			width: 12%;
+			margin-right: .5em;
+			text-align: center;
+			vertical-align: top;
+
+			img {
+				width: 40px;
+				height: 40px;
+				-webkit-border-radius: 20px;
+				-moz-border-radius: 20px;
+				border-radius: 20px;
+				margin-bottom: 2px;
+			}
+			.comment-user-name p {
+				font-size: 0.8em;
+				margin: 0;
+			}
+		}
+
+		.comment-text {
+			display: inline-block;
+			width: 78%;
+			vertical-align: top;
+			margin-top: .5em;
+		}
+
+		.comment-edit-section {
+			position: absolute;
+			top: 1em;
+			right: 1em;
+			font-size: 0.9em;
+
+			.delete-link {
+				margin-left: 10px;
+			}
+		}
+		.comment-edit-form {
+			display: inline-block;
+			width: 75%;
+
+			textarea {
+				min-height: 6em;
+				margin-bottom: 0.5em;
+				color: $text-color-one;
+			}
+
+			#update-button {
+				padding: 0.5em 0.8em;
+			}
+		}
+
+		.comment-reply-section {
+			text-align: right;
+			font-size: 0.8em;
+			color: #777;
+		}
+
+		.comment-reply-form {
+			display: block;
+			border-top: 1px solid #aaa;
+			padding: 1.25em;
+			margin-top: 15px;
+			width: 100%;
+
+			.comment-avatar {
+				width: 40px;
+				height: 40px;
+				-webkit-border-ra48us: 20px;
+				-moz-border-48dius: 20px;
+				border-radius: 20px;
+				margin-right: 5px;
+				margin-top: 4px;
+				display: inline-block;
+				vertical-align: top;
+			}
+
+			.comment-body {
+				width: 73%;
+				display: inline-block;
+				margin-right: 5px;
+				color: $text-color-one;
+			}
+
+			.comment-button {
+				width: 15%;
+				display: inline-block;
+				vertical-align: top;
+				margin-top: 8px;
+			}
+		}
+		
 	}
 
-	.comment:nth-child(odd) {
-		background: #e8e8e8;
+	// Child Commments
+
+	.child-comments {
+
+		.comment {
+			margin-left: 30px;
+		}
+
+		.comment:nth-child(odd) {
+			background: #e8e8e8;
+		}
+		.comment:nth-child(even) {
+			background: #ddd;
+		}
 	}
-	.comment:nth-child(even) {
-		background: #ddd;
-	}
+
 }
 
 // ---------------- END MAIN SECTION -----------------------------
