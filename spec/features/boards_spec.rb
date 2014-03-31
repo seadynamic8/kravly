@@ -17,7 +17,7 @@ feature "Board Management" do
 		scenario "adds a new board" do
 			create(:category, name: "Test Category")
 			expect {
-				within('.top-bar-section') { click_link "Board" }
+				within('.nav-list') { click_link "Board" }
 				fill_in "Name", with: "Board Name"
 				select "Test Category", from: 'board_category_id'
 				click_button "Create Board"
@@ -30,7 +30,7 @@ feature "Board Management" do
 
 		scenario "doesn't add a new board without a name" do
 			expect {
-				within('.top-bar-section') { click_link "Board" }
+				within('.nav-list') { click_link "Board" }
 				click_button "Create Board"
 			}.to_not change(Board, :count).by(1)
 			expect(current_path).to eq user_boards_path(user)
@@ -38,12 +38,12 @@ feature "Board Management" do
 		end
 
 		scenario "goes back to previous page if cancel adding a board" do
-			within('.top-bar-section') { click_link "Board" }
+			within('.nav-list') { click_link "Board" }
 			click_link "Cancel"
 			expect(current_path).to eq discover_path
 
 			visit boards_user_path(user)
-			within('.top-bar-section') { click_link "Board" }
+			within('.nav-list') { click_link "Board" }
 			click_link "Cancel"
 			expect(current_path).to eq boards_user_path(user)
 		end

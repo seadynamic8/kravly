@@ -16,7 +16,7 @@ feature "Guest Actions" do
 
 		scenario "Logo link from discover page goes to home page" do
 			visit discover_path
-			within('.top-bar') { click_link "Kravly" }
+			within('.main-header') { click_link "Kravly" }
 			expect(current_url).to eq root_url
 		end
 

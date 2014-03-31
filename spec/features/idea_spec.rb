@@ -46,7 +46,7 @@ feature "Idea Management" do
 		end
 
 		scenario "ads a new idea with no initial boards will redirect to board#new" do
-			within('.top-bar-section') { click_on "Idea" }
+			within('.nav-list') { click_on "Idea" }
 			expect(current_path).to eq new_user_board_path(user)
 			expect(page).to have_content("Please create a board first.")
 		end
@@ -54,7 +54,7 @@ feature "Idea Management" do
 		scenario "add a new idea" do
 			board
 			expect {
-				within('.top-bar-section') { click_on "Idea" }
+				within('.nav-list') { click_on "Idea" }
 				fill_in "idea[title]", with: "FakeTitle"
 				click_on "Next: Describe Your Idea"
 				fill_in "idea[content]", with: "FakeContent"
@@ -76,12 +76,12 @@ feature "Idea Management" do
 		end
 
 		scenario "cancel add goes back to previous page" do
-			within('.top-bar-section') { click_on "Idea" }
+			within('.nav-list') { click_on "Idea" }
 			click_link "Cancel"
 			expect(current_path).to eq discover_path
 
 			visit boards_user_path(user)
-			within('.top-bar-section') { click_on "Idea" }
+			within('.nav-list') { click_on "Idea" }
 			click_link "Cancel"
 			expect(current_path).to eq boards_user_path(user)
 		end

@@ -15,14 +15,14 @@ feature 'User Management' do
 		user = create(:user)
 		log_in user
 		visit discover_path
-		within('.top-bar') { click_link "Kravly" }
+		within('.main-header') { click_link "Kravly" }
 		expect(current_path).to eq discover_path
 	end
 
 	scenario "signup for a new member account" do
 		visit discover_path
 		expect {
-			click_link "JOIN"
+			click_link "Sign Up"
 			fill_in 'user[email]', with: 'newuser@example.com'
 			fill_in 'user[password]', with: 'secret123'
 			# fill_in 'Password Confirmation', with: 'secret123'
@@ -37,7 +37,7 @@ feature 'User Management' do
 	scenario "signup for a new member account without password" do
 		visit discover_path
 		expect {
-			click_link "JOIN"
+			click_link "Sign Up"
 			fill_in 'user[email]', with: 'newuser@example.com'
 			click_button 'Create User'
 		}.to_not change(User, :count).by(1)
@@ -63,13 +63,13 @@ feature 'User Management' do
 
 	scenario "cancel signup goes back to previous page" do
 		visit discover_path
-		click_link "JOIN"
+		click_link "Sign Up"
 		click_link "Cancel"
 		expect(current_path).to eq discover_path
 
 		user = create(:user)
 		visit boards_user_path(user)
-		click_link "JOIN"
+		click_link "Sign Up"
 		click_link "Cancel"
 		expect(current_path).to eq boards_user_path(user)
 	end
@@ -123,7 +123,7 @@ feature 'User Management' do
 		select "Email", from: "user_display"
 		click_button "Update User"
 		within('.user-header') { expect(page).to have_content user.email }
-		within('.top-bar-section') { expect(page).to have_content user.email }
+		within('.nav-list') { expect(page).to have_content user.email }
 	end
 
 	scenario "edit user's password" do

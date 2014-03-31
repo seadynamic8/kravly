@@ -2,103 +2,121 @@
 
     <div class="wrapper">
 
-    <div class="fixed">
-    <nav class="top-bar">
-      <ul class="title-area">
-        <!-- Title Area -->
-        <li class="name">
-          <h1>
-          <% if current_user %>
+  <!-- ##################### HEADER SECTION ###########################-->
+
+    <header class="main-header">
+
+      <!-- *********** LOGO ******************* -->
+      <h1>
+        <% if current_user %>
             <%= link_to "Kravly", discover_path %>
           <% else %>
             <%= link_to "Kravly", root_url %>
           <% end %>
-          </h1>
-        </li>
-        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-      </ul>
+      </h1>
+      <!-- *********** END LOGO ******************* -->
 
-      <section class="top-bar-section">
-        <!-- Left Nav Section -->
-        <ul class="left">
-          <li class="divider"></li>
-          <li class="has-dropdown not-click categories">
-            <%= link_to raw("<i class='fi-list'></i>"), discover_path, class: "categories-button" %>
-            <ul class="dropdown">
-              <div class="cat-container">
-                <li><%= link_to "Popular", discover_path %></li>
-                <li><%= link_to "Recent", discover_path( recent: true ) %></li>
-<!--               <% @categories.each_with_index do |category, index| %>
-                <li><%= link_to category.name, category_index_path(category.slug) %></li>
-                <% if index == 11 || index == 25 %>
-                  </div>
-                  <div class="cat-container">
-                <% end %>
-              <% end %> -->
-              </div>
-            </ul>
-          </li>
-          <li class="divider"></li>
-          <li class="has-form">
-            <%= form_tag ideas_path, method: :get do %>
-              <div class="row collapse">
-                <div class="large-9 columns">
-                  <%= search_field_tag :query, params[:query], placeholder: "Search" %>
-                </div>
-                <div class="large-3 columns">
-                  <%= submit_tag "Search", class: "button expand search-button" %>
-                </div>
-              </div>
+      <!-- *********** NAV BAR ******************* -->
+      <nav>
+        <ul class="nav-list">
+
+          <!-- ............... Left Links ............... -->
+          <span class="left">
+
+            <!-- MENU -->
+            <li class="list-item">
+              <a href="#">Menu</a>
+              <ul class="submenu">
+                <li class="submenu-item"><%= link_to "Popular", discover_path %></li>
+                <li class="submenu-item"><%= link_to "Recent", discover_path( recent: true ) %></li>
+<!--                 <% @categories.each_with_index do |category, index| %>
+                  <li class="list-item"><%= link_to category.name, 
+                            category_index_path(category.slug) %></li>
+                  <% if index == 11 || index == 25 %>
+                  <% end %>
+                <% end %> -->
+              </ul>
+            </li>
+
+            <!-- SEARCH -->
+            <li class="list-item">
+              <%= form_tag ideas_path, method: :get do %>
+                <%= search_field_tag :query, params[:query], placeholder: "Search" %>
+                <%= button_tag "Search" %>
+                <div class="clear-float"></div>
+              <% end %>
+            </li>
+
+            <li class="list-item"><%= link_to "Discover", discover_path %></li>
+            <li class="list-item"><%= link_to "Basics", basics_path %></li>
+
+          </span>
+          <!-- ............... End Left Links ............... -->
+
+          <!-- ............... Right Links ............... -->
+          <span class="right">
+
+            <% if current_user %> <!-- LOGGED IN -->
+
+              <!-- ADD BUTTON -->
+              <li class="list-item">
+                <%= link_to "Add", new_idea_path %>
+                <ul class="submenu">
+                  <li class="submenu-item">
+                    <%= link_to "Board", new_user_board_path(current_user) %></li>
+                  <li class="submenu-item" data-no-turbolink>
+                    <%= link_to "Idea", new_idea_path %></li>
+                </ul>
+              </li>
+
+              <span class="seperator">|</span>
+              
+              <!-- USER -->
+              <li class="list-item">
+                <%= link_to current_user.display_name, 
+                      boards_user_path(current_user) %>
+                <ul class="submenu">
+                  <li class="submenu-item">
+                    <%= link_to "Your Boards", boards_user_path(current_user) %></li>
+                  <li class="submenu-item">
+                    <%= link_to "Your Ideas", ideas_user_path(current_user) %></li>
+                  <li class="submenu-item">
+                    <%= link_to "Your Votes", votes_user_path(current_user) %></li>
+                  <li class="submenu-item">
+                    <%= link_to "Settings", settings_user_path(current_user) %></li>
+                  <% if permit? "categories", "index" %>
+                  <li class="submenu-item">
+                    <%= link_to "All Categories", categories_path %></li>
+                  <% end %>
+                  <li class="submenu-item">
+                    <%= link_to "Log Out", logout_path %></li>
+                </ul>
+              </li>
+
+            <% else %> <!-- NOT LOGGED IN -->
+
+              <li class="list-item"><%= link_to "Login", login_path %></li>
+
+              <span class="seperator">|</span>
+
+              <li class="list-item signup"><%= link_to "Sign Up", new_user_path %></li>
+
             <% end %>
-          </li>
-          <li class="divider"></li>
-          <li><%= link_to "Discover", discover_path %></li>
-          <!-- <li class="divider"></li> -->
-          <!-- <li><%= link_to "About", about_path %></li> -->
-          <li class="divider"></li>
-          <li><%= link_to "Basics", basics_path %></li>
-          <li class="divider"></li>
-        </ul>
-        
-        <!-- Right Nav Section -->
-        <% if current_user %>
-          <ul class="right">
-            <li class="divider"></li>
-            <li class="has-dropdown not-click" data-no-turbolink>
-              <%= link_to raw("<i class='fi-plus'></i>"), new_idea_path, class: "add-button" %>
-              <ul class="dropdown">
-                <li><%= link_to "Board", new_user_board_path(current_user) %></li>
-                <li data-no-turbolink><%= link_to "Idea", new_idea_path %></li>
-              </ul>
-            </li>
-            <li class="divider"></li>
-            <li class="has-dropdown not-click"><%= link_to current_user.display_name, 
-                                            boards_user_path(current_user) %>
-              <ul class="dropdown">
-                <li><%= link_to "Your Boards", boards_user_path(current_user) %></li>
-                <li><%= link_to "Your Ideas", ideas_user_path(current_user) %></li>
-                <li><%= link_to "Your Votes", votes_user_path(current_user) %></li>
-                <li><%= link_to "Settings", settings_user_path(current_user) %></li>
-                <% if permit? "categories", "index" %>
-                  <li><%= link_to "All Categories", categories_path %></li>
-                <% end %>
-                <li><%= link_to "Log Out", logout_path %></li>
-              </ul>
-            </li>
-          </ul>
-        <% else %>
-          <ul class="right">
-            <li class="divider"></li>
-            <li class="active"><%= link_to "Login", login_path %></li>
-            <li class="divider"></li>
-            <li class="has-form show-for-large-up"><%= link_to "JOIN", new_user_path, class: "button join-button" %></li>
-          </ul>
-        <% end %>
-      </section>
-    </nav>
-    </div>
+
+
+          </span>
+          <!-- ............... End Right Links ............... -->
+
+        </ul> <!-- end nav-list -->
+      </nav>
+      <!-- *********** END NAV BAR ******************* -->
+
+    </header>
 
     <div class="clear-header"></div>
+
+  <!-- ##################### END HEADER SECTION ###########################-->
+
 
     <% if flash[:notice] %>
       <div class="row">
