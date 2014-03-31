@@ -20,7 +20,7 @@ $block-bg-color: #13c4a2;
 .user-header {
 	width: 740px;
 	margin: 0 auto;
-	padding: 1em 0;
+	padding: 0 0 1em;
 
 	img {
 		width: 120px;
@@ -142,6 +142,7 @@ $block-bg-color: #13c4a2;
 
 .user-boards-page {
 	background: url('http://img.kravly.com/white-grey-background.png') repeat;
+	padding-top: 1em;
 	padding-bottom: 1000px;
 }
 
@@ -187,6 +188,7 @@ $block-bg-color: #13c4a2;
 
 .user-ideas-page {
 	background: url('http://img.kravly.com/white-grey-background.png') repeat;
+	padding-top: 1em;
 	padding-bottom: 1000px;
 }
 
@@ -196,6 +198,7 @@ $block-bg-color: #13c4a2;
 
 .user-votes-page {
 	background: url('http://img.kravly.com/white-grey-background.png') repeat;
+	padding-top: 1em;
 	padding-bottom: 1000px;
 }
 
@@ -205,13 +208,14 @@ $block-bg-color: #13c4a2;
 
 .user-new-page, .user-edit-page {
 	background: url('http://img.kravly.com/white-grey-background.png') repeat;
+	padding-top: 1em;
 	padding-bottom: 1000px;
 }
 
 .user-new-header, .user-edit-header {
 	width: 500px;
 	margin: 0 auto;
-	padding: 3em 0 2em;
+	padding: 2em 0;
 
 	h1 {
 		color: $text-color-five;
@@ -329,13 +333,14 @@ $block-bg-color: #13c4a2;
 
 .users-change_password-page {
 	background: url('http://img.kravly.com/white-grey-background.png') repeat;
+	padding-top: 1em;
 	padding-bottom: 1000px;
 }
 
 .users-change_password-header {
 	width: 500px;
 	margin: 0 auto;
-	padding: 3em 0 2em;
+	padding: 2em 0;
 
 	h1 {
 		color: $text-color-five;
@@ -423,13 +428,14 @@ $block-bg-color: #13c4a2;
 
 .users-settings-page {
 	background: url('http://img.kravly.com/white-grey-background.png') repeat;
+	padding-top: 1em;
 	padding-bottom: 1000px;
 }
 
 .users-settings-header {
 	width: 500px;
 	margin: 0 auto;
-	padding: 3em 0 2em;
+	padding: 2em 0;
 
 	h1 {
 		color: $text-color-five;

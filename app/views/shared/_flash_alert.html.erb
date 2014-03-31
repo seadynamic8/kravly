@@ -1,0 +1,11 @@
+<% if flash[:notice] %>
+  <div class="flash-alert notice">
+    <%= flash[:notice] %>
+    <%= link_to (raw "&times;"), "#", class: "close" %>
+  </div>
+<% elsif flash[:alert] %>
+  <div class="flash-alert alert">
+    <%= flash[:alert] %>
+    <%= link_to (raw "&times;"), "#", class: "close" %>
+  </div>
+<% end %>

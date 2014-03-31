@@ -52,7 +52,7 @@ html, body {
 }
 
 .clear-header {
-	margin-top: 38px;
+	padding-bottom: 38px;
 }
 
 .push, footer {
@@ -214,6 +214,34 @@ footer {
 	}
 } // end header
 
+.flash-alert {
+	display: none;
+	width: 900px;
+	margin: 0 auto 1em;
+	font-size: 0.8em;
+	padding: .7em 1em;
+	color: $text-color-two;
+	position: relative;
+
+	&.notice {
+		background: #43ac5a;
+		border: 1px solid #3A945B;
+	}
+
+	&.alert {
+		background: #f04124;
+		border: 1px solid #de2d0f;
+	}
+
+	.close {
+		position: absolute;
+		right: 1em;
+		top: 15%;
+		text-decoration: none;
+		font-size: 1.5em;
+		color: $text-color-two;
+	}
+}
 
 // .top-bar {
 // 	background: #3e3d42;

@@ -24,7 +24,7 @@
 //= require_tree .
 
 $(document).ready(function() {
-	$(document).foundation();
+	// $(document).foundation();
 	
 	$('.img-container').hover(
 		function() {
@@ -34,4 +34,15 @@ $(document).ready(function() {
 			$(this).find('.img-source').addClass('hidden');
 		}
 	);
+
+	var $flashAlert = $('.flash-alert');
+
+	$flashAlert.find('.close').on('click', function () {
+		$(this).parent('.flash-alert').remove();
+	});
+	
+	$flashAlert.slideDown(500, function () {
+		if ( $(this).hasClass('notice') )
+			$(this).delay(3000).slideUp(500);
+	});
 });

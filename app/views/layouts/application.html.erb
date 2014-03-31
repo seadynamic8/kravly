@@ -117,24 +117,6 @@
 
   <!-- ##################### END HEADER SECTION ###########################-->
 
-
-    <% if flash[:notice] %>
-      <div class="row">
-        <div data-alert class="alert-box success">
-          <%= flash[:notice] %>
-          <%= link_to (raw "&times;"), "#", class: "close" %>
-        </div>
-      </div>
-    <% end %>
-    <% if flash[:alert] %>
-      <div class="row">
-        <div data-alert class="alert-box alert">
-          <%= flash[:alert] %>
-          <%= link_to (raw "&times;"), "#", class: "close" %>
-        </div>
-      </div>
-    <% end %>
-
     <%= yield %>
 
     <div class="push"></div>
