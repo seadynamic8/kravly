@@ -1,31 +1,13 @@
 <% title "Add A Board" %>
 
-<div class="board-new-page">
-
-<%= render 'shared/flash_alert' %>
-
-<header class="board-new-header">
+<header class="boards-new-header">
 	<h1><%= yield(:title) %></h1>
 </header>
 
-<%= form_for [@board.user, @board], html: { class: "board-new-form" } do |f| %>
+<%= form_for [@board.user, @board], 
+			html: { class: "boards-new-form" } do |f| %>
 	<%= error_messages_for(@board) %>
 	
 	<%= render partial: 'form', locals: { f: f } %>
 
 <% end %>
-
-<!-- <div class="row">
-	<div class="large-7 large-centered columns">
-		<%= form_for [@board.user, @board] do |f| %>
-			<%= error_messages_for(@board) %>
-			
-			<fieldset>
-				<legend><%= yield(:title) %></legend>
-
-			</fieldset>
-		<% end %>
-	</div>
-</div> -->
-
-</div>

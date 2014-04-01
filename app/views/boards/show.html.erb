@@ -1,12 +1,8 @@
 <% title @board.name %>
 
-<div class="board-show-page">
-
-<%= render 'shared/flash_alert' %>
-
 <!-- ##################### HEADER SECTION ###########################-->
 
-<div class="board-header">
+<div class="boards-header">
 	<p>Board</p>
 
 	<h1><%= @board.name %></h1>
@@ -23,35 +19,19 @@
 	</div>
 </div>
 
-<!-- <div class="row group-header">
-		<div class="large-4 large-offset-4 columns">
-			<div class="board-name"><h4><%= @board.name %></h4></div>
-		</div>
-		<% if current_user && current_user == @user %>
-			<div class="large-4 columns right-section" data-no-turbolink>
-				<%= link_to "Add Idea", new_idea_path, class: "small button" %>
-			</div>
-		<% end %>
-</div>
-<div class="row group-header">
-	<div class="large-12 columns">
-		<h5 class="subheader board-desc"><%= @board.description %></h5>
-	</div>
-</div> -->
-
 <!-- ##################### END HEADER SECTION ###########################-->
 
 <!-- ##################### BAR SECTION ###########################-->
 
-<div class="board-bar">
-	<div class="board-user">
+<div class="boards-bar">
+	<div class="boards-user">
 		<%= link_to (image_tag @user.avatar.small_profile.url),
 					boards_user_path(@user) %>
 		<p><%= link_to @user.display_name, boards_user_path(@user) %></p>
 	</div>
 	
 	<% if @board.category %>
-		<span class="board-category"><%= @board.category.name %></span>
+		<span class="boards-category"><%= @board.category.name %></span>
 	<% end %>
 
 	<div class="right">
@@ -74,34 +54,8 @@
 			</span>
 			<!-- <span class="seperator">|</span> -->
 			<% end %>
-
-<!-- 			<span class="social">
-				<span class='st_facebook'></span>
-				<span class='st_twitter'></span>
-				<span class='st_linkedin'></span>
-				<span class='st_pinterest'></span>
-				<span class='st_stumbleupon'></span>
-			</span> -->
 	</div>
 </div>
-<!-- 
-<div class="row group-header-stats">
-	<div class="large-4 columns">
-		<%= link_to (image_tag @user.avatar.small_profile.url, 
-				style: "width: 25px; height: 25px;" ), boards_user_path(@user) %>
-		<h6><%= link_to @user.display_name, boards_user_path(@user) %></h6>
-	</div>
-	<% if permit? "boards", "edit", @board %>
-		<div class="large-4 columns">
-			<div style="text-align: center;">
-				<%= link_to "Edit Board", edit_user_board_path(@user, @board), class: "tiny button" %>
-			</div>
-		</div>
-	<% end %>
-	<div class="large-4 columns">
-		<h5><%= @board.votes %> Votes</h5>
-	</div>
-</div> -->
 
 <!-- ##################### END BAR SECTION ###########################-->
 
@@ -169,51 +123,4 @@
 	previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe %>
 </div>
 
-<!-- 
-<% @ideas.each_with_index do |idea, index| %>
-	<% if index % 4 == 0 %>
-		<div class="row">
-			<ul class="large-block-grid-4">
-	<% end %>
-
-				<li id="idea-<%= "#{idea.id}" %>">
-					<div class="block">
-
-						<div class="block-main">
-							<h5 class="block-title"><%= link_to idea.title, idea_path(idea) %></h5>
-							<div class="img-container">
-								<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %>
-								<p class="img-source hidden"><%= idea.source %></p>
-							</div>
-						</div>
-						
-						<span class="buttons">
-							<% if permit? "ideas", "edit", idea %>
-								<span data-no-turbolink>
-									<%= link_to "Edit", edit_idea_path(idea), class: "tiny button" %>
-								</span>
-							<% end %>
-							<% if permit? "ideas", "destroy", idea %>
-								<%= link_to "Delete", idea_path(idea), method: :delete, 
-										data: { confirm: "Are you sure?" }, class: "tiny button" %>
-							<% end %>
-						</span>
-					</div>
-				</li>
-
-	<% if (index+1) % 4 == 0 || (index+1) == @ideas.count %>
-			</ul>
-		</div>
-	<% end %>
-<% end %>
-
-<div style="clear:both;"></div>
-
-<div class="pagination-centered">
-	<%= will_paginate @ideas, inner_window: 4, outer_window: 2,
-	previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe %>
-</div>
- -->
 <!-- ##################### END IDEAS SECTION ###########################-->
-
-</div>

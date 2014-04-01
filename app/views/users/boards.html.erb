@@ -1,7 +1,5 @@
 <% title @user.display_name %>
 
-<div class="user-boards-page">
-
 <%= render 'top' %>
 
 <!-- ##################### BOARDS SECTION ###########################-->
@@ -61,89 +59,4 @@
 	previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe %>
 </div>
 
-<!-- 
-<% @boards.each_with_index do |board, index| %>
-
-	<% if index % 4 == 0 %>
-		<div class="row">
-			<ul class="large-block-grid-4">
-	<% end %>
-			
-				<li id="board-<%= "#{board.id}" %>">
-					<div class="block">
-						<h5 class="block-title"><%= link_to board.name, [@user, board] %></h5>
-
-						<div class="block-main">
-						<% if board.ideas.count > 0 %>
-						
-							<div class="img-container">
-								<%= link_to (image_tag board.ideas.first.image.thumb.url), 
-									user_board_path(@user, board) %>
-								<p class="img-source hidden"><%= board.ideas.first.source %></p>
-							</div>
-							
-							<ul class="large-block-grid-3 board-bottom">
-								<li>
-									<%= if board.ideas.second
-												link_to (image_tag board.ideas.second.image.small_thumb.url), 
-												user_board_path(@user, board)
-											else
-												image_tag "http://img.kravly.com/board-mini-background.png"
-											end %>
-								</li>
-								<li>
-									<%= if board.ideas.third
-												link_to (image_tag board.ideas.third.image.small_thumb.url), 
-												user_board_path(@user, board)
-											else
-												image_tag "http://img.kravly.com/board-mini-background.png"
-											end %>
-								</li>
-								<li>
-									<%= if board.ideas.fourth
-												link_to (image_tag board.ideas.fourth.image.small_thumb.url), 
-												user_board_path(@user, board)
-											else
-												image_tag "http://img.kravly.com/board-mini-background.png"
-											end %>
-								</li>
-							</ul>
-
-						<% else %>
-							<%= image_tag "http://img.kravly.com/board-background.png" %>
-						<% end %>
-						</div>
-
-						<span class="buttons">
-							<% if permit? "boards", "edit", board %>
-								<%= link_to "Edit", edit_user_board_path(@user, board), class: "tiny button" %>
-							<% end %>
-							<% if permit? "boards", "destroy", board %>
-								<%= link_to "Delete", user_board_path(@user, board), method: :delete, 
-										data: { confirm: "Are you sure?" },	class: "tiny button" %>
-							<% end %>
-						</span>
-					</div>
-					
-				</li>
-	
-	<% if (index+1) % 4 == 0 || (index+1) == @boards.count %>
-			</ul>
-		</div>
-	<% end %>
-
-<% end %>
-
-<div style="clear:both;"></div>
-
-<%= will_paginate @boards %>
-
-<div class="pagination-centered">
-	<%= will_paginate @boards, inner_window: 4, outer_window: 2,
-	previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe %>
-</div> -->
-
 <!-- ##################### END BOARDS SECTION ###########################-->
-
-</div>
-

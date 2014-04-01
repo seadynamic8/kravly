@@ -1,9 +1,5 @@
 <% title @idea.title %>
 
-<div class="idea-show-page">
-
-<%= render 'shared/flash_alert' %>
-
 <div class="row back-to-board">
 	<div class="large-8 columns">
 		<p><%= link_to raw("<i class='fi-arrow-left'></i>"), user_board_path(@idea.user, @idea.board) %>
@@ -86,12 +82,6 @@
 					<%= link_to "Vote", vote_idea_path(@idea), class:"button" %>
 				<% end %>
 			<% end %> -->
-
-<!-- 			<span class='st_facebook_large' displayText='Facebook'></span>
-			<span class='st_twitter_large' displayText='Tweet'></span>
-			<span class='st_linkedin_large' displayText='LinkedIn'></span>
-			<span class='st_pinterest_large' displayText='Pinterest'></span>
-			<span class='st_stumbleupon_large' displayText='StumbleUpon'></span> -->
 		</div>
 
 	</div>
@@ -209,9 +199,5 @@
 
 	</div>
 	<!-- ##################### END MAIN SECTION ###########################-->
-
-
-</div>
-
 
 </div>

@@ -67,7 +67,7 @@ feature "Board Management" do
 			click_link "Your Boards"
 			click_link "#{board.name}"
 			# click_link "Edit Board"
-			within('.board-bar') { find('.edit-link').click }
+			within('.boards-bar') { find('.edit-link').click }
 			fill_in "Name", with: "New Board Name"
 			click_button "Update Board"
 			board.reload

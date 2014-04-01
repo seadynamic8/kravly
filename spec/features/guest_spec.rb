@@ -122,7 +122,7 @@ feature "Guest Actions" do
 			click_link "#{board.name}"
 			expect(current_path).to eq user_board_path(user, board)
 			expect(page).to have_content board.name
-			within('.board-bar') do
+			within('.boards-bar') do
 				expect(page).to have_content user.display_name
 				expect(page).to have_content board.votes
 			end

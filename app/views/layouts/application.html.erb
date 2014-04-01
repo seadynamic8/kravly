@@ -117,7 +117,10 @@
 
   <!-- ##################### END HEADER SECTION ###########################-->
 
-    <%= yield %>
+    <div class="<%= content_for?(:page) ? yield(:page) : "page-wrapper" %>">
+      <%= render 'shared/flash_alert' %>
+      <%= yield %>
+    </div>
 
     <div class="push"></div>
     </div>

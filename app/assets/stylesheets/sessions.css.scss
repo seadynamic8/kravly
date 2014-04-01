@@ -13,16 +13,10 @@ $link-hover-color: #39BBE6;
 
 // ##################### SESSIONS NEW PAGE #########################
 
-.session-new-page {
-	background: url('http://img.kravly.com/white-grey-background.png') repeat;
-	padding-top: 1em;
-	padding-bottom: 1000px;
-}
-
 .session-new-header {
 	width: 500px;
 	margin: 0 auto;
-	padding: 3em 0 2em;
+	padding: 2em 0;
 
 	h1 {
 		color: $text-color-five;

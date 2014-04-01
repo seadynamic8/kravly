@@ -14,17 +14,11 @@ $link-hover-color-two: #007095;
 $bar-bg-color: #125d7d;
 $block-bg-color: #13c4a2;
 
-// ##################### BOARD SHOW PAGE #########################
-
-.board-show-page {
-	background: url('http://img.kravly.com/white-grey-background.png') repeat;
-	padding-top: 1em;
-	padding-bottom: 1000px;
-}
+// ##################### BOARDS SHOW PAGE #########################
 
 // ---------------- HEADER SECTION -----------------------------
 
-.board-header {
+.boards-header {
 	text-align: center;
 
 	p {
@@ -61,13 +55,13 @@ $block-bg-color: #13c4a2;
 
 // ---------------- BAR SECTION -----------------------------
 
-.board-bar {
+.boards-bar {
 	background: $bar-bg-color;
 	margin: 0 2em 2em;
 	padding: 0.5em 1em 0.8em;
 	color: $text-color-two;
 
-	.board-user {
+	.boards-user {
 		width: 25%;
 		display: inline-block;
 		height: 25px;
@@ -98,7 +92,7 @@ $block-bg-color: #13c4a2;
 		}
 	}
 
-	.board-category {
+	.boards-category {
 		width: 49%;
 		display: inline-block;
 		vertical-align: top;
@@ -134,7 +128,7 @@ $block-bg-color: #13c4a2;
 			margin-left: 7px;
 		}
 
-		.board-edit-links {
+		.boards-edit-links {
 
 			.edit-link {
 				margin-right: 5px;
@@ -219,116 +213,11 @@ $block-bg-color: #13c4a2;
 
 // ---------------- END IDEAS SECTION -----------------------------
 
+// ##################### END BOARDS SHOW PAGE #########################
 
-// .group-header {
-// 	margin-top: 10px;
-// }
+// ##################### BOARDS NEW & EDIT PAGE #########################
 
-// .block {
-// 	.block-title {
-// 		padding: 0 5px;
-// 		text-align: center;
-// 	}
-// }
-
-// .button {
-// 	margin-bottom: 0;
-// }
-
-// .block {
-// 	border: 1px solid #ccc;
-// 	color: #444;
-// 	-webkit-box-shadow: 4px 4px 5px rgba(50, 50, 50, 0.75);
-// 	-moz-box-shadow:    4px 4px 5px rgba(50, 50, 50, 0.75);
-// 	box-shadow:         4px 4px 5px rgba(50, 50, 50, 0.75);
-
-// 	.img-container {
-// 		position: relative;
-// 		width: 317px;
-// 		height: 175px;
-
-// 		img {
-// 			position: absolute;
-// 			top: 0;
-// 			left: 0;
-// 			border-right: 2px solid #ccc;
-// 		}
-// 		.img-source {
-// 			position: absolute;
-// 			top: 159px;
-// 			left: 0;
-// 			background-color: #ccc;
-// 			padding: 0 5px;
-// 			font-size: 10px;
-// 		}
-// 		.hidden {
-// 			display: none;
-// 		}
-// 	}
-
-// 	.board-bottom {
-// 		padding-top: 5px;
-// 		padding-left: 1px;
-// 	}
-
-// 	.idea-bottom {
-// 		padding: 5px 10px 5px 10px;
-// 		line-height: 40px;
-
-// 		.idea-title {
-// 			// text-align: center;
-// 			margin: 0;
-// 			padding-bottom: 3px;
-// 		}
-
-// 		.vote {
-// 			float: right;
-// 			display: inline;
-// 			font-size: 17px;
-// 			padding-right: 5px;
-// 			// border-right: 1px solid #ddd;
-// 			vertical-align: middle;
-// 			line-height: 30px;
-// 		}
-// 		img {
-// 			float: left;
-// 			vertical-align: middle;
-// 			height: 30px;
-// 			width: 30px;
-// 			// display: inline-block;
-// 			margin: 0;
-// 			margin-right: 5px;
-// 			// padding-right: 5px;
-// 		}
-// 		.name {
-// 			float: left;
-// 			line-height: 30px;
-// 			font-size: 15px;
-// 			// display: inline;
-// 		}
-// 	}
-
-// 	.block-main {
-// 		margin-bottom: 5px;
-// 	}
-
-// 	.buttons {
-// 		clear: both;
-// 		margin-left: 10px;
-// 	}
-// }
-
-// ##################### END BOARD SHOW PAGE #########################
-
-// ##################### BOARD NEW & EDIT PAGE #########################
-
-.board-new-page, .board-edit-page {
-	background: url('http://img.kravly.com/white-grey-background.png') repeat;
-	padding-top: 1em;
-	padding-bottom: 1000px;
-}
-
-.board-new-header, .board-edit-header {
+.boards-new-header, .boards-edit-header {
 	width: 1000px;
 	margin: 0 auto;
 	padding: 2em 0;
@@ -342,7 +231,7 @@ $block-bg-color: #13c4a2;
 	}
 }
 
-.board-new-form, .board-edit-form {
+.boards-new-form, .boards-edit-form {
 	width: 1000px;
 	margin: 0 auto;
 
@@ -441,4 +330,4 @@ $block-bg-color: #13c4a2;
 	}
 }
 
-// ##################### END BOARD NEW & EDIT PAGE #########################
+// ##################### END BOARDS NEW & EDIT PAGE #########################

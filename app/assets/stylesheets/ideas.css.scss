@@ -2,9 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-input[type="file"] {
-	width: 75%;
-}
 // ##################### VARIABLES #########################
 $text-color-one: #125d7d; // blue
 $text-color-two: white;
@@ -26,11 +23,6 @@ $description-border-color: #13c4a2;
 $comments-border-color: #fa4786;
 
 // ##################### IDEA SHOW PAGE #########################
-
-.idea-show-page {
-	background: url('http://img.kravly.com/white-grey-background.png') repeat;
-	padding-top: 1em;
-}
 
 // ---------------- SIDEBAR SECTION -----------------------------
 .idea-show-sidebar {
@@ -353,13 +345,6 @@ $comments-border-color: #fa4786;
 
 // ##################### IDEA NEW PAGE #########################
 
-.idea-new-page {
-	background: url('http://img.kravly.com/white-grey-background.png') repeat;
-	color: $text-color-one;
-	padding-top: 1em;
-	padding-bottom: 1000px;
-}
-
 // ******************** IDEA NEW HEADER SECTION *********************
 
 .idea-new-header {
@@ -579,12 +564,6 @@ $comments-border-color: #fa4786;
 
 // ##################### IDEA EDIT PAGE #########################
 
-.idea-edit-page {
-	background: url('http://img.kravly.com/white-grey-background.png') repeat;
-	padding-top: 1em;
-	padding-bottom: 1000px;
-}
-
 .idea-edit-header {
 	width: 1000px;
 	margin: 0 auto;
@@ -765,154 +744,3 @@ $comments-border-color: #fa4786;
 }
 
 // ##################### END IDEA EDIT PAGE #########################
-
-
-// Idea Show Page
-
-// .panel {
-// 	background-color: #fff;
-// }
-
-// h4 {
-// 	font-size: 17px;
-// }
-
-// .back-to-board {
-
-// 	i {
-// 		font-size: 23px;
-// 		vertical-align: middle;
-// 	}
-// }
-
-// .main-section {
-
-// 	.idea-overview {
-
-// 		h4 {
-// 			font-size: 25px;
-// 		}
-
-// 		img {
-// 			padding: 5px;
-// 			border: 1px solid #ccc;
-// 			line-height: 35px;
-// 		}
-// 	}
-
-// 	.overview-bottom {
-
-// 		p {
-// 			padding-bottom: 0;
-// 			margin-bottom: 0;
-// 		}
-// 		a {
-// 			margin-bottom: 0;
-// 			display: block;
-// 			float: right;
-// 		}
-// 		i {
-// 			font-size: 25px;
-// 		}
-// 		#edit-button {
-// 			margin: 0 15px;
-// 		}
-// 		#like-button {
-// 			font-size: 15px;
-// 			padding-top: .1em;
-// 			padding-bottom: .1em;
-// 		}
-// 		.like-symbol {
-// 			padding-left: 3px;
-// 			vertical-align: middle;
-// 		}
-// 	}
-
-// 	.tabs dd {
-// 		border-top: 1px solid #ccc;
-// 		border-left: 1px solid #ccc;
-
-// 		&:last-child {
-// 			border-right: 1px solid #ccc;
-// 		}
-// 	}
-
-// 	.tabs-content {
-
-// 		.content {
-// 			background-color: #fff;
-// 			border: 1px solid #ccc;
-// 			padding: 1.25rem;
-// 		}
-// 	}
-
-// 	.section-container {
-
-// 		.idea-main-content {
-// 			ul {
-// 				margin-left: 20px;
-// 			}
-// 		}
-
-// 		.comment-button {
-// 			margin-left: 2px;
-// 		}
-// 	}
-// }
-
-// .sidebar {
-
-// 	.idea-user {
-
-// 		img {
-// 			display: block;
-// 			margin-left: auto;
-// 			margin-right: auto;
-// 			padding: 5px 0;
-// 		}
-// 		.idea-user-name, .idea-user-location {
-// 			text-align: center;
-// 		}
-// 	}
-
-// 	.idea-stats {
-
-// 		li {
-// 			text-align: center;
-// 			padding-bottom: 0;
-// 		}
-
-// 		li:first-child {
-// 			font-weight: bold;
-// 		}
-// 	}
-
-// 	.extra-info {
-
-// 		h5 {
-// 			font-size: 16px;
-// 		}
-
-// 		p {
-// 			font-size: 14px;
-// 		}
-
-// 		ul {
-// 			margin-left: 15px;
-// 			p {
-// 				margin-bottom: 0;
-// 			}
-// 		}
-// 	}
-
-// 	.more-ideas {
-
-// 		li {
-// 			padding-bottom: 0;
-// 		}
-// 	}
-
-// 	.more-stuff {
-// 		padding-bottom: 25px;
-// 	}
-// }

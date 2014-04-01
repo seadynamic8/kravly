@@ -60,7 +60,12 @@ html, body {
 }
 
 body, fieldset legend {
-	background: #f5f5f5;
+	// background: #f5f5f5;
+	background: url('http://img.kravly.com/white-grey-background.png') repeat;
+}
+
+.page-wrapper {
+	padding-top: 1em;
 }
 
 footer {
