@@ -9,7 +9,7 @@
 		<div class="row">
 	<% end %>
 
-			<li id="idea-<%= "#{idea.id}" %>" class="square">
+			<li id="idea-<%= "#{idea.id}" %>" class="block">
 				<header><%= link_to idea.title, idea_path(idea) %></header>
 
 				<div class="img-container">
@@ -17,7 +17,7 @@
 					<p class="img-source hidden"><%= idea.source %></p>
 				</div>
 
-				<span class="square-extras">
+				<span class="block-extras">
 					<% if permit? "ideas", "edit", idea %>
 					<span data-no-turbolink>
 						<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(idea), 

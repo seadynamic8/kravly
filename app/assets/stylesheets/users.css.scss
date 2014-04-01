@@ -2,19 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// ##################### VARIABLES #########################
-$text-color-one: #125d7d; // blue
-$text-color-two: white;
-$text-color-three: #fa4786; // fuschia
-$text-color-four: #6f6f6f; // grey
-$text-color-five: #13c4a2; // green
-
-$link-hover-color: #39BBE6;
-$link-hover-color-two: #007095;
-
-$bar-bg-color: #125d7d;
-$block-bg-color: #13c4a2;
-
 // ##################### USER TOP PARTIAL #########################
 
 .user-header {
@@ -25,9 +12,7 @@ $block-bg-color: #13c4a2;
 	img {
 		width: 120px;
 		height: 120px;
-		-webkit-border-radius: 60px;
-		-moz-border-radius: 60px;
-		border-radius: 60px;
+		@include round(50%);
 		display: inline-block;
 		vertical-align: top;
 		margin-right: 1em;
@@ -41,10 +26,7 @@ $block-bg-color: #13c4a2;
 		background: $block-bg-color;
 		min-height: 120px;
 		padding: 0 1em 0.3em;
-
-		-webkit-border-radius: 0 60px 60px 0;
-		-moz-border-radius: 0 60px 60px 0;
-		border-radius: 0 60px 60px 0;
+		@include round(0 60px 60px 0);
 
 		h1 {
 			font-size: 1.5em;
@@ -140,10 +122,9 @@ $block-bg-color: #13c4a2;
 
 // ##################### USER BOARDS PAGE #########################
 
-.square {
+.block {
 	
-	.square-extra-boards {
-
+	.block-extra-boards {
 		span {
 			float: left;
 			padding-right: 3px;
@@ -160,21 +141,7 @@ $block-bg-color: #13c4a2;
 		}
 		
 	}
-
-	.square-bottom {
-		padding: .2em 0;
-		color: $text-color-two;
-		font-weight: light;
-		background: $bar-bg-color;
-	}
 }
-
-// .block {
-// 	.block-title {
-// 		padding: 0 5px;
-// 		text-align: center;
-// 	}
-// }
 
 // ##################### END USER BOARDS PAGE #########################
 

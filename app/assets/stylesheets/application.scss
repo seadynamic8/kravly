@@ -10,23 +10,59 @@
 
 // ##################### VARIABLES #########################
 
-$text-color-one: #125d7e;
-$text-color-two: white;
-$text-color-three: #fa4786;
-$text-color-four: #6f6f6f; // grey
-$text-color-five: #13c4a2; // green
-// $text-color-one: #125d7d;
-// $text-color-two: white;
-// $text-color-three: #fa4786;
+$text-color-one:       #125d7e; // blue
+$text-color-two:       white;
+$text-color-three:     #fa4786; // fuschia
+$text-color-four:      #6f6f6f; // grey
+$text-color-five:      #13c4a2; // green
 
-$link-hover-color: #39BBE6;
-$link-hover-color-two: #007095;
+$link-hover-color:     #39BBE6; // sky blue
+$link-hover-color-two: #007095; // light blue
 
-$logo-font: "Grand Hotel", "Bad Script", "Arial", sans-serif;
-$body-font: 'Quicksand', 'Arial', sans-serif;
-$header-font: $body-font;
+$logo-font:      "Grand Hotel", "Bad Script", "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font:      'Quicksand', 'Arial', sans-serif;
+$header-font:    $body-font;
+$paragraph-font: "Source Sans Pro", "Open Sans", "Arial", sans-serif;
 
-$main-header-bg-color: #f9f9f9; // slight off-white
+$main-header-bg-color:            #f9f9f9; // slight off-white
+$header-bg-color:                 white;
+$steps-bg-color:                  white;
+$cta-bg-color:                    #125d7e; // blue
+$discover-block-bg-color:         white;
+$bar-bg-color:                    #125d7e; // blue
+$basics-bg-color:                 white;
+$bar-bg-color:                    #125d7e; // blue
+$block-bg-color:                  #13c4a2; // green
+
+$sidebar-bg-color:                #125d7d; // blue
+$idea-overview-bg-color:          #13c4a2; // green
+$description-bg-color:            white;
+$comments-bg-color:               white;
+$progress-icon-bg-color:          white;
+$progress-icon-active-bg-color:   #fa4786; // fuschia
+$progress-icon-finished-bg-color: #13c4a2; // green
+
+$description-border-color:        #13c4a2; // green
+$comments-border-color:           #fa4786; // fuschia
+
+// ************* SASS MIXINS ******************
+
+@mixin round ($radius: 5px) {
+	border-radius: $radius;
+	background-clip: padding-box;
+}
+
+@mixin box-shadow($radius) {
+	-webkit-box-shadow: $radius;
+	box-shadow: $radius;
+}
+
+@mixin gradient ($from, $to) {
+	background-color: $from;
+	background-image: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+	background-image: -webkit-linear-gradient(top, $from, $to);
+	background-image:         linear-gradient(to bottom, $from, $to);
+}
 
 // ##################### GENERAL STYLES #########################
 
@@ -44,6 +80,16 @@ html, body {
 	height: 100%;
 }
 
+body {
+	// background: #f5f5f5;
+	background: url('http://img.kravly.com/white-grey-background.png') repeat;
+	font-family: $body-font;
+}
+
+p {
+	font-family: $paragraph-font;
+}
+
 .wrapper {
 	min-height: 100%;
 	height: auto !important;
@@ -55,17 +101,12 @@ html, body {
 	padding-bottom: 38px;
 }
 
-.push, footer {
-	height: 60px;
-}
-
-body, fieldset legend {
-	// background: #f5f5f5;
-	background: url('http://img.kravly.com/white-grey-background.png') repeat;
-}
-
 .page-wrapper {
 	padding-top: 1em;
+}
+
+.push, footer {
+	height: 60px;
 }
 
 footer {
@@ -89,7 +130,7 @@ footer {
 
 .main-header {
 	background: $main-header-bg-color;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+	@include box-shadow(0 1px 1px rgba(0, 0, 0, 0.25));
 	width: 100%;
 	height: 38px;
 	position: fixed;
@@ -97,7 +138,7 @@ footer {
 	z-index: 1000;
 
 	h1 {
-		font-family: "Grand Hotel", "Bad Script", "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+		font-family: $logo-font;
 		margin: 0;
 		padding-left: 2em;
 		font-size: 1.7em;
@@ -314,142 +355,72 @@ footer {
 	margin-bottom: 1em;
 }
 
-
+// -------------- BLOCK STYLE -------------------
 
 .block {
-	border: 1px solid #ccc;
-	color: #444;
-	-webkit-box-shadow: 4px 4px 5px rgba(50, 50, 50, 0.75);
-	-moz-box-shadow:    4px 4px 5px rgba(50, 50, 50, 0.75);
-	box-shadow:         4px 4px 5px rgba(50, 50, 50, 0.75);
+	background: $block-bg-color;
+	display: inline-block;
+	vertical-align: top;
+	width: 237px;
+	margin: 0.5em 0.2em 0.5em 0.3em;
+	text-align: center;
+	position: relative;
+	@include round(3px);
 
-	.img-container {
-		position: relative;
-		width: 317px;
-		height: 175px;
+	header {
+		padding: .3em .2em;
 
-		img {
-			position: absolute;
-			top: 0;
-			left: 0;
-			border-right: 2px solid #ccc;
+		a {
+			font-size: 1.2em;
+			font-weight: bold;
+			color: $text-color-two;
+
+			&:hover {
+				color: $link-hover-color-two;
+			}
 		}
-		.img-source {
-			position: absolute;
-			top: 159px;
-			left: 0;
-			background-color: #ccc;
-			padding: 0 5px;
-			font-size: 10px;
-		}
-		.hidden {
-			display: none;
+
+		.pitch {
+			margin: 0;
+			padding: .5em 0;
+			font-size: .9em;
+			font-weight: light;
+			color: $text-color-one;
 		}
 	}
 
-	.board-bottom {
-		padding-top: 5px;
-		padding-left: 1px;
+	img {
+		width: 100%;
+		padding: 0 3px 3px;
 	}
 
-	.idea-bottom {
-		padding: 5px 10px 5px 10px;
-		line-height: 40px;
+	.block-extras {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		background: $block-bg-color;
+		padding: 0.2em 0.5em;
 
-		.idea-title {
-			// text-align: center;
+		a {
 			margin: 0;
-			padding-bottom: 3px;
 		}
 
-		.vote {
-			float: right;
-			display: inline;
-			font-size: 17px;
-			padding-right: 5px;
-			// border-right: 1px solid #ddd;
-			vertical-align: middle;
-			line-height: 30px;
+		i {
+			font-size: 1.2em;
 		}
-		img {
-			float: left;
-			vertical-align: middle;
-			height: 30px;
-			width: 30px;
-			// display: inline-block;
-			margin: 0;
-			margin-right: 5px;
-			// padding-right: 5px;
-		}
-		.name {
-			float: left;
-			line-height: 30px;
+
+		#like-button {
 			font-size: 15px;
-			// display: inline;
+			padding: 0.1em 0.8em;
+		}
+		.like-symbol {
+			padding-left: 5px;
+			vertical-align: middle;
 		}
 	}
-
-	.block-main {
-		margin-bottom: 5px;
-	}
-
-	.buttons {
-		clear: both;
-		margin-left: 10px;
-	}
 }
 
-.user-header-user, .group-header-user {
-	line-height: 90px;
-
-	img {
-		vertical-align: middle;
-		width: 75px;
-		height: 75px;
-		margin-right: 20px;
-	}
-
-	h3 {
-		display: inline;
-		vertical-align: middle;
-		line-height: 90px;
-	}
-}
-
-.group-header {
-	line-height: 28px;
-	margin-bottom:-10px;
-
-	.board-name, .board-desc {
-		text-align: center;
-	}
-
-	.right-section a {
-		float: right;
-		margin-top: 5px;
-	}
-
-	.board-desc {
-		margin-top: 0;
-	}
-
-}
-
-.group-header-stats {
-
-	img {
-		vertical-align: middle;
-		margin-right: 5px;
-	}
-	h6 {
-		display: inline;
-		vertical-align: middle;
-		line-height: 1;
-	}
-	h5 {
-		float: right;
-	}
-}
+// -------------- END BLOCK STYLE -------------------
 
 .img-container {
 	position: relative;

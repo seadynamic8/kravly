@@ -10,7 +10,7 @@
 		<div class="row">
 	<% end %>
 			
-				<li id="board-<%= "#{board.id}" %>" class="square">
+				<li id="board-<%= "#{board.id}" %>" class="block">
 						<header><%= link_to board.name, [@user, board] %></header>
 
 						<% if board.ideas.count > 0 %>
@@ -25,7 +25,7 @@
 							<%= image_tag "http://img.kravly.com/board-background.png" %>
 						<% end %>
 
-						<div class="square-extra-boards">
+						<div class="block-extra-boards">
 							<span><%= mini_image(board.ideas.second, 
 												user_board_path(@user, board)) %></span>
 							<span><%= mini_image(board.ideas.third, 
@@ -35,12 +35,6 @@
 						</div>
 
 						<div style="clear:both;"></div>
-
-						<% if board.category %>
-						<div class="square-bottom">
-							<span class="category"><%= board.category.name %></span>
-						</div>
-						<% end %>
 					
 				</li>
 	

@@ -2,60 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-
-// ##################### VARIABLES #########################
-
-$header-bg-color: white;
-$steps-bg-color: white;
-$cta-bg-color: #125d7e;
-$discover-block-bg-color: white;
-$bar-bg-color: #125d7d;
-$basics-bg-color: white;
-
-$text-color-one: #125d7e;
-$text-color-two: white;
-$text-color-three: #fa4786;
-$text-color-four: #6f6f6f; // grey
-$text-color-five: #13c4a2; // green
-// $text-color-one: #125d7d;
-// $text-color-two: white;
-// $text-color-three: #fa4786;
-
-$link-hover-color: #39BBE6;
-$link-hover-color-two: #007095;
-
-$logo-font: "Grand Hotel", "Bad Script", "Arial", sans-serif;
-$body-font: 'Quicksand', 'Arial', sans-serif;
-$header-font: $body-font;
-
-// ************* SASS MIXINS ******************
-
-@mixin round ($radius: 5px) {
-	-webkit-border-radius: $radius;
-	-moz-border-radius: $radius;
-	border-radius: $radius;
-
-	-moz-background-clip: padding;
-	-webkit-background-clip: padding-box;
-	background-clip: padding-box;
-}
-
-@mixin box-shadow($top, $left, $blur, $spread, $color, $inset:"") {
-  -webkit-box-shadow: $top $left $blur $spread $color #{$inset};
-  -moz-box-shadow: $top $left $blur $spread $color #{$inset};
-  box-shadow: $top $left $blur $spread $color #{$inset};
-}
-
-@mixin gradient ($from, $to) {
-	background-color: $from;
-	background-image: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
-	background-image: -webkit-linear-gradient(top, $from, $to);
-	background-image:    -moz-linear-gradient(top, $from, $to);
-	background-image:      -o-linear-gradient(top, $from, $to);
-	background-image:         linear-gradient(to bottom, $from, $to);
-}
-
 // ##################### INDEX (HOME) PAGE #########################
 
 body .home {
@@ -148,8 +94,7 @@ body .home {
 		text-align: center;
 		background: #99d4c8 url("http://img.kravly.com/home/main-background.png") center -22px no-repeat;
 		padding: 4em 0 8em;
-
-		@include box-shadow(0, 10px, 10px, 0, rgba(0, 0, 0, 0.1), inset);
+		@include box-shadow(inset 0 10px 10px rgba(0, 0, 0, 0.1));
 
 		h1 {
 			margin-bottom: 1em;
@@ -228,9 +173,6 @@ body .home {
 
 				@inlcude gradient($text-color-one, darken($text-color-one, 5%));
 				@include round(10px);
-
-				// -webkit-box-shadow: 0 0 0 4px lighten(#E0E0E0, 7%), inset 0 1px 2px ligthen($text-color-one, 25%);
-				// box-shadow: 0 0 0 4px lighten(#E0E0E0, 7%), inset 0 1px 2px ligthen($text-color-one, 25%);
 
 				&:hover {
 					@include gradient(lighten($text-color-one, 5%), $text-color-one);
@@ -412,17 +354,15 @@ body .home {
 	padding-top: 1em;
 }
 
-.discover-square {
+.discover-block {
 	background: $discover-block-bg-color;
 	display: inline-block;
 	vertical-align: top;
 	width: 314px;
 	margin: 0.5em 0.5em;
 	text-align: left;
-
-	-webkit-box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.75);
-	-moz-box-shadow:    5px 5px 5px rgba(50, 50, 50, 0.75);
-	box-shadow:         5px 5px 5px rgba(50, 50, 50, 0.75);
+	@include box-shadow(1px 2px 2px rgba(50, 50, 50, 0.75));
+	@include round(0 0 3px 3px);
 
 	.category {
 		background: $bar-bg-color;
@@ -430,6 +370,7 @@ body .home {
 		padding: 0.2em 0;
 		text-align: center;
 		min-height: 1.4em;
+		@include round(3px 3px 0 0);
 	}
 
 	header {
@@ -454,10 +395,10 @@ body .home {
 
 	.img-container img {
 		width: 100%;
-		padding: 0 3px 3px;
+		margin-bottom: 3px;
 	}
 
-	.discover-square-extras {
+	.discover-block-extras {
 		padding: 0.3em 0.5em;
 
 		.user-section, .vote-section {
@@ -465,14 +406,12 @@ body .home {
 		}
 
 		.user-section {
-			width: 65%;
+			width: 64%;
 
 			img {
 				width: 30px;
 				height: 30px;
-				-webkit-border-radius: 15px;
-				-moz-border-radius: 15px;
-				border-radius: 15px;
+				@include round(50%);
 				margin-right: 2px;
 			}
 
@@ -487,7 +426,7 @@ body .home {
 		}
 
 		.vote-section {
-			width: 33%;
+			width: 34%;
 			text-align: right;
 
 			#like-button {
@@ -506,59 +445,6 @@ body .home {
 		
 	}
 }
-
-// .banner {
-// 	margin-top: -10px;
-// 	background: url(http://img.kravly.com/banner.jpg) no-repeat center -180px;
-
-// 	.banner-overlay {
-// 		background-color: rgba(0,0,0,0.4);
-// 	}
-
-// 	.intro-note {
-// 		padding: 20px 0 30px 0;
-// 		text-align: center;
-		
-// 		.title {
-// 			text-align: center;
-// 			margin: 0;
-// 			color: #eee;
-// 		}
-// 		.subtitle {
-// 			text-align: center;
-// 			color: #eee;
-// 		}
-// 		.get-started-button {
-// 			margin-top: 10px;
-// 		}
-
-// 		.guide-link {
-// 			// color: darkslategray;
-// 			color: #eee;
-// 			font-size: 85%;
-
-// 			&:hover {
-// 				color: white;
-// 				text-decoration: underline;
-// 			}
-// 		}
-// 	}
-// }
-
-// .filter {
-// 	padding-top: 10px;
-// 	text-align: center;
-// 	border-bottom: 1px solid #aaa;
-
-// 	.inline-list {
-// 		margin-bottom: 0;
-// 		padding-bottom: 2px;
-// 	}
-// }
-
-// .main-ideas {
-// 	padding-top: 20px;
-// }
 
 // ##################### END DISCOVER PAGE #########################
 
@@ -772,40 +658,5 @@ body .home {
 		margin-left: 1em;
 	}
 }
-
-// .basics-top {
-// 	text-align: center;
-// 	background: #6EB1FF;
-// 	padding: 10px 0;
-// 	border-bottom: 1px solid #ccc;
-// 	margin-top: -10px;
-// }
-
-// .basics-main {
-// 	padding: 30px 0 20px 0;
-
-// 	img {
-// 		border: 1px solid #aaa;
-// 		margin: 0 5px;
-// 		-webkit-box-shadow: 4px 4px 5px rgba(50, 50, 50, 0.75);
-// 		-moz-box-shadow:    4px 4px 5px rgba(50, 50, 50, 0.75);
-// 		box-shadow:         4px 4px 5px rgba(50, 50, 50, 0.75);
-// 	}
-
-// 	.row {
-// 		padding: 20px 0;
-
-// 		.guide {
-// 			h3 {
-// 				text-align: center;
-// 			}
-// 			p {
-// 				text-align: center;
-// 				font-size: 20px;
-// 				font-weight: bold;
-// 			}
-// 		}
-// 	}
-// }
 
 // ##################### END BASICS PAGE #########################

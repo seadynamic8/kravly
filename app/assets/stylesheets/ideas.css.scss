@@ -2,26 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// ##################### VARIABLES #########################
-$text-color-one: #125d7d; // blue
-$text-color-two: white;
-$text-color-three: #fa4786; // fuschia
-$text-color-four: #6f6f6f; // grey
-$text-color-five: #13c4a2; // green
-
-$link-hover-color: #39BBE6;
-
-$sidebar-bg-color: #125d7d;
-$idea-overview-bg-color: #13c4a2;
-$description-bg-color: white;
-$comments-bg-color: white;
-$progress-icon-bg-color: white;
-$progress-icon-active-bg-color: #fa4786;
-$progress-icon-finished-bg-color: #13c4a2;
-
-$description-border-color: #13c4a2;
-$comments-border-color: #fa4786;
-
 // ##################### IDEA SHOW PAGE #########################
 
 // ---------------- SIDEBAR SECTION -----------------------------
@@ -29,9 +9,7 @@ $comments-border-color: #fa4786;
 	background-color: $sidebar-bg-color;
 	padding: 20px 20px;
 	width: 300px;
-	-webkit-border-radius: 150px 150px 0 0;
-	-moz-border-radius: 150px 150px 0 0;
-	border-radius: 150px 150px 0 0;
+	@include round(150px 150px 0 0);
 	text-align: center;
 	color: $text-color-three;
 
@@ -46,9 +24,7 @@ $comments-border-color: #fa4786;
 		img {
 			width: 200px;
 			height: 200px;
-			-webkit-border-radius: 100px;
-			-moz-border-radius: 100px;
-			border-radius: 100px;
+			@include round(50%);
 			margin-bottom: 10px;
 		}
 
@@ -127,6 +103,8 @@ $comments-border-color: #fa4786;
 			background: $idea-overview-bg-color;
 			color: white;
 
+			span { font-family: $paragraph-font; }
+
 			.seperator {
 				margin: 0 10px;
 			}
@@ -157,6 +135,10 @@ $comments-border-color: #fa4786;
 		background: $description-bg-color;
 		padding: 2em;
 		margin-bottom: 20px;
+
+		p {
+			margin: 0;
+		}
 	}
 
 	// Comments ----------------------------------------
@@ -194,9 +176,7 @@ $comments-border-color: #fa4786;
 			.comment-avatar {
 				width: 48px;
 				height: 48px;
-				-webkit-border-ra48us: 24px;
-				-moz-border-48dius: 24px;
-				border-radius: 24px;
+				@include round(50%);
 				margin-right: 5px;
 				display: inline-block;
 				vertical-align: top;
@@ -236,9 +216,7 @@ $comments-border-color: #fa4786;
 			img {
 				width: 40px;
 				height: 40px;
-				-webkit-border-radius: 20px;
-				-moz-border-radius: 20px;
-				border-radius: 20px;
+				@include round(50%);
 				margin-bottom: 2px;
 			}
 			.comment-user-name p {
@@ -295,9 +273,7 @@ $comments-border-color: #fa4786;
 			.comment-avatar {
 				width: 40px;
 				height: 40px;
-				-webkit-border-ra48us: 20px;
-				-moz-border-48dius: 20px;
-				border-radius: 20px;
+				@include round(50%);
 				margin-right: 5px;
 				margin-top: 4px;
 				display: inline-block;
@@ -389,7 +365,7 @@ $comments-border-color: #fa4786;
 				border: 4px solid $text-color-one;
 				width: 45px;
 				height: 45px;
-				border-radius: 50%;
+				@include round(50%);
 				margin: .2em auto 0;
 			}
 

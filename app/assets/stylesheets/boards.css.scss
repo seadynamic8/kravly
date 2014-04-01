@@ -2,18 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// ##################### VARIABLES #########################
-$text-color-one: #125d7d;
-$text-color-two: white;
-$text-color-three: #fa4786;
-$text-color-four: #6f6f6f;
-
-$link-hover-color: #39BBE6;
-$link-hover-color-two: #007095;
-
-$bar-bg-color: #125d7d;
-$block-bg-color: #13c4a2;
-
 // ##################### BOARDS SHOW PAGE #########################
 
 // ---------------- HEADER SECTION -----------------------------
@@ -71,9 +59,7 @@ $block-bg-color: #13c4a2;
 			vertical-align: top;
 			width: 30px;
 			height: 30px;
-			-webkit-border-radius: 15px;
-			-moz-border-radius: 15px;
-			border-radius: 15px;
+			@include round(50%);
 			margin-right: 5px;
 		}
 
@@ -148,68 +134,6 @@ $block-bg-color: #13c4a2;
 // ---------------- END BAR SECTION -----------------------------
 
 // ---------------- IDEAS SECTION -----------------------------
-
-
-.square {
-	background: $block-bg-color;
-	display: inline-block;
-	vertical-align: top;
-	width: 237px;
-	margin: 0.5em 0.3em;
-	text-align: center;
-	position: relative;
-
-	header {
-		padding: .3em .2em;
-
-		a {
-			font-size: 1.2em;
-			font-weight: bold;
-			color: $text-color-two;
-
-			&:hover {
-				color: $link-hover-color-two;
-			}
-		}
-
-		.pitch {
-			padding: .5em 0;
-			font-size: .9em;
-			font-weight: light;
-			color: $text-color-one;
-		}
-	}
-
-	img {
-		width: 100%;
-		padding: 0 3px 3px;
-	}
-
-	.square-extras {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		background: $block-bg-color;
-		padding: 0.2em 0.5em;
-
-		a {
-			margin: 0;
-		}
-
-		i {
-			font-size: 1.2em;
-		}
-
-		#like-button {
-			font-size: 15px;
-			padding: 0.1em 0.8em;
-		}
-		.like-symbol {
-			padding-left: 5px;
-			vertical-align: middle;
-		}
-	}
-}
 
 // ---------------- END IDEAS SECTION -----------------------------
 

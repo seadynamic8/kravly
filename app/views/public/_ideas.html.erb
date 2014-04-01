@@ -3,7 +3,7 @@
 		<div class="row">
 	<% end %>
 
-			<li class="discover-square">
+			<li class="discover-block">
 				
 				<div class="category">
 					<%= idea.board.category.name if idea.board.category %>
@@ -12,9 +12,9 @@
 				<header><%= link_to idea.title, idea_path(idea) %></header>
 
 				<% if Rails.env == "development" %>
-				<p class="pitch">
+	<!-- 			<p class="pitch">
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo beatae cum totam illum placeat debitis impedit rem dolorum veniam laboriosam.
-				</p>
+				</p> -->
 				<% end %>
 
 				<div class="img-container">
@@ -22,7 +22,7 @@
 					<p class="img-source hidden"><%= idea.source %></p>
 				</div>
 
-				<div class="discover-square-extras">
+				<div class="discover-block-extras">
 					<div class="user-section">
 						<%= link_to (image_tag idea.user.avatar.small_profile.url),
 									boards_user_path(idea.user) %>

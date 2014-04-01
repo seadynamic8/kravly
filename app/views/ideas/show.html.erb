@@ -97,9 +97,9 @@
 			<header>
 				<h1><%= @idea.title %></h1>
 				<% if Rails.env == "development" %>
-				<p>
+<!-- 				<p class="pitch">
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo beatae cum totam illum placeat debitis impedit rem dolorum veniam laboriosam.
-				</p>
+				</p> -->
 				<% end %>
 			</header>
 
@@ -149,7 +149,7 @@
 				</div>
 			<% end %>
 
-			<%= raw @idea.content %>
+			<p><%= raw @idea.content %></p>
 		</div>
 		
 		<!-- ********* END DESCRIPTION SECTION ********** -->

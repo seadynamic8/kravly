@@ -68,14 +68,14 @@
 		<div class="row">
 	<% end %>
 			
-			<div id="idea-<%= "#{idea.id}" %>" class="square">
+			<div id="idea-<%= "#{idea.id}" %>" class="block">
 				<header>
 					<%= link_to idea.title, idea_path(idea) %><br>
 
 					<% if Rails.env == "development" %>
-						<div class="pitch">
+		<!-- 				<p class="pitch">
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, aliquam harum eos nobis nostrum et nulla similique suscipit consequatur quasi?
-						</div>
+						</p> -->
 					<% end %>
 				</header>
 
@@ -85,7 +85,7 @@
 					<p class="img-source hidden"><%= idea.source %></p>
 				</div>
 				
-				<div class="square-extras">
+				<div class="block-extras">
 					<% if permit? "ideas", "edit", idea %>
 						<span data-no-turbolink>
 							<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(idea),
