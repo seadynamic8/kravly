@@ -18,7 +18,6 @@
 //= require jquery.charactercounter
 //= require jquery.uriAnchor
 //= require foundation
-//= require turbolinks
 //= require ckeditor/override
 //= require ckeditor/init
 //= require_tree .
@@ -46,3 +45,5 @@ $(document).ready(function() {
 			$(this).delay(3000).slideUp(500);
 	});
 });
+
+//= require turbolinks

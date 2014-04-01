@@ -9,7 +9,7 @@
 
 	<% else %>
 
-		<div class="comment-form-input" data-no-turbolink>
+		<div class="comment-form-input">
 			<%= form_for comment, remote: true do |f| %>
 
 				<%= f.hidden_field :commentable_id, value: comment.commentable_id %>

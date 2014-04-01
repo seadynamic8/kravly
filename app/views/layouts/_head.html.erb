@@ -21,7 +21,11 @@
     </title>
 
   	<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+
+    <!-- modernizr is head because it has to be -->
     <%= javascript_include_tag "vendor/modernizr" %>
+    <!-- the rest of the javascript has to be here because of turbolinks -->
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 
     <%= csrf_meta_tags %>
   </head>

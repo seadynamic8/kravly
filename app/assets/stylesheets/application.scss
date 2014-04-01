@@ -61,7 +61,7 @@ $comments-border-color:           #fa4786; // fuschia
 	background-color: $from;
 	background-image: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
 	background-image: -webkit-linear-gradient(top, $from, $to);
-	background-image:         linear-gradient(to bottom, $from, $to);
+	background-image: linear-gradient(to bottom, $from, $to);
 }
 
 // ##################### GENERAL STYLES #########################

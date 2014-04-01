@@ -12,9 +12,7 @@
 						<h5><%= link_to idea.title, idea_path(idea) %></h5>
 
 						<% if current_user && current_user == @user %>
-							<span data-no-turbolink>
-								<%= link_to "Edit", edit_idea_path(idea), class: "tiny button" %>
-							</span>
+							<%= link_to "Edit", edit_idea_path(idea), class: "tiny button" %>
 							<%= link_to "Delete", idea_path(idea), method: :delete, 
 									data: { confirm: "Are you sure?" }, class: "tiny button" %>
 						<% end %>
