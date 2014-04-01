@@ -24,7 +24,7 @@
 
 $(document).ready(function() {
 	// $(document).foundation();
-	
+
 	$('.img-container').hover(
 		function() {
 			$(this).find('.img-source').removeClass('hidden');
@@ -45,5 +45,13 @@ $(document).ready(function() {
 			$(this).delay(3000).slideUp(500);
 	});
 });
+
+$(document).on('page:change', function () {
+	if ( window.clicky !== null ) {
+    clicky.log( document.location.pathname + document.location.search, 
+    	document.title, 'pageview' );
+	}
+});
+
 
 //= require turbolinks
