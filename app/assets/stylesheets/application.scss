@@ -255,6 +255,12 @@ footer {
 
 			.right {
 				float: right;
+
+				.user .submenu {
+					left: auto;
+					right: -25%;
+					// right: 10%;
+				}
 			}
 		} // end .nav-list
 	}

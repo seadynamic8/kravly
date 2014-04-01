@@ -323,9 +323,10 @@ body .home {
 	padding-top: 1em;
 }
 
-.banner {
+.discover-banner {
 	width: 100%;
 	text-align: center;
+	padding-bottom: 1em;
 
 	h1 {
 		font-family: $logo-font;
@@ -348,10 +349,6 @@ body .home {
 			}
 		}
 	}
-}
-
-#ideas {
-	padding-top: 1em;
 }
 
 .discover-block {

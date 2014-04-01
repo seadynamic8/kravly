@@ -4,7 +4,7 @@
 
 <% unless current_user %>
 
-<section class="banner">
+<section class="discover-banner">
 	<h1>Discover New Ideas</h1>
 	<p>Vote for New Ideas, Collaborate, or 
 		<%= link_to "Create your own.", new_user_path %>
@@ -17,9 +17,7 @@
 
 <!-- ##################### IDEAS SECTION ###########################-->
 
-<div id="ideas">
-	<%= render 'ideas' %>
-</div>
+<%= render 'ideas' %>
 
 <div style="clear:both;"></div>
 
