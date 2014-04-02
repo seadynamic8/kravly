@@ -429,7 +429,8 @@ body .home {
 			#like-button {
 				@include button( $button-tny, $text-color-three, false, false, false, false);
 				padding: 0.3em 0.5em;
-				margin: 0;
+				margin-right: 0.1em;
+				margin-bottom: 0;
 				font-size: 1em;
 			}
 
