@@ -117,7 +117,8 @@
 				<% end %>
 
 				<% if (permit? "ideas", "edit", @idea) && (permit? "ideas", "destroy", @idea) %>
-					<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(@idea), id: "edit-button" %>
+					<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(@idea), 
+							data: { "no-turbolink" => true }, id: "edit-button" %>
 					<%= link_to raw("<i class='fi-x'></i>"), idea_path(@idea), method: :delete, 
 							data: { confirm: "Are you sure?" }, id: "delete-button" %>
 				<% end %>

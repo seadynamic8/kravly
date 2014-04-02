@@ -13,9 +13,11 @@
       </div>
     </footer>
 
+    <% if Rails.env == "production" %>
     <script src="//static.getclicky.com/js" type="text/javascript"></script>
     <script type="text/javascript">try{ clicky.init(100670206); }catch(e){}</script>
     <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100670206ns.gif" /></p></noscript>
+    <% end %>
 
   </body>
 </html>

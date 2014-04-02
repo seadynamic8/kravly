@@ -60,12 +60,12 @@
 
               <!-- ADD BUTTON -->
               <li class="list-item">
-                <%= link_to "Add", new_idea_path %>
+                <%= link_to "Add", new_idea_path, data: { "no-turbolink" => true } %>
                 <ul class="submenu">
                   <li class="submenu-item">
                     <%= link_to "Board", new_user_board_path(current_user) %></li>
                   <li class="submenu-item">
-                    <%= link_to "Idea", new_idea_path %></li>
+                    <%= link_to "Idea", new_idea_path, data: { "no-turbolink" => true } %></li>
                 </ul>
               </li>
 

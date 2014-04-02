@@ -21,9 +21,10 @@
 //= require ckeditor/override
 //= require ckeditor/init
 //= require_tree .
+//= require turbolinks
 
 $(document).ready(function() {
-	// $(document).foundation();
+	$(document).foundation();
 
 	$('.img-container').hover(
 		function() {
@@ -46,12 +47,9 @@ $(document).ready(function() {
 	});
 });
 
-$(document).on('page:change', function () {
-	if ( window.clicky !== null ) {
-    clicky.log( document.location.pathname + document.location.search, 
-    	document.title, 'pageview' );
-	}
-});
-
-
-//= require turbolinks
+// $(document).on('page:change', function () {
+// 	if ( window.clicky !== null && window.clicky !== "undefined" ) {
+//     clicky.log( document.location.pathname + document.location.search, 
+//     	document.title, 'pageview' );
+// 	}
+// });

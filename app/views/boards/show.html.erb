@@ -10,7 +10,8 @@
 	<h2><%= @board.description %></h2>
 
 	<% if current_user && current_user == @user %>
-		<%= link_to "Add Idea", new_idea_path, class: "add-button small button" %>
+		<%= link_to "Add Idea", new_idea_path, class: "add-button small button",
+				data: { "no-turbolink" => true } %>
 	<% end %>
 
 	<div class="back-to-user">
@@ -86,7 +87,7 @@
 				<div class="block-extras">
 					<% if permit? "ideas", "edit", idea %>
 						<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(idea),
-									class: "edit-link" %>
+								data: { "no-turbolink" => true }, class: "edit-link" %>
 					<% end %>
 					<% if permit? "ideas", "destroy", idea %>
 						<%= link_to raw("<i class='fi-x'></i>"), idea_path(idea), method: :delete, 

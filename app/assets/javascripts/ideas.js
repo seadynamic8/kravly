@@ -219,7 +219,7 @@ Wizard.prototype.onHashchange = function () {
   return false;
 };
 
-$(document).ready(function () {
+var addIdeaScript = function () {
   var
     anchor_schema_map = {
       page: {
@@ -277,4 +277,9 @@ $(document).ready(function () {
     }
   });
     
-});
+};
+
+$(document).on('ready', addIdeaScript);
+// $(document).on('page:load', addIdeaScript);
+// $(document).on('page:change', addIdeaScript);
+// $(document).on('page:restore', addIdeaScript);
