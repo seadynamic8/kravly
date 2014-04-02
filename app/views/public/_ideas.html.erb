@@ -40,6 +40,8 @@
 										vote_idea_path(idea), class: "tiny button disabled", 
 										id: "like-button" %>
 							<% end %>
+						<% else %>
+						<i class='fi-like like-novote'></i>
 						<% end %>
 						<span class="vote"><%= idea.votes %></span>
 					</div>
