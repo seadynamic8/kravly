@@ -426,7 +426,7 @@ body .home {
 			width: 34%;
 			text-align: right;
 
-			#like-button {
+			.like-button {
 				@include button( $button-tny, $text-color-three, false, false, false, false);
 				padding: 0.3em 0.5em;
 				margin-right: 0.1em;
