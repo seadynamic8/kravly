@@ -1,6 +1,5 @@
 $('.discover-ideas').append('<%= j render "ideas" %>');
 <% if @ideas.next_page %>
-	console.log('got here');
 	$('.pagination').replaceWith('<%= j will_paginate(@ideas) %>');
 <% else %>
 	$('.pagination').remove();
