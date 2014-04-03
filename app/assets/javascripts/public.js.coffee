@@ -12,23 +12,27 @@ jQuery ->
 			isFitWidth: true
 
 	$discoverIdeas.infinitescroll
-		navSelector: '.pagination',
-		nextSelector: '.paginate .next_page a',
+		navSelector: '.discover-paginate',
+		nextSelector: '.discover-paginate .next_page a',
 		itemSelector: '.discover-block',
+		# appendCallback: false,
 		loading:
-        img: 'https://s3.amazonaws.com/img.kravly.com/loading.gif',
-        msgText: '<p>Fetching more ideas....</p>'
+			speed: 'fast',
+			selector: '.discover-paginate',
+			img: 'https://s3.amazonaws.com/img.kravly.com/loading.gif'
 	, ( newElements ) ->
-		  # hide new items while they are loading
-      $newElems = $( newElements ).css({ opacity: 0 })
-      # ensure that images load before adding to discover layout
-      $newElems.imagesLoaded ->
-        # show elems now they're ready
-        $newElems.animate({ opacity: 1 })
-        $discoverIdeas.masonry( 'appended', $newElems, true )
+		# hide new items while they are loading
+		$newElems = $( newElements ).css({ opacity: 0 })
+		# ensure that images load before adding to discover layout
+		$newElems.imagesLoaded ->
+			# show elems now they're ready
+			$newElems.animate({ opacity: 1 })
+			# Add new items using masonry
+			$discoverIdeas.masonry( 'appended', $newElems, true )
 
-      $newElems.find('.img-container').hover ->
-      	$(this).find('.img-source').toggleClass('hidden')
+		#Add image source hover for added items
+		$newElems.find('.img-container').hover ->
+			$(this).find('.img-source').toggleClass('hidden')
 
 
 # endlessScroll = ->

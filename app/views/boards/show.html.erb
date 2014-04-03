@@ -63,63 +63,53 @@
 <div class="boards-ideas">
 	<% @ideas.each_with_index do |idea, index| %>
 
-		<!-- Only output row when mutiple of 4 (ie each row has 4 items) -->
-		<% if index % 4 == 0 %> 
-			<div class="row">
-		<% end %>
-				
-				<div id="idea-<%= "#{idea.id}" %>" class="block">
-					<header>
-						<%= link_to idea.title, idea_path(idea) %><br>
+		<div id="idea-<%= "#{idea.id}" %>" class="block">
+			<header>
+				<%= link_to idea.title, idea_path(idea) %><br>
 
-						<% if Rails.env == "development" %>
-			<!-- 				<p class="pitch">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, aliquam harum eos nobis nostrum et nulla similique suscipit consequatur quasi?
-							</p> -->
-						<% end %>
-					</header>
+				<% if Rails.env == "development" %>
+	<!-- 				<p class="pitch">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, aliquam harum eos nobis nostrum et nulla similique suscipit consequatur quasi?
+					</p> -->
+				<% end %>
+			</header>
 
-					<div class="img-container">
-						<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %>
+			<div class="img-container">
+				<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %>
 
-						<p class="img-source hidden"><%= idea.source %></p>
-					</div>
-					
-					<div class="block-extras">
-						<% if permit? "ideas", "edit", idea %>
-							<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(idea),
-									data: { "no-turbolink" => true }, class: "edit-link" %>
-						<% end %>
-						<% if permit? "ideas", "destroy", idea %>
-							<%= link_to raw("<i class='fi-x'></i>"), idea_path(idea), method: :delete, 
-									data: { confirm: "Are you sure?" }, class: "delete-link" %>
-						<% end %>
-						<% if (permit? "ideas", "vote", idea) %>
-							<% if current_user.not_voted?(idea) %>
-							<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), 
-										vote_idea_path(idea), class: "tiny button", id: "like-button" %>
-							<% else %>
-							<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), 
-										vote_idea_path(idea), class: "tiny button disabled", 
-										id: "like-button" %>
-							<% end %>
-						<% end %>
-					</div>
-
-				</div>
-
-		<% if (index+1) % 4 == 0 || (index+1) == @ideas.count %>
+				<p class="img-source hidden"><%= idea.source %></p>
 			</div>
-		<% end %>
+			
+			<div class="block-extras">
+				<% if permit? "ideas", "edit", idea %>
+					<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(idea),
+							data: { "no-turbolink" => true }, class: "edit-link" %>
+				<% end %>
+				<% if permit? "ideas", "destroy", idea %>
+					<%= link_to raw("<i class='fi-x'></i>"), idea_path(idea), method: :delete, 
+							data: { confirm: "Are you sure?" }, class: "delete-link" %>
+				<% end %>
+				<% if (permit? "ideas", "vote", idea) %>
+					<% if current_user.not_voted?(idea) %>
+					<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), 
+								vote_idea_path(idea), class: "tiny button", id: "like-button" %>
+					<% else %>
+					<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), 
+								vote_idea_path(idea), class: "tiny button disabled", 
+								id: "like-button" %>
+					<% end %>
+				<% end %>
+			</div>
+
+		</div>
 
 	<% end %>
 </div>
 
-<div style="clear:both;"></div>
-
 <div class="pagination-centered">
 	<%= will_paginate @ideas, inner_window: 4, outer_window: 2,
-	previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe %>
+	previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe,
+	class: "boards-ideas-paginate pagination" %>
 </div>
 
 <!-- ##################### END IDEAS SECTION ###########################-->

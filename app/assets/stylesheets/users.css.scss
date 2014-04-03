@@ -123,6 +123,7 @@
 // ##################### USER BOARDS PAGE #########################
 
 .users-boards {
+	margin: 0 auto;
 
 	.img-container {
 		padding: 0 5px 5px;
@@ -163,6 +164,7 @@
 
 			img {
 				width: 72px;
+				height: 54px;
 				padding: 0;
 			}
 		}
@@ -173,9 +175,17 @@
 
 // ##################### USER IDEAS PAGE #########################
 
+.users-ideas {
+	margin: 0 auto;
+}
+
 // ##################### END USER BOARDS PAGE #########################
 
 // ##################### USER VOTES PAGE #########################
+
+.users-votes {
+	margin: 0 auto;
+}
 
 // ##################### END VOTES BOARDS PAGE #########################
 

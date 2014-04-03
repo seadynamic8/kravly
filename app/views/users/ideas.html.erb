@@ -4,39 +4,34 @@
 
 <!-- ##################### IDEAS SECTION ###########################-->
 
-<% @ideas.each_with_index do |idea, index| %>
-	<% if index % 4 == 0 %>
-		<div class="row">
+<div class="users-ideas">
+	<% @ideas.each_with_index do |idea, index| %>
+
+		<li id="idea-<%= "#{idea.id}" %>" class="block">
+			<header><%= link_to idea.title, idea_path(idea) %></header>
+
+			<div class="img-container">
+				<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %><br>
+				<p class="img-source hidden"><%= idea.source %></p>
+			</div>
+
+			<% if current_user && idea.user == current_user %>
+			<span class="block-extras">
+				<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(idea), 
+						data: { "no-turbolink" => true }, class: "edit-link" %>
+				<%= link_to raw("<i class='fi-x'></i>"), idea_path(idea), method: :delete, 
+						data: { confirm: "Are you sure?" }, class: "delete-link" %>
+			</span>
+			<% end %>
+		</li>
+
 	<% end %>
-
-			<li id="idea-<%= "#{idea.id}" %>" class="block">
-				<header><%= link_to idea.title, idea_path(idea) %></header>
-
-				<div class="img-container">
-					<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %><br>
-					<p class="img-source hidden"><%= idea.source %></p>
-				</div>
-
-				<% if current_user && idea.user == current_user %>
-				<span class="block-extras">
-					<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(idea), 
-							data: { "no-turbolink" => true }, class: "edit-link" %>
-					<%= link_to raw("<i class='fi-x'></i>"), idea_path(idea), method: :delete, 
-							data: { confirm: "Are you sure?" }, class: "delete-link" %>
-				</span>
-				<% end %>
-			</li>
-
-	<% if (index+1) % 4 == 0 || (index+1) == @ideas.count %>
-		</div>
-	<% end %>
-<% end %>
-
-<div style="clear:both;"></div>
+</div>
 
 <div class="pagination-centered">
 	<%= will_paginate @ideas, inner_window: 4, outer_window: 2,
-	previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe %>
+	previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe,
+	class: 'users-ideas-paginate pagination' %>
 </div>
 
 <!-- ##################### END IDEAS SECTION ###########################-->

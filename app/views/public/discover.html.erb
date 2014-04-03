@@ -73,9 +73,10 @@
 	<% end %>
 </div>
 
-<div class="pagination-centered paginate">
+<div class="pagination-centered">
 	<%= will_paginate @ideas, inner_window: 4, outer_window: 2,
-	previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe %>
+	previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe,
+	class: 'discover-paginate pagination' %>
 </div>
 
 <!-- ##################### END IDEAS SECTION ###########################-->

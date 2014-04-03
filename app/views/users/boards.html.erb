@@ -7,9 +7,9 @@
 <div class="users-boards">
 	<% @boards.each_with_index do |board, index| %>
 
-		<% if index % 4 == 0 %>
+<!-- 		<% if index % 4 == 0 %>
 			<div class="row">
-		<% end %>
+		<% end %> -->
 				
 					<li id="board-<%= "#{board.id}" %>" class="block">
 							<header><%= link_to board.name, [@user, board] %></header>
@@ -39,20 +39,17 @@
 						
 					</li>
 		
-		<% if (index+1) % 4 == 0 || (index+1) == @boards.count %>
+<!-- 		<% if (index+1) % 4 == 0 || (index+1) == @boards.count %>
 			</div>
-		<% end %>
+		<% end %> -->
 
 	<% end %>
 </div>
 
-<div style="clear:both;"></div>
-
-<%= will_paginate @boards %>
-
 <div class="pagination-centered">
 	<%= will_paginate @boards, inner_window: 4, outer_window: 2,
-	previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe %>
+	previous_label: '&laquo;'.html_safe, next_label: '&raquo;'.html_safe,
+	class: 'users-boards-paginate pagination' %>
 </div>
 
 <!-- ##################### END BOARDS SECTION ###########################-->
