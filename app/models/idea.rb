@@ -93,7 +93,7 @@ class Idea < ActiveRecord::Base
 		end
 
 		def update_source_from_remote_url
-			self.source = URI(self.remote_image_url).host if self.remote_image_url
+			self.source = URI(self.remote_image_url).host if self.remote_image_url.present?
 		end
 																	
 end

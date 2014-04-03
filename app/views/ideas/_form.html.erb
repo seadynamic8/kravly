@@ -1,7 +1,5 @@
 	
-
-<%= hidden_field_tag "idea[votes]", action_new_create? ? 0 : @idea.votes %>
-
+<%= f.hidden_field :votes, value: ( action_new_create? ? 0 : @idea.votes ) %>
 
 <!-- ************** IDEA-NEW PITCH SECTION **************** -->
 
@@ -122,6 +120,7 @@
 				<br>
 				<%= image_tag(@idea.image.small_thumb.url) if @idea.image? %>
 
+				<%= f.hidden_field :source, value: @idea.source if @idea.source.present? %>
 				<%= f.hidden_field :image_cache %>
 			</li>
 
