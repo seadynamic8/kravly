@@ -4,45 +4,47 @@
 
 <!-- ##################### BOARDS SECTION ###########################-->
 
-<% @boards.each_with_index do |board, index| %>
+<div class="users-boards">
+	<% @boards.each_with_index do |board, index| %>
 
-	<% if index % 4 == 0 %>
-		<div class="row">
-	<% end %>
-			
-				<li id="board-<%= "#{board.id}" %>" class="block">
-						<header><%= link_to board.name, [@user, board] %></header>
+		<% if index % 4 == 0 %>
+			<div class="row">
+		<% end %>
+				
+					<li id="board-<%= "#{board.id}" %>" class="block">
+							<header><%= link_to board.name, [@user, board] %></header>
 
-						<% if board.ideas.count > 0 %>
-	
 							<div class="img-container">
-								<%= link_to (image_tag board.ideas.first.image.thumb.url), 
-									user_board_path(@user, board) %>
-								<p class="img-source hidden"><%= board.ideas.first.source %></p>
+								<% if board.ideas.count > 0 %>
+									<%= link_to (image_tag board.ideas.first.image.thumb.url), 
+										user_board_path(@user, board) %>
+									<p class="img-source hidden"><%= board.ideas.first.source %></p>
+								<% else %>
+									<span class="img-hover">
+									<%= image_tag "http://img.kravly.com/board-background.png" %>
+									</span>
+								<% end %>
 							</div>
 
-						<% else %>
-							<%= image_tag "http://img.kravly.com/board-background.png" %>
-						<% end %>
+							<div class="block-extra-boards">
+								<span class="img-hover"><%= mini_image(board.ideas.second, 
+													user_board_path(@user, board)) %></span>
+								<span class="img-hover"><%= mini_image(board.ideas.third, 
+													user_board_path(@user, board)) %></span>
+								<span class="img-hover"><%= mini_image(board.ideas.fourth, 
+													user_board_path(@user, board)) %></span>
+							</div>
 
-						<div class="block-extra-boards">
-							<span><%= mini_image(board.ideas.second, 
-												user_board_path(@user, board)) %></span>
-							<span><%= mini_image(board.ideas.third, 
-												user_board_path(@user, board)) %></span>
-							<span><%= mini_image(board.ideas.fourth, 
-												user_board_path(@user, board)) %></span>
-						</div>
+							<div style="clear:both;"></div>
+						
+					</li>
+		
+		<% if (index+1) % 4 == 0 || (index+1) == @boards.count %>
+			</div>
+		<% end %>
 
-						<div style="clear:both;"></div>
-					
-				</li>
-	
-	<% if (index+1) % 4 == 0 || (index+1) == @boards.count %>
-		</div>
 	<% end %>
-
-<% end %>
+</div>
 
 <div style="clear:both;"></div>
 

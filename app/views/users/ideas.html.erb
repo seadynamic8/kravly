@@ -17,16 +17,14 @@
 					<p class="img-source hidden"><%= idea.source %></p>
 				</div>
 
+				<% if current_user && idea.user == current_user %>
 				<span class="block-extras">
-					<% if permit? "ideas", "edit", idea %>
 					<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(idea), 
 							data: { "no-turbolink" => true }, class: "edit-link" %>
-					<% end %>
-					<% if permit? "ideas", "destroy", idea %>
 					<%= link_to raw("<i class='fi-x'></i>"), idea_path(idea), method: :delete, 
 							data: { confirm: "Are you sure?" }, class: "delete-link" %>
-					<% end %>
 				</span>
+				<% end %>
 			</li>
 
 	<% if (index+1) % 4 == 0 || (index+1) == @ideas.count %>

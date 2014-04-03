@@ -110,9 +110,15 @@
 				<p class="img-source hidden"><%= @idea.source %></p>
 			</div>
 
+			<% if @idea.board.category || current_user %>
 			<div class="idea-overview-extras">
 				<% if @idea.board.category %>
 					<span><%= @idea.board.category.name %></span>
+				<% end %>
+
+				<% if @idea.board.category &&
+							( (permit? "ideas", "edit", @idea) && (permit? "ideas", "destroy", @idea) ) || 
+							(permit? "ideas", "vote", @idea) %>
 					<span class="seperator">|</span>
 				<% end %>
 
@@ -133,6 +139,7 @@
 					<% end %>
 				<% end %>
 			</div>
+			<% end %>
 
 		</div>
 		<!-- ********* END IDEA OVERVEW SECTION ********** -->
