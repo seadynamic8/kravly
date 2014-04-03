@@ -117,8 +117,8 @@
 				<% end %>
 
 				<% if @idea.board.category &&
-							( (permit? "ideas", "edit", @idea) && (permit? "ideas", "destroy", @idea) ) || 
-							(permit? "ideas", "vote", @idea) %>
+							(	( (permit? "ideas", "edit", @idea) && (permit? "ideas", "destroy", @idea) ) || 
+							(permit? "ideas", "vote", @idea) ) %>
 					<span class="seperator">|</span>
 				<% end %>
 
