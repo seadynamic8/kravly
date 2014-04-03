@@ -17,9 +17,12 @@
 //= require jquery.validate.additional-methods
 //= require jquery.charactercounter
 //= require jquery.uriAnchor
+//= require jquery.infinitescroll.min
 //= require foundation
 //= require ckeditor/override
 //= require ckeditor/init
+//= require imagesloaded.pkgd.min
+//= require masonry.pkgd.min
 //= require_tree .
 //= require turbolinks
 
@@ -28,10 +31,7 @@ $(document).ready(function() {
 
 	$('.img-container').hover(
 		function() {
-			$(this).find('.img-source').removeClass('hidden');
-		},
-		function() {
-			$(this).find('.img-source').addClass('hidden');
+			$(this).find('.img-source').toggleClass('hidden');
 		}
 	);
 

@@ -21,7 +21,7 @@ class PublicController < ApplicationController
   def about
   end
 
-  def intro  	
+  def intro
   end
 
   def basics
