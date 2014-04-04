@@ -80,26 +80,28 @@
 				<p class="img-source hidden"><%= idea.source %></p>
 			</div>
 			
-			<div class="block-extras">
-				<% if permit? "ideas", "edit", idea %>
-					<%= link_to (content_tag :i, nil, class: "fi-widget"), edit_idea_path(idea),
-							data: { "no-turbolink" => true }, class: "edit-link" %>
-				<% end %>
-				<% if permit? "ideas", "destroy", idea %>
-					<%= link_to (content_tag :i, nil, class: "fi-x"), idea_path(idea), 
-							method: :delete, data: { confirm: "Are you sure?" }, class: "delete-link" %>
-				<% end %>
-				<% if (permit? "ideas", "vote", idea) %>
-					<% if current_user.not_voted?(idea) %>
-					<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), 
-								vote_idea_path(idea), class: "tiny button", id: "like-button" %>
-					<% else %>
-					<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), 
-								vote_idea_path(idea), class: "tiny button disabled", 
-								id: "like-button" %>
+			<% if current_user %>
+				<div class="block-extras">
+					<% if permit? "ideas", "edit", idea %>
+						<%= link_to (content_tag :i, nil, class: "fi-widget"), edit_idea_path(idea),
+								data: { "no-turbolink" => true }, class: "edit-link" %>
 					<% end %>
-				<% end %>
-			</div>
+					<% if permit? "ideas", "destroy", idea %>
+						<%= link_to (content_tag :i, nil, class: "fi-x"), idea_path(idea), 
+								method: :delete, data: { confirm: "Are you sure?" }, class: "delete-link" %>
+					<% end %>
+					<% if (permit? "ideas", "vote", idea) %>
+						<% if current_user.not_voted?(idea) %>
+						<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), 
+									vote_idea_path(idea), class: "tiny button", id: "like-button" %>
+						<% else %>
+						<%= link_to raw("Vote <i class='fi-like like-symbol'></i>"), 
+									vote_idea_path(idea), class: "tiny button disabled", 
+									id: "like-button" %>
+						<% end %>
+					<% end %>
+				</div>
+			<% end %>
 
 		</div>
 
