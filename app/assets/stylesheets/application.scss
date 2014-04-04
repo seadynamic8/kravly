@@ -381,8 +381,10 @@ footer {
 		}
 
 		#like-button {
+			@include button( $button-tny, $text-color-three, false, false, false, false);
 			font-size: 15px;
 			padding: 0.1em 0.8em;
+			margin-bottom: 0;
 		}
 		.like-symbol {
 			padding-left: 5px;

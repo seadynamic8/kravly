@@ -117,6 +117,7 @@
 				margin-left: 10px;
 			}
 			#like-button {
+				@include button( $button-tny, $text-color-three, false, false, false, false);
 				font-size: 15px;
 				padding: 0.1em 0.8em;
 				margin: 0;
