@@ -15,14 +15,16 @@
 	<div class="comment-edit-section">
 
 	<% if permit? "comments", "edit", comment %>
-		<%= link_to raw("<i class='fi-page-edit'></i>"), edit_comment_path(comment), remote: true,
-					class: "edit-link" 
+		<%= link_to (content_tag :i, nil, class: "fi-page-edit"), 
+				edit_comment_path(comment), remote: true, class: "edit-link" 
 				%>
 	<% end %>
 
 	<% if permit? "comments", "destroy", comment %>
-		<%= link_to raw("<i class='fi-x'></i>"), comment_path(comment), method: :delete, remote: true, 
-				data: { confirm: "Are you sure you want to delete this comment?"}, class: "delete-link" %>
+		<%= link_to (content_tag :i, nil, class: "fi-x"), comment_path(comment), 
+				method: :delete, remote: true, 
+				data: { confirm: "Are you sure you want to delete this comment?"}, 
+				class: "delete-link" %>
 	<% end %>
 
 	</div>

@@ -2,7 +2,7 @@
 
 <div class="row back-to-board">
 	<div class="large-8 columns">
-		<p><%= link_to raw("<i class='fi-arrow-left'></i>"), user_board_path(@idea.user, @idea.board) %>
+		<p><%= link_to (content_tag :i, nil, class: "fi-arrow-left"), user_board_path(@idea.user, @idea.board) %>
 		 <%= link_to "Back to Board", user_board_path(@idea.user, @idea.board) %></p>
 	</div>
 </div>
@@ -26,15 +26,15 @@
 			<ul class="large-block-grid-3">
 				<li>
 					<%= @idea.impressionist_count(filter: :ip_address) %><br>
-					<i class="fi-eye"></i>
+					<%= content_tag :i, nil, class: "fi-eye" %>
 				</li>
 				<li>
 					<%= @all_comments_count %><br>
-					<i class="fi-comments"></i>
+					<%= content_tag :i, nil, class: "fi-comments" %>
 				</li>
 				<li class="vote">
 					<%= @idea.votes %><br>
-					<i class="fi-like"></i>
+					<%= content_tag :i, nil, class: "fi-like" %>
 				</li>
 			</ul>
 		</div>
@@ -123,9 +123,9 @@
 				<% end %>
 
 				<% if (permit? "ideas", "edit", @idea) && (permit? "ideas", "destroy", @idea) %>
-					<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(@idea), 
+					<%= link_to (content_tag :i, nil, class: "fi-widget"), edit_idea_path(@idea), 
 							data: { "no-turbolink" => true }, id: "edit-button" %>
-					<%= link_to raw("<i class='fi-x'></i>"), idea_path(@idea), method: :delete, 
+					<%= link_to (content_tag :i, nil, class: "fi-x"), idea_path(@idea), method: :delete, 
 							data: { confirm: "Are you sure?" }, id: "delete-button" %>
 				<% end %>
 				<% if (permit? "ideas", "vote", @idea) %>

@@ -21,47 +21,20 @@
 		<% end %>
 		
 		<% if @user.website.present? %>
-			<p class="user-website"><i class="fi-web"></i> <%= @user.website %></p>
+			<p class="user-website">
+				<%= content_tag :i, nil, class: "fi-web" %> <%= @user.website %>
+			</p>
 		<% end %>
 
 		<% if permit? "users", "edit", @user %>
 			<div class="edit-button">
-				<%= link_to raw("<i class='fi-widget'></i>"), edit_user_path(@user), 
-							class: "edit-link" %>
+				<%= link_to (content_tag :i, nil, class: "fi-widget"), 
+						edit_user_path(@user), class: "edit-link" %>
 			</div>
 		<% end %>
 	</div>
 
 </div>
-
-
-<!-- 
-<div class="row">
-	<div class="large-10 large-centered columns">
-		<div class="row user-header-user">
-			<div class="large-10 columns">
-				<%= image_tag @user.avatar.profile.url %>
-				<h3><%= @user.display_name %></h3>
-				<p><%= @user.about %></p>
-				<p>
-					<strong>
-						<%= @user.location %>
-						<% if @user.website.present? %>
-							<span class="middot">|</span>
-							<%= @user.website %>
-						<% end %>
-					</strong>
-				</p>
-			</div>
-			<% if permit? "users", "edit", @user %>
-			<div class="large-1 columns">
-				<%= link_to "Edit", edit_user_path(@user), class: "tiny button" %>
-			</div>
-			<% end %>
-		</div>
-		<hr>
-	</div>
-</div> -->
 
 <!-- ##################### END HEADER SECTION ###########################-->
 
@@ -84,7 +57,7 @@
 		<li>
 			<span class="count"><%= link_to "#{@user.votes}",
 																votes_user_path(@user) %></span>
-			<%= link_to raw("<i class='fi-like'></i>"), votes_user_path(@user),
+			<%= link_to (content_tag :i, nil, class: "fi-like"), votes_user_path(@user),
 					class: "vote-link" %>
 		</li>
 	</ul>
@@ -97,25 +70,5 @@
 		<span class='st_stumbleupon'></span>
 	</span> -->
 </div>
-
-<!-- <div class="row user-stats">
-	<div class="large-5 columns">
-		<ul class="button-group">
-			<li><%= link_to "#{@user.boards.count} Boards", boards_user_path(@user), 
-							class: "small button secondary active" %></li>
-			<li><%= link_to "#{@user.ideas.count} Ideas", ideas_user_path(@user), 
-							class: "small button secondary" %></li>
-			<li><%= link_to "#{@user.votes} Votes", votes_user_path(@user), 
-							class: "small button secondary" %></li>
-		</ul>
-	</div>
-	<div class="large-3 columns">
-		<span class='st_facebook_large' displayText='Facebook'></span>
-		<span class='st_twitter_large' displayText='Tweet'></span>
-		<span class='st_linkedin_large' displayText='LinkedIn'></span>
-		<span class='st_pinterest_large' displayText='Pinterest'></span>
-		<span class='st_stumbleupon_large' displayText='StumbleUpon'></span>
-	</div>
-</div> -->
 
 <!-- ##################### END USER BAR SECTION ###########################-->

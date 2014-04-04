@@ -15,7 +15,7 @@
 	<% end %>
 
 	<div class="back-to-user">
-		<%= link_to raw("<i class='fi-arrow-left'></i>"), boards_user_path(@user) %>
+		<%= link_to (content_tag :i, nil, class: "fi-arrow-left"), boards_user_path(@user) %>
 		<%= link_to "Back to User", boards_user_path(@user) %>
 	</div>
 </div>
@@ -38,16 +38,16 @@
 	<div class="right">
 			<span class="vote">
 				<%= @board.votes %>
-				<i class="fi-like"></i>
+				<%= content_tag :i, nil, class: "fi-like" %>
 			</span>
 			
 
 			<% if permit? "boards", "edit", @board %>
 			<span class="seperator">|</span>
 			<span class="board-edit-links">
-				<%= link_to raw("<i class='fi-widget'></i>"), 
+				<%= link_to (content_tag :i, nil, class: "fi-widget"), 
 							edit_user_board_path(@user, @board), class: "edit-link" %>
-				<%= link_to raw("<i class='fi-x'></i>"), 
+				<%= link_to (content_tag :i, nil, class: "fi-x"), 
 							user_board_path(@user, @board), method: :delete, 
 							data: { confirm: "Are you sure you want to delete the board?" } %>
 			</span>
@@ -82,12 +82,12 @@
 			
 			<div class="block-extras">
 				<% if permit? "ideas", "edit", idea %>
-					<%= link_to raw("<i class='fi-widget'></i>"), edit_idea_path(idea),
+					<%= link_to (content_tag :i, nil, class: "fi-widget"), edit_idea_path(idea),
 							data: { "no-turbolink" => true }, class: "edit-link" %>
 				<% end %>
 				<% if permit? "ideas", "destroy", idea %>
-					<%= link_to raw("<i class='fi-x'></i>"), idea_path(idea), method: :delete, 
-							data: { confirm: "Are you sure?" }, class: "delete-link" %>
+					<%= link_to (content_tag :i, nil, class: "fi-x"), idea_path(idea), 
+							method: :delete, data: { confirm: "Are you sure?" }, class: "delete-link" %>
 				<% end %>
 				<% if (permit? "ideas", "vote", idea) %>
 					<% if current_user.not_voted?(idea) %>
