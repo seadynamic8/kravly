@@ -26,13 +26,13 @@
 				<%= idea.board.category.name if idea.board.category %>
 			</div>
 
-			<header><%= link_to idea.title, idea_path(idea) %></header>
+			<header>
+				<%= link_to idea.title, idea_path(idea) %>
 
-			<% if Rails.env == "development" %>
-<!-- 			<p class="pitch">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo beatae cum totam illum placeat debitis impedit rem dolorum veniam laboriosam.
-			</p> -->
-			<% end %>
+				<% if idea.pitch.present? %>
+					<p class="pitch"><%= idea.pitch %></p>
+				<% end %>
+			</header>
 
 			<div class="img-container">
 				<%= link_to (image_tag idea.image.thumb.url), idea_path(idea) %>

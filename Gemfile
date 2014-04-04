@@ -79,7 +79,7 @@ gem 'unicorn'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'compass-rails', "~> 1.1.0"
+gem 'compass-rails'
 gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
 

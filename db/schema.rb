@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140217154646) do
+ActiveRecord::Schema.define(version: 20140404151340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(version: 20140217154646) do
     t.string   "source"
     t.text     "looking_for"
     t.string   "market"
+    t.string   "pitch"
   end
 
   add_index "ideas", ["board_id"], name: "index_ideas_on_board_id", using: :btree

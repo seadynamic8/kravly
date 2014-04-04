@@ -27,7 +27,7 @@
 //= require turbolinks
 
 $(document).ready(function() {
-	$(document).foundation();
+	// $(document).foundation();  Foundation Javascript has problems with Opera
 
 	$('.img-container').hover(
 		function() {

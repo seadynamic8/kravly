@@ -65,12 +65,10 @@
 
 		<div id="idea-<%= "#{idea.id}" %>" class="block">
 			<header>
-				<%= link_to idea.title, idea_path(idea) %><br>
+				<%= link_to idea.title, idea_path(idea) %>
 
-				<% if Rails.env == "development" %>
-	<!-- 				<p class="pitch">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, aliquam harum eos nobis nostrum et nulla similique suscipit consequatur quasi?
-					</p> -->
+				<% if idea.pitch.present? %>
+					<p class="pitch"><%= idea.pitch %></p>
 				<% end %>
 			</header>
 

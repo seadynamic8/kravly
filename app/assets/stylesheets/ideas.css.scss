@@ -435,15 +435,12 @@
 
 					&[placeholder] {
 						font-weight: bold;
+						color: $text-color-four;
 					}
 
 					&.error {
 						border: 2px solid #f04124;
 					}
-				}
-
-				textarea {
-					min-height: 200px;
 				}
 
 				select {
@@ -503,17 +500,28 @@
 
 	.pitch {
 
-		.form-section .title {
-			padding-right: 5em;
+		.form-section {
+
+			textarea {
+				height: 60px;
+			}
+
+			select {
+				width: 40%;
+			}
 		}
 
-		select {
-			width: 40%;
-		}
 	}
 
 	.description, .media {
 		display: none;
+	}
+
+	.description {
+
+		textarea {
+			min-height: 200px;
+		}
 	}
 
 	.media {
@@ -609,7 +617,7 @@
 
 					&[placeholder] {
 						font-weight: bold;
-						color: $text-color-four;  // Added
+						color: $text-color-four;
 					}
 
 					&.error {
@@ -625,17 +633,13 @@
 				}
 
 				textarea {
-					min-height: 100px;  // Special
+					height: 60px;  // Special
 				}
 
 				select {
 					color: $text-color-three;
 					border: 2px solid $text-color-one;
 					width: 50%;  // Special
-				}
-
-				&.title {
-					padding-right: 5em; // Special
 				}
 
 				.counter {
@@ -646,6 +650,7 @@
 					font-size: 0.9em;
 				}
 			}
+
 
 			.photo {  // Special
 				padding-bottom: 5em;

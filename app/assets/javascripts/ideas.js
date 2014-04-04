@@ -279,7 +279,7 @@ var addIdeaScript = function () {
     
 };
 
-$(document).on('ready', addIdeaScript);
+// $(document).on('ready', addIdeaScript);
 // $(document).on('page:load', addIdeaScript);
-// $(document).on('page:change', addIdeaScript);
+$(document).on('page:change', addIdeaScript);
 // $(document).on('page:restore', addIdeaScript);

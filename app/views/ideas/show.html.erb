@@ -96,13 +96,11 @@
 
 			<header>
 				<h1><%= @idea.title %></h1>
-				<% if Rails.env == "development" %>
-<!-- 				<p class="pitch">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo beatae cum totam illum placeat debitis impedit rem dolorum veniam laboriosam.
-				</p> -->
+				
+				<% if @idea.pitch.present? %>
+					<p class="pitch"><%= @idea.pitch %></p>
 				<% end %>
 			</header>
-
 			
 			<div class="img-container">
 				<%= image_tag @idea.image.large.url %>

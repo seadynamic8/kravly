@@ -17,6 +17,7 @@
 #  source      :string(255)
 #  looking_for :text
 #  market      :string(255)
+#  pitch       :string(255)
 #
 
 require 'faker'

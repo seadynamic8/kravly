@@ -20,6 +20,13 @@
 							placeholder: "In 2-3 Words, Describe Your Idea".upcase %>
 			</li>
 
+			<li class="pitch">
+				<%= f.label :pitch, "What's your elevator pitch?" %>
+				<%= f.text_area :pitch,
+				placeholder: 
+				"If you had 30 seconds to describe your idea, what yould you say?".upcase %>
+			</li>
+
 			<li class="board">
 				<%= f.label :board, "Which board are you adding your idea to?" %>
 

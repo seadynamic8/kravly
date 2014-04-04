@@ -375,28 +375,31 @@ body .home {
 	}
 
 	header {
-		padding: 0.4em 0.5em;
-
+		
 		a {
-			font-size: 1.5em;
-			// font-weight: bold;
+			display: block;
+			padding: 0.3em 0.5em;
+			font-size: 1.3em;
 			color: $text-color-three;
 
 			&:hover {
 				color: $link-hover-color;
 			}
 		}
-	}
 
-	.pitch {
-		color: $text-color-one;
-		margin: 0.2em 0.5em;
-		font-size: 0.9em;
+		.pitch {
+			color: $text-color-one;
+			margin: 0;
+			padding: 0.2em 0.5em;
+			font-size: 0.9em;
+		}
 	}
 
 	.img-container img {
 		width: 100%;
 		margin-bottom: 3px;
+		border-top: 1px solid rgba(0, 0, 0, .1);
+		border-bottom: 1px solid rgba(0, 0, 0, .1);
 	}
 
 	.discover-block-extras {

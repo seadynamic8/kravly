@@ -92,7 +92,7 @@ class IdeasController < ApplicationController
   	end
 
     def idea_params
-      params.require(:idea).permit(:votes, :title, :board_id, :content, 
+      params.require(:idea).permit(:votes, :title, :pitch, :board_id, :content, 
         :image, :image_cache, :remote_image_url, :source, :video_url, 
         :commitment, :market, looking_for: [])
     end

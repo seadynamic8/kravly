@@ -17,6 +17,7 @@
 #  source      :string(255)
 #  looking_for :text
 #  market      :string(255)
+#  pitch       :string(255)
 #
 
 require 'spec_helper'
@@ -48,6 +49,7 @@ describe Idea do
 
 		it { should ensure_length_of(:commitment).is_at_most(35) }
 		it { should ensure_length_of(:market).is_at_most(30) }
+		it { should ensure_length_of(:pitch).is_at_most(145) }
 	end
 
 	describe "functions" do

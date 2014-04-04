@@ -17,6 +17,7 @@
 #  source      :string(255)
 #  looking_for :text
 #  market      :string(255)
+#  pitch       :string(255)
 #
 
 require 'file_size_validator'
@@ -39,14 +40,15 @@ class Idea < ActiveRecord::Base
 
 	normalize_attributes :title, :content, :market
 
-	validates :title, presence: true, uniqueness: true, length: { maximum: 45 }
-	validates :content, presence: true
-	validates :votes, numericality: { only_integer: true,
-																		greater_than_or_equal_to: 0 }
-	validates :image, file_size: { maximum: 2.megabytes.to_i }
-	validates :board, presence: true
+	validates :title, 		 presence: true, uniqueness: true, length: { maximum: 45 }
+	validates :content, 	 presence: true
+	validates :votes, 		 numericality: { only_integer: true,
+																				 greater_than_or_equal_to: 0 }
+	validates :image, 		 file_size: { maximum: 2.megabytes.to_i }
+	validates :board, 		 presence: true
 	validates :commitment, length: { maximum: 35 }
-	validates :market, length: { maximum: 30 }
+	validates :market, 		 length: { maximum: 30 }
+	validates :pitch, 		 length: { maximum: 145 }
 
 	after_validation :move_friendly_id_error_to_name
 	before_save :update_source_from_remote_url
