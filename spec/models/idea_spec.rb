@@ -33,6 +33,7 @@ describe Idea do
 		it { should normalize_attribute(:title) }
 		it { should normalize_attribute(:content) }
 		it { should normalize_attribute(:market) }
+		it { should normalize_attribute(:pitch) }
 
 		it { should validate_presence_of(:title) }
 		it { should validate_uniqueness_of(:title) }

@@ -11,7 +11,7 @@
       <header>
         <%= link_to user_vote.idea.title, idea_path(user_vote.idea) %>
 
-        <% if idea.pitch.present? %>
+        <% if user_vote.idea.pitch.present? %>
           <p class="pitch"><%= user_vote.idea.pitch %></p>
         <% end %>
       </header>

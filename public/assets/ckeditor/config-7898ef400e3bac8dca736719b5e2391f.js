@@ -8,9 +8,9 @@ CKEDITOR.editorConfig = function( config ) {
 			
 			[ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent' ],
 			[ 'JustifyLeft', 'JustifyCenter', 'JustifyRight' ],
-			['Image', 'HorizontalRule', 'Smiley', 'Blockquote', 'Link'],
 			'/',
 			[ 'Bold', 'Italic', 'Underline', 'Strike'], ['FontSize'],
+			['Image', 'HorizontalRule', 'Smiley', 'Blockquote', 'Link'],
 			[ 'Templates' ],
 
 			// { name: 'document', items: [ 'Source' ] },

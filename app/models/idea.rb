@@ -38,7 +38,7 @@ class Idea < ActiveRecord::Base
 
 	mount_uploader :image, ImageUploader
 
-	normalize_attributes :title, :content, :market
+	normalize_attributes :title, :content, :market, :pitch
 
 	validates :title, 		 presence: true, uniqueness: true, length: { maximum: 45 }
 	validates :content, 	 presence: true
