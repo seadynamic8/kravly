@@ -26,27 +26,6 @@
 //= require_tree .
 //= require turbolinks
 
-$(document).ready(function() {
-	// $(document).foundation();  Foundation Javascript has problems with Opera
-
-	$('.img-container').hover(
-		function() {
-			$(this).find('.img-source').toggleClass('hidden');
-		}
-	);
-
-	var $flashAlert = $('.flash-alert');
-
-	$flashAlert.find('.close').on('click', function () {
-		$(this).parent('.flash-alert').remove();
-	});
-	
-	$flashAlert.slideDown(500, function () {
-		if ( $(this).hasClass('notice') )
-			$(this).delay(3000).slideUp(500);
-	});
-});
-
 // $(document).on('page:change', function () {
 // 	if ( window.clicky !== null && window.clicky !== "undefined" ) {
 //     clicky.log( document.location.pathname + document.location.search, 

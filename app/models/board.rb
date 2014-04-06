@@ -24,7 +24,7 @@ class Board < ActiveRecord::Base
 	normalize_attributes :name, :description
 
 	validates :name, presence: true, uniqueness: { scope: :user }, length: { maximum: 30 }
-	validates :description, length: { maximum: 255 }
+	validates :description, length: { maximum: 145 }
 	validates :user_id, presence: true
 	validates :user, associated: true
 	validates :category_id, presence: true

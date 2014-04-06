@@ -31,7 +31,7 @@ describe Board do
 		it { should validate_uniqueness_of(:name) }
 		it { should ensure_length_of(:name).is_at_most(30) }
 
-		it { should ensure_length_of(:description).is_at_most(255) }
+		it { should ensure_length_of(:description).is_at_most(145) }
 
 		it { should validate_presence_of(:user_id) }
 		it { should validate_presence_of(:category_id) }

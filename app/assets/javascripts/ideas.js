@@ -236,6 +236,20 @@ var addIdeaScript = function () {
     ],
     wizard;
 
+  addCharacterCounter = function($field, limit) {
+    $field.characterCounter({
+      limit: limit,
+      counterFormat: '%1 characters left',
+      // counterExceededCssClass: 'error'
+      onExceed: function() {
+        $field.addClass('error');
+      },
+      onDeceed: function () {
+        $field.removeClass('error');
+      }
+    });
+  };
+
   $.uriAnchor.configModule({
     schema_map: anchor_schema_map
   });
@@ -263,19 +277,9 @@ var addIdeaScript = function () {
     }
   });
 
-
-  // Character Counter
-  $('#idea_title').characterCounter({
-    limit: 45,
-    counterFormat: '%1 characters left',
-    // counterExceededCssClass: 'error'
-    onExceed: function() {
-      $('#idea_title').addClass('error');
-    },
-    onDeceed: function () {
-      $('#idea_title').removeClass('error');
-    }
-  });
+  addCharacterCounter( $('#idea_title'), 45 );
+  addCharacterCounter( $('#idea_pitch'), 145 );
+  addCharacterCounter( $('#idea_market'), 30 );
     
 };
 

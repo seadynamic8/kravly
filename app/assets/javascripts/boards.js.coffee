@@ -28,3 +28,20 @@ jQuery ->
 		#Add image source hover for added items
 		$newElems.find('.img-container').hover ->
 			$(this).find('.img-source').toggleClass('hidden')
+
+	addCharacterCounter = ($field, limit) ->
+		$field.characterCounter
+			limit: limit,
+			counterFormat: '%1 characters left',
+		#  counterExceededCssClass: 'error'
+			onExceed: ->
+				$field.addClass('error')
+			, 
+			onDeceed: ->
+				$field.removeClass('error')
+
+	$boardName = $('#board_name')
+	$boardDescription = $('#board_description')
+
+	addCharacterCounter( $boardName, 30 )
+	addCharacterCounter( $boardDescription, 145 )

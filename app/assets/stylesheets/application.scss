@@ -111,6 +111,15 @@ p {
 	padding: 1em 0;
 }
 
+.counter {
+	display: block;
+	text-align: right;
+	text-transform: uppercase;
+	font-weight: light;
+	font-size: 0.9em;
+	color: $text-color-one;
+}
+
 .push, footer {
 	height: 60px;
 }
@@ -276,10 +285,14 @@ footer {
 	display: none;
 	width: 900px;
 	margin: 0 auto 1em;
-	font-size: 0.8em;
+	font-size: 1em;
 	padding: .7em 1em;
 	color: $text-color-two;
 	position: relative;
+
+	&.error {
+		width: 100%;
+	}
 
 	&.notice {
 		background: #43ac5a;
@@ -294,7 +307,7 @@ footer {
 	.close {
 		position: absolute;
 		right: 1em;
-		top: 15%;
+		top: 5px;
 		text-decoration: none;
 		font-size: 1.5em;
 		color: $text-color-two;

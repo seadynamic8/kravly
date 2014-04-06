@@ -3,10 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-	$usersBoards = $('.users-boards')
-	$usersIdeas  = $('.users-ideas')
-	$usersVotes  = $('.users-votes')
-
 	masonryFunc = ( $container ) ->
 		$container.masonry
 			columnWidth: '.block',
@@ -37,6 +33,21 @@ jQuery ->
 		$newElems.find('.img-container').hover ->
 			$(this).find('.img-source').toggleClass('hidden')
 
+	addCharacterCounter = ($field, limit) ->
+		$field.characterCounter
+			limit: limit,
+			counterFormat: '%1 characters left',
+			#  counterExceededCssClass: 'error'
+			onExceed: ->
+				$field.addClass('error')
+			, 
+			onDeceed: ->
+				$field.removeClass('error')
+
+	$usersBoards = $('.users-boards')
+	$usersIdeas  = $('.users-ideas')
+	$usersVotes  = $('.users-votes')
+
 	# When images are loaded, load the masonry plugin
 	$usersBoards.imagesLoaded -> masonryFunc( $usersBoards )
 	$usersIdeas.imagesLoaded ->	masonryFunc( $usersIdeas )
@@ -50,4 +61,6 @@ jQuery ->
 	$usersVotes.infinitescroll infiniteScrollOptions('users-votes'), ( newElements ) ->
 		callbackForScroll newElements, $usersVotes
 
-      
+
+	addCharacterCounter( $('.user-new-form').find('#user_password'), 30 )
+

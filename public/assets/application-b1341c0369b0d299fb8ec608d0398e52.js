@@ -28637,7 +28637,25 @@ $.widget("ui.sortable", $.ui.mouse, {
 }).call(this);
 (function() {
   jQuery(function() {
-    var $boardsIdeas;
+    var $flashAlert;
+    $('.img-container').hover(function() {
+      return $(this).find('.img-source').toggleClass('hidden');
+    });
+    $flashAlert = $('.flash-alert');
+    $flashAlert.find('.close').on('click', function() {
+      return $(this).parent('.flash-alert').remove();
+    });
+    return $flashAlert.slideDown(500, function() {
+      if ($(this).hasClass('notice')) {
+        return $(this).delay(3000).slideUp(500);
+      }
+    });
+  });
+
+}).call(this);
+(function() {
+  jQuery(function() {
+    var $boardDescription, $boardName, $boardsIdeas, addCharacterCounter;
     $boardsIdeas = $('.boards-ideas');
     $boardsIdeas.imagesLoaded(function() {
       return $boardsIdeas.masonry({
@@ -28646,7 +28664,7 @@ $.widget("ui.sortable", $.ui.mouse, {
         isFitWidth: true
       });
     });
-    return $boardsIdeas.infinitescroll({
+    $boardsIdeas.infinitescroll({
       navSelector: '.boards-ideas-paginate',
       nextSelector: '.boards-ideas-paginate .next_page a',
       itemSelector: '.block',
@@ -28670,6 +28688,22 @@ $.widget("ui.sortable", $.ui.mouse, {
         return $(this).find('.img-source').toggleClass('hidden');
       });
     });
+    addCharacterCounter = function($field, limit) {
+      return $field.characterCounter({
+        limit: limit,
+        counterFormat: '%1 characters left',
+        onExceed: function() {
+          return $field.addClass('error');
+        },
+        onDeceed: function() {
+          return $field.removeClass('error');
+        }
+      });
+    };
+    $boardName = $('#board_name');
+    $boardDescription = $('#board_description');
+    addCharacterCounter($boardName, 30);
+    return addCharacterCounter($boardDescription, 145);
   });
 
 }).call(this);
@@ -28685,10 +28719,11 @@ CKEDITOR.editorConfig = function( config ) {
 
 		config.toolbar = [
 			
-			[ 'Bold', 'Italic', 'Underline', 'Strike'], ['FontSize'],
-			['Image', 'HorizontalRule', 'Smiley', 'Blockquote', 'Link'],
 			[ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent' ],
 			[ 'JustifyLeft', 'JustifyCenter', 'JustifyRight' ],
+			['Image', 'HorizontalRule', 'Smiley', 'Blockquote', 'Link'],
+			'/',
+			[ 'Bold', 'Italic', 'Underline', 'Strike'], ['FontSize'],
 			[ 'Templates' ],
 
 			// { name: 'document', items: [ 'Source' ] },
@@ -28724,29 +28759,114 @@ CKEDITOR.addTemplates( 'default',
 	templates :
 		[
 			{
-				title: 'Problem',
-				description: 'Problem Section',
-				html:
-					'<h2><strong>Problem</strong></h2>' +
-					'<hr>' +
-					'<p>Type your problem here.</p>'
-			},
-			{
-				title: 'Solution',
-				description: 'Solution Section',
-				html:
-					'<h2><strong>Solution</strong></h2>' +
-					'<hr>' +
-					'<p>Type your solution here.</p>'
-			},
-			{
-				title: 'Problem/Solution',
-				description: 'Problem / Solution Sections',
+				title: 'Problem / Solution',
 				html:
 					'<h2><strong>Problem</strong></h2>' +
 					'<hr>' +
 					'<br>' +
 					'<h2><strong>Solution</strong></h2>' +
+					'<hr>' +
+					'<p></p>'
+			},
+			{
+				title: 'Problem',
+				html:
+					'<h2><strong>Problem</strong></h2>' +
+					'<hr>' +
+					'<p></p>'
+			},
+			{
+				title: 'Solution',
+				html:
+					'<h2><strong>Solution</strong></h2>' +
+					'<hr>' +
+					'<p></p>'
+			},
+			{
+				title: 'Unique Value Proposition',
+				html:
+					'<h2><strong>Unique Value Proposition</strong></h2>' +
+					'<hr>' +
+					'<p></p>'
+			},
+			{
+				title: 'Unfair Advantage',
+				html:
+					'<h2><strong>Unfair Advantage</strong></h2>' +
+					'<hr>' +
+					'<p></p>'
+			},
+			{
+				title: 'Key Metrics',
+				html:
+					'<h2><strong>Key Metrics</strong></h2>' +
+					'<hr>' +
+					'<p></p>'
+			},
+			{
+				title: 'Channels',
+				html:
+					'<h2><strong>Channels</strong></h2>' +
+					'<hr>' +
+					'<p></p>'
+			},
+			{
+				title: 'Customer Segments',
+				html:
+					'<h2><strong>Customer Segments</strong></h2>' +
+					'<hr>' +
+					'<p></p>'
+			},
+			{
+				title: 'Cost Structure',
+				html:
+					'<h2><strong>Cost Structure</strong></h2>' +
+					'<hr>' +
+					'<p></p>'
+			},
+			{
+				title: 'Revenue Streams',
+				html:
+					'<h2><strong>Revenue Streams</strong></h2>' +
+					'<hr>' +
+					'<p></p>'
+			},
+			{
+				title: 'All of the Above',
+				html:
+					'<h2><strong>Problem</strong></h2>' +
+					'<hr>' +
+					'<p></p>' +
+
+					'<h2><strong>Solution</strong></h2>' +
+					'<hr>' +
+					'<p></p>' +
+
+					'<h2><strong>Unique Value Proposition</strong></h2>' +
+					'<hr>' +
+					'<p></p>'+
+
+					'<h2><strong>Unfair Advantage</strong></h2>' +
+					'<hr>' +
+					'<p></p>'+
+	
+					'<h2><strong>Key Metrics</strong></h2>' +
+					'<hr>' +
+					'<p></p>'+
+
+					'<h2><strong>Channels</strong></h2>' +
+					'<hr>' +
+					'<p></p>'+
+	
+					'<h2><strong>Customer Segments</strong></h2>' +
+					'<hr>' +
+					'<p></p>'+
+	
+					'<h2><strong>Cost Structure</strong></h2>' +
+					'<hr>' +
+					'<p></p>'+
+
+					'<h2><strong>Revenue Streams</strong></h2>' +
 					'<hr>' +
 					'<p></p>'
 			}
@@ -29020,6 +29140,20 @@ var addIdeaScript = function () {
     ],
     wizard;
 
+  addCharacterCounter = function($field, limit) {
+    $field.characterCounter({
+      limit: limit,
+      counterFormat: '%1 characters left',
+      // counterExceededCssClass: 'error'
+      onExceed: function() {
+        $field.addClass('error');
+      },
+      onDeceed: function () {
+        $field.removeClass('error');
+      }
+    });
+  };
+
   $.uriAnchor.configModule({
     schema_map: anchor_schema_map
   });
@@ -29047,19 +29181,9 @@ var addIdeaScript = function () {
     }
   });
 
-
-  // Character Counter
-  $('#idea_title').characterCounter({
-    limit: 45,
-    counterFormat: '%1 characters left',
-    // counterExceededCssClass: 'error'
-    onExceed: function() {
-      $('#idea_title').addClass('error');
-    },
-    onDeceed: function () {
-      $('#idea_title').removeClass('error');
-    }
-  });
+  addCharacterCounter( $('#idea_title'), 45 );
+  addCharacterCounter( $('#idea_pitch'), 145 );
+  addCharacterCounter( $('#idea_market'), 30 );
     
 };
 
@@ -29115,10 +29239,7 @@ $(document).on('page:change', addIdeaScript);
 }).call(this);
 (function() {
   jQuery(function() {
-    var $usersBoards, $usersIdeas, $usersVotes, callbackForScroll, infiniteScrollOptions, masonryFunc;
-    $usersBoards = $('.users-boards');
-    $usersIdeas = $('.users-ideas');
-    $usersVotes = $('.users-votes');
+    var $usersBoards, $usersIdeas, $usersVotes, addCharacterCounter, callbackForScroll, infiniteScrollOptions, masonryFunc;
     masonryFunc = function($container) {
       return $container.masonry({
         columnWidth: '.block',
@@ -29153,6 +29274,21 @@ $(document).on('page:change', addIdeaScript);
         return $(this).find('.img-source').toggleClass('hidden');
       });
     };
+    addCharacterCounter = function($field, limit) {
+      return $field.characterCounter({
+        limit: limit,
+        counterFormat: '%1 characters left',
+        onExceed: function() {
+          return $field.addClass('error');
+        },
+        onDeceed: function() {
+          return $field.removeClass('error');
+        }
+      });
+    };
+    $usersBoards = $('.users-boards');
+    $usersIdeas = $('.users-ideas');
+    $usersVotes = $('.users-votes');
     $usersBoards.imagesLoaded(function() {
       return masonryFunc($usersBoards);
     });
@@ -29168,9 +29304,10 @@ $(document).on('page:change', addIdeaScript);
     $usersIdeas.infinitescroll(infiniteScrollOptions('users-ideas'), function(newElements) {
       return callbackForScroll(newElements, $usersIdeas);
     });
-    return $usersVotes.infinitescroll(infiniteScrollOptions('users-votes'), function(newElements) {
+    $usersVotes.infinitescroll(infiniteScrollOptions('users-votes'), function(newElements) {
       return callbackForScroll(newElements, $usersVotes);
     });
+    return addCharacterCounter($('.user-new-form').find('#user_password'), 30);
   });
 
 }).call(this);
@@ -29722,27 +29859,6 @@ $(document).on('page:change', addIdeaScript);
 
 
 
-
-$(document).ready(function() {
-	// $(document).foundation();  Foundation Javascript has problems with Opera
-
-	$('.img-container').hover(
-		function() {
-			$(this).find('.img-source').toggleClass('hidden');
-		}
-	);
-
-	var $flashAlert = $('.flash-alert');
-
-	$flashAlert.find('.close').on('click', function () {
-		$(this).parent('.flash-alert').remove();
-	});
-	
-	$flashAlert.slideDown(500, function () {
-		if ( $(this).hasClass('notice') )
-			$(this).delay(3000).slideUp(500);
-	});
-});
 
 // $(document).on('page:change', function () {
 // 	if ( window.clicky !== null && window.clicky !== "undefined" ) {
