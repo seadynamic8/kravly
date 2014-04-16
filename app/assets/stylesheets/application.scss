@@ -425,6 +425,40 @@ footer {
 	}
 }
 
+.add-block {
+	padding: 5px;
+
+	.add-block-container {
+		width: 100%;
+		margin: 0 auto;
+
+		.add-text {
+			display: block;
+			padding: 0.4em 0;
+			font-size: 1.5em;
+			color: white;
+
+			&:hover {
+				color: $text-color-one;
+			}
+		}
+
+		.add-icon {
+			display: inline-block;
+			font-size: 5em;
+			padding: 0.4em 0.6em;
+			margin: 0.4em 0;
+			background: white;
+			color: $text-color-one;
+			@include round(5px);
+
+			&:hover {
+				color: $link-hover-color;
+			}
+		}
+	}
+}
+
 @import "sessions";
 @import "ideas";
 @import "public";

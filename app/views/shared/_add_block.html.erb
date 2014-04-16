@@ -1,0 +1,16 @@
+<% if current_user && current_user == @user && 
+			objects.current_page == objects.total_pages %>
+	<li class="add-block block">
+		<div class="add-block-container">
+			<% if type == "board" %>
+				<%= link_to "Add A Board", new_user_board_path(@user), class: "add-text" %>
+				<%= link_to (content_tag :i, nil, class: "fi-plus"),
+						new_user_board_path(@user), class: "add-icon" %>
+			<% elsif type == "idea" %>
+				<%= link_to "Add An Idea", new_idea_path, class: "add-text" %>
+				<%= link_to (content_tag :i, nil, class: "fi-plus"),
+						new_idea_path, class: "add-icon" %>
+			<% end %>
+		</div>
+	</li>
+<% end %>

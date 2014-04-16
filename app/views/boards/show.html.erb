@@ -9,10 +9,10 @@
 
 	<h2><%= @board.description %></h2>
 
-	<% if current_user && current_user == @user %>
+<!-- 	<% if current_user && current_user == @user %>
 		<%= link_to "Add Idea", new_idea_path, class: "add-button small button",
 				data: { "no-turbolink" => true } %>
-	<% end %>
+	<% end %> -->
 
 	<div class="back-to-user">
 		<%= link_to (content_tag :i, nil, class: "fi-arrow-left"), boards_user_path(@user) %>
@@ -104,6 +104,8 @@
 		</div>
 
 	<% end %>
+
+	<%= render 'shared/add_block', type: "idea", objects: @ideas %>
 </div>
 
 <div class="pagination-centered">
