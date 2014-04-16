@@ -27,7 +27,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
   def default_url
-    "http://img.kravly.com/default-avatar.jpg" 
+    "http://img.kravly.com/Kravly-User-Default.png" 
   end
   # ######################################################################
   # ###### Defautl Image - NEED TO MAKE 200 x 200 ########################

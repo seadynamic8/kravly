@@ -27,7 +27,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
   def default_url
-    "http://img.kravly.com/default-background.png"
+    "http://img.kravly.com/Idea-Placeholder.png"
     # "http://placehold.it/232x174"
   end
 
