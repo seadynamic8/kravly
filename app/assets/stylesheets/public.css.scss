@@ -39,7 +39,7 @@ body .home {
 	// ************* HEADER SECTION *****************
 	header {
 		background-color: $header-bg-color;
-		padding: 3em 0 1em;
+		padding: 2em 0 1em;
 		// margin-bottom: 1em;
 		
 		.logo {
@@ -52,9 +52,9 @@ body .home {
 				background: transparent url("http://img.kravly.com/home/logo.png") left top no-repeat;
 				display: block;
 				width: 100%;
-				height: 116px;
+				height: 80px;
 				position: absolute;
-				top: -20px;
+				top: -5px;
 				left: 0;
 			}
 		}
@@ -92,25 +92,35 @@ body .home {
 	// ************* MAIN SECTION *****************
 	.main {
 		text-align: center;
-		background: #99d4c8 url("http://img.kravly.com/home/main-background.png") center -22px no-repeat;
+		background: #99d4c8 url("http://img.kravly.com/home/main-background.png") center -5px no-repeat;
 		padding: 4em 0 8em;
 		@include box-shadow(inset 0 10px 10px rgba(0, 0, 0, 0.1));
 
 		h1 {
-			margin-bottom: 1em;
-			font-size: 50px;
+			// margin-bottom: 1em;
+			// font-size: 50px;
+			margin-top: 1em;
+			font-size: 43px;
+			font-weight: bold;
 
-			.secondary {
-				color: $text-color-two;
+			// .secondary {
+			// 	color: $text-color-two;
 
-				span.ideas {
-					color: $text-color-three;
-				}
-			}
+			// 	span.ideas {
+			// 		color: $text-color-three;
+			// 	}
+			// }
+		}
+
+		.subheader {
+			font-size: 23px;
+			width: 85%;
+			margin: 0 auto 4em;
+			color: $text-color-four;
 		}
 
 		h4 {
-			font-size: 25px;
+			font-size: 20px;
 			font-weight: bold;
 			margin-bottom: 1em;
 		}
