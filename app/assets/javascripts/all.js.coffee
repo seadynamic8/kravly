@@ -16,5 +16,5 @@ jQuery ->
 
 	# GhostRec Usability Testing Code
 	host = "http://www.eemt.se"
-	document.write(unescape("%3Cscript src='" + host + 
-		"/gt/js/4289.js' type='text/javascript'%3E%3C/script%3E"))
+	scriptTag = "<script src='" + host + "/gt/js/4289.js' type='text/javascript'>"
+	$('footer').after(scriptTag)
